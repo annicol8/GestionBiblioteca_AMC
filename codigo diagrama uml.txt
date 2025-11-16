@@ -1,0 +1,197 @@
+classDiagram
+    %% Clases de Usuario
+    class Usuario {
+        -String dni
+        -String nombre
+        -boolean activo
+        +Usuario(dni: String, nombre: String)
+        +getDni() String
+        +getNombre() String
+        +setNombre(nombre: String)
+        +isActivo() boolean
+        +darBaja()
+    }
+
+    %% Clases de Personal
+    class Personal {
+        <<abstract>>
+        -String id
+        -String nombre
+        -String rol
+        +Personal(id: String, nombre: String)
+        +getId() String
+        +getNombre() String
+        +getRol() String
+    }
+
+    class PersonalSala {
+        +PersonalSala(id: String, nombre: String)
+        +gestionarUsuarios()
+        +gestionarPrestamos()
+    }
+
+    class PersonalAdquisiciones {
+        +PersonalAdquisiciones(id: String, nombre: String)
+        +gestionarDocumentos()
+        +gestionarEjemplares()
+        +gestionarUsuarios()
+        +gestionarPrestamos()
+    }
+
+    %% Clases de Documento
+    class Documento {
+        <<abstract>>
+        -String isbn
+        -String titulo
+        -String autor
+        -String editorial
+        -int anioEdicion
+        -boolean activo
+        -PersonalAdquisiciones trabajadorAlta
+        +Documento(isbn: String, titulo: String, autor: String, editorial: String, anio: int)
+        +getIsbn() String
+        +getTitulo() String
+        +getAutor() String
+        +getEditorial() String
+        +getAnioEdicion() int
+        +isActivo() boolean
+        +darBaja()
+        +getPlazoDevolucion() int*
+    }
+
+    class LibroPapel {
+        -final int PLAZO_DEVOLUCION = 15
+        +LibroPapel(isbn: String, titulo: String, autor: String, editorial: String, anio: int)
+        +getPlazoDevolucion() int
+    }
+
+    class Audiolibro {
+        -String formatoDigital
+        -int duracionSegundos
+        -final int PLAZO_DEVOLUCION = 10
+        +Audiolibro(isbn: String, titulo: String, autor: String, editorial: String, anio: int, formato: String, duracion: int)
+        +getFormatoDigital() String
+        +getDuracionSegundos() int
+        +getPlazoDevolucion() int
+    }
+
+    %% Clase Ejemplar
+    class Ejemplar {
+        -String codigo
+        -boolean prestado
+        -boolean activo
+        -PersonalAdquisiciones trabajadorAlta
+        +Ejemplar(codigo: String, documento: Documento)
+        +getCodigo() String
+        +isPrestado() boolean
+        +isActivo() boolean
+        +marcarPrestado()
+        +marcarDisponible()
+        +darBaja()
+    }
+
+    %% Clases de Préstamo
+    class Prestamo {
+        -String id
+        -Date fechaPrestamo
+        -Date fechaLimiteDevolucion
+        -EstadoPrestamo estado
+        -Personal empleadoAlta
+        -Personal empleadoDevolucion
+        +Prestamo(usuario: Usuario, empleado: Personal)
+        +getId() String
+        +getFechaPrestamo() Date
+        +getFechaLimiteDevolucion() Date
+        +getEstado() EstadoPrestamo
+        +agregarEjemplar(ejemplar: Ejemplar)
+        +devolverEjemplar(ejemplar: Ejemplar, empleado: Personal)
+        +calcularFechaDevolucion()
+        +isVencido() boolean
+        +modificar()
+        +finalizar()
+    }
+
+    class LineaPrestamo {
+        -Date fechaDevolucion
+        -boolean devuelto
+        +LineaPrestamo(ejemplar: Ejemplar)
+        +marcarDevuelto(fecha: Date)
+        +isDevuelto() boolean
+        +getFechaDevolucion() Date
+        +calcularDiasRetraso() int
+    }
+
+    class EstadoPrestamo {
+        <<enumeration>>
+        EN_PROCESO
+        FINALIZADO
+        TARDIO
+    }
+
+    %% Servicios/Gestores
+    class GestorDocumentos {
+        -List~Documento~ documentos
+        +altaDocumento(documento: Documento, trabajador: PersonalAdquisiciones) boolean
+        +bajaDocumento(isbn: String) boolean
+        +consultarDocumento(isbn: String) Documento
+        +listarDocumentos() List~Documento~
+        +obtenerDocumentoMasPrestado() Documento
+    }
+
+    class GestorEjemplares {
+        -List~Ejemplar~ ejemplares
+        +altaEjemplar(ejemplar: Ejemplar, trabajador: PersonalAdquisiciones) boolean
+        +bajaEjemplar(codigo: String) boolean
+        +consultarEjemplar(codigo: String) Ejemplar
+        +listarEjemplaresPorDocumento(isbn: String) List~Ejemplar~
+        +verificarDisponibilidad(isbn: String) boolean
+        +consultarFechaDisponibilidad(isbn: String) Date
+    }
+
+    class GestorUsuarios {
+        -List~Usuario~ usuarios
+        +altaUsuario(usuario: Usuario) boolean
+        +bajaUsuario(dni: String) boolean
+        +consultarUsuario(dni: String) Usuario
+        +listarUsuarios() List~Usuario~
+        +modificarUsuario(dni: String, nuevoNombre: String) boolean
+        +obtenerEjemplaresPrestados(dni: String) List~Ejemplar~
+        +verificarDocumentosFueraPlazo(dni: String) boolean
+    }
+
+    class GestorPrestamos {
+        -List~Prestamo~ prestamos
+        +altaPrestamo(usuario: Usuario, ejemplares: List~Ejemplar~, empleado: Personal) Prestamo
+        +devolverEjemplar(codigoEjemplar: String, empleado: Personal) boolean
+        +consultarPrestamo(id: String) Prestamo
+        +consultarEstadoPrestamo(id: String) EstadoPrestamo
+        +modificarPrestamo(id: String) boolean
+        +obtenerDocumentosNoDevueltos(id: String) List~Ejemplar~
+        +obtenerPrestamosPorDocumento(isbn: String) List~Prestamo~
+        +obtenerPrestamosTardios() List~Prestamo~
+        +calcularFechaDevolucion(ejemplares: List~Ejemplar~) Date
+    }
+
+    %% Relaciones de herencia
+    Personal <|-- PersonalSala
+    Personal <|-- PersonalAdquisiciones
+    Documento <|-- LibroPapel
+    Documento <|-- Audiolibro
+
+    %% Relaciones de asociación
+    Documento "1" -- "0..*" Ejemplar : contiene
+    Usuario "1" -- "0..*" Prestamo : realiza
+    Personal "1" -- "0..*" Prestamo : gestiona
+    Prestamo "1" *-- "1..*" LineaPrestamo : contiene
+    LineaPrestamo "1" -- "1" Ejemplar : referencia
+    Prestamo "1" -- "1" EstadoPrestamo : tiene
+
+    %% Relaciones con trabajadores
+    Documento "1" -- "1" PersonalAdquisiciones : registradoPor
+    Ejemplar "1" -- "1" PersonalAdquisiciones : registradoPor
+
+    %% Relaciones con gestores
+    GestorDocumentos "1" o-- "0..*" Documento : gestiona
+    GestorEjemplares "1" o-- "0..*" Ejemplar : gestiona
+    GestorUsuarios "1" o-- "0..*" Usuario : gestiona
+    GestorPrestamos "1" o-- "0..*" Prestamo : gestiona
