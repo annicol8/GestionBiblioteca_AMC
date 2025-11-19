@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    internal class LibroPapel
+    public class LibroPapel : Documento
     {
+        public override int DiasPrestamoPermitidos()
+        {
+            return 15;
+        }
     }
 }

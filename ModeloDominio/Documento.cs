@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    internal abstract class Documento
+    public abstract class Documento
     {
         // Atributos
         private string isbn;           // Clave primaria
