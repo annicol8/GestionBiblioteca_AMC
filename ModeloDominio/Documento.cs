@@ -16,11 +16,11 @@ namespace ModeloDominio
         private int anoEdicion;
 
         // Propiedades públicas
-        public string Isbn { get; set; }
-        public string Titulo { get; set; }
-        public string Autor { get; set; }
-        public string Editorial { get; set; }
-        public int AnoEdicion { get; set; }
+        public string Isbn { get; }
+        public string Titulo { get; }
+        public string Autor { get; }
+        public string Editorial { get; }
+        public int AnoEdicion { get; }
 
         // Relación
         public List<Ejemplar> Ejemplares { get; set; }
