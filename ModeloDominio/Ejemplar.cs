@@ -21,7 +21,7 @@ namespace ModeloDominio
         public Documento Documento { get; set; }    // Documento asociado
         //public List<Prestamo> Prestamos { get; set; }
 
-        // Métodos útiles
+        // Métodos 
         /*public bool EstaPrestado()
         {
             return Prestamos?.Any(p => p.Estado == EstadoPrestamo.EnProceso) ?? false;
