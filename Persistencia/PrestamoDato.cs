@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ModeloDominio;
 
 
 namespace Persistencia
@@ -24,7 +25,7 @@ namespace Persistencia
             this.id = id;
             this.fechaPrestamo = fechaPrestamo;
             this.fechaDevolucion = fechaDevolucion;
-            this.EstadoPrestamo = estado;
+            this.estado = estado;
             this.dniPersonal = dniPersonal;
             this.dniUsuario = dniUsuario;
             this.listaEjemplares = ejemplarPrestado;
