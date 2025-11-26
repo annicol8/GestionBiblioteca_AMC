@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class EjemplarDato
+    internal class EjemplarDato : Entity<int>
     {
+
+        // Atributos
+        private int codigo;    // Clave primaria
+        private string isbn;           // Clave foránea
+        private bool activo;
+        // Propiedades públicas
+        public int Codigo { get; private set; }
+        public string Isbn { get; private set; }
+        public bool Activo { get; private set; }
+
+        public EjemplarDato(int codigo, string isbn, bool activo) : base(codigo)
+        {
+            Codigo = codigo;
+            Isbn = isbn;
+            Activo = activo;
+        }
     }
 }
