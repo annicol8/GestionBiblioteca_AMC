@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class UsuarioDato
+    internal class UsuarioDato: Entity<string>
+        
     {
+        private String nombre;
+        private bool dadoAlta;
+
+        public String Nombre { get; private set;}
+        public bool DadoAlta { get; private set;}
+        public UsuarioDato(String dni, String nombre, bool dadoAlta) : base(dni) {
+
+            this.nombre = nombre;
+            this.dadoAlta = dadoAlta;
+        }
     }
 }
