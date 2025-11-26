@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioLibroDato.cs" />
+    <Compile Include="BD.cs" />
+    <Compile Include="ClavePrestamoEjemplar.cs" />
     <Compile Include="DocumentoDato.cs" />
     <Compile Include="EjemplarDato.cs" />
     <Compile Include="LibroPapelDato.cs" />
@@ -52,6 +54,7 @@
     <Compile Include="Entity.cs" />
     <Compile Include="Persistencia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transformers.cs" />
     <Compile Include="UsuarioDato.cs" />
   </ItemGroup>
   <ItemGroup>
