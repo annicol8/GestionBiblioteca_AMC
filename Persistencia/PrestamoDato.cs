@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using ModeloDominio;
@@ -31,12 +32,14 @@ namespace Persistencia
             this.listaEjemplares = ejemplarPrestado;
         }
 
-        public int getId() { return id; }
-        public DateTime getFechaPrestamo() { return fechaPrestamo; }
-        public DateTime getFechaDevolucion() { return fechaDevolucion; }
-        public EstadoPrestamo getEstadoPrestamo() { return estado; }
-        public string getPersonalSala() { return this.dniPersonal; }
-        public string getDniUsuario() { return this.dniUsuario; }
+        
+
+        public int Id { get; }
+        public DateTime FechaPrestamo { get; }
+        public DateTime FechaDevolucion { get;  }
+        public EstadoPrestamo EstadoPrestamo { get; }
+        public string PersonalSala {  get; }
+        public string DniUsuario { get; }
     }
 }
 
