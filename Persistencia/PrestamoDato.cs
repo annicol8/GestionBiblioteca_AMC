@@ -12,7 +12,6 @@ namespace Persistencia
     internal class PrestamoDato : Entity<int>
     {
         //Atributos
-        private int id;
         private DateTime fechaPrestamo;
         private DateTime fechaDevolucion;
         private EstadoPrestamo estado;
@@ -23,7 +22,6 @@ namespace Persistencia
 
         public PrestamoDato(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, String dniPersonal, String dniUsuario, List<Ejemplar> ejemplarPrestado) : base(id)
         {
-            this.id = id;
             this.fechaPrestamo = fechaPrestamo;
             this.fechaDevolucion = fechaDevolucion;
             this.estado = estado;
@@ -32,14 +30,27 @@ namespace Persistencia
             this.listaEjemplares = ejemplarPrestado;
         }
 
-        
-
         public int Id { get; }
-        public DateTime FechaPrestamo { get; }
-        public DateTime FechaDevolucion { get;  }
+        public DateTime FechaPrestamo { get; set; }
+        public DateTime FechaDevolucion { get; set; }
         public EstadoPrestamo EstadoPrestamo { get; }
-        public string PersonalSala {  get; }
-        public string DniUsuario { get; }
+        public string DniPersonal{  get; }
+        public string DniUsuario { get;  }
+        public List<Ejemplar> ListaEjemplares{ get; }
+
+        public override String ToString()
+        {
+            String prestamo = "Prestamo: ";
+            if (this.estado.Equals("enProceso"))
+            {
+                prestamo = prestamo + "en proceso:  " + this.FechaPrestamo + this.FechaDevolucion;
+            }
+            else
+            {
+                prestamo = prestamo + "finalizado.";
+            }
+            return prestamo;
+        }
     }
 }
 

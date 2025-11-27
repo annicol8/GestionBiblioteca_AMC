@@ -43,6 +43,16 @@ namespace Persistencia
             return new PersonalDato();
         }
 
+        //LIBROS
+        public static Documento DocumentoADocumentoDato(Documento d)
+        {
+            return new Documento();
+        } 
+
+        public static DocumentoDato DocumentoDatoADocumento(DocumentoDato dd)
+        {
+            return new DocumentoDato();
+        }
 
 
         

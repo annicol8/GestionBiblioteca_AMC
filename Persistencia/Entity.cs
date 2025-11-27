@@ -20,6 +20,15 @@ namespace Persistencia
                 return this.clave;
             }
         }
+
+        public bool Equals(Entity<T> e)
+        {
+            if (e == null) return this == null ;
+            else
+            {
+                return this.clave.Equals(e.Clave) ;
+            }
+        }
     }
     
 }

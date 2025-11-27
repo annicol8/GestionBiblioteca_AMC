@@ -16,7 +16,8 @@ namespace ModeloDominio
         private EstadoPrestamo estado;
         private string dniUsuario;
         private string dniPersonal;
-        public List<Ejemplar> prestamoEjemplares { get; set; } 
+        private List<Ejemplar> prestamoEjemplares;
+        
 
         public int Id { get; }
         public DateTime FechaPrestamo { get; set; }
@@ -25,6 +26,7 @@ namespace ModeloDominio
         public EstadoPrestamo Estado; //ver si lo ponemos aqui o se obtiene directamente en la tabla Prestamo_Ejemplar
         public string DniUsuario { get; }
         public string DniPersonal { get; }
+        public List<Ejemplar> PrestamoEjemplares { get; set; }
 
         public Prestamo()
         {
@@ -33,11 +35,16 @@ namespace ModeloDominio
             prestamoEjemplares = new List<Ejemplar>();
         }
 
-        public Prestamo(string dniUsuario, string dniPersonal)
+        
+        public Prestamo(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, string dniPersonal, string dniUsuario, List<Ejemplar> prestamoEjemplares)
         {
-            this.FechaPrestamo = DateTime.Now;
-            this.dniUsuario = dniUsuario;
+            this.id = id;
+            this.fechaPrestamo = fechaPrestamo;
+            this.fechaDevolucion = fechaDevolucion;
+            this.estado = estado;
             this.dniPersonal = dniPersonal;
+            this.dniUsuario = dniUsuario;
+            this.prestamoEjemplares = new List<Ejemplar>();
         }
 
     }
