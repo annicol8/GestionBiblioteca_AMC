@@ -80,7 +80,7 @@ namespace Persistencia
                 if (tablaUsuarios == null) { tablaUsuarios = new Tabla<string, UsuarioDato>(); }
                 return tablaUsuarios;
             }
-        }
+        } 
 
 
     }
