@@ -16,15 +16,16 @@ namespace Persistencia
 
         public ClavePrestamoEjemplar(int idPrestamo, int codigoEjemplar)
         {
-            this.idPrestamo = idPrestamo;
-            this.codigoEjemplar = codigoEjemplar;
+            IdPrestamo = idPrestamo;
+            CodigoEjemplar = codigoEjemplar;
 
         }
 
         public bool Equals(ClavePrestamoEjemplar other)
         {
-            return this.idPrestamo == other.idPrestamo &&
-                   this.codigoEjemplar == other.codigoEjemplar;
+            if(other==null) return false;
+            return IdPrestamo == other.idPrestamo &&
+                   CodigoEjemplar == other.codigoEjemplar;
         }
 
         public override int GetHashCode()

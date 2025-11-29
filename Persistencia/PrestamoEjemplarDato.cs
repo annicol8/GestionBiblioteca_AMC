@@ -8,8 +8,8 @@ namespace Persistencia
 {
     internal class PrestamoEjemplarDato : Entity<ClavePrestamoEjemplar>
     {
-        private int idPrestamo;         // los dos atributos o uno que sea clave?? y en el resto de clases, tienen que tener el atributo que se le pasa en Entity<...>
-        private int codigoEjemplar;
+        //private int idPrestamo;         // los dos atributos o uno que sea clave?? y en el resto de clases, tienen que tener el atributo que se le pasa en Entity<...>
+        //private int codigoEjemplar;
         private DateTime fechaDevolucion;
 
         public int IdPrestamo { get; private set; }
@@ -19,8 +19,6 @@ namespace Persistencia
 
         public PrestamoEjemplarDato(int idPrestamo, int codigoEjemplar, DateTime fechaDevolucion) : base(new ClavePrestamoEjemplar(idPrestamo, codigoEjemplar))
         {
-            this.idPrestamo = idPrestamo;
-            this.codigoEjemplar = codigoEjemplar;
             this.fechaDevolucion = fechaDevolucion;
         }
     }

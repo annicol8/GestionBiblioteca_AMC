@@ -23,10 +23,9 @@ namespace ModeloDominio
         public DateTime FechaPrestamo { get; set; }
         public DateTime FechaDevolucion { get; set; }
 
-        public EstadoPrestamo Estado; //ver si lo ponemos aqui o se obtiene directamente en la tabla Prestamo_Ejemplar
+        public EstadoPrestamo Estado { get; set; } //ver si lo ponemos aqui o se obtiene directamente en la tabla Prestamo_Ejemplar
         public string DniUsuario { get; }
         public string DniPersonal { get; }
-        public List<Ejemplar> PrestamoEjemplares { get; set; }
 
         public Prestamo()
         {
@@ -36,7 +35,7 @@ namespace ModeloDominio
         }
 
         
-        public Prestamo(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, string dniPersonal, string dniUsuario, List<Ejemplar> prestamoEjemplares)
+        public Prestamo(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, string dniPersonal, string dniUsuario) //List<Ejemplar> prestamoEjemplares si eso añadir este arg
         {
             this.id = id;
             this.fechaPrestamo = fechaPrestamo;
@@ -44,7 +43,23 @@ namespace ModeloDominio
             this.estado = estado;
             this.dniPersonal = dniPersonal;
             this.dniUsuario = dniUsuario;
-            this.prestamoEjemplares = new List<Ejemplar>();
+            //this.prestamoEjemplares = new List<Ejemplar>();
+        }
+
+        // Constructor para préstamo nuevo 
+        public Prestamo(string dniUsuario, string dniPersonal, DateTime fechaDevolucion)
+        {
+            this.fechaPrestamo = DateTime.Now;
+            this.fechaDevolucion = fechaDevolucion;
+            this.estado = EstadoPrestamo.enProceso;
+            this.dniUsuario = dniUsuario;
+            this.dniPersonal = dniPersonal;
+        }
+
+        // Constructor búsquedas
+        public Prestamo(int id)
+        {
+            this.id = id;
         }
 
     }

@@ -21,6 +21,7 @@ namespace Persistencia
             }
         }
 
+        /*
         public bool Equals(Entity<T> e)
         {
             if (e == null) return this == null ;
@@ -29,6 +30,7 @@ namespace Persistencia
                 return this.clave.Equals(e.Clave) ;
             }
         }
+        */
     }
     
 }

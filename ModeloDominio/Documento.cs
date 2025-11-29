@@ -28,5 +28,19 @@ namespace ModeloDominio
         // Método abstracto
         public abstract int DiasPrestamoPermitidos();
 
+        public Documento(string isbn, string titulo, string autor, string editorial, int anoEdicion)
+        {
+            this.isbn = isbn;
+            this.titulo = titulo;
+            this.autor = autor;
+            this.editorial = editorial;
+            this.anoEdicion = anoEdicion;
+        }
+
+        //constructor para busqueda
+        public Documento(string isbn)
+        {
+            this.isbn = isbn;
+        }
     }
 }

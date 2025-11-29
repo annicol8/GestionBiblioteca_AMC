@@ -16,6 +16,19 @@ namespace ModeloDominio
         public string FormatoDigital { get; }
         public int Duracion { get; }
 
+        public AudioLibro(string isbn, string titulo, string autor, string editorial, int anoEdicion,
+                         string formatoDigital, int duracion)
+            : base(isbn, titulo, autor, editorial, anoEdicion)
+        {
+            this.formatoDigital = formatoDigital;
+            this.duracion = duracion;
+        }
+
+        // Constructor búsquedas
+        public AudioLibro(string isbn) : base(isbn)
+        {
+        }
+
         public override int DiasPrestamoPermitidos()
         {
             return 10;

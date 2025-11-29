@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,20 +12,31 @@ namespace ModeloDominio
         // Atributos
         private int codigo;         // Clave primaria
         private bool activo;          // Para bajas lógicas
+        
 
         // Propiedades
         public int Codigo { get; }
         public bool Activo { get; set; }
+        public string DniPAdq { get; } 
 
         // Relaciones
-        public string IsbnDocumento { get; set; }  // Clave foránea
+        public string IsbnDocumento { get; set; }  // Clave foranea
         public Documento Documento { get; set; }    // Documento asociado
 
         public Ejemplar(int cod)
         {
-            Codigo = cod;
-            Activo = true;
+            this.codigo = cod;
+            this.activo = true;
         }
+
+        public Ejemplar(int codigo, bool activo, string isbnDocumento, string dniPersonalAdq)
+        {
+            this.codigo = codigo;
+            this.activo = activo;
+            IsbnDocumento = isbnDocumento;
+            DniPAdq = dniPersonalAdq;
+        }
+
         //public List<Prestamo> Prestamos { get; set; }
 
         // Métodos 

@@ -9,16 +9,16 @@ namespace Persistencia
 {
     internal class PersonalDato: Entity<String>
     {
-        private String dni;
-        private String nombre;
+        private string dni;
+        private string nombre;
         private TipoPersonal tipoPersonal;
 
-        public String Dni { get; private set; }
-        public String Nombre { get; private set; }
-        public String TipoPersonal { get; private set; }
-        public PersonalDato(String dni, String nombre, TipoPersonal tipoPersonal): base(dni) {
-            
-            this.dni = dni;
+        public string Dni { get; private set; }
+        public string Nombre { get; private set; }
+        public string TipoPersonal { get; private set; }
+
+        public PersonalDato(string dni, string nombre, TipoPersonal tipoPersonal): base(dni)
+        {
             this.nombre = nombre;
             this.tipoPersonal = tipoPersonal;
         }

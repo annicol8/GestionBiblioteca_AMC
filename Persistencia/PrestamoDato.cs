@@ -17,40 +17,25 @@ namespace Persistencia
         private EstadoPrestamo estado;
         private string dniUsuario;
         private string dniPersonal;
-        private List<Ejemplar> listaEjemplares;
 
 
-        public PrestamoDato(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, String dniPersonal, String dniUsuario, List<Ejemplar> ejemplarPrestado) : base(id)
+        public PrestamoDato(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, string dniUsuario, string dniPersonal) : base(id)
         {
-            this.fechaPrestamo = fechaPrestamo;
-            this.fechaDevolucion = fechaDevolucion;
-            this.estado = estado;
-            this.dniPersonal = dniPersonal;
-            this.dniUsuario = dniUsuario;
-            this.listaEjemplares = ejemplarPrestado;
+            FechaPrestamo = fechaPrestamo;
+            FechaDevolucion = fechaDevolucion;
+            Estado = estado;
+            DniUsuario = dniUsuario;
+            DniPersonal = dniPersonal;
         }
 
-        public int Id { get; }
         public DateTime FechaPrestamo { get; set; }
         public DateTime FechaDevolucion { get; set; }
-        public EstadoPrestamo EstadoPrestamo { get; }
-        public string DniPersonal{  get; }
-        public string DniUsuario { get;  }
-        public List<Ejemplar> ListaEjemplares{ get; }
+        public EstadoPrestamo Estado { get; private set; }
+        public string DniUsuario { get; private set; }
+        public string DniPersonal{  get; private set; }
+        public int Id { get; set; }
 
-        public override String ToString()
-        {
-            String prestamo = "Prestamo: ";
-            if (this.estado.Equals("enProceso"))
-            {
-                prestamo = prestamo + "en proceso:  " + this.FechaPrestamo + this.FechaDevolucion;
-            }
-            else
-            {
-                prestamo = prestamo + "finalizado.";
-            }
-            return prestamo;
-        }
+        
     }
 }
 

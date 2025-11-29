@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    internal class Usuario
+    public class Usuario
     {
         private string dni;
         private string nombre;
@@ -19,20 +19,19 @@ namespace ModeloDominio
             this.dadoAlta = dadoAlta;
         }
 
-        public string getDni()
+        //constructor para búsquedas
+        public Usuario(string dni)
         {
-            return this.dni;
+            this.dni = dni;
+            this.nombre = null;
+            this.dadoAlta = false;
         }
 
-        public string getNombre()
-        {
-            return this.nombre;
-        }
+        public string Dni { get { return dni; } }
+        
+        public string getNombre {  get { return nombre; } }
 
-        public bool estaDadoAlta()
-        {
-            return this.dadoAlta;
-        }
+        public bool DadoAlta { get { return dadoAlta; } set { dadoAlta = value; } }
 
         public void actualizarAlta(bool b)
         {
