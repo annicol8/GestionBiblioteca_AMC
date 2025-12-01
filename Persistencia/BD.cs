@@ -14,9 +14,7 @@ namespace Persistencia
         private static Tabla<string, LibroPapelDato> tablaLibrosPapel;
         private static Tabla<string, PersonalDato> tablaPersonales;
         private static Tabla<int, PrestamoDato> tablaPrestamos;
-
-        //private static Tabla<> tablaPrestamoEjemplar;
-
+        private static Tabla<ClavePrestamoEjemplar, PrestamoEjemplarDato> tablaPrestamoEjemplar;
         private static Tabla<string, UsuarioDato> tablaUsuarios;
 
         public static Tabla<string, AudioLibroDato> TablaAudioLibros
@@ -81,6 +79,15 @@ namespace Persistencia
                 return tablaUsuarios;
             }
         } 
+
+        public static Tabla<ClavePrestamoEjemplar, PrestamoEjemplarDato> TablaClavePrestamos
+        {
+            get
+            {
+                if (tablaPrestamoEjemplar == null) { tablaPrestamoEjemplar = new Tabla<ClavePrestamoEjemplar, PrestamoEjemplarDato> (); }
+                return tablaPrestamoEjemplar;
+            }
+        }
 
 
     }
