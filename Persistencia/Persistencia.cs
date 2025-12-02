@@ -10,143 +10,254 @@ namespace Persistencia
     internal class Persistencia
     {
         //USUARIO
-        public static void create(Usuario usuario)
+        public static void AltaUsuario(Usuario u)
         {
-            UsuarioDato uDato = Transformers.UsuarioAUsuarioDato(usuario);
-            BD.TablaUsuarios.Add(uDato);
+            BD.INSERT(Transformers.UsuarioAUsuarioDato(u));
         }
 
-        public static Usuario read(Usuario usuario)
+        public static Usuario GetUsuario(Usuario u)
         {
-            if (BD.TablaUsuarios.Contains(usuario.Dni))
+            UsuarioDato ud = BD.READ(Transformers.UsuarioAUsuarioDato(u));
+            if (ud != null)
             {
-                UsuarioDato uDato = BD.TablaUsuarios[usuario.Dni];
-                return Transformers.UsuarioDatoAUsuario(uDato);
+                return Transformers.UsuarioDatoAUsuario(ud);
             }
-            return null;
+            else return null;
         }
 
-        static void update(Usuario usuario)
+        public static void BajaUsuario(Usuario u)
         {
-            if (BD.TablaUsuarios.Contains(usuario.Dni))
+            BD.DELETE(Transformers.UsuarioAUsuarioDato(u));
+        }
+
+        public static void UpdateUsuario(Usuario u)
+        {
+            BD.UPDATE(Transformers.UsuarioAUsuarioDato(u));
+        }
+
+        public static List<Usuario> GetUsuarios()
+        {
+            List<Usuario> lista = new List<Usuario>();
+            foreach (UsuarioDato ud in BD.TablaUsuarios)
             {
-                BD.TablaUsuarios.Remove(usuario.Dni);
-                create(usuario);
+                lista.Add(Transformers.UsuarioDatoAUsuario(ud));
             }
+            return lista;
         }
 
-        public static void delete(Usuario usuario)
+        public Usuario GetUsarioPorDni (string dni)
         {
-            if (BD.TablaUsuarios.Contains(usuario.Dni))
+            Usuario u = null;
+            foreach(UsuarioDato ud in BD.TablaUsuarios)
             {
-                BD.TablaUsuarios.Remove(usuario.Dni);
+                if (ud.Clave.Equals(dni))
+                {
+                    u = Transformers.UsuarioDatoAUsuario(ud);
+                }
             }
-        }
-
-        public static List<Usuario> ReadAllUsuarios()
-        {
-            return BD.TablaUsuarios.Select(dato => Transformers.UsuarioDatoAUsuario(dato)).ToList();
+            return u;
         }
 
         //PERSONAL
-        public static void create(Personal personal)
+        public static void AltaPersonal(Personal p)
         {
-            PersonalDato pDato = Transformers.PersonalAPersonalDato(personal);
-            BD.TablaPersonales.Add(pDato);
+            BD.INSERT(Transformers.PersonalAPersonalDato(p));
         }
 
-        public static Personal read(Personal personal)
+        public static Personal GetPersonal(Personal p)
         {
-            if (BD.TablaPersonales.Contains(personal.Dni))
+            PersonalDato pd = BD.READ(Transformers.PersonalAPersonalDato(p));
+            if (pd != null)
             {
-                PersonalDato dato = BD.TablaPersonales[personal.Dni];
-                return Transformers.PersonalDatoAPersonal(dato);
+                return Transformers.PersonalDatoAPersonal(pd);
             }
-            return null;
+            else return null;
         }
 
-        public static void delete(Personal personal)
+        public static List<Personal> GetPersonal()
         {
-            if (BD.TablaUsuarios.Contains(personal.Dni))
+            List<Personal> lista = new List<Personal>();
+            foreach (PersonalDato pd in BD.TablaPersonales)
             {
-                BD.TablaUsuarios.Remove(personal.Dni);
+                lista.Add(Transformers.PersonalDatoAPersonal(pd));
             }
-        }
-
-        public static void update(Personal personal)
-        {
-            if (BD.TablaPersonales.Contains(personal.Dni))
-            {
-                BD.TablaUsuarios.Remove(personal.Dni);
-                create(personal);
-            }
-        }
-
-        public static List<Personal> ReadAllPersonal()
-        {
-            return BD.TablaPersonales.Select(dato => Transformers.PersonalDatoAPersonal(dato)).ToList();
+            return lista;
         }
 
         //DOCUMENTO
-        public static void create(Documento documento)
+        public static void AltaDocumento(Documento d)
         {
-            DocumentoDato dDato = Transformers.DocumentoADocumentoDato(documento);
-            BD.TablaDocumentos.Add(dDato);
+            BD.INSERT(Transformers.DocumentoADocumentoDato(d));
         }
 
-        public static Documento read(Documento documento)
+        public static Documento GetDocumento(Documento d)
         {
-            if (BD.TablaDocumentos.Contains(documento))
+            DocumentoDato dd = BD.READ(Transformers.DocumentoADocumentoDato(d));
+            if (dd != null)
             {
-                DocumentoDato dDato = BD.TablaDocumentos[documento.Isbn];
-                return Transformers.DocumentoDatoADocumento(dDato);
+                return Transformers.DocumentoDatoADocumento(dd);
             }
-            return null;
+            else return null;
         }
 
-        public static void update(Documento documento)
+        public static void BajaDocumento(Documento d)
         {
-            if (BD.TablaDocumentos.Contains(documento.Isbn))
+            BD.DELETE(Transformers.DocumentoADocumentoDato(d));
+        }
+
+        public static void UpdateDocumento(Documento d)
+        {
+            BD.UPDATE(Transformers.DocumentoADocumentoDato(d));
+        }
+
+        public static List<Documento> GetDocumentos()
+        {
+            List<Documento> lista = new List<Documento>();
+            foreach (DocumentoDato dd in BD.TablaDocumentos)
             {
-                BD.TablaDocumentos.Remove(documento.Isbn);
-                create(documento);
+                lista.Add(Transformers.DocumentoDatoADocumento(dd));
             }
+            return lista;
         }
 
-        public static void delete(Documento documento)
+        public Documento GetDocumentoPorIsbn(string isbn)
         {
-            if (BD.TablaDocumentos.Contains(documento.Isbn))
+            Documento d = null;
+            foreach (DocumentoDato dd in BD.TablaDocumentos)
             {
-                BD.TablaDocumentos.Remove(documento.Isbn);
+                if (dd.Clave.Equals(isbn))
+                {
+                    d = Transformers.DocumentoDatoADocumento(dd);
+                }
             }
-        }
-
-        public static List<Documento> readAllDocumentos()
-        {
-            return BD.TablaDocumentos.Select(dato => Transformers.DocumentoDatoADocumento(dato)).ToList();
+            return d;
         }
 
         //EJEMPLAR
-        public static void create(Ejemplar ejemplar)
+        public static void AltaEjemplar(Ejemplar e)
         {
-            EjemplarDato eDato = Transformers.EjemplarAEjemplarDato(ejemplar);
-            BD.TablaEjemplares.Add(eDato);
+            BD.INSERT(Transformers.EjemplarAEjemplarDato(e));
         }
 
-        public static Ejemplar read(Ejemplar ejemplar)
+        public static Ejemplar GetEjemplar(Ejemplar e)
         {
-            if (BD.TablaEjemplares.Contains(ejemplar.Codigo))
+            EjemplarDato ed = BD.READ(Transformers.EjemplarAEjemplarDato(e));
+            if (ed != null)
             {
-                EjemplarDato eDato = BD.TablaEjemplares[ejemplar.Codigo];
-                return Transformers.EjemplarDatoAEjemplar(eDato);
+                return Transformers.EjemplarDatoAEjemplar(ed);
             }
-            return null;
+            else return null;
         }
 
+        public static void BajaEjemplar(Ejemplar e)
+        {
+            BD.DELETE(Transformers.EjemplarAEjemplarDato(e));
+        }
 
+        public static void UpdateEjemplar(Ejemplar e)
+        {
+            BD.UPDATE(Transformers.EjemplarAEjemplarDato(e));
+        }
 
+        public static List<Ejemplar> GetEjemplares()
+        {
+            List<Ejemplar> lista = new List<Ejemplar>();
+            foreach (EjemplarDato ed in BD.TablaEjemplares)
+            {
+                lista.Add(Transformers.EjemplarDatoAEjemplar(ed));
+            }
+            return lista;
+        }
 
+        public static List<Ejemplar> GetEjemplaresPorDocumento(string isbn)
+        {
+            List<Ejemplar> lista = new List<Ejemplar>();
+            foreach (EjemplarDato ed in BD.TablaEjemplares)
+            {
+                if (ed.Isbn.Equals(isbn))
+                {
+                    lista.Add(Transformers.EjemplarDatoAEjemplar(ed));
+                }
+            }
+            return lista;
+        }
 
+        
+        //PRESTAMO
+        public static int AltaPrestamo(Prestamo p)
+        {
+            int nuevoID = BD.GenerarIdPrestamo();
+            Prestamo prestamoNuevo = new Prestamo(nuevoID, p.FechaPrestamo, p.FechaDevolucion, p.Estado, p.DniPersonal, p.DniUsuario);
+            BD.INSERT(Transformers.PrestamoAPrestamoDato(prestamoNuevo));
+            return nuevoID;
+        }
+
+        public void BajaPrestamo(Prestamo p)
+        {
+            BD.DELETE(Transformers.PrestamoAPrestamoDato(p));
+        }
+
+        public static Prestamo GetPrestamo(Prestamo p)
+        {
+            Prestamo pd = BD.READ(Transformers.PrestamoAPrestamoDato(p));
+            if (pd != null)
+            {
+                return Transformers.PrestamoDatoAPrestamo(pd);
+            }
+            else return null;
+        }
+
+        public static void UpdatePrestamo(Prestamo p)
+        {
+            BD.UPDATE(Transformers.PrestamoAPrestamoDato(p));
+        }
+
+        public static List<Prestamo> GetPrestamos()
+        {
+            List<Prestamo> lista = new List<Prestamo>();
+            foreach (PrestamoDato pd in BD.TablaPrestamos)
+            {
+                lista.Add(Transformers.PrestamoDatoAPrestamo(pd));
+            }
+            return lista;
+        }
+
+        public static List<Prestamo> GetPrestamosPorUsuario (string dniUsuario)
+        {
+            List<Prestamo> lista = new List<Prestamo>();
+            foreach (PrestamoDato pd in BD.TablaPrestamos)
+            {
+                if (pd.DniUsuario.Equals(dniUsuario))
+                {
+                    lista.Add(Transformers.PrestamoDatoAPrestamo(pd));
+                }
+            }
+            return lista;
+        }
+
+        public Prestamo GetPrestamoPorId(string id)
+        {
+            Prestamo p = null;
+            foreach (PrestamoDato pd in BD.TablaPrestamos)
+            {
+                if (pd.Id.Equals(id))
+                {
+                    p = Transformers.PrestamoDatoAPrestamo(pd);
+                }
+            }
+            return p;
+        }
+
+        //PRESTAMO_EJEMPLAR
+        /*
+        public static void AltaPrestamoEjemplar(PrestamoEjemplar ep)
+        {
+            BD.INSERT(Transformers.PrestamoEjemplarAPrestamoEjemplarDato(ep));
+        }
+        */
+        //NO SE PUEDE HACER SE DEBERIA AÑADIR A MD LA CLASE PRESTAMOEJEMPLAR
+
+        
 
     }
 }

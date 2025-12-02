@@ -39,25 +39,25 @@ namespace Persistencia
         //DOCUMENTO
         public static Documento DocumentoDatoADocumento(DocumentoDato dDato)
         {
-            if (dDato.DiasPrestamoPermitidos() == 15) //Libros en papel
+            if (dDato is LibroPapelDato lpDato) //Libros en papel
             { 
-                return new LibroPapel(dDato.Isbn, dDato.Titulo, dDato.Autor, dDato.Editorial, dDato.AnoEdicion);
+                return new LibroPapel(lpDato.Isbn, lpDato.Titulo, lpDato.Autor, lpDato.Editorial, lpDato.AnoEdicion);
             }
-            else if (dDato.DiasPrestamoPermitidos() == 10) // AudioLibro
+            else if (dDato is AudioLibroDato alDato) // AudioLibro
             {
-                return new AudioLibro(dDato.Isbn, dDato.Titulo, dDato.Autor, dDato.Editorial, dDato.AnoEdicion, dDato.FormatoDigital, dDato.Duracion);
+                return new AudioLibro(alDato.Isbn, alDato.Titulo, alDato.Autor, alDato.Editorial, alDato.AnoEdicion, alDato.FormatoDigital, alDato.Duracion);
             }
         }
 
-        public static DocumentoDato DocumentoADocumentoDato (DocumentoDato d)
+        public static DocumentoDato DocumentoADocumentoDato (Documento d)
         {
             if (d.DiasPrestamoPermitidos() == 15) //Libros en papel
             {
-                return new DocumentoDato(d.Isbn, d.Titulo, d.Autor, d.Editorial, d.AnoEdicion);
+                return new LibroPapelDato(d.Isbn, d.Titulo, d.Autor, d.Editorial, d.AnoEdicion);
             }
             else if (d.DiasPrestamoPermitidos() == 10) // AudioLibro
             {
-                return new DocumentoDato(d.Isbn, d.Titulo, d.Autor, d.Editorial, d.AnoEdicion, d.FormatoDigital, d.Duracion);
+                return new AudioLibroDato(d.Isbn, d.Titulo, d.Autor, d.Editorial, d.AnoEdicion, d.FormatoDigital, d.Duracion);
             }
         }
 

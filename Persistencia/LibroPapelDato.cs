@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class LibroPapelDato : Entity<string>
+    internal class LibroPapelDato : DocumentoDato
     {
-        private string isbn; // Clave primaria
-        public string Isbn { get; private set; }
-        public LibroPapelDato(string isbn) : base(isbn)
+        public string Isbn { get; }
+        public LibroPapelDato(string isbn, string titulo, string autor, string editorial, int anoEdicion) 
+            : base(isbn,titulo,autor,editorial,anoEdicion)
         {
-            Isbn = isbn;
         }
     }
 }
