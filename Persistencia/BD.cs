@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,295 +99,57 @@ namespace Persistencia
             return ++ultimoIdPrestamo;
         }
 
-        //USUARIO
-        public static bool INSERT(UsuarioDato u)
+        //CRUD GENERICO PARA TODOS
+        public static bool INSERT<TKey, TValue>(Tabla<TKey, TValue> tabla, TValue elemento)
+            where TValue : Entity<TKey>
         {
-            if (TablaUsuarios.Contains(u.Clave))
+            if (tabla.Contains(elemento.Clave))
             {
                 return false;
             }
-            else
-            {
-                TablaUsuarios.Add(u);
-                return true;
-            }
-        }
-
-        public static void CREATE(Usuario usuario)
-        {
-            UsuarioDato uDato = Transformers.UsuarioAUsuarioDato(usuario);
-            BD.TablaUsuarios.Add(uDato);
-        }
-
-        public static UsuarioDato READ(UsuarioDato u)
-        {
-            if (TablaUsuarios.Contains(u.Clave))
-            {
-                foreach(UsuarioDato ud in TablaUsuarios)
-                {
-                    if (ud.Clave.Equals(u.Clave)) 
-                        { return ud; }
-                }
-            }
-            return null;
-        }
-
-        public static bool UPDATE(UsuarioDato u)
-        {
-            if (TablaUsuarios.Contains(u.Clave))
-            {
-                DELETE(u);
-                INSERT(u);
-                return true;
-            }
-            return false;
-        }
-
-        public static bool DELETE(UsuarioDato u)
-        {
-            if (TablaUsuarios.Contains(u.Clave))
-            {
-                TablaUsuarios.Remove(u.Clave);
-                return true;
-            }
-            return false;
-        }
-
-
-        //PERSONAL
-        public static void CREATE(Personal personal)
-        {
-            PersonalDato pDato = Transformers.PersonalAPersonalDato(personal);
-            BD.TablaPersonales.Add(pDato);
-        }
-
-        public static bool INSERT(PersonalDato p)
-        {
-            if (TablaPersonales.Contains(p.Clave))
-                return false;
-            TablaPersonales.Add(p);
+            tabla.Add(elemento);
             return true;
         }
 
-        public static PersonalDato READ(PersonalDato p)
+        public static TValue READ<TKey, TValue>(Tabla<TKey, TValue> tabla, TValue elemento)
+            where TValue : Entity<TKey>
         {
-            if (TablaPersonales.Contains(p.Clave))
+            if (tabla.Contains(elemento.Clave))
             {
-                foreach (PersonalDato pd in TablaPersonales)
+                foreach (TValue item in tabla)
                 {
-                    if (pd.Clave.Equals(p.Clave))
-                        return pd;
+                    if (item.Clave.Equals(elemento.Clave))
+                    {
+                        return item;
+                    }
                 }
             }
             return null;
         }
 
-        public static bool UPDATE(PersonalDato p)
+        public static bool UPDATE<TKey, TValue>(Tabla<TKey, TValue> tabla, TValue elemento)
+            where TValue : Entity<TKey>
         {
-            if (TablaPersonales.Contains(p.Clave))
+            if (tabla.Contains(elemento.Clave))
             {
-                DELETE(p);
-                INSERT(p);
+                DELETE(tabla, elemento);
+                INSERT(tabla, elemento);
                 return true;
             }
             return false;
         }
 
-        public static bool DELETE(PersonalDato p)
+        public static bool DELETE<TKey, TValue>(Tabla<TKey, TValue> tabla, TValue elemento)
+            where TValue : Entity<TKey>
         {
-            if (TablaPersonales.Contains(p.Clave))
+            if (tabla.Contains(elemento.Clave))
             {
-                TablaPersonales.Remove(p.Clave);
-                return true;
-            }
-            return false;
-        }
-
-
-
-        //DOCUMENTO
-        public static void CREATE(Documento documento)
-        {
-            DocumentoDato dDato = Transformers.DocumentoADocumentoDato(documento);
-            BD.TablaDocumentos.Add(dDato);
-        }
-
-        public static bool INSERT(DocumentoDato d)
-        {
-            if (TablaDocumentos.Contains(d.Clave))
-                return false;
-            TablaDocumentos.Add(d);
-            return true;
-        }
-
-        public static DocumentoDato READ(DocumentoDato d)
-        {
-            if (TablaDocumentos.Contains(d.Clave))
-            {
-                foreach (DocumentoDato dd in TablaDocumentos)
-                {
-                    if (dd.Clave.Equals(d.Clave))
-                        return dd;
-                }
-            }
-            return null;
-        }
-
-        public static bool UPDATE(DocumentoDato d)
-        {
-            if (TablaDocumentos.Contains(d.Clave))
-            {
-                DELETE(d);
-                INSERT(d);
-                return true;
-            }
-            return false;
-        }
-
-        public static bool DELETE(DocumentoDato d)
-        {
-            if (TablaDocumentos.Contains(d.Clave))
-            {
-                TablaDocumentos.Remove(d.Clave);
+                tabla.Remove(elemento.Clave);
                 return true;
             }
             return false;
         }
 
 
-        //EJEMPLAR
-        public static void CREATE(Ejemplar ejemplar)
-        {
-            EjemplarDato eDato = Transformers.EjemplarAEjemplarDato(ejemplar);
-            BD.TablaEjemplares.Add(eDato);
-        }
-
-        public static bool INSERT(EjemplarDato e)
-        {
-            if (TablaEjemplares.Contains(e.Clave))
-                return false;
-            TablaEjemplares.Add(e);
-            return true;
-        }
-
-        public static EjemplarDato READ(EjemplarDato e)
-        {
-            if (TablaEjemplares.Contains(e.Clave))
-            {
-                foreach (EjemplarDato ed in TablaEjemplares)
-                {
-                    if (ed.Clave.Equals(e.Clave))
-                        return ed;
-                }
-            }
-            return null;
-        }
-
-        public static bool UPDATE(EjemplarDato e)
-        {
-            if (TablaEjemplares.Contains(e.Clave))
-            {
-                DELETE(e);
-                INSERT(e);
-                return true;
-            }
-            return false;
-        }
-
-        public static bool DELETE(EjemplarDato e)
-        {
-            if (TablaEjemplares.Contains(e.Clave))
-            {
-                TablaEjemplares.Remove(e.Clave);
-                return true;
-            }
-            return false;
-        }
-
-        //PRESTAMO
-        public static bool INSERT(PrestamoDato p)
-        {
-            if (TablaPrestamos.Contains(p.Clave))
-                return false;
-            TablaPrestamos.Add(p);
-            return true;
-        }
-
-        public static PrestamoDato READ(PrestamoDato p)
-        {
-            if (TablaPrestamos.Contains(p.Clave))
-            {
-                foreach (PrestamoDato pd in TablaPrestamos)
-                {
-                    if (pd.Clave.Equals(p.Clave))
-                        return pd;
-                }
-            }
-            return null;
-        }
-
-        public static bool UPDATE(PrestamoDato p)
-        {
-            if (TablaPrestamos.Contains(p.Clave))
-            {
-                DELETE(p);
-                INSERT(p);
-                return true;
-            }
-            return false;
-        }
-
-        public static bool DELETE(PrestamoDato p)
-        {
-            if (TablaPrestamos.Contains(p.Clave))
-            {
-                TablaPrestamos.Remove(p.Clave);
-                return true;
-            }
-            return false;
-        }
-
-        //EJEMPLAR_PRESTAMO
-        public static bool INSERT(PrestamoEjemplarDato e)
-        {
-            if (tablaPrestamoEjemplar.Contains(e.Clave))
-                return false;
-            tablaPrestamoEjemplar.Add(e);
-            return true;
-        }
-
-        public static PrestamoEjemplarDato READ(PrestamoEjemplarDato e)
-        {
-            if (tablaPrestamoEjemplar.Contains(e.Clave))
-            {
-                foreach (PrestamoEjemplarDato ed in tablaPrestamoEjemplar)
-                {
-                    if (ed.Clave.Equals(e.Clave))
-                        return ed;
-                }
-            }
-            return null;
-        }
-
-        public static bool UPDATE(PrestamoEjemplarDato e)
-        {
-            if (tablaPrestamoEjemplar.Contains(e.Clave))
-            {
-                DELETE(e);
-                INSERT(e);
-                return true;
-            }
-            return false;
-        }
-
-        public static bool DELETE(PrestamoEjemplarDato e)
-        {
-            if (tablaPrestamoEjemplar.Contains(e.Clave))
-            {
-                tablaPrestamoEjemplar.Remove(e.Clave);
-                return true;
-            }
-            return false;
-        }
     }
 }

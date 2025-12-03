@@ -45,7 +45,7 @@ namespace Persistencia
             return lista;
         }
 
-        
+        /*
         public Usuario GetUsarioPorDni (string dni)
         {
             Usuario u = null;
@@ -58,6 +58,7 @@ namespace Persistencia
             }
             return u;
         }
+        */
         
 
         //PERSONAL
@@ -196,14 +197,14 @@ namespace Persistencia
             return nuevoID;
         }
 
-        public void BajaPrestamo(Prestamo p)
+        public static void BajaPrestamo(Prestamo p)
         {
             BD.DELETE(Transformers.PrestamoAPrestamoDato(p));
         }
 
         public static Prestamo GetPrestamo(Prestamo p)
         {
-            Prestamo pd = BD.READ(Transformers.PrestamoAPrestamoDato(p));
+            PrestamoDato pd = BD.READ(Transformers.PrestamoAPrestamoDato(p));
             if (pd != null)
             {
                 return Transformers.PrestamoDatoAPrestamo(pd);
@@ -239,12 +240,12 @@ namespace Persistencia
             return lista;
         }
 
-        public Prestamo GetPrestamoPorId(string id)
+        public static Prestamo GetPrestamoPorId(string id)
         {
             Prestamo p = null;
             foreach (PrestamoDato pd in BD.TablaPrestamos)
             {
-                if (pd.Id.Equals(id))
+                if (pd.Clave.Equals(id))
                 {
                     p = Transformers.PrestamoDatoAPrestamo(pd);
                 }

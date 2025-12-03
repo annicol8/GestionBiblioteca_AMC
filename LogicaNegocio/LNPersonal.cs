@@ -86,9 +86,16 @@ namespace LogicaNegocio
         */
 
         //Operraciones comunes a documentos
-        
+        public List<Prestamo> GetPrestamosActivosUsuario(strign dni)
+        {
+            List<Prestamo> todosPrestamos = Persistencia.Persistencia.GetPrestamos();
+            List<Prestamo> prestUser = new List<Prestamo>();
+            foreach (Prestamo p in todosPrestamos)
+            {
 
-        //Operaciones comunes a prestamos
+            }
+        }
+
 
 
 
