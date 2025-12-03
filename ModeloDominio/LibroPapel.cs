@@ -8,7 +8,6 @@ namespace ModeloDominio
 {
     public class LibroPapel : Documento
     {
-
         public LibroPapel(string isbn, string titulo, string autor, string editorial, int anoEdicion)
             : base(isbn, titulo, autor, editorial, anoEdicion)
         {

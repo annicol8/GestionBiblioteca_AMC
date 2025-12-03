@@ -69,10 +69,27 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.GetUsuarios();
         }
 
+        /*
         public bool DocumentosFueraPlazo(string dni)
         {
-            
+            List<Prestamo> prestamosUsuario = Persistencia.Persistencia.GetPrestamosPorUsuario(dni);
+            DateTime hoy = DateTime.Now;    
+
+            foreach(Prestamo p in prestamosUsuario)
+            {
+                if (p.Estado == EstadoPrestamo.enProceso)
+                {
+                    
+                }
+            }
         }
+        */
+
+        //Operraciones comunes a documentos
+        
+
+        //Operaciones comunes a prestamos
+
 
 
     }

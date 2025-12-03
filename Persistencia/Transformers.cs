@@ -84,7 +84,6 @@ namespace Persistencia
             return new PrestamoDato(p.Id, p.FechaPrestamo, p.FechaDevolucion, p.Estado, p.DniUsuario, p.DniPersonal);
         }
         
-
   
     }
 }

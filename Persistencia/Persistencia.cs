@@ -45,6 +45,7 @@ namespace Persistencia
             return lista;
         }
 
+        
         public Usuario GetUsarioPorDni (string dni)
         {
             Usuario u = null;
@@ -57,6 +58,7 @@ namespace Persistencia
             }
             return u;
         }
+        
 
         //PERSONAL
         public static void AltaPersonal(Personal p)
@@ -120,6 +122,7 @@ namespace Persistencia
             return lista;
         }
 
+        /*
         public Documento GetDocumentoPorIsbn(string isbn)
         {
             Documento d = null;
@@ -132,6 +135,7 @@ namespace Persistencia
             }
             return d;
         }
+        */
 
         //EJEMPLAR
         public static void AltaEjemplar(Ejemplar e)
@@ -255,6 +259,7 @@ namespace Persistencia
             BD.INSERT(Transformers.PrestamoEjemplarAPrestamoEjemplarDato(ep));
         }
         */
+        
         //NO SE PUEDE HACER SE DEBERIA AÑADIR A MD LA CLASE PRESTAMOEJEMPLAR
 
         
