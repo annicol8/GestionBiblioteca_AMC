@@ -36,19 +36,28 @@ namespace Persistencia
             return new PersonalDato(p.Dni, p.Nombre, p.Tipo);
         }
 
-        //DOCUMENTO
-        public static Documento DocumentoDatoADocumento(DocumentoDato dDato)
+        //LIBRO PAPEL
+        public static LibroPapel LibroPapelDatoALibroPapel(LibroPapelDato lpDato)
         {
-            if (dDato is LibroPapelDato lpDato) //Libros en papel
-            { 
-                return new LibroPapel(lpDato.Clave, lpDato.Titulo, lpDato.Autor, lpDato.Editorial, lpDato.AnoEdicion);
-            }
-            else if (dDato is AudioLibroDato alDato) // AudioLibro
-            {
-                return new AudioLibro(alDato.Clave, alDato.Titulo, alDato.Autor, alDato.Editorial, alDato.AnoEdicion, alDato.FormatoDigital, alDato.Duracion);
-            }
+            return new LibroPapel(lpDato.Clave, lpDato.Titulo, lpDato.Autor, lpDato.Editorial, lpDato.AnoEdicion);
         }
 
+        public static LibroPapelDato LibroPapelALibroPapelDato(LibroPapel lp)
+        {
+            return new LibroPapelDato(lp.Isbn, lp.Titulo, lp.Autor, lp.Editorial, lp.AnoEdicion);
+        }
+
+        //AUDIOLIBRO
+        public static AudioLibro AudioLibroDatoAAudioLibro(AudioLibroDato alDato)
+        {
+            return new AudioLibro(alDato.Clave, alDato.Titulo, alDato.Autor, alDato.Editorial, alDato.AnoEdicion, alDato.FormatoDigital, alDato.Duracion);
+        }
+
+        public static AudioLibroDato AudioLibroAAudioLibroDato (AudioLibro ad)
+        {
+            return new AudioLibroDato(ad.Isbn, ad.Titulo, ad.Autor, ad.Editorial, ad.AnoEdicion, ad.FormatoDigital, ad.Duracion);
+        }
+        /*HABÏA UNO IGUAL PERO AL REVÉS QUE HE BORRADO
         public static DocumentoDato DocumentoADocumentoDato (Documento d)
         {
             if (d.DiasPrestamoPermitidos() == 15) //Libros en papel
@@ -60,6 +69,7 @@ namespace Persistencia
                 return new AudioLibroDato(d.Isbn, d.Titulo, d.Autor, d.Editorial, d.AnoEdicion, d.FormatoDigital, d.Duracion);
             }
         }
+        */
 
         // EJEMPLAR
         public static Ejemplar EjemplarDatoAEjemplar(EjemplarDato eDato)

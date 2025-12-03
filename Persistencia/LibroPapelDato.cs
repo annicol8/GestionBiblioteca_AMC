@@ -20,7 +20,7 @@ namespace Persistencia
         public int AnoEdicion { get; private set; }
 
 
-        protected LibroPapelDato(string isbn, string titulo, string autor, string editorial, int anoEdicion) : base(isbn)
+        public LibroPapelDato(string isbn, string titulo, string autor, string editorial, int anoEdicion) : base(isbn)
         {
             Titulo = titulo;
             Autor = autor;

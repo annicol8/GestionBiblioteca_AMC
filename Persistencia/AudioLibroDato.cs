@@ -26,7 +26,7 @@ namespace Persistencia
 
 
 
-        protected AudioLibroDato(string isbn, string titulo, string autor, string editorial, int anoEdicion, string  formatoDigital, int duracion) : base(isbn)
+        public AudioLibroDato(string isbn, string titulo, string autor, string editorial, int anoEdicion, string  formatoDigital, int duracion) : base(isbn)
         {
             Titulo = titulo;
             Autor = autor;
