@@ -20,7 +20,6 @@ namespace Persistencia
         public string Editorial { get; private set; }
         public int AnoEdicion { get; private set; }
 
-        public string Isbn { get; }
         //poiner para transformador??
         //public string TipoDocumento { get; private set; } // "AudioLibro" o ""LibroPapel
 

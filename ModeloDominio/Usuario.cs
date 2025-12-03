@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Usuario
+    public class Usuario: IEquatable<Usuario>
     {
         private string dni;
         private string nombre;
@@ -29,13 +29,24 @@ namespace ModeloDominio
 
         public string Dni { get { return dni; } }
         
-        public string getNombre {  get { return nombre; } }
+        public string Nombre {  get { return nombre; } }
 
         public bool DadoAlta { get { return dadoAlta; } set { dadoAlta = value; } }
 
         public void actualizarAlta(bool b)
         {
             this.dadoAlta = b;
+        }
+
+        public bool Equals(Usuario otroUsuario)
+        {
+            if (otroUsuario == null) return false;
+            return this.dni == otroUsuario.dni;
+        }
+
+        public override int GetHashCode()
+        {
+            return dni.GetHashCode();
         }
 
     }

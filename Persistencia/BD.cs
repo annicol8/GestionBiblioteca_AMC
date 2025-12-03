@@ -154,7 +154,7 @@ namespace Persistencia
 
 
         //PERSONAL
-        public static void create(Personal personal)
+        public static void CREATE(Personal personal)
         {
             PersonalDato pDato = Transformers.PersonalAPersonalDato(personal);
             BD.TablaPersonales.Add(pDato);
@@ -205,7 +205,7 @@ namespace Persistencia
 
 
         //DOCUMENTO
-        public static void create(Documento documento)
+        public static void CREATE(Documento documento)
         {
             DocumentoDato dDato = Transformers.DocumentoADocumentoDato(documento);
             BD.TablaDocumentos.Add(dDato);
@@ -255,7 +255,7 @@ namespace Persistencia
 
 
         //EJEMPLAR
-        public static void create(Ejemplar ejemplar)
+        public static void CREATE(Ejemplar ejemplar)
         {
             EjemplarDato eDato = Transformers.EjemplarAEjemplarDato(ejemplar);
             BD.TablaEjemplares.Add(eDato);

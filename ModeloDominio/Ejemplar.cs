@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Ejemplar
+    public class Ejemplar: IEquatable<Ejemplar>
     {
         // Atributos
         private int codigo;         // Clave primaria
@@ -35,6 +35,17 @@ namespace ModeloDominio
             this.activo = activo;
             IsbnDocumento = isbnDocumento;
             DniPAdq = dniPersonalAdq;
+        }
+
+        public bool Equals(Ejemplar other)
+        {
+            if (other == null) return false;
+            return this.codigo == other.codigo;
+        }
+
+        public override int GetHashCode()
+        {
+            return codigo.GetHashCode();
         }
 
         //public List<Prestamo> Prestamos { get; set; }

@@ -33,8 +33,7 @@ namespace Persistencia
         public EstadoPrestamo Estado { get; private set; }
         public string DniUsuario { get; private set; }
         public string DniPersonal{  get; private set; }
-        public int Id { get; set; }
-
+        
         
     }
 }

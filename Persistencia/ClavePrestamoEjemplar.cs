@@ -33,6 +33,11 @@ namespace Persistencia
             return idPrestamo.GetHashCode() + codigoEjemplar.GetHashCode();
         }
 
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ClavePrestamoEjemplar);
+        }
+
 
     }
 }

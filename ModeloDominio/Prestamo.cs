@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Prestamo
+    public class Prestamo: IEquatable<Prestamo>
     {
         private int id;
         private DateTime fechaPrestamo;
@@ -60,6 +60,17 @@ namespace ModeloDominio
         public Prestamo(int id)
         {
             this.id = id;
+        }
+
+        public bool Equals(Prestamo other)
+        {
+            if (other == null) return false;
+            return this.id == other.id;
+        }
+
+        public override int GetHashCode()
+        {
+            return id.GetHashCode();
         }
 
     }

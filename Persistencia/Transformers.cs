@@ -8,17 +8,17 @@ using ModeloDominio;
 
 namespace Persistencia
 {
-    internal class Transformers
+    internal static class Transformers
     {
         //USUARIO
         public static Usuario UsuarioDatoAUsuario(UsuarioDato uDato)
         {
-            return new Usuario(uDato.Dni, uDato.Nombre, uDato.DadoAlta);
+            return new Usuario(uDato.Clave, uDato.Nombre, uDato.DadoAlta);
         }
 
         public static UsuarioDato UsuarioAUsuarioDato(Usuario u)
         {
-            return new UsuarioDato(u.Dni, u.getNombre, u.DadoAlta); //si pongo solo u.Nombre da error
+            return new UsuarioDato(u.Dni, u.Nombre, u.DadoAlta); //si pongo solo u.Nombre da error
         }
 
         //PERSONAL
@@ -26,9 +26,9 @@ namespace Persistencia
         {
             if(pDato.TipoPersonal.Equals(TipoPersonal.personalSala))
             {
-                return new PersonalSala(pDato.Dni, pDato.Nombre);
+                return new PersonalSala(pDato.Clave, pDato.Nombre);
             }
-            return new PersonalAdquisiciones(pDato.Dni, pDato.Nombre);
+            return new PersonalAdquisiciones(pDato.Clave, pDato.Nombre);
         }
 
         public static PersonalDato PersonalAPersonalDato(Personal p)
@@ -41,11 +41,11 @@ namespace Persistencia
         {
             if (dDato is LibroPapelDato lpDato) //Libros en papel
             { 
-                return new LibroPapel(lpDato.Isbn, lpDato.Titulo, lpDato.Autor, lpDato.Editorial, lpDato.AnoEdicion);
+                return new LibroPapel(lpDato.Clave, lpDato.Titulo, lpDato.Autor, lpDato.Editorial, lpDato.AnoEdicion);
             }
             else if (dDato is AudioLibroDato alDato) // AudioLibro
             {
-                return new AudioLibro(alDato.Isbn, alDato.Titulo, alDato.Autor, alDato.Editorial, alDato.AnoEdicion, alDato.FormatoDigital, alDato.Duracion);
+                return new AudioLibro(alDato.Clave, alDato.Titulo, alDato.Autor, alDato.Editorial, alDato.AnoEdicion, alDato.FormatoDigital, alDato.Duracion);
             }
         }
 
@@ -64,7 +64,7 @@ namespace Persistencia
         // EJEMPLAR
         public static Ejemplar EjemplarDatoAEjemplar(EjemplarDato eDato)
         {
-            return new Ejemplar(eDato.Codigo, eDato.Activo, eDato.Isbn, eDato.DniPersonalAdq);
+            return new Ejemplar(eDato.Clave, eDato.Activo, eDato.Isbn, eDato.DniPersonalAdq);
         }
 
         public static EjemplarDato EjemplarAEjemplarDato(Ejemplar e)
@@ -76,7 +76,7 @@ namespace Persistencia
         //PRESTAMO
         public static Prestamo PrestamoDatoAPrestamo(PrestamoDato Pdato)
         {
-            return new Prestamo(Pdato.Id, Pdato.FechaPrestamo, Pdato.FechaDevolucion, Pdato.Estado, Pdato.DniUsuario, Pdato.DniPersonal);
+            return new Prestamo(Pdato.Clave, Pdato.FechaPrestamo, Pdato.FechaDevolucion, Pdato.Estado, Pdato.DniUsuario, Pdato.DniPersonal);
         }
 
         public static PrestamoDato PrestamoAPrestamoDato(Prestamo p)

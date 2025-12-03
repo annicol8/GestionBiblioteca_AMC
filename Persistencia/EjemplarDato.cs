@@ -19,8 +19,7 @@ namespace Persistencia
         public string Isbn { get; private set; }
         public bool Activo { get; private set; }
         public string DniPersonalAdq { get; private set; }
-        public int Codigo {  get; private set; }
-
+        
 
         public EjemplarDato(int codigo, string isbn, bool activo, string dniPersonalAdq) : base(codigo)
         {

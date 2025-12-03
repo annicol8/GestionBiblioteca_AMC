@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public abstract class Personal
+    public abstract class Personal: IEquatable<Personal>
     {
         private string dni;
         private string nombre;
@@ -20,6 +20,17 @@ namespace ModeloDominio
         {
             Dni = dni;
             Nombre = nombre;
+        }
+
+        public bool Equals(Personal otroPersonal)
+        {
+            if (otroPersonal == null) return false;
+            return this.dni == otroPersonal.dni;
+        }
+
+        public override int GetHashCode()
+        {
+            return dni.GetHashCode();
         }
     }
 }

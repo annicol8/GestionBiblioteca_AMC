@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public abstract class Documento
+    public abstract class Documento: IEquatable<Documento>
     {
         // Atributos
         private string isbn;           // Clave primaria
@@ -41,6 +41,17 @@ namespace ModeloDominio
         public Documento(string isbn)
         {
             this.isbn = isbn;
+        }
+
+        public bool Equals(Documento otroDocumento)
+        {
+            if (otroDocumento == null) return false;
+            return this.isbn==otroDocumento.isbn;
+        }
+
+        public override int GetHashCode()
+        {
+            return isbn.GetHashCode();
         }
     }
 }

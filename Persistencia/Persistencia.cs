@@ -7,7 +7,7 @@ using ModeloDominio;
 
 namespace Persistencia
 {
-    internal class Persistencia
+    public static class Persistencia
     {
         //USUARIO
         public static void AltaUsuario(Usuario u)
