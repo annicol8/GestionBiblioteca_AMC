@@ -18,7 +18,7 @@ namespace Persistencia
 
         public static UsuarioDato UsuarioAUsuarioDato(Usuario u)
         {
-            return new UsuarioDato(u.Dni, u.Nombre, u.DadoAlta); //si pongo solo u.Nombre da error
+            return new UsuarioDato(u.Dni, u.Nombre, u.DadoAlta); 
         }
 
         //PERSONAL
@@ -93,7 +93,13 @@ namespace Persistencia
         {
             return new PrestamoDato(p.Id, p.FechaPrestamo, p.FechaDevolucion, p.Estado, p.DniUsuario, p.DniPersonal);
         }
-        
-  
+
+        //PRESTAMO_EJEMPLAR
+        public static PrestamoEjemplarDato PrestamoEjemplarAPrestamoEjemplarDato(int idPrestamo, int codigoEjemplar, DateTime fechaDevolucion)
+        {
+            return new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, fechaDevolucion);
+        }
+
+
     }
 }

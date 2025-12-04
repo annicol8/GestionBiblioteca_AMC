@@ -85,7 +85,7 @@ namespace Persistencia
             }
         } 
 
-        public static Tabla<ClavePrestamoEjemplar, PrestamoEjemplarDato> TablaClavePrestamos
+        public static Tabla<ClavePrestamoEjemplar, PrestamoEjemplarDato> TablaPrestamoEjemplar
         {
             get
             {
@@ -148,6 +148,17 @@ namespace Persistencia
                 return true;
             }
             return false;
+        }
+
+        public static List<TValue> READ_ALL<TKey, TValue>(Tabla<TKey, TValue> tabla)
+            where TValue : Entity<TKey>
+        {
+            List<TValue> lista = new List<TValue>();
+            foreach (TValue item in tabla)
+            {
+                lista.Add(item);
+            }
+            return lista;
         }
 
 
