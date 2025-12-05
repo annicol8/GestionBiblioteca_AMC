@@ -286,6 +286,12 @@ namespace Persistencia
             BD.DELETE(BD.TablaPrestamoEjemplar, Transformers.PrestamoEjemplarAPrestamoEjemplarDato(idPrestamo, codigoEjemplar, fechaDevolucion));
         }
 
+        public static PrestamoEjemplarDato GetPrestamoEjemplar(int idPrestamo, int codigoEjemplar)
+        {
+            PrestamoEjemplarDato dato = new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, DateTime.Now);
+            return BD.READ(BD.TablaPrestamoEjemplar, dato);
+        }
+
         public static List<PrestamoEjemplarDato> GetEjemplaresDePrestamo(int idPrestamo)
         {
             List<PrestamoEjemplarDato> todos = BD.READ_ALL(BD.TablaPrestamoEjemplar);

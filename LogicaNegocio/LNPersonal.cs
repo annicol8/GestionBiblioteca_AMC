@@ -10,7 +10,7 @@ using Persistencia;
 namespace LogicaNegocio
 {
     //Clase abstracta con la lógica comun para los dos tipos de personales
-    public abstract class LNPersonal
+    public abstract class LNPersonal : ILNPersonal
     {
         protected Personal personal;
 
@@ -40,7 +40,7 @@ namespace LogicaNegocio
             if (usuarioBD != null)
             {
                 usuarioBD.DadoAlta = false;
-                Persistencia.Persistencia.UpdateUsuario(usuarioBD);
+                Persistencia.Persistencia.BajaUsuario(usuarioBD);
             }
         }
 
@@ -53,8 +53,10 @@ namespace LogicaNegocio
         public List<Usuario> GetUsuariosActivos()
         {
             List<Usuario> todos = Persistencia.Persistencia.GetUsuarios();
-            List<Usuario> activos = new List<Usuario>();
-            foreach (var usuario in todos)
+            //List<Usuario> activos = new List<Usuario>();
+            return todos.Where(u => u.DadoAlta).ToList();
+            /* //antes de usar LINQ
+             * foreach (var usuario in todos)
             {
                 if (usuario.DadoAlta)
                 {
@@ -62,6 +64,7 @@ namespace LogicaNegocio
                 }
             }
             return activos;
+            */
         }
 
         public List<Usuario> GetTodosUsuarios()
@@ -69,34 +72,35 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.GetUsuarios();
         }
 
-        /*
-        public bool DocumentosFueraPlazo(string dni)
-        {
-            List<Prestamo> prestamosUsuario = Persistencia.Persistencia.GetPrestamosPorUsuario(dni);
-            DateTime hoy = DateTime.Now;    
 
-            foreach(Prestamo p in prestamosUsuario)
+        /*
+        public bool HayEjemplaresDisponibles(string isbn)
+        {
+            List<Ejemplar> listaEjemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
+            foreach (Ejemplar e in listaEjemplares)
             {
-                if (p.Estado == EstadoPrestamo.enProceso)
+                if (e.Activo && !EstaEjemplarPrestado)
                 {
-                    
+                    return true;
                 }
             }
+            return false;
+        }
+
+        protected bool EstaEjemplarPrestado(int codEj)
+        {
+            List<PrestamoEjemplarDato> prestamos = Persistencia.Persistencia.GetPrestamosPorEjemplar(codigoEjemplar);
+            DateTime hoy = DateTime.Now;
+
+            foreach (PrestamoEjemplarDato ep in prestamos)
+            {
+                Prestamo p = Persistencia.Persistencia.GetPrestamo(new Prestamo(ep.IdPrestamo));
+                if (p != null && p.Estado == EstadoPrestamo.enProceso && ep.FechaDevolucion >= hoy)
+                    return true;
+            }
+            return false;
         }
         */
-
-        //Operraciones comunes a documentos
-        public List<Prestamo> GetPrestamosActivosUsuario(strign dni)
-        {
-            List<Prestamo> todosPrestamos = Persistencia.Persistencia.GetPrestamos();
-            List<Prestamo> prestUser = new List<Prestamo>();
-            foreach (Prestamo p in todosPrestamos)
-            {
-
-            }
-        }
-
-
 
 
     }
