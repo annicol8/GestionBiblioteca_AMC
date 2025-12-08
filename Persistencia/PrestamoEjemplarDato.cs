@@ -8,7 +8,7 @@ namespace Persistencia
 {
     internal class PrestamoEjemplarDato : Entity<ClavePrestamoEjemplar>
     {
-        //private int idPrestamo;         // los dos atributos o uno que sea clave?? y en el resto de clases, tienen que tener el atributo que se le pasa en Entity<...>
+        //private int idPrestamo;        
         //private int codigoEjemplar;
         private DateTime fechaDevolucion;
 
