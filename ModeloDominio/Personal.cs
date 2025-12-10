@@ -14,7 +14,7 @@ namespace ModeloDominio
 
         public string Dni {get; private set;}
         public string Nombre {get; private set;}
-        public TipoPersonal Tipo {get; private set;}
+        public TipoPersonal Tipo {get; protected set;}
 
         public Personal(string dni, string nombre)
         {
@@ -22,6 +22,10 @@ namespace ModeloDominio
             Nombre = nombre;
         }
 
+        public Personal(string dni)
+        {
+            Dni = dni;
+        }
         public bool Equals(Personal otroPersonal)
         {
             if (otroPersonal == null) return false;

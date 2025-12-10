@@ -256,7 +256,7 @@ namespace Persistencia
             return lista;
         }
 
-        public static Prestamo GetPrestamoPorId(string id)
+        public static Prestamo GetPrestamoPorId(int id)
         {
             Prestamo p = null;
             foreach (PrestamoDato pd in BD.TablaPrestamos)

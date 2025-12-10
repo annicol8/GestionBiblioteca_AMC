@@ -33,11 +33,7 @@ namespace ModeloDominio
 
         public bool DadoAlta { get { return dadoAlta; } set { dadoAlta = value; } }
 
-        public void actualizarAlta(bool b)
-        {
-            this.dadoAlta = b;
-        }
-
+        
         public bool Equals(Usuario otroUsuario)
         {
             if (otroUsuario == null) return false;

@@ -16,7 +16,7 @@ namespace ModeloDominio
         private EstadoPrestamo estado;
         private string dniUsuario;
         private string dniPersonal;
-        private List<Ejemplar> prestamoEjemplares;
+        //private List<Ejemplar> prestamoEjemplares;
         
 
         public int Id { get; }
@@ -27,14 +27,7 @@ namespace ModeloDominio
         public string DniUsuario { get; }
         public string DniPersonal { get; }
 
-        public Prestamo()
-        {
-            this.FechaPrestamo = DateTime.Now;
-            estado = EstadoPrestamo.enProceso;
-            prestamoEjemplares = new List<Ejemplar>();
-        }
-
-        
+       
         public Prestamo(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, string dniPersonal, string dniUsuario) //List<Ejemplar> prestamoEjemplares si eso añadir este arg
         {
             this.id = id;
@@ -54,6 +47,11 @@ namespace ModeloDominio
             this.estado = EstadoPrestamo.enProceso;
             this.dniUsuario = dniUsuario;
             this.dniPersonal = dniPersonal;
+        }
+
+        public bool Caducado()
+        {
+            return DateTime.Now > fechaDevolucion && Estado == EstadoPrestamo.enProceso;
         }
 
         // Constructor búsquedas

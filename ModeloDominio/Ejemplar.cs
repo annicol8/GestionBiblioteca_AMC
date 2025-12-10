@@ -20,7 +20,7 @@ namespace ModeloDominio
         public string DniPAdq { get; } 
 
         // Relaciones
-        public string IsbnDocumento { get; set; }  // Clave foranea
+        public string IsbnDocumento { get; }  // Clave foranea
         public Documento Documento { get; set; }    // Documento asociado
 
         public Ejemplar(int cod)
