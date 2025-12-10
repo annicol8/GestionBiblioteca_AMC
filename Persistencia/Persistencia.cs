@@ -305,3 +305,54 @@ namespace Persistencia
 
     }
 }
+
+
+/*
+
+public static Documento GetDocumentoPorIsbn(string isbn)
+{
+    LibroPapel libro = GetLibroPapel(isbn);
+    if (libro != null) return libro;
+    
+    AudioLibro audio = GetAudioLibro(isbn);
+    return audio;
+}
+
+public static List<Ejemplar> GetTodosEjemplares()
+{
+    List<EjemplarDato> datosList = BD.READ_ALL<string, EjemplarDato>(BD.TablaEjemplares);
+    List<Ejemplar> ejemplares = new List<Ejemplar>();
+    foreach (var dato in datosList)
+    {
+        ejemplares.Add(Transformers.ToEjemplar(dato));
+    }
+    return ejemplares;
+}
+
+public static List<Prestamo> GetTodosPrestamos()
+{
+    List<PrestamoDato> datosList = BD.READ_ALL<int, PrestamoDato>(BD.TablaPrestamos);
+    List<Prestamo> prestamos = new List<Prestamo>();
+    foreach (var dato in datosList)
+    {
+        Prestamo p = Transformers.ToPrestamo(dato);
+        CargarEjemplaresPrestamo(p);
+        prestamos.Add(p);
+    }
+    return prestamos;
+}
+
+public static void UpdatePrestamo(Prestamo prestamo)
+{
+    PrestamoDato dato = Transformers.ToPrestamoDato(prestamo);
+    BD.UPDATE(BD.TablaPrestamos, prestamo.Id, dato);
+}
+
+public static void UpdateEjemplar(Ejemplar ejemplar)
+{
+    EjemplarDato dato = Transformers.ToEjemplarDato(ejemplar);
+    BD.UPDATE(BD.TablaEjemplares, ejemplar.Codigo, dato);
+}
+
+
+*/
