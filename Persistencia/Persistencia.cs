@@ -27,6 +27,12 @@ namespace Persistencia
             else return null;
         }
 
+        public static Usuario GetUsuario(string dni)
+        {
+            Usuario busqueda = new Usuario(dni);
+            return GetUsuario(busqueda);
+        }
+
         public static bool BajaUsuario(Usuario u)
         {
             return BD.DELETE(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
@@ -127,7 +133,12 @@ namespace Persistencia
 
         public static Documento GetDocumentoPorCodEjemplar(int codigo)
         {
-            
+            Ejemplar ejemplar = GetEjemplar(new Ejemplar(codigo));
+
+            if (ejemplar == null)
+                return null;
+
+            return GetDocumento(ejemplar.IsbnDocumento);
         }
 
         public static List<Documento> GetTodosDocumentos()
