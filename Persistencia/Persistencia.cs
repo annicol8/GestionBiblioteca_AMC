@@ -125,6 +125,11 @@ namespace Persistencia
             return GetAudioLibro(new AudioLibro(isbn));
         }
 
+        public static Documento GetDocumentoPorCodEjemplar(int codigo)
+        {
+            
+        }
+
         public static List<Documento> GetTodosDocumentos()
         {
             List<Documento> documentos = new List<Documento>();
