@@ -354,5 +354,4 @@ public static void UpdateEjemplar(Ejemplar ejemplar)
     BD.UPDATE(BD.TablaEjemplares, ejemplar.Codigo, dato);
 }
 
-
 */
