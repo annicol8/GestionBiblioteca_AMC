@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class ClavePrestamoEjemplar : IEquatable<ClavePrestamoEjemplar>
+    public class ClavePrestamoEjemplar : IEquatable<ClavePrestamoEjemplar>
     {
         private int idPrestamo;
         private int codigoEjemplar;
