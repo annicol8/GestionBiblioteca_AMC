@@ -48,8 +48,9 @@ namespace ModeloDominio
             this.dniUsuario = dniUsuario;
             this.dniPersonal = dniPersonal;
         }
+        //
 
-        public bool Caducado()
+        public bool Cadudado()
         {
             return DateTime.Now > fechaDevolucion && Estado == EstadoPrestamo.enProceso;
         }
