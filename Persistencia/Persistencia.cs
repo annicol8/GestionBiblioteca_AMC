@@ -12,9 +12,9 @@ namespace Persistencia
     {
         #region USUARIO
         //USUARIO
-        public static void AltaUsuario(Usuario u)
+        public static bool AltaUsuario(Usuario u)
         {
-            BD.INSERT(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
+            return BD.INSERT(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
         }
 
         public static Usuario GetUsuario(Usuario u)
@@ -27,34 +27,34 @@ namespace Persistencia
             else return null;
         }
 
-
-        public static void BajaUsuario(Usuario u)
+        public static bool BajaUsuario(Usuario u)
         {
-            BD.DELETE(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
+            return BD.DELETE(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
         }
 
-        public static void UpdateUsuario(Usuario u)
+        public static bool UpdateUsuario(Usuario u)
         {
-            BD.UPDATE(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
+            return BD.UPDATE(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
         }
 
         public static List<Usuario> GetUsuarios()
         {
-            List<UsuarioDato> datosUsuario = BD.READ_ALL(BD.TablaUsuarios);
-            return datosUsuario.Select(d => Transformers.UsuarioDatoAUsuario(d)).ToList();
+            return BD.READ_ALL(BD.TablaUsuarios)
+                     .Select(Transformers.UsuarioDatoAUsuario)
+                     .ToList();
         }
         #endregion
 
         #region AUDIOLIBRO
         //AUDIOLIBRO
-        public static void AltaAudioLibro(AudioLibro al)
+        public static bool AltaAudioLibro(AudioLibro al)
         {
-            BD.INSERT(BD.TablaAudioLibros, Transformers.AudioLibroAAudioLibroDato(al));
+            return BD.INSERT(BD.TablaAudioLibros, Transformers.AudioLibroAAudioLibroDato(al));
         }
 
-        public static void BajaAudioLibro(AudioLibro al)
+        public static bool BajaAudioLibro(AudioLibro al)
         {
-            BD.DELETE(BD.TablaAudioLibros, Transformers.AudioLibroAAudioLibroDato(al));
+            return BD.DELETE(BD.TablaAudioLibros, Transformers.AudioLibroAAudioLibroDato(al));
         }
 
         public static AudioLibro GetAudioLibro(AudioLibro al)
@@ -67,23 +67,24 @@ namespace Persistencia
             else return null;
         }
 
-        public static void UpdateAudioLibro(AudioLibro al)
+        public static bool UpdateAudioLibro(AudioLibro al)
         {
-            BD.UPDATE(BD.TablaAudioLibros, Transformers.AudioLibroAAudioLibroDato(al));
+            return BD.UPDATE(BD.TablaAudioLibros, Transformers.AudioLibroAAudioLibroDato(al));
         }
 
         public static List<AudioLibro> GetAudioLibros()
         {
-            List<AudioLibroDato> datosALibro = BD.READ_ALL(BD.TablaAudioLibros);
-            return datosALibro.Select(d => Transformers.AudioLibroDatoAAudioLibro(d)).ToList();
+            return BD.READ_ALL(BD.TablaAudioLibros)
+                     .Select(Transformers.AudioLibroDatoAAudioLibro)
+                     .ToList();
         }
         #endregion
 
         #region LIBROPAPEL
         //LIBRO PAPEL
-        public static void AltaLibroPapel(LibroPapel lp)
+        public static bool AltaLibroPapel(LibroPapel lp)
         {
-            BD.INSERT(BD.TablaLibrosPapel, Transformers.LibroPapelALibroPapelDato(lp));
+            return BD.INSERT(BD.TablaLibrosPapel, Transformers.LibroPapelALibroPapelDato(lp));
         }
 
         public static LibroPapel GetLibroPapel(LibroPapel lp)
@@ -95,33 +96,32 @@ namespace Persistencia
             } else return null;  
         }
 
-        public static void UpdateLibroPapel(LibroPapel lp)
+        public static bool UpdateLibroPapel(LibroPapel lp)
         {
-            BD.UPDATE(BD.TablaLibrosPapel, Transformers.LibroPapelALibroPapelDato(lp));
+            return BD.UPDATE(BD.TablaLibrosPapel, Transformers.LibroPapelALibroPapelDato(lp));
         }
 
-        public static void BajaLibroPapel(LibroPapel lp)
+        public static bool BajaLibroPapel(LibroPapel lp)
         {
-            BD.DELETE(BD.TablaLibrosPapel, Transformers.LibroPapelALibroPapelDato(lp));
+            return BD.DELETE(BD.TablaLibrosPapel, Transformers.LibroPapelALibroPapelDato(lp));
         }
 
         public static List<LibroPapel> GetLibrosPapel()
         {
-            List<LibroPapelDato> datosLPapel = BD.READ_ALL(BD.TablaLibrosPapel);
-            return datosLPapel.Select(d => Transformers.LibroPapelDatoALibroPapel(d)).ToList();
+            return BD.READ_ALL(BD.TablaLibrosPapel)
+                     .Select(Transformers.LibroPapelDatoALibroPapel)
+                     .ToList();
         }
         #endregion
 
         #region DOCUMENTO
         //DOCUMENTOS TANTO AUDIO LIBRO COMO LIBRO PAPEL
-        public static Documento GetDocuemnto(string isbn)
+        public static Documento GetDocumento(string isbn)
         {
-            LibroPapel lp = GetLibroPapel(new LibroPapel(isbn));
-            if (lp != null)
-            {
-                return lp;
-            }
-            else return GetAudioLibro(new AudioLibro(isbn));
+            var lp = GetLibroPapel(new LibroPapel(isbn));
+            if (lp != null) return lp;
+
+            return GetAudioLibro(new AudioLibro(isbn));
         }
 
         public static List<Documento> GetTodosDocumentos()
@@ -135,19 +135,19 @@ namespace Persistencia
 
         #region PERSONAL
         //PERSONAL
-        public static void AltaPersonal(Personal p)
+        public static bool AltaPersonal(Personal p)
         {
-            BD.INSERT(BD.TablaPersonales, Transformers.PersonalAPersonalDato(p));
+            return BD.INSERT(BD.TablaPersonales, Transformers.PersonalAPersonalDato(p));
         }
 
-        public static void BajaPersonal(Personal p)
+        public static bool BajaPersonal(Personal p)
         {
-            BD.DELETE(BD.TablaPersonales, Transformers.PersonalAPersonalDato(p));
+            return BD.DELETE(BD.TablaPersonales, Transformers.PersonalAPersonalDato(p));
         }
 
-        public static void UpdatePersonal(Personal p)
+        public static bool UpdatePersonal(Personal p)
         {
-            BD.UPDATE(BD.TablaPersonales, Transformers.PersonalAPersonalDato(p));
+            return BD.UPDATE(BD.TablaPersonales, Transformers.PersonalAPersonalDato(p));
         }
         public static Personal GetPersonal(Personal p)
         {
@@ -159,18 +159,19 @@ namespace Persistencia
             else return null;
         }
 
-        public static List<Personal> GetPersonal()
+        public static List<Personal> GetPersonales()
         {
-            List<PersonalDato> datos = BD.READ_ALL(BD.TablaPersonales);
-            return datos.Select(d => Transformers.PersonalDatoAPersonal(d)).ToList();
+            return BD.READ_ALL(BD.TablaPersonales)
+                     .Select(Transformers.PersonalDatoAPersonal)
+                     .ToList();
         }
         #endregion
 
         #region EJEMPLAR
         //EJEMPLAR
-        public static void AltaEjemplar(Ejemplar e)
+        public static bool AltaEjemplar(Ejemplar e)
         {
-            BD.INSERT(BD.TablaEjemplares, Transformers.EjemplarAEjemplarDato(e));
+            return BD.INSERT(BD.TablaEjemplares, Transformers.EjemplarAEjemplarDato(e));
         }
 
         public static Ejemplar GetEjemplar(Ejemplar e)
@@ -183,27 +184,28 @@ namespace Persistencia
             else return null;
         }
 
-        public static void BajaEjemplar(Ejemplar e)
+        public static bool BajaEjemplar(Ejemplar e)
         {
-            BD.DELETE(BD.TablaEjemplares, Transformers.EjemplarAEjemplarDato(e));
+            return BD.DELETE(BD.TablaEjemplares, Transformers.EjemplarAEjemplarDato(e));
         }
 
-        public static void UpdateEjemplar(Ejemplar e)
+        public static bool UpdateEjemplar(Ejemplar e)
         {
-            BD.UPDATE(BD.TablaEjemplares, Transformers.EjemplarAEjemplarDato(e));
+            return BD.UPDATE(BD.TablaEjemplares, Transformers.EjemplarAEjemplarDato(e));
         }
-
         public static List<Ejemplar> GetEjemplares()
         {
-            List<EjemplarDato> datosEjemplares = BD.READ_ALL(BD.TablaEjemplares);
-            return datosEjemplares.Select(d => Transformers.EjemplarDatoAEjemplar(d)).ToList();
+            return BD.READ_ALL(BD.TablaEjemplares)
+                     .Select(Transformers.EjemplarDatoAEjemplar)
+                     .ToList();
         }
 
         public static List<Ejemplar> GetEjemplaresPorDocumento(string isbn)
         {
-            List<EjemplarDato> datosEjemplares = BD.READ_ALL(BD.TablaEjemplares);
-            List<EjemplarDato> ejemplaresDoc = datosEjemplares.Where(e => e.Isbn.Equals(isbn)).ToList();
-            return ejemplaresDoc.Select(d => Transformers.EjemplarDatoAEjemplar(d)).ToList();
+            return BD.READ_ALL(BD.TablaEjemplares)
+                     .Where(e => e.Isbn == isbn)
+                     .Select(Transformers.EjemplarDatoAEjemplar)
+                     .ToList();
         }
         #endregion
 
@@ -212,14 +214,14 @@ namespace Persistencia
         public static int AltaPrestamo(Prestamo p)
         {
             int nuevoID = BD.GenerarIdPrestamo();
-            Prestamo prestamoNuevo = new Prestamo(nuevoID, p.FechaPrestamo, p.FechaDevolucion, p.Estado, p.DniPersonal, p.DniUsuario);
+            Prestamo prestamoNuevo = new Prestamo(nuevoID, p.FechaPrestamo, p.FechaDevolucion, p.Estado, p.DniUsuario, p.DniPersonal);
             BD.INSERT(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(prestamoNuevo));
             return nuevoID;
         }
 
-        public static void BajaPrestamo(Prestamo p)
+        public static bool BajaPrestamo(Prestamo p)
         {
-            BD.DELETE(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(p));
+            return BD.DELETE(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(p));
         }
 
         public static Prestamo GetPrestamo(Prestamo p)
@@ -232,126 +234,80 @@ namespace Persistencia
             else return null;
         }
 
-        public static void UpdatePrestamo(Prestamo p)
+        public static bool UpdatePrestamo(Prestamo p)
         {
-            BD.UPDATE(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(p));
+            return BD.UPDATE(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(p));
         }
 
         public static List<Prestamo> GetPrestamos()
         {
-            List<Prestamo> datosPrestamos = BD.READ_ALL(BD.TablaPrestamos);
-            return datosPrestamos.Select(d=>Transformers.PrestamoDatoAPrestamo(d)).ToList();
+            return BD.READ_ALL(BD.TablaPrestamos)
+                     .Select(Transformers.PrestamoDatoAPrestamo)
+                     .ToList();
         }
 
-        public static List<Prestamo> GetPrestamosPorUsuario (string dniUsuario)
+        public static List<Prestamo> GetPrestamosPorUsuario(string dniUsuario)
         {
-            List<Prestamo> lista = new List<Prestamo>();
-            foreach (PrestamoDato pd in BD.TablaPrestamos)
-            {
-                if (pd.DniUsuario.Equals(dniUsuario))
-                {
-                    lista.Add(Transformers.PrestamoDatoAPrestamo(pd));
-                }
-            }
-            return lista;
+            return BD.READ_ALL(BD.TablaPrestamos)
+                     .Where(p => p.DniUsuario == dniUsuario)
+                     .Select(Transformers.PrestamoDatoAPrestamo)
+                     .ToList();
         }
 
-        public static Prestamo GetPrestamoPorId(string id)
+        public static Prestamo GetPrestamoPorId(int id)
         {
-            Prestamo p = null;
-            foreach (PrestamoDato pd in BD.TablaPrestamos)
-            {
-                if (pd.Clave.Equals(id))
-                {
-                    p = Transformers.PrestamoDatoAPrestamo(pd);
-                }
-            }
-            return p;
+            var dato = BD.TablaPrestamos.FirstOrDefault(p => p.Clave.Equals(id));
+            return dato != null ? Transformers.PrestamoDatoAPrestamo(dato) : null;
         }
         #endregion
 
         //PRESTAMO_EJEMPLAR
-        public static void AltaPrestamoEjemplar(int idPrestamo, int codigoEjemplar, DateTime fechaDevolucion)
+        public static bool AltaPrestamoEjemplar(int idPrestamo, int codigoEjemplar, DateTime fechaDev)
         {
-            BD.INSERT(BD.TablaPrestamoEjemplar, Transformers.PrestamoEjemplarAPrestamoEjemplarDato(idPrestamo, codigoEjemplar, fechaDevolucion));
+            //BD.INSERT(BD.TablaPrestamoEjemplar, Transformers.PrestamoEjemplarAPrestamoEjemplarDato(idPrestamo, codigoEjemplar, fechaDevolucion));
+
+            return BD.INSERT(
+               BD.TablaPrestamoEjemplar,
+               new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, fechaDev));
         }
 
-        public static void UpdatePrestamoEjemplar(int idPrestamo, int codigoEjemplar, DateTime fechaDevolucion)
+        public static bool UpdatePrestamoEjemplar(int idPrestamo, int codigoEjemplar, DateTime fechaDev)
         {
-            BD.UPDATE(BD.TablaPrestamoEjemplar, Transformers.PrestamoEjemplarAPrestamoEjemplarDato(idPrestamo, codigoEjemplar, fechaDevolucion));
+            //BD.UPDATE(BD.TablaPrestamoEjemplar, Transformers.PrestamoEjemplarAPrestamoEjemplarDato(idPrestamo, codigoEjemplar, fechaDevolucion));
+
+            return BD.UPDATE(
+               BD.TablaPrestamoEjemplar,
+               new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, fechaDev));
         }
 
-        public static void BajaPrestamoEjemplar(int idPrestamo, int codigoEjemplar, DateTime fechaDevolucion)
+        public static bool BajaPrestamoEjemplar(int idPrestamo, int codigoEjemplar) // He cambiado la cabecera para que le hora de devolucion sea la actual
         {
-            BD.DELETE(BD.TablaPrestamoEjemplar, Transformers.PrestamoEjemplarAPrestamoEjemplarDato(idPrestamo, codigoEjemplar, fechaDevolucion));
+            //BD.DELETE(BD.TablaPrestamoEjemplar, Transformers.PrestamoEjemplarAPrestamoEjemplarDato(idPrestamo, codigoEjemplar, fechaDevolucion));
+
+            return BD.DELETE(
+                BD.TablaPrestamoEjemplar,
+                new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, DateTime.Now));
         }
 
         public static PrestamoEjemplarDato GetPrestamoEjemplar(int idPrestamo, int codigoEjemplar)
         {
-            PrestamoEjemplarDato dato = new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, DateTime.Now);
-            return BD.READ(BD.TablaPrestamoEjemplar, dato);
+            return BD.READ(
+                BD.TablaPrestamoEjemplar,
+                new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, DateTime.Now));
         }
 
         public static List<PrestamoEjemplarDato> GetEjemplaresDePrestamo(int idPrestamo)
         {
-            List<PrestamoEjemplarDato> todos = BD.READ_ALL(BD.TablaPrestamoEjemplar);
-            return todos.Where(pe => pe.IdPrestamo == idPrestamo).ToList();
+            return BD.READ_ALL(BD.TablaPrestamoEjemplar)
+                     .Where(pe => pe.IdPrestamo == idPrestamo)
+                     .ToList();
         }
         public static List<PrestamoEjemplarDato> GetPrestamosPorEjemplar(int codigoEjemplar)
         {
-            List<PrestamoEjemplarDato> todos = BD.READ_ALL(BD.TablaPrestamoEjemplar);
-            return todos.Where(pe => pe.CodigoEjemplar == codigoEjemplar).ToList();
+            return BD.READ_ALL(BD.TablaPrestamoEjemplar)
+                     .Where(pe => pe.CodigoEjemplar == codigoEjemplar)
+                     .ToList();
         }
 
     }
 }
-
-
-/*
-
-public static Documento GetDocumentoPorIsbn(string isbn)
-{
-    LibroPapel libro = GetLibroPapel(isbn);
-    if (libro != null) return libro;
-    
-    AudioLibro audio = GetAudioLibro(isbn);
-    return audio;
-}
-
-public static List<Ejemplar> GetTodosEjemplares()
-{
-    List<EjemplarDato> datosList = BD.READ_ALL<string, EjemplarDato>(BD.TablaEjemplares);
-    List<Ejemplar> ejemplares = new List<Ejemplar>();
-    foreach (var dato in datosList)
-    {
-        ejemplares.Add(Transformers.ToEjemplar(dato));
-    }
-    return ejemplares;
-}
-
-public static List<Prestamo> GetTodosPrestamos()
-{
-    List<PrestamoDato> datosList = BD.READ_ALL<int, PrestamoDato>(BD.TablaPrestamos);
-    List<Prestamo> prestamos = new List<Prestamo>();
-    foreach (var dato in datosList)
-    {
-        Prestamo p = Transformers.ToPrestamo(dato);
-        CargarEjemplaresPrestamo(p);
-        prestamos.Add(p);
-    }
-    return prestamos;
-}
-
-public static void UpdatePrestamo(Prestamo prestamo)
-{
-    PrestamoDato dato = Transformers.ToPrestamoDato(prestamo);
-    BD.UPDATE(BD.TablaPrestamos, prestamo.Id, dato);
-}
-
-public static void UpdateEjemplar(Ejemplar ejemplar)
-{
-    EjemplarDato dato = Transformers.ToEjemplarDato(ejemplar);
-    BD.UPDATE(BD.TablaEjemplares, ejemplar.Codigo, dato);
-}
-
-*/

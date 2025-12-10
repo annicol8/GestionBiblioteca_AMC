@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class Entity<T>
+    public class Entity<T>
     {
         private T clave;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class PrestamoEjemplarDato : Entity<ClavePrestamoEjemplar>
+    public class PrestamoEjemplarDato : Entity<ClavePrestamoEjemplar>
     {
         //private int idPrestamo;        
         //private int codigoEjemplar;
