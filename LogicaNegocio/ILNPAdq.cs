@@ -8,5 +8,6 @@ namespace LogicaNegocio
 {
     internal interface ILNPAdq
     {
+
     }
 }
