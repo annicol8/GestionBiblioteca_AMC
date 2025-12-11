@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ModeloDominio;
 
 namespace Presentacion
 {
@@ -20,9 +21,6 @@ namespace Presentacion
 
         private void bt_Entrar_Click(object sender, EventArgs e)
         {
-            string nombre = textBox_Nombre.Text.Trim();
-            string password = textBox_Contraseña.Text.Trim();
-
             if (string.IsNullOrWhiteSpace(textBox_Nombre.Text))
             {
                 MessageBox.Show("Por favor, introduzca el nombre", "Campo obligatorio",
@@ -45,8 +43,21 @@ namespace Presentacion
                 return;
             }
 
+            string nombre = textBox_Nombre.Text.Trim();
+            string password = textBox_Contraseña.Text.Trim();
+            TipoPersonal tipoSeleccionado;
+            if (radioButton_PSala.Checked) { tipoSeleccionado = TipoPersonal.personalSala;  }
+            else { tipoSeleccionado = TipoPersonal.personalAdquisiciones; }
 
+            Personal personalABuscar = Persistencia.Persistencia.BuscarPersonalPorNombreYTipo(nombre, tipoSeleccionado);
+            if (personalABuscar == null) 
+            {
+                MessageBox.Show("No se encontro ningún personal con los datos introducidos", "Personal no encontrado",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            //Falta de implementar en el caso de q seleccionar cada tipo de personal llevar al FormMenu de cada personal seleccionado
 
 
 

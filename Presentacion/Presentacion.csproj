@@ -85,5 +85,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogicaNegocio\LogicaNegocio.csproj">
+      <Project>{eb4e1de6-89bd-475d-a80d-b82748e0e968}</Project>
+      <Name>LogicaNegocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModeloDominio\ModeloDominio.csproj">
+      <Project>{61863b43-9da3-4a6a-a7fd-ed1853c6da4e}</Project>
+      <Name>ModeloDominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{81a9d49f-540e-4650-9ae3-87cefa10584a}</Project>
+      <Name>Persistencia</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
