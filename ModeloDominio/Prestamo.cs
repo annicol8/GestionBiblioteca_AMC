@@ -39,7 +39,7 @@ namespace ModeloDominio
             //this.prestamoEjemplares = new List<Ejemplar>();
         }
 
-        // Constructor para préstamo nuevo 
+        //  Constructor para préstamo nuevo 
         public Prestamo(string dniUsuario, string dniPersonal, DateTime fechaDevolucion)
         {
             this.fechaPrestamo = DateTime.Now;
@@ -48,9 +48,9 @@ namespace ModeloDominio
             this.dniUsuario = dniUsuario;
             this.dniPersonal = dniPersonal;
         }
-        //
+        
 
-        public bool Cadudado()
+        public bool Caducado()
         {
             return DateTime.Now > fechaDevolucion && Estado == EstadoPrestamo.enProceso;
         }
