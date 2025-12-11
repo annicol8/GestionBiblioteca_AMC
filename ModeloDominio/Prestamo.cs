@@ -48,7 +48,7 @@ namespace ModeloDominio
             this.dniUsuario = dniUsuario;
             this.dniPersonal = dniPersonal;
         }
-        //
+        
 
         public bool Caducado()
         {
