@@ -11,14 +11,14 @@ namespace LogicaNegocio
     {
         int AltaPrestamo(Prestamo prestamo);
         //bool BajaPrestamo(Prestamo p);
-        Usuario GetUsuarioPrestamo(int idPrestamo);
-        EstadoPrestamo GetEstadoPrestamo(int idPrestamo);
+        Usuario? GetUsuarioPrestamo(int idPrestamo); // Puede devolver null si no se encuentra el prestamo
+        EstadoPrestamo? GetEstadoPrestamo(int idPrestamo);
         List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo);
         Prestamo GetPrestamo(int idPrestamo);
 
         List<Prestamo> GetPrestamosPorDocumento(string isbn);
         //List<Prestamo> GetPrestamosPorUsuario(string dni);
-        void DevolverEjemplar(int idPrestamo, string codigoEjemplar);
+        void DevolverEjemplar(int idPrestamo, int codigoEjemplar); // Codigo ejemplar es int?
         List<Prestamo> GetPrestamosFueraDePlazo();
         //bool HayEjemplaresDisponibles(string isbn);
         //DateTime? GetFechaDisponibilidadDocumento(string isbn);

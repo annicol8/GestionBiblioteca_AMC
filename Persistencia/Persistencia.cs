@@ -135,7 +135,7 @@ namespace Persistencia
         {
             Ejemplar ejemplar = GetEjemplar(new Ejemplar(codigo));
 
-            if (ejemplar == null)
+            if (ejemplar == null) // Esto no se haría en la lógica de negocio?
                 return null;
 
             return GetDocumento(ejemplar.IsbnDocumento);
@@ -313,18 +313,83 @@ namespace Persistencia
                 new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, DateTime.Now));
         }
 
-        public static List<PrestamoEjemplarDato> GetEjemplaresDePrestamo(int idPrestamo)
+        /* 
+
+        Creo que no son correctas, porque devuelven PrestamoEjemplarDato en lugar de Ejemplar o Prestamo (y se rompe la arquitectura de tres capas)
+
+                public static List<PrestamoEjemplarDato> GetEjemplaresDePrestamo(int idPrestamo)
+                {
+                    return BD.READ_ALL(BD.TablaPrestamoEjemplar)
+                             .Where(pe => pe.IdPrestamo == idPrestamo)
+                             .ToList();
+                }
+                // Devuelve los PrestamoEjemplarDato asociados al ejemplar con código codigoEjemplar
+                public static List<PrestamoEjemplarDato> GetPrestamosPorEjemplar(int codigoEjemplar)
+                {
+                    return BD.READ_ALL(BD.TablaPrestamoEjemplar)
+                             .Where(pe => pe.CodigoEjemplar == codigoEjemplar)
+                             .ToList();
+                }
+
+        */
+
+        // Creo que estas son las buenas:
+
+
+        // Devuelve los ejemplares asociados al préstamo con id idPrestamo
+        public static List<Ejemplar> GetEjemplaresDePrestamo(int idPrestamo)
         {
             return BD.READ_ALL(BD.TablaPrestamoEjemplar)
                      .Where(pe => pe.IdPrestamo == idPrestamo)
+                     .Select(pe => GetEjemplar(new Ejemplar(pe.CodigoEjemplar)))
+                     .Where(e => e != null) // Filtrar nulos por si acaso
                      .ToList();
         }
-        public static List<PrestamoEjemplarDato> GetPrestamosPorEjemplar(int codigoEjemplar)
+/*
+Es logica de negocio mejor creo
+
+        public static List<Ejemplar> GetEjemplaresNoDevueltosDePrestamo(int idPrestamo)
         {
             return BD.READ_ALL(BD.TablaPrestamoEjemplar)
-                     .Where(pe => pe.CodigoEjemplar == codigoEjemplar)
+                     .Where(pe => pe.IdPrestamo == idPrestamo &&
+                                 pe.FechaDevolucion > DateTime.Now)
+                     .Select(pe => GetEjemplar(new Ejemplar(pe.CodigoEjemplar)))
+                     .Where(e => e != null)
                      .ToList();
         }
+
+        public static bool VerificarEjemplarEnPrestamo(int idPrestamo, int codigoEjemplar)
+        {
+            return BD.READ(BD.TablaPrestamoEjemplar,
+                           new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, DateTime.Now)) != null;
+        }
+
+
+*/
+        //  Devuelve todos los préstamos asociados al ejemplar con código codigoEjemplar
+        public static List<Prestamo> GetPrestamosPorEjemplar(int codigoEjemplar)
+        {
+            HashSet<int> idsPrestamos = new HashSet<int>();
+            var prestamosEjemplar = BD.READ_ALL(BD.TablaPrestamoEjemplar)
+                                      .Where(pe => pe.CodigoEjemplar == codigoEjemplar)
+                                      .Select(pe => pe.IdPrestamo)
+                                      .Distinct();
+
+            List<Prestamo> prestamos = new List<Prestamo>();
+            foreach (var idPrestamo in prestamosEjemplar)
+            {
+                Prestamo p = GetPrestamoPorId(idPrestamo);
+                if (p != null)
+                {
+                    prestamos.Add(p);
+                }
+            }
+            return prestamos;
+        }
+
+
+        
+
 
     }
 }
