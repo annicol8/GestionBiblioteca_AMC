@@ -16,7 +16,8 @@ namespace LogicaNegocio
         protected Personal personal;
 
         public Personal Personal { get { return personal; } }
-        protected LNPersonal(Personal personal)
+
+        public LNPersonal(Personal personal)
         {
             if (personal == null)
             {
@@ -73,7 +74,7 @@ namespace LogicaNegocio
             return todos.Where(u => u.DadoAlta).ToList();
         }
 
-        public List<Usuario> GetTodosUsuarios()
+        public List<Usuario> GetTodosUsuarios() 
         {
             return Persistencia.Persistencia.GetUsuarios();
         }

@@ -50,7 +50,7 @@ namespace ModeloDominio
         }
         //
 
-        public bool Cadudado()
+        public bool Caducado()
         {
             return DateTime.Now > fechaDevolucion && Estado == EstadoPrestamo.enProceso;
         }
