@@ -51,6 +51,29 @@ namespace Persistencia
         }
         #endregion
 
+        //PERSONAL
+        public static List<Personal> GetPersonal()
+        {
+            return BD.READ_ALL(BD.TablaPersonales).Select(Transformers.PersonalDatoAPersonal).ToList();
+        }
+
+        public static Personal BuscarPersonalPorNombreYTipo(string nombre, TipoPersonal tipo)
+        {
+            // Obtener todo el personal
+            List<Personal> todosPersonales = GetPersonal();
+
+            // Buscar por nombre (ignorando mayúsculas/minúsculas) y tipo
+            foreach (Personal p in todosPersonales)
+            {
+                if (p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase) && p.Tipo == tipo)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
+
         #region AUDIOLIBRO
         //AUDIOLIBRO
         public static bool AltaAudioLibro(AudioLibro al)
