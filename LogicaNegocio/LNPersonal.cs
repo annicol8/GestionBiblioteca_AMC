@@ -33,9 +33,7 @@ namespace LogicaNegocio
                 throw new ArgumentNullException("El usuario no puede ser null");
             if (string.IsNullOrWhiteSpace(u.Dni))
                 throw new ArgumentException("El DNI no puede estar vacío");
-            if (string.IsNullOrWhiteSpace(u.Nombre))
-                throw new ArgumentException("El nombre no puede estar vacío");
-
+            
             // Verificar si ya existe
             Usuario existente = Persistencia.Persistencia.GetUsuario(new Usuario(u.Dni));
             if (existente != null && existente.DadoAlta)
@@ -62,10 +60,7 @@ namespace LogicaNegocio
 
         public Usuario GetUsuario(string dni)
         {
-            if (string.IsNullOrWhiteSpace(dni))
-                throw new ArgumentException("El DNI no puede estar vacío");
-
-            return Persistencia.Persistencia.GetUsuario(dni);
+             return Persistencia.Persistencia.GetUsuario(dni);
         }
 
         public List<Usuario> GetUsuariosActivos()

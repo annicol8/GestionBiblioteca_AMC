@@ -95,8 +95,7 @@ namespace LogicaNegocio
 
         public List<Prestamo> GetPrestamosPorDocumento(string isbn)
         {
-            List<Ejemplar> ejemplares =
-                           Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
+            List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
 
             List<Prestamo> prestamos = new List<Prestamo>();
             HashSet<int> idsPrestamosAgregados = new HashSet<int>();
