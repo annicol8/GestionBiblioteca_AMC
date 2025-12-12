@@ -11,7 +11,7 @@ namespace LogicaNegocio
     {
         int AltaPrestamo(Prestamo prestamo);
         //bool BajaPrestamo(Prestamo p);
-        Usuario? GetUsuarioPrestamo(int idPrestamo); // Puede devolver null si no se encuentra el prestamo
+        Usuario GetUsuarioPrestamo(int idPrestamo); // Puede devolver null si no se encuentra el prestamo (no deja hacer lo de nullables)
         EstadoPrestamo? GetEstadoPrestamo(int idPrestamo);
         List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo);
         Prestamo GetPrestamo(int idPrestamo);

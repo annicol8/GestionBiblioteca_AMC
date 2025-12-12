@@ -308,9 +308,18 @@ namespace Persistencia
 
         public static PrestamoEjemplarDato GetPrestamoEjemplar(int idPrestamo, int codigoEjemplar)
         {
+            /*
             return BD.READ(
                 BD.TablaPrestamoEjemplar,
-                new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, DateTime.Now));
+                new PrestamoEjemplarDato(idPrestamo, codigoEjemplar, DateTime.Now)); // No entiendo el sentido de buscar con la fecha actual
+            */
+
+        
+            return BD.READ_ALL(BD.TablaPrestamoEjemplar)
+                     .FirstOrDefault(pe => pe.IdPrestamo == idPrestamo &&
+                                           pe.CodigoEjemplar == codigoEjemplar);
+        
+
         }
 
         /* 
@@ -388,7 +397,8 @@ Es logica de negocio mejor creo
         }
 
 
-        
+
+
 
 
     }

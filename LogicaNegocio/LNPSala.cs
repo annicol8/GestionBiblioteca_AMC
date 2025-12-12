@@ -9,7 +9,10 @@ namespace LogicaNegocio
 {
     public class LNPSala : LNPersonal, ILNPSala
     {
-        // public LNPSala(PersonalSala personal) : base(personal) { }  NO SE SI HAY QUE PONER EL CONSTRUCTOR
+        public LNPSala(Personal personal) : base(personal)
+        {
+        }
+
 
         public int AltaPrestamo(Prestamo prestamo)
         {
@@ -18,39 +21,54 @@ namespace LogicaNegocio
 
         public void DevolverEjemplar(int idPrestamo, int codigoEjemplar)
         {
-            List<Ejemplar> ejemplaresDePrestamo = Persistencia.Persistencia.GetEjemplaresDePrestamo(idPrestamo);
-            foreach (Ejemplar ejemplar in ejemplaresDePrestamo)
+            // Verificar que el ejemplar existe en el préstamo
+            if (Persistencia.Persistencia.GetPrestamoEjemplar(idPrestamo, codigoEjemplar) == null)
             {
-                if (ejemplar.Codigo == codigoEjemplar)
-                {
-                    Persistencia.Persitencia.UpdatePrestamoEjemplar(
-                        idPrestamo,
-                        codigoEjemplar,
-                        DateTime.Now);
+                throw new Exception("El ejemplar no pertenece a este préstamo");
+            }
 
-                    Prestamo P = Persistencia.Persistencia.GetPrestamoPorId(idPrestamo);
-                    Persistencia.Persistencia.UpdatePrestamo(new Prestamo(
-                        P.Id,
-                        P.FechaPrestamo,
-                        P.FechaDevolucion,
-                        EstadoPrestamo.Finalizado,
-                        P.DniPersonal,
-                        P.DniUsuario));
-                }
+            Persistencia.Persistencia.UpdatePrestamoEjemplar(idPrestamo, codigoEjemplar, DateTime.Now);
+
+            List<Ejemplar> ejemplaresNoDevueltos = GetEjemplaresNoDevueltos(idPrestamo);
+
+            if (ejemplaresNoDevueltos.Count == 0)
+            {
+                Prestamo p = Persistencia.Persistencia.GetPrestamoPorId(idPrestamo);
+                Persistencia.Persistencia.UpdatePrestamo(new Prestamo(
+                    p.Id, p.FechaPrestamo, p.FechaDevolucion,
+                    EstadoPrestamo.finalizado, p.DniPersonal, p.DniUsuario));
             }
         }
 
+
+
         public List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo)
         {
+            /*
+             *  no se como sacarlo sin que sea un metodo de persistencia
+             * 
+             * List<PrestamoEjemplar> ejemplaresDePrestamo = Persistencia.Persistencia.GetEjemplaresDePrestamo(idPrestamo);
+            List<Ejemplar> ejemplaresNoDevueltos = new List<Ejemplar>();
+
+            foreach (Ejemplar e in ejemplaresDePrestamo)
+            {
+                if (e.)
+            }
+
             return Persistencia.Persistencia.GetEjemplaresNoDevueltosDePrestamo(idPrestamo); // Si el idPrestamo no existe, qué devuelve? Lista vacia o null?
+            */
+
+            return null;
         }
 
-        public EstadoPrestamo GetEstadoPrestamo(int idPrestamo)
+        public EstadoPrestamo? GetEstadoPrestamo(int idPrestamo)
         {
             Prestamo prestamo = Persistencia.Persistencia.GetPrestamoPorId(idPrestamo);
             if (prestamo == null)
             {
                 return null; // esto o lanzamos excepciones?
+                //throw new Exception("El préstamo no existe");
+
             }
             return prestamo.Estado;
         }
@@ -62,7 +80,18 @@ namespace LogicaNegocio
 
         public List<Prestamo> GetPrestamosFueraDePlazo()
         {
-            throw new NotImplementedException();
+            List<Prestamo> prestamos = Persistencia.Persistencia.GetPrestamos();
+            List<Prestamo> prestamosFueraDePlazo = new List<Prestamo>();
+
+            foreach (Prestamo prestamo in prestamos)
+            {
+                if (prestamo.Caducado())
+                {
+                    prestamosFueraDePlazo.Add(prestamo);
+                }
+            }
+
+            return prestamosFueraDePlazo;
         }
 
         public List<Prestamo> GetPrestamosPorDocumento(string isbn)
@@ -75,21 +104,14 @@ namespace LogicaNegocio
 
             foreach (Ejemplar ejemplar in ejemplares)
             {
-                List<PrestamoEjemplarDato> prestamoEjemplares =
+                List<Prestamo> prestamosDelEjemplar =
                     Persistencia.Persistencia.GetPrestamosPorEjemplar(ejemplar.Codigo);
 
-                foreach (var prestamoEjemplar in prestamoEjemplares)
+                foreach(Prestamo p in prestamosDelEjemplar)
                 {
-                    if (!idsPrestamosAgregados.Contains(prestamoEjemplar.IdPrestamo))
+                    if (!prestamos.Contains(p))
                     {
-                        Prestamo prestamo =
-                            Persistencia.Persistencia.GetPrestamoPorId(prestamoEjemplar.IdPrestamo);
-
-                        if (prestamo != null)
-                        {
-                            prestamos.Add(prestamo);
-                            idsPrestamosAgregados.Add(prestamo.Id);
-                        }
+                        prestamos.Add(p);
                     }
                 }
             }
