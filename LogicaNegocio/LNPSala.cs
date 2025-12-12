@@ -68,7 +68,6 @@ namespace LogicaNegocio
             {
                 return null; // esto o lanzamos excepciones?
                 //throw new Exception("El préstamo no existe");
-
             }
             return prestamo.Estado;
         }

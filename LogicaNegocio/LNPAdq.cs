@@ -135,13 +135,12 @@ namespace LogicaNegocio
         }
 
         
-        public bool EstaPrestadoEjemplar(int codigo)    //Sería más rápido hacer un campo en Ejemplar que sea "estaPrestado"
+        public bool EstaPrestadoEjemplar(int codigo)    
             //PRE:
             //POST: true si el ejemplar está presado; false si está disponible
         {
-            List<PrestamoEjemplarDato> prestamos = Persistencia.Persistencia.GetPrestamosPorEjemplar(codigo);
-            return prestamos.Any(p => p.FechaDevolucion == null);
-            //Entiendo que si no están devueltos, la fecha devolución es null
+            List<Prestamo> prestamos = Persistencia.Persistencia.GetPrestamosPorEjemplar(codigo);
+            return prestamos.Any(p => p.Estado == EstadoPrestamo.enProceso);
         }
         
         public bool HayEjemplaresDisponibles(string isbn) {
@@ -165,16 +164,12 @@ namespace LogicaNegocio
             {
                 var ejemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(p.Id);
 
-                foreach (var ep in ejemplares)
+                foreach (Ejemplar ej in ejemplares)
                 {
-                    var ej = Persistencia.Persistencia.GetEjemplar(new Ejemplar(ep.CodigoEjemplar));
-                    if (ej != null)
-                    {
-                        if (contador.ContainsKey(ej.IsbnDocumento))
-                            contador[ej.IsbnDocumento]++;
-                        else
-                            contador[ej.IsbnDocumento] = 1;
-                    }
+                    if (contador.ContainsKey(ej.IsbnDocumento))
+                        contador[ej.IsbnDocumento]++;
+                    else
+                        contador[ej.IsbnDocumento] = 1;
                 }
             }
 

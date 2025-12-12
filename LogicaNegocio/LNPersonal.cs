@@ -88,15 +88,8 @@ namespace LogicaNegocio
             {
                 if (p.Estado == EstadoPrestamo.enProceso)
                 {
-                    List<PrestamoEjemplarDato> prestamoEjemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(p.Id);
-                    foreach(PrestamoEjemplarDato pe in prestamoEjemplares)
-                    {
-                        Ejemplar e = Persistencia.Persistencia.GetEjemplar(new Ejemplar(pe.CodigoEjemplar));
-                        if (e != null)
-                        {
-                            ejemplaresPrestados.Add(e);
-                        }
-                    }
+                    List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(p.Id);
+                    ejemplaresPrestados.AddRange(ejemplares);
                 }
             }
             return ejemplaresPrestados;
@@ -105,25 +98,12 @@ namespace LogicaNegocio
         public bool TieneDocumentosFueraPlazo(string dniUsuario)
         {
             List<Prestamo> prestamosUsuario = Persistencia.Persistencia.GetPrestamosPorUsuario(dniUsuario);
-            DateTime hoy = DateTime.Now;
-
+            
             foreach(Prestamo p in prestamosUsuario)
             {
-                if (p.Estado == EstadoPrestamo.enProceso)
+                if (p.Estado == EstadoPrestamo.enProceso && p.Caducado())
                 {
-                    List<PrestamoEjemplarDato> prestamoEjemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(p.Id);
-                    foreach (PrestamoEjemplarDato pe in prestamoEjemplares)
-                    {
-                        if(pe.FechaDevolucion == DateTime.MinValue) //por si no ha sido devuelto todavia que dev null
-                        {
-                            Documento doc = Persistencia.Persistencia.GetDocumentoPorCodEjemplar(pe.CodigoEjemplar);
-                            DateTime fechaLimite = p.FechaPrestamo.AddDays(doc.DiasPrestamoPermitidos());
-                            if (hoy > fechaLimite)
-                            {
-                                return true;
-                            }
-                        }
-                    }
+                    return true;
                 }
             }
             return false;
