@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lb_Nombre = new System.Windows.Forms.Label();
             this.lb_Contraseña = new System.Windows.Forms.Label();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
@@ -36,6 +37,10 @@
             this.groupB_TipoEmp = new System.Windows.Forms.GroupBox();
             this.radioButton_PAdq = new System.Windows.Forms.RadioButton();
             this.radioButton_PSala = new System.Windows.Forms.RadioButton();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
             this.groupB_TipoEmp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,14 +67,15 @@
             this.textBox_Nombre.Location = new System.Drawing.Point(216, 57);
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(146, 26);
-            this.textBox_Nombre.TabIndex = 2;
+            this.textBox_Nombre.TabIndex = 0;
             // 
             // textBox_Contraseña
             // 
             this.textBox_Contraseña.Location = new System.Drawing.Point(216, 120);
             this.textBox_Contraseña.Name = "textBox_Contraseña";
             this.textBox_Contraseña.Size = new System.Drawing.Size(146, 26);
-            this.textBox_Contraseña.TabIndex = 3;
+            this.textBox_Contraseña.TabIndex = 1;
+            this.textBox_Contraseña.UseSystemPasswordChar = true;
             // 
             // bt_Entrar
             // 
@@ -116,6 +122,7 @@
             // 
             // FLogin
             // 
+            this.AcceptButton = this.bt_Entrar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 430);
@@ -125,7 +132,11 @@
             this.Controls.Add(this.textBox_Nombre);
             this.Controls.Add(this.lb_Contraseña);
             this.Controls.Add(this.lb_Nombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Loguearse";
             this.groupB_TipoEmp.ResumeLayout(false);
             this.groupB_TipoEmp.PerformLayout();
@@ -144,5 +155,9 @@
         private System.Windows.Forms.GroupBox groupB_TipoEmp;
         private System.Windows.Forms.RadioButton radioButton_PAdq;
         private System.Windows.Forms.RadioButton radioButton_PSala;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip3;
+        private System.Windows.Forms.ToolTip toolTip4;
     }
 }
