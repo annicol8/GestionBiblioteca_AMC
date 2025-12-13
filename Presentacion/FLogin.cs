@@ -49,14 +49,7 @@ namespace Presentacion
             if (radioButton_PSala.Checked) { tipoSeleccionado = TipoPersonal.personalSala;  }
             else { tipoSeleccionado = TipoPersonal.personalAdquisiciones; }
 
-            Personal personalABuscar = Persistencia.Persistencia.BuscarPersonalPorNombreYTipo(nombre, tipoSeleccionado);
-            if (personalABuscar == null) 
-            {
-                MessageBox.Show("No se encontro ningún personal con los datos introducidos", "Personal no encontrado",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
+            
             //Falta de implementar en el caso de q seleccionar cada tipo de personal llevar al FormMenu de cada personal seleccionado
 
 
