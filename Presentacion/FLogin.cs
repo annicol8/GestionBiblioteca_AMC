@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LogicaNegocio;
 using ModeloDominio;
 
 namespace Presentacion
@@ -45,16 +46,58 @@ namespace Presentacion
 
             string nombre = textBox_Nombre.Text.Trim();
             string password = textBox_Contraseña.Text.Trim();
+            
             TipoPersonal tipoSeleccionado;
             if (radioButton_PSala.Checked) { tipoSeleccionado = TipoPersonal.personalSala;  }
             else { tipoSeleccionado = TipoPersonal.personalAdquisiciones; }
 
-            
-            //Falta de implementar en el caso de q seleccionar cada tipo de personal llevar al FormMenu de cada personal seleccionado
+            Personal personalABuscar = LNLogin.BuscarPersonalPorNombreYTipo(nombre, tipoSeleccionado);
 
+            if (personalABuscar == null)
+            {
+                MessageBox.Show(
+                    "No se encontró ningún personal con los datos introducidos.\n\n" +
+                    "Verifique el nombre y el tipo de personal seleccionado.",
+                    "Personal no encontrado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
 
+                // Limpiar contraseña por seguridad
+                textBox_Contraseña.Clear();
+                textBox_Nombre.Focus();
+                return;
+            }
 
+            try
+            {
+                if(tipoSeleccionado == TipoPersonal.personalSala)
+                {
+                    //ILNPSala ln = new LNPSala((PersonalSala)personalABuscar);
+                    //FPSala formSala = new FPSala(ln);
+                    FPSala formSala = new FPSala(personalABuscar);
+                    this.Hide();
+                    formSala.ShowDialog();
+                    this.Close();
+                } else {
+                    //ILNPAdqln = new LNPAdq((PersonalAdq)personalABuscar);
+                    //FPAdq formAdq = new FPAdq(ln);
+                    FPAdq formAdq = new FPAdq(personalABuscar);
+                    this.Hide();
+                    formAdq.ShowDialog();
+                    this.Close();
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error al iniciar la aplicación:\n\n{ex.Message}",
+                    "Error crítico",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
 
+                // Mostrar el formulario de login de nuevo
+                this.Show();
+            }
         }
+
     }
 }

@@ -7,17 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ModeloDominio;
 
 namespace Presentacion
 {
-    public partial class FPAdq : FPrincipal
+    public partial class FPSala : Form
     {
-        //private ILNPAdq lnAdq;
-
-        public FPAdq(Personal p)//: base(p)
+        public FPSala()
         {
-            //this.lnAdq = new ILNPAdq(p);
             InitializeComponent();
         }
     }
