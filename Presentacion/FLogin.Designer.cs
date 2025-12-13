@@ -142,6 +142,7 @@
             this.groupB_TipoEmp.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+        }
 
         #endregion
 
@@ -151,9 +152,7 @@
         private System.Windows.Forms.TextBox textBox_Contraseña;
         private System.Windows.Forms.Button bt_Entrar;
         private System.Windows.Forms.GroupBox groupB_TipoEmp;
-        private System.W
-        }
-indows.Forms.RadioButton radioButton_PAdq;
+        private System.Windows.Forms.RadioButton radioButton_PAdq;
         private System.Windows.Forms.RadioButton radioButton_PSala;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
