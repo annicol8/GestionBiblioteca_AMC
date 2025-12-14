@@ -41,11 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILNLogin.cs" />
     <Compile Include="ILNPAdq.cs" />
     <Compile Include="ILNPersonal.cs" />
     <Compile Include="ILNPSala.cs" />
-    <Compile Include="LNLogin.cs" />
     <Compile Include="LNPAdq.cs" />
     <Compile Include="LNPSala.cs" />
     <Compile Include="LNPersonal.cs" />

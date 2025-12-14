@@ -16,6 +16,11 @@ namespace Presentacion
     public partial class FLogin : Form
     {
         private ILNPersonal lnp;
+
+        public FLogin()
+        {
+            InitializeComponent();
+        }
         public FLogin(ILNPersonal lnp)
         {
             InitializeComponent();
@@ -82,15 +87,15 @@ namespace Presentacion
             if(personalABuscar is PersonalSala ps)
             {
                 ILNPSala lnSala = new LNPSala(ps);
-                FPSala formSala = new FPSala(lnSala);
-                formSala.ShowDialog();
+                //FPSala formSala = new FPSala(lnSala);
+                //formSala.ShowDialog();
                     
             } else if(personalABuscar is PersonalAdquisiciones pa)
             {
 
                 ILNPAdq lnAdq = new LNPAdq(pa);
-                FPAdq formAdq = new FPAdq(lnAdq);
-                formAdq.ShowDialog();
+                //FPAdq formAdq = new FPAdq(lnAdq);
+                //formAdq.ShowDialog();
             } else
             {
                 MessageBox.Show("Personal no reconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

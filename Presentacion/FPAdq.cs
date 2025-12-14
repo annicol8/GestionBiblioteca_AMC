@@ -22,9 +22,9 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        public FPAdq(ILNPSala ln): base(ln)
+        /*public FPAdq(ILNPSala ln): base(ln)
         {
             InitializeComponent();
-        }
+        }*/
     }
 }
