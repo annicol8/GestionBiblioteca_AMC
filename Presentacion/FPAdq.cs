@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LogicaNegocio;
 using ModeloDominio;
 
 namespace Presentacion
@@ -18,6 +19,11 @@ namespace Presentacion
         public FPAdq(Personal p)//: base(p)
         {
             //this.lnAdq = new ILNPAdq(p);
+            InitializeComponent();
+        }
+
+        public FPAdq(ILNPSala ln): base(ln)
+        {
             InitializeComponent();
         }
     }

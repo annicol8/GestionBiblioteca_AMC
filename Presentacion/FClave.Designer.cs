@@ -37,15 +37,16 @@
             // lb_Mensaje
             // 
             this.lb_Mensaje.AutoSize = true;
-            this.lb_Mensaje.Location = new System.Drawing.Point(93, 73);
+            this.lb_Mensaje.Location = new System.Drawing.Point(64, 51);
             this.lb_Mensaje.Name = "lb_Mensaje";
-            this.lb_Mensaje.Size = new System.Drawing.Size(48, 20);
+            this.lb_Mensaje.Size = new System.Drawing.Size(69, 20);
             this.lb_Mensaje.TabIndex = 0;
-            this.lb_Mensaje.Text = "Clave";
+            this.lb_Mensaje.Text = "Mensaje";
+            this.lb_Mensaje.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button_Aceptar
             // 
-            this.button_Aceptar.Location = new System.Drawing.Point(97, 172);
+            this.button_Aceptar.Location = new System.Drawing.Point(68, 126);
             this.button_Aceptar.Name = "button_Aceptar";
             this.button_Aceptar.Size = new System.Drawing.Size(113, 39);
             this.button_Aceptar.TabIndex = 1;
@@ -55,7 +56,7 @@
             // 
             // button_Cancelar
             // 
-            this.button_Cancelar.Location = new System.Drawing.Point(274, 172);
+            this.button_Cancelar.Location = new System.Drawing.Point(260, 126);
             this.button_Cancelar.Name = "button_Cancelar";
             this.button_Cancelar.Size = new System.Drawing.Size(113, 39);
             this.button_Cancelar.TabIndex = 2;
@@ -65,16 +66,17 @@
             // 
             // textBox_Clave
             // 
-            this.textBox_Clave.Location = new System.Drawing.Point(259, 67);
+            this.textBox_Clave.Location = new System.Drawing.Point(195, 48);
+            this.textBox_Clave.MaxLength = 50;
             this.textBox_Clave.Name = "textBox_Clave";
-            this.textBox_Clave.Size = new System.Drawing.Size(128, 26);
-            this.textBox_Clave.TabIndex = 3;
+            this.textBox_Clave.Size = new System.Drawing.Size(178, 26);
+            this.textBox_Clave.TabIndex = 0;
             // 
             // FClave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 281);
+            this.ClientSize = new System.Drawing.Size(434, 232);
             this.Controls.Add(this.textBox_Clave);
             this.Controls.Add(this.button_Cancelar);
             this.Controls.Add(this.button_Aceptar);
@@ -83,6 +85,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FClave";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Introducir datos";
             this.Load += new System.EventHandler(this.FClave_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

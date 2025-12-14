@@ -7,7 +7,7 @@ using ModeloDominio;
 
 namespace LogicaNegocio
 {
-    internal interface ILNPersonal
+    public interface ILNPersonal
     {
         Personal Personal { get; }
 
@@ -20,6 +20,6 @@ namespace LogicaNegocio
         List<Ejemplar> GetEjemplaresPrestadosPorUsuario(string dni);
         bool TieneDocumentosFueraPlazo(string dniUsuario);
 
-        Personal BuscarPersonalPorNombreYTipo(string nombre, TipoPersonal tipo);
+        Personal Login(string nombre, TipoPersonal tipo);
     }
 }

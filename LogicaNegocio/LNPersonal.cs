@@ -104,10 +104,13 @@ namespace LogicaNegocio
             return false;
         }
 
-        public Personal BuscarPersonalPorNombreYTipo(string nombre, TipoPersonal tipo)
+        public Personal Login(string nombre, TipoPersonal tipo)
         {
-            List<Personal> todosPersonales = Persistencia.Persistencia.GetPersonales();
-            return todosPersonales.FirstOrDefault(p => p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase) && (p.Tipo == tipo));
+            return Persistencia.Persistencia
+                .GetPersonales()
+                .FirstOrDefault(p =>
+                    p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)
+                    && p.Tipo == tipo);
         }
 
     }
