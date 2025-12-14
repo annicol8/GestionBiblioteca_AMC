@@ -93,7 +93,6 @@ namespace Persistencia
                 return tablaPrestamoEjemplar;
             }
         }
-
         public static int GenerarIdPrestamo()
         {
             return ++ultimoIdPrestamo;
