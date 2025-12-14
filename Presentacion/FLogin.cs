@@ -15,9 +15,18 @@ namespace Presentacion
 {
     public partial class FLogin : Form
     {
-        public FLogin()
+        private ILNPersonal lnp;
+        public FLogin(ILNPersonal lnp)
         {
             InitializeComponent();
+            this.lnp = lnp;
+
+            toolTip1.SetToolTip(textBox_Nombre, "Introduce tu nombre");
+            toolTip1.SetToolTip(textBox_Contraseña, "Introduce la contraseña");
+            toolTip1.SetToolTip(radioButton_PSala, "Acceso para personal de sala");
+            toolTip1.SetToolTip(radioButton_PAdq, "Acceso para personal de adquisiciones");
+            toolTip1.SetToolTip(bt_Entrar, "Acceso a la aplicacion");
+
         }
 
         private void bt_Entrar_Click(object sender, EventArgs e)
@@ -51,13 +60,13 @@ namespace Presentacion
             if (radioButton_PSala.Checked) { tipoSeleccionado = TipoPersonal.personalSala;  }
             else { tipoSeleccionado = TipoPersonal.personalAdquisiciones; }
 
-            Personal personalABuscar = LNLogin.BuscarPersonalPorNombreYTipo(nombre, tipoSeleccionado);
+            Personal personalABuscar = lnp.Login(nombre, tipoSeleccionado);
 
             if (personalABuscar == null)
             {
                 MessageBox.Show(
                     "No se encontró ningún personal con los datos introducidos.\n\n" +
-                    "Verifique el nombre y el tipo de personal seleccionado.",
+                    "Verifique el nombre y tipo seleccionado.",
                     "Personal no encontrado",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -68,37 +77,27 @@ namespace Presentacion
                 return;
             }
 
-            try
-            {
-                if(tipoSeleccionado == TipoPersonal.personalSala)
-                {
-                    //ILNPSala ln = new LNPSala((PersonalSala)personalABuscar);
-                    //FPSala formSala = new FPSala(ln);
-                    
-                    //FPSala formSala = new FPSala(personalABuscar);
-                    this.Hide();
-                    //formSala.ShowDialog();
-                    this.Close();
-                } else {
-                    //ILNPAdqln = new LNPAdq((PersonalAdq)personalABuscar);
-                    //FPAdq formAdq = new FPAdq(ln);
-                    FPAdq formAdq = new FPAdq(personalABuscar);
-                    this.Hide();
-                    formAdq.ShowDialog();
-                    this.Close();
-                }
-            } catch (Exception ex)
-            {
-                MessageBox.Show(
-                    $"Error al iniciar la aplicación:\n\n{ex.Message}",
-                    "Error crítico",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+            this.Hide();
 
-                // Mostrar el formulario de login de nuevo
-                this.Show();
+            if(personalABuscar is PersonalSala ps)
+            {
+                ILNPSala lnSala = new LNPSala(ps);
+                FPSala formSala = new FPSala(lnSala);
+                formSala.ShowDialog();
+                    
+            } else if(personalABuscar is PersonalAdquisiciones pa)
+            {
+
+                ILNPAdq lnAdq = new LNPAdq(pa);
+                FPAdq formAdq = new FPAdq(lnAdq);
+                formAdq.ShowDialog();
+            } else
+            {
+                MessageBox.Show("Personal no reconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+
+            this.Close();
+        } 
 
     }
 }

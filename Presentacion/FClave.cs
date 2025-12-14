@@ -21,8 +21,8 @@ namespace Presentacion
         public FClave(string mensaje)
         {
             InitializeComponent();
-            lb_Mensaje.Text = mensaje;
-            this.Text = mensaje;
+            lb_Mensaje.Text = mensaje + ": ";
+            this.Text = "Introducir " + mensaje;
 
             this.AcceptButton = button_Aceptar;
             this.CancelButton = button_Cancelar;

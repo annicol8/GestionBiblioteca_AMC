@@ -38,9 +38,6 @@
             this.radioButton_PAdq = new System.Windows.Forms.RadioButton();
             this.radioButton_PSala = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
             this.groupB_TipoEmp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,6 +139,7 @@
             this.groupB_TipoEmp.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -158,5 +156,6 @@
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.ToolTip toolTip3;
         private System.Windows.Forms.ToolTip toolTip4;
+        private System.Windows.Forms.ToolTip toolTip5;
     }
 }

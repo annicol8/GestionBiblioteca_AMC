@@ -8,11 +8,11 @@ using Persistencia;
 
 namespace LogicaNegocio
 {
-    internal class LNPAdq : LNPersonal, ILNPAdq
+    public class LNPAdq : LNPersonal, ILNPAdq
     {
         public LNPAdq(PersonalAdquisiciones personal) : base(personal)
         {
-            ;
+            
         }
         
         /*

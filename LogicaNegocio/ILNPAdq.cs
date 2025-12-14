@@ -7,7 +7,7 @@ using ModeloDominio;
 
 namespace LogicaNegocio
 {
-    internal interface ILNPAdq
+    public interface ILNPAdq
     {
         bool AltaLibroPapel(LibroPapel libro);
 
