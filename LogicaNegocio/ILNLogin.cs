@@ -9,6 +9,6 @@ namespace LogicaNegocio
 {
     public interface ILNLogin
     {
-        Personal BuscarPersonalPorNombreYTipo(string nombre, TipoPersonal tipo)
+        Personal BuscarPersonalPorNombreYTipo(string nombre, TipoPersonal tipo);
        }
 }

@@ -11,7 +11,7 @@ using ModeloDominio;
 
 namespace Presentacion
 {
-    public partial class FPrincipal : FBase
+    public partial class FPrincipal : FComun
     {
         private Personal personal;
         private Personal Personal
@@ -52,7 +52,7 @@ namespace Presentacion
 
         private void menuUsuariosAlta_Click(object sender, EventArgs e)
         {
-            AbrirFormularioHijo(new FAltaUsuario(usuarios));
+            //AbrirFormularioHijo(new FAltaUsuario(usuarios));
         }
 
         private void AbrirFormularioHijo(Form formularioHijo)

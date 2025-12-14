@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FBase : Form
+    public partial class FComun : Form
     {
-        public FBase()
+        public FComun()
         {
             InitializeComponent();
-
         }
 
 
@@ -291,7 +290,7 @@ namespace Presentacion
 
         protected void ManejarExcepcion(Exception ex, string operacion)
         {
-            string mensaje = $"Error al {operacion}: { ex.Message} ";
+            string mensaje = $"Error al {operacion}: {ex.Message} ";
 
 
             MostrarError(mensaje);
@@ -299,6 +298,10 @@ namespace Presentacion
             // Aquí podrías agregar logging si lo implementas
             // Logger.Error(ex, operacion);
         }
+
+
+
+
 
     }
 }

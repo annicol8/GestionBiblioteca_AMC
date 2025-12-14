@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class FBase
+    partial class FAltaUsuario2
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FBase";
+            this.Text = "FAltaUsuario2";
         }
 
         #endregion

@@ -12,7 +12,7 @@ namespace Presentacion
 {
 
     // Asi o un formulario comun de introducir algo?
-    public partial class FIntroducirDNI : FBase
+    public partial class FIntroducirDNI : FComun
     {
         public FIntroducirDNI()
         {
@@ -23,7 +23,7 @@ namespace Presentacion
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                this.MostrarAdvertencia("Debe introducir un DNI.");
+                //this.MostrarAdvertencia("Debe introducir un DNI.");
                 textBox1.Focus();
                 return;
             }

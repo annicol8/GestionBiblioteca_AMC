@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FAltaUsuario : FBase
+    public partial class FAltaUsuario2 : FComun
     {
-        public FAltaUsuario()
+        public FAltaUsuario2() : base()
         {
             InitializeComponent();
         }
+
+
+
+
+
+
     }
 }

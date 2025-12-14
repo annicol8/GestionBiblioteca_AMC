@@ -46,23 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FAltaUsuario.cs">
+    <Compile Include="FAltaUsuario2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FAltaUsuario.Designer.cs">
-      <DependentUpon>FAltaUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FBase.Designer.cs">
-      <DependentUpon>FBase.cs</DependentUpon>
+    <Compile Include="FAltaUsuario2.Designer.cs">
+      <DependentUpon>FAltaUsuario2.cs</DependentUpon>
     </Compile>
     <Compile Include="FClave.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FClave.Designer.cs">
       <DependentUpon>FClave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FComun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FComun.Designer.cs">
+      <DependentUpon>FComun.cs</DependentUpon>
     </Compile>
     <Compile Include="FIntroducirDNI.cs">
       <SubType>Form</SubType>

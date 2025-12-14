@@ -74,9 +74,10 @@ namespace Presentacion
                 {
                     //ILNPSala ln = new LNPSala((PersonalSala)personalABuscar);
                     //FPSala formSala = new FPSala(ln);
-                    FPSala formSala = new FPSala(personalABuscar);
+                    
+                    //FPSala formSala = new FPSala(personalABuscar);
                     this.Hide();
-                    formSala.ShowDialog();
+                    //formSala.ShowDialog();
                     this.Close();
                 } else {
                     //ILNPAdqln = new LNPAdq((PersonalAdq)personalABuscar);
