@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class FPrincipal
+    partial class FPersonal
     {
         /// <summary>
         /// Required designer variable.
@@ -38,10 +38,10 @@
             this.menuDocumentosBaja = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDocumentosBuscar = new System.Windows.Forms.ToolStripMenuItem();
             this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEjemplaresAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEjemplaresBaja = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEjemplaresBuscar = new System.Windows.Forms.ToolStripMenuItem();
+            this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosBuscar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosDevolver = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +59,7 @@
             this.préstamosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 48);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,26 +70,26 @@
             this.menuUsuariosBaja,
             this.menuUsuariosBuscar});
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(124, 38);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(124, 44);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // menuUsuariosAlta
             // 
             this.menuUsuariosAlta.Name = "menuUsuariosAlta";
-            this.menuUsuariosAlta.Size = new System.Drawing.Size(359, 44);
+            this.menuUsuariosAlta.Size = new System.Drawing.Size(216, 44);
             this.menuUsuariosAlta.Text = "Alta ";
             this.menuUsuariosAlta.Click += new System.EventHandler(this.menuUsuariosAlta_Click);
             // 
             // menuUsuariosBaja
             // 
             this.menuUsuariosBaja.Name = "menuUsuariosBaja";
-            this.menuUsuariosBaja.Size = new System.Drawing.Size(359, 44);
+            this.menuUsuariosBaja.Size = new System.Drawing.Size(216, 44);
             this.menuUsuariosBaja.Text = "Baja";
             // 
             // menuUsuariosBuscar
             // 
             this.menuUsuariosBuscar.Name = "menuUsuariosBuscar";
-            this.menuUsuariosBuscar.Size = new System.Drawing.Size(359, 44);
+            this.menuUsuariosBuscar.Size = new System.Drawing.Size(216, 44);
             this.menuUsuariosBuscar.Text = "Buscar";
             // 
             // documentosToolStripMenuItem
@@ -99,25 +99,25 @@
             this.menuDocumentosBaja,
             this.menuDocumentosBuscar});
             this.documentosToolStripMenuItem.Name = "documentosToolStripMenuItem";
-            this.documentosToolStripMenuItem.Size = new System.Drawing.Size(170, 38);
+            this.documentosToolStripMenuItem.Size = new System.Drawing.Size(170, 44);
             this.documentosToolStripMenuItem.Text = "Documentos";
             // 
             // menuDocumentosAlta
             // 
             this.menuDocumentosAlta.Name = "menuDocumentosAlta";
-            this.menuDocumentosAlta.Size = new System.Drawing.Size(359, 44);
+            this.menuDocumentosAlta.Size = new System.Drawing.Size(216, 44);
             this.menuDocumentosAlta.Text = "Alta";
             // 
             // menuDocumentosBaja
             // 
             this.menuDocumentosBaja.Name = "menuDocumentosBaja";
-            this.menuDocumentosBaja.Size = new System.Drawing.Size(359, 44);
+            this.menuDocumentosBaja.Size = new System.Drawing.Size(216, 44);
             this.menuDocumentosBaja.Text = "Baja";
             // 
             // menuDocumentosBuscar
             // 
             this.menuDocumentosBuscar.Name = "menuDocumentosBuscar";
-            this.menuDocumentosBuscar.Size = new System.Drawing.Size(359, 44);
+            this.menuDocumentosBuscar.Size = new System.Drawing.Size(216, 44);
             this.menuDocumentosBuscar.Text = "Buscar";
             // 
             // ejemplaresToolStripMenuItem
@@ -127,8 +127,26 @@
             this.menuEjemplaresBaja,
             this.menuEjemplaresBuscar});
             this.ejemplaresToolStripMenuItem.Name = "ejemplaresToolStripMenuItem";
-            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(149, 38);
+            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(149, 44);
             this.ejemplaresToolStripMenuItem.Text = "Ejemplares";
+            // 
+            // menuEjemplaresAlta
+            // 
+            this.menuEjemplaresAlta.Name = "menuEjemplaresAlta";
+            this.menuEjemplaresAlta.Size = new System.Drawing.Size(216, 44);
+            this.menuEjemplaresAlta.Text = "Alta";
+            // 
+            // menuEjemplaresBaja
+            // 
+            this.menuEjemplaresBaja.Name = "menuEjemplaresBaja";
+            this.menuEjemplaresBaja.Size = new System.Drawing.Size(216, 44);
+            this.menuEjemplaresBaja.Text = "Baja";
+            // 
+            // menuEjemplaresBuscar
+            // 
+            this.menuEjemplaresBuscar.Name = "menuEjemplaresBuscar";
+            this.menuEjemplaresBuscar.Size = new System.Drawing.Size(216, 44);
+            this.menuEjemplaresBuscar.Text = "Buscar";
             // 
             // préstamosToolStripMenuItem
             // 
@@ -137,54 +155,36 @@
             this.menuPrestamosBuscar,
             this.menuPrestamosDevolver});
             this.préstamosToolStripMenuItem.Name = "préstamosToolStripMenuItem";
-            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(143, 38);
+            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(143, 44);
             this.préstamosToolStripMenuItem.Text = "Préstamos";
-            // 
-            // menuEjemplaresAlta
-            // 
-            this.menuEjemplaresAlta.Name = "menuEjemplaresAlta";
-            this.menuEjemplaresAlta.Size = new System.Drawing.Size(359, 44);
-            this.menuEjemplaresAlta.Text = "Alta";
-            // 
-            // menuEjemplaresBaja
-            // 
-            this.menuEjemplaresBaja.Name = "menuEjemplaresBaja";
-            this.menuEjemplaresBaja.Size = new System.Drawing.Size(359, 44);
-            this.menuEjemplaresBaja.Text = "Baja";
-            // 
-            // menuEjemplaresBuscar
-            // 
-            this.menuEjemplaresBuscar.Name = "menuEjemplaresBuscar";
-            this.menuEjemplaresBuscar.Size = new System.Drawing.Size(359, 44);
-            this.menuEjemplaresBuscar.Text = "Buscar";
             // 
             // menuPrestamosNuevo
             // 
             this.menuPrestamosNuevo.Name = "menuPrestamosNuevo";
-            this.menuPrestamosNuevo.Size = new System.Drawing.Size(359, 44);
+            this.menuPrestamosNuevo.Size = new System.Drawing.Size(242, 44);
             this.menuPrestamosNuevo.Text = "Nuevo";
             // 
             // menuPrestamosBuscar
             // 
             this.menuPrestamosBuscar.Name = "menuPrestamosBuscar";
-            this.menuPrestamosBuscar.Size = new System.Drawing.Size(359, 44);
+            this.menuPrestamosBuscar.Size = new System.Drawing.Size(242, 44);
             this.menuPrestamosBuscar.Text = "Buscar";
             // 
             // menuPrestamosDevolver
             // 
             this.menuPrestamosDevolver.Name = "menuPrestamosDevolver";
-            this.menuPrestamosDevolver.Size = new System.Drawing.Size(359, 44);
+            this.menuPrestamosDevolver.Size = new System.Drawing.Size(242, 44);
             this.menuPrestamosDevolver.Text = "Devolver";
             // 
-            // FPrincipal
+            // FPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FPrincipal";
-            this.Text = "FPSala";
+            this.Name = "FPersonal";
+            this.Text = "Gestión de biblioteca";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

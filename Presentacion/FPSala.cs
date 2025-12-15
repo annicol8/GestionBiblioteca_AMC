@@ -11,7 +11,7 @@ using LogicaNegocio;
 
 namespace Presentacion
 {
-    public partial class FPSala : FPrincipal
+    public partial class FPSala : FPersonal
     {
         private ILNPSala lnSala;
         public FPSala()

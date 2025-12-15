@@ -12,7 +12,7 @@ using ModeloDominio;
 
 namespace Presentacion
 {
-    public partial class FPAdq : FPrincipal
+    public partial class FPAdq : FPersonal
     {
         private ILNPAdq lnAdq;
 

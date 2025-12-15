@@ -36,6 +36,10 @@ namespace Presentacion
         {
             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        protected DialogResult MostrarPregunta(string mensaje, string titulo)
+        {
+            return MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
 
 
         protected bool SolicitarConfirmacion(string mensaje, string titulo = "Confirmación")

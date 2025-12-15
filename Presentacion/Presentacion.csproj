@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FAltaUsuario2.cs">
+    <Compile Include="FAltaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FAltaUsuario2.Designer.cs">
-      <DependentUpon>FAltaUsuario2.cs</DependentUpon>
+    <Compile Include="FAltaUsuario.Designer.cs">
+      <DependentUpon>FAltaUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="FClave.cs">
       <SubType>Form</SubType>
@@ -94,11 +94,11 @@
     <Compile Include="FPAdq.Designer.cs">
       <DependentUpon>FPAdq.cs</DependentUpon>
     </Compile>
-    <Compile Include="FPrincipal.cs">
+    <Compile Include="FPersonal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FPrincipal.Designer.cs">
-      <DependentUpon>FPrincipal.cs</DependentUpon>
+    <Compile Include="FPersonal.Designer.cs">
+      <DependentUpon>FPersonal.cs</DependentUpon>
     </Compile>
     <Compile Include="FPSala.cs">
       <SubType>Form</SubType>
@@ -108,6 +108,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FAltaUsuario.resx">
+      <DependentUpon>FAltaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FClave.resx">
       <DependentUpon>FClave.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,8 +120,8 @@
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FPrincipal.resx">
-      <DependentUpon>FPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="FPersonal.resx">
+      <DependentUpon>FPersonal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
