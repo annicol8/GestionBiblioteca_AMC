@@ -47,10 +47,11 @@ namespace Presentacion
 
         private void rbAudioLibro_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbAudioLibro.Checked) {
+            if (rbAudioLibro.Checked)
+            {
                 MostrarCamposAudioLibro();
             }
-    }
+        }
 
         private void MostrarCamposAudioLibro()
         {
@@ -73,3 +74,4 @@ namespace Presentacion
 
 
     }
+}
