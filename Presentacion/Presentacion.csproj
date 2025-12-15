@@ -52,6 +52,12 @@
     <Compile Include="FAltaUsuario.Designer.cs">
       <DependentUpon>FAltaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FBajaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBajaUsuario.Designer.cs">
+      <DependentUpon>FBajaUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FBuscarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FAltaUsuario.resx">
       <DependentUpon>FAltaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBajaUsuario.resx">
+      <DependentUpon>FBajaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FBuscarUsuario.resx">
       <DependentUpon>FBuscarUsuario.cs</DependentUpon>
