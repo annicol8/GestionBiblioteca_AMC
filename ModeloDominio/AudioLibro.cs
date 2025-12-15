@@ -13,15 +13,21 @@ namespace ModeloDominio
         private int duracion;  // en segundos
 
         // Propiedades
-        public string FormatoDigital { get; }
-        public int Duracion { get; }
+        public string FormatoDigital {
+            get { return formatoDigital; }
+            set { formatoDigital = value; }
+        }
+        public int Duracion {
+            get { return duracion; }
+            set { duracion = value; }
+        }
 
         public AudioLibro(string isbn, string titulo, string autor, string editorial, int anoEdicion,
                          string formatoDigital, int duracion)
             : base(isbn, titulo, autor, editorial, anoEdicion)
         {
-            this.formatoDigital = formatoDigital;
-            this.duracion = duracion;
+            FormatoDigital = formatoDigital;
+            Duracion = duracion;
         }
 
         // Constructor búsquedas

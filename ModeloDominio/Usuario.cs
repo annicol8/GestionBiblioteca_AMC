@@ -12,28 +12,34 @@ namespace ModeloDominio
         private string nombre;
         private bool dadoAlta;
 
+        public string Dni {
+            get { return dni; } set { dni = value; }
+        }
+
+        public string Nombre
+        {
+            get { return nombre; } set { nombre = value; }
+        }
+
+        public bool DadoAlta
+        {
+            get { return dadoAlta; } set { dadoAlta = value; }
+        }
+
         public Usuario(string dni, string nombre, bool dadoAlta)
         {
-            this.dni = dni;
-            this.nombre = nombre;
-            this.dadoAlta = dadoAlta;
+            Dni = dni;
+            Nombre = nombre;
+            DadoAlta = dadoAlta;
         }
 
         //constructor para búsquedas
         public Usuario(string dni)
         {
-            this.dni = dni;
-            this.nombre = null;
-            this.dadoAlta = false;
-        }
-
-        public string Dni { get { return dni; } }
-        
-        public string Nombre {  get { return nombre; } }
-
-        public bool DadoAlta { get { return dadoAlta; } set { dadoAlta = value; } }
-
-        
+            Dni = dni;
+            Nombre = null;
+            DadoAlta = false;
+        }       
         public bool Equals(Usuario otroUsuario)
         {
             if (otroUsuario == null) return false;

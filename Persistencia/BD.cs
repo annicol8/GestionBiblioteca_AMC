@@ -22,6 +22,13 @@ namespace Persistencia
 
         private static int ultimoIdPrestamo = 0;
 
+        
+        public static void CargarDatosPrueba()
+        {  
+            TablaPersonales.Add(new PersonalDato("12345678A", "Juan", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("87654321B", "María", TipoPersonal.personalAdquisiciones));
+        }
+
         public static Tabla<string, AudioLibroDato> TablaAudioLibros
         {
             get

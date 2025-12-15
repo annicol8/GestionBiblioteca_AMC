@@ -65,7 +65,7 @@ namespace Presentacion
             if (radioButton_PSala.Checked) { tipoSeleccionado = TipoPersonal.personalSala;  }
             else { tipoSeleccionado = TipoPersonal.personalAdquisiciones; }
 
-            Personal personalABuscar = lnp.Login(nombre, tipoSeleccionado);
+            Personal personalABuscar = LNPersonal.Login(nombre, tipoSeleccionado);
 
             if (personalABuscar == null)
             {

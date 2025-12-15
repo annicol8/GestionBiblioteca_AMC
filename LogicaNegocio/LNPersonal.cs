@@ -25,6 +25,19 @@ namespace LogicaNegocio
             }
             this.personal = personal;
         }
+        
+        //Método estático para obtener un personal en el formulario
+        //Por ser estático da error si lo intentas poner en la interfaz
+        public static Personal Login(string nombre, TipoPersonal tipo)
+        {
+            
+            return Persistencia.Persistencia
+                .GetPersonales()
+                .FirstOrDefault(p =>
+                    p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)
+                    && p.Tipo == tipo);
+        }
+        
 
         //Operaciones comunes a usuarios
         public void AltaUsuario(Usuario u)
@@ -104,14 +117,7 @@ namespace LogicaNegocio
             return false;
         }
 
-        public Personal Login(string nombre, TipoPersonal tipo)
-        {
-            return Persistencia.Persistencia
-                .GetPersonales()
-                .FirstOrDefault(p =>
-                    p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)
-                    && p.Tipo == tipo);
-        }
+        
 
     }
 }

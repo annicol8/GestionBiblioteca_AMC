@@ -19,23 +19,35 @@ namespace ModeloDominio
         //private List<Ejemplar> prestamoEjemplares;
         
 
-        public int Id { get; }
-        public DateTime FechaPrestamo { get; set; }
-        public DateTime FechaDevolucion { get; set; }
+        public int Id { 
+            get { return id; } set { id = value; }
+        }
+        public DateTime FechaPrestamo { 
+            get { return fechaPrestamo; } set { fechaPrestamo = value; }
+        }
+        public DateTime FechaDevolucion { 
+            get { return fechaDevolucion; } set {fechaDevolucion = value; }
+        }
 
-        public EstadoPrestamo Estado { get; set; } //ver si lo ponemos aqui o se obtiene directamente en la tabla Prestamo_Ejemplar
-        public string DniUsuario { get; }
-        public string DniPersonal { get; }
+        public EstadoPrestamo Estado { 
+            get { return estado; } set { estado = value; }
+        } //ver si lo ponemos aqui o se obtiene directamente en la tabla Prestamo_Ejemplar
+        public string DniUsuario { 
+            get { return dniUsuario; } set { dniUsuario = value; }
+        }
+        public string DniPersonal { 
+            get { return dniPersonal; } set {dniPersonal = value; }
+        }
 
        
         public Prestamo(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, string dniPersonal, string dniUsuario) //List<Ejemplar> prestamoEjemplares si eso añadir este arg
         {
-            this.id = id;
-            this.fechaPrestamo = fechaPrestamo;
-            this.fechaDevolucion = fechaDevolucion;
-            this.estado = estado;
-            this.dniPersonal = dniPersonal;
-            this.dniUsuario = dniUsuario;
+            Id = id;
+            FechaPrestamo = fechaPrestamo;
+            FechaDevolucion = fechaDevolucion;
+            Estado = estado;
+            DniPersonal = dniPersonal;
+            DniUsuario = dniUsuario;
             //this.prestamoEjemplares = new List<Ejemplar>();
         }
 

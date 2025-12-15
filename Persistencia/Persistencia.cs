@@ -10,6 +10,12 @@ namespace Persistencia
 {
     public static class Persistencia
     {
+
+        public static void CargarDatosPrueba()
+        {
+            BD.CargarDatosPrueba();
+        }
+
         #region USUARIO
         //USUARIO
         public static bool AltaUsuario(Usuario u)

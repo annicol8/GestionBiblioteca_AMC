@@ -10,7 +10,7 @@ namespace ModeloDominio
     {
         public PersonalAdquisiciones(string dni, string nombre) : base(dni, nombre) 
         {
-            this.tipo = TipoPersonal.personalAdquisiciones;
+            Tipo = TipoPersonal.personalAdquisiciones;
         }
     }
 }

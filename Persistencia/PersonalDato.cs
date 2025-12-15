@@ -12,13 +12,19 @@ namespace Persistencia
         private string nombre;
         private TipoPersonal tipoPersonal;
 
-        public string Nombre { get; private set; }
-        public TipoPersonal TipoPersonal { get; private set; }
+        public string Nombre { 
+            get { return nombre; }
+            set { nombre = value; }
+        }
+        public TipoPersonal TipoPersonal { 
+            get { return tipoPersonal; }
+            set {  tipoPersonal = value; }
+        }
 
         public PersonalDato(string dni, string nombre, TipoPersonal tipoPersonal): base(dni)
         {
-            this.nombre = nombre;
-            this.tipoPersonal = tipoPersonal;
+            Nombre = nombre;
+            TipoPersonal = tipoPersonal;
         }
     }
 }

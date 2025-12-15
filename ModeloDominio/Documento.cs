@@ -16,11 +16,26 @@ namespace ModeloDominio
         private int anoEdicion;
 
         // Propiedades públicas
-        public string Isbn { get; }
-        public string Titulo { get; }
-        public string Autor { get; }
-        public string Editorial { get; }
-        public int AnoEdicion { get; }
+        public string Isbn {
+            get { return isbn; }
+            set { isbn = value; }
+        }
+        public string Titulo { 
+            get { return titulo; }
+            set { titulo = value; }
+        }
+        public string Autor {
+            get { return autor; }
+            set { autor = value; }
+        }
+        public string Editorial {
+            get { return editorial; }
+            set { editorial = value; }
+        }
+        public int AnoEdicion {
+            get { return anoEdicion; }
+            set { anoEdicion = value; }
+        }
 
         // Relación
         public List<Ejemplar> Ejemplares { get; set; }
@@ -30,11 +45,11 @@ namespace ModeloDominio
 
         public Documento(string isbn, string titulo, string autor, string editorial, int anoEdicion)
         {
-            this.isbn = isbn;
-            this.titulo = titulo;
-            this.autor = autor;
-            this.editorial = editorial;
-            this.anoEdicion = anoEdicion;
+            Isbn = isbn;
+            Titulo = titulo;
+            Autor = autor;
+            Editorial = editorial;
+            AnoEdicion = anoEdicion;
         }
 
         //constructor para busqueda

@@ -19,7 +19,5 @@ namespace LogicaNegocio
         List<Usuario> GetTodosUsuarios();
         List<Ejemplar> GetEjemplaresPrestadosPorUsuario(string dni);
         bool TieneDocumentosFueraPlazo(string dniUsuario);
-
-        Personal Login(string nombre, TipoPersonal tipo);
     }
 }

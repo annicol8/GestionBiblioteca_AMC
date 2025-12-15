@@ -15,24 +15,34 @@ namespace ModeloDominio
         
 
         // Propiedades
-        public int Codigo { get; }
-        public bool Activo { get; set; }
+        public int Codigo {
+            get { return codigo; }
+            set { codigo = value; }
+        }
+        public bool Activo {
+            get { return activo; } 
+            set { activo = value; }
+        }
+
+        //MIRARRRR
         public string DniPAdq { get; } 
 
         // Relaciones
+        //MIRARRRR
         public string IsbnDocumento { get; }  // Clave foranea
         public Documento Documento { get; set; }    // Documento asociado
 
         public Ejemplar(int cod)
         {
-            this.codigo = cod;
-            this.activo = true;
+            Codigo = cod;
+            Activo = true;
         }
 
+        //TENDRÁ QUE HEREDAR DEL DE ARRIBA, NO?
         public Ejemplar(int codigo, bool activo, string isbnDocumento, string dniPersonalAdq)
         {
-            this.codigo = codigo;
-            this.activo = activo;
+            Codigo = codigo;
+            Activo = activo;
             IsbnDocumento = isbnDocumento;
             DniPAdq = dniPersonalAdq;
         }

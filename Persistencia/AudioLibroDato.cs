@@ -16,13 +16,37 @@ namespace Persistencia
         private string formatoDigital;
         private int duracion;
 
-        // Propiedades públicas
-        public string Titulo { get; private set; }
-        public string Autor { get; private set; }
-        public string Editorial { get; private set; }
-        public int AnoEdicion { get; private set; }
-        public string FormatoDigital { get; private set; }
-        public int Duracion { get; private set; }
+        public string Titulo
+        {
+            get { return titulo; }
+            private set { titulo = value; }
+        }
+        public string Autor
+        {
+            get { return autor; }
+            private set { autor = value; }
+        }
+        public string Editorial
+        {
+            get { return editorial; }
+            private set { editorial = value; }
+        }
+        public int AnoEdicion
+        {
+            get { return anoEdicion; }
+            private set { anoEdicion = value; }
+        }
+        public string FormatoDigital
+        {
+            get { return formatoDigital; }
+            private set { formatoDigital = value; }
+        }
+        public int Duracion
+        {
+            get { return duracion; }
+            private set { duracion = value; }
+        }
+
 
 
 
