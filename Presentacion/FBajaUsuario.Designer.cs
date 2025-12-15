@@ -32,6 +32,8 @@
             this.tbNombre = new System.Windows.Forms.TextBox();
             this.tbDni = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btCancelar = new System.Windows.Forms.Button();
+            this.btAceptar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Nombre
@@ -66,17 +68,39 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "DNI: ";
             // 
+            // btCancelar
+            // 
+            this.btCancelar.Location = new System.Drawing.Point(439, 394);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(119, 43);
+            this.btCancelar.TabIndex = 9;
+            this.btCancelar.Text = "Cancelar";
+            this.btCancelar.UseVisualStyleBackColor = true;
+            // 
+            // btAceptar
+            // 
+            this.btAceptar.Location = new System.Drawing.Point(243, 395);
+            this.btAceptar.Name = "btAceptar";
+            this.btAceptar.Size = new System.Drawing.Size(129, 42);
+            this.btAceptar.TabIndex = 8;
+            this.btAceptar.Text = "Aceptar";
+            this.btAceptar.UseVisualStyleBackColor = true;
+            this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
+            // 
             // FBajaUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 559);
+            this.Controls.Add(this.btCancelar);
+            this.Controls.Add(this.btAceptar);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.tbDni);
             this.Controls.Add(this.label1);
             this.Name = "FBajaUsuario";
-            this.Text = "FBajaUsuario";
+            this.Text = "Baja de Usuario";
+            this.Load += new System.EventHandler(this.FBajaUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,5 +112,7 @@
         private System.Windows.Forms.TextBox tbNombre;
         private System.Windows.Forms.TextBox tbDni;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btCancelar;
+        private System.Windows.Forms.Button btAceptar;
     }
 }

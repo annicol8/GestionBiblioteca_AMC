@@ -85,6 +85,7 @@
             this.menuUsuariosBaja.Name = "menuUsuariosBaja";
             this.menuUsuariosBaja.Size = new System.Drawing.Size(359, 44);
             this.menuUsuariosBaja.Text = "Baja";
+            this.menuUsuariosBaja.Click += new System.EventHandler(this.menuUsuariosBaja_Click);
             // 
             // menuUsuariosBuscar
             // 
