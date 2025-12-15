@@ -7,32 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LogicaNegocio;
 using ModeloDominio;
 
 namespace Presentacion
 {
     public partial class FPrincipal : FComun
     {
-        private Personal personal;
+        /*private Personal personal;
         private Personal Personal
         {
             get { return personal; }
             set { personal = value; }
-        }
+        }*/
+
+        protected ILNPersonal lnp;
+        
         public FPrincipal()
         {
             InitializeComponent();
         }
 
-        public FPrincipal(Personal personal) : this()
+        public FPrincipal(ILNPersonal lnp) : this()
         {
-            this.Personal = personal;
+            this.lnp = lnp;
         }
 
+        /*
         private void FPrincipal_Load(object sender, EventArgs e)
         {
-
-            if (Personal.Tipo == TipoPersonal.personalSala)
+            ILNPSala lnSala = lnp as ILNPSala;
+            if (lnSala != null )
             {
                 ejemplaresToolStripMenuItem.Enabled = false;
                 préstamosToolStripMenuItem.Enabled = true;
@@ -40,7 +45,7 @@ namespace Presentacion
                 documentosToolStripMenuItem.Enabled = false;
 
             }
-            else if (Personal.Tipo == TipoPersonal.personalAdquisiciones)
+            else 
             {
                 préstamosToolStripMenuItem.Enabled = true;
                 usuariosToolStripMenuItem.Enabled = true;
@@ -48,7 +53,7 @@ namespace Presentacion
                 ejemplaresToolStripMenuItem.Enabled = true;
             }
 
-        }
+        }*/
 
         private void menuUsuariosAlta_Click(object sender, EventArgs e)
         {

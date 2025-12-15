@@ -7,14 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LogicaNegocio;
 
 namespace Presentacion
 {
-    public partial class FPSala : Form
+    public partial class FPSala : FPrincipal
     {
+        private ILNPSala lnSala;
         public FPSala()
         {
             InitializeComponent();
+        }
+        
+
+        public FPSala(ILNPSala lnSala) : base(lnSala)
+        {
+            InitializeComponent();
+            this.lnSala = lnSala;
         }
     }
 }

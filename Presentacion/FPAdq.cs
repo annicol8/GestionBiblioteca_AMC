@@ -14,17 +14,17 @@ namespace Presentacion
 {
     public partial class FPAdq : FPrincipal
     {
-        //private ILNPAdq lnAdq;
+        private ILNPAdq lnAdq;
 
-        public FPAdq(Personal p)//: base(p)
+        public FPAdq(ILNPAdq lnpa): base(lnpa)
         {
-            //this.lnAdq = new ILNPAdq(p);
+            this.lnAdq = lnpa;
             InitializeComponent();
         }
 
-        /*public FPAdq(ILNPSala ln): base(ln)
+        public FPAdq()
         {
             InitializeComponent();
-        }*/
+        }
     }
 }
