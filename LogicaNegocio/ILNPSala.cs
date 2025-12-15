@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    public interface ILNPSala
+    public interface ILNPSala: ILNPersonal
     {
         int AltaPrestamo(Prestamo prestamo);
         //bool BajaPrestamo(Prestamo p);
