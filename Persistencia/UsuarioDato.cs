@@ -12,8 +12,12 @@ namespace Persistencia
         private string nombre;
         private bool dadoAlta;
 
-        public string Nombre { get; private set;}
-        public bool DadoAlta { get; private set;}
+        public string Nombre {
+            get { return nombre; } set { nombre = value; }
+        }
+        public bool DadoAlta {
+            get { return dadoAlta; } set { dadoAlta = value; }
+        }
 
         public UsuarioDato(String dni, String nombre, bool dadoAlta) : base(dni)
         {

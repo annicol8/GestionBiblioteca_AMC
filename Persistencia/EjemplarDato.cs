@@ -12,13 +12,19 @@ namespace Persistencia
         // Atributos
         private string isbn;           // Clave foránea
         private bool activo;
-        private int idPersonalAdq;  // Clave foránea
+        private string dniPersonalAdq;  // Clave foránea
 
 
         // Propiedades públicas
-        public string Isbn { get; private set; }
-        public bool Activo { get; private set; }
-        public string DniPersonalAdq { get; private set; }
+        public string Isbn { 
+            get { return isbn; } set { isbn = value; }
+        }
+        public bool Activo { 
+            get { return activo; } set { activo = value; }
+        }
+        public string DniPersonalAdq { 
+            get { return dniPersonalAdq; } set { dniPersonalAdq = value; }
+        }
         
 
         public EjemplarDato(int codigo, string isbn, bool activo, string dniPersonalAdq) : base(codigo)
