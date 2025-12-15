@@ -15,6 +15,7 @@ namespace Presentacion
     public partial class FPrincipal : FComun
     {
         /*private Personal personal;
+         * 
         private Personal Personal
         {
             get { return personal; }
