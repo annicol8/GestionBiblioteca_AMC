@@ -11,19 +11,22 @@ using LogicaNegocio;
 
 namespace Presentacion
 {
-    public partial class FPSala : FPrincipal
+    public partial class FPSala : FPersonal
     {
-        private ILNPSala lnSala;
-        public FPSala()
-        {
-            InitializeComponent();
-        }
-        
-
         public FPSala(ILNPSala lnSala) : base(lnSala)
         {
             InitializeComponent();
-            this.lnSala = lnSala;
+            ConfigurarPermisos();
         }
+
+        private void ConfigurarPermisos()
+        {
+            
+            OcultarDocumentos();
+            OcultarEjemplares();
+        }
+
+        // Si necesitas lógica específica de sala
+        private ILNPSala LNPSala => (ILNPSala) lnp;
     }
 }

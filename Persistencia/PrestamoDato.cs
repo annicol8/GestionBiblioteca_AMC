@@ -17,7 +17,23 @@ namespace Persistencia
         private EstadoPrestamo estado;
         private string dniUsuario;
         private string dniPersonal;
-
+        
+        
+        public DateTime FechaPrestamo {
+            get { return fechaPrestamo; } set { fechaPrestamo = value; }
+        }
+        public DateTime FechaDevolucion {
+            get { return fechaDevolucion; } set {fechaDevolucion = value; }
+        }
+        public EstadoPrestamo Estado { 
+            get { return estado; } set { estado = value; }
+        }
+        public string DniUsuario {
+            get { return dniUsuario; } set { dniUsuario = value; }
+        }
+        public string DniPersonal{  
+            get { return dniPersonal; } set {dniPersonal = value; }
+        }
 
         public PrestamoDato(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, string dniUsuario, string dniPersonal) : base(id)
         {
@@ -28,11 +44,7 @@ namespace Persistencia
             DniPersonal = dniPersonal;
         }
 
-        public DateTime FechaPrestamo { get; set; }
-        public DateTime FechaDevolucion { get; set; }
-        public EstadoPrestamo Estado { get; private set; }
-        public string DniUsuario { get; private set; }
-        public string DniPersonal{  get; private set; }
+        
         
         
     }

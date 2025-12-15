@@ -15,10 +15,18 @@ namespace Persistencia
         private int anoEdicion;
 
         // Propiedades públicas
-        public string Titulo { get; private set; }
-        public string Autor { get; private set; }
-        public string Editorial { get; private set; }
-        public int AnoEdicion { get; private set; }
+        public string Titulo { 
+            get { return titulo; } set { titulo = value; }
+        }
+        public string Autor { 
+            get { return autor; } set { autor = value; }
+        }
+        public string Editorial { 
+            get { return editorial; } set { editorial = value; }
+        }
+        public int AnoEdicion { 
+            get { return anoEdicion; } set { anoEdicion = value; }
+        }
 
         //poiner para transformador??
         //public string TipoDocumento { get; private set; } // "AudioLibro" o ""LibroPapel

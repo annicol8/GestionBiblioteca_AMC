@@ -52,7 +52,18 @@ namespace LogicaNegocio
             if (existente != null && existente.DadoAlta)
                 throw new InvalidOperationException($"Ya existe un usuario activo con DNI {u.Dni}");
 
-            Persistencia.Persistencia.AltaUsuario(u);
+            // Si existe pero está inactivo, reactivarlo
+            if (existente != null && !existente.DadoAlta)
+            {
+                existente.Nombre = u.Nombre;  // Actualizar el nombre por si cambió
+                existente.DadoAlta = true;
+                Persistencia.Persistencia.UpdateUsuario(existente);
+            }
+            else
+            {
+                // No existe, crear nuevo
+                Persistencia.Persistencia.AltaUsuario(u);
+            }
         }
 
         public void BajaUsuario(Usuario u)

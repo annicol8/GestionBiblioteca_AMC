@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class FPrincipal
+    partial class FPersonal
     {
         /// <summary>
         /// Required designer variable.
@@ -38,10 +38,10 @@
             this.menuDocumentosBaja = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDocumentosBuscar = new System.Windows.Forms.ToolStripMenuItem();
             this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEjemplaresAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEjemplaresBaja = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEjemplaresBuscar = new System.Windows.Forms.ToolStripMenuItem();
+            this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosBuscar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosDevolver = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,12 +85,14 @@
             this.menuUsuariosBaja.Name = "menuUsuariosBaja";
             this.menuUsuariosBaja.Size = new System.Drawing.Size(359, 44);
             this.menuUsuariosBaja.Text = "Baja";
+            this.menuUsuariosBaja.Click += new System.EventHandler(this.menuUsuariosBaja_Click);
             // 
             // menuUsuariosBuscar
             // 
             this.menuUsuariosBuscar.Name = "menuUsuariosBuscar";
             this.menuUsuariosBuscar.Size = new System.Drawing.Size(359, 44);
             this.menuUsuariosBuscar.Text = "Buscar";
+            this.menuUsuariosBuscar.Click += new System.EventHandler(this.menuUsuariosBuscar_Click);
             // 
             // documentosToolStripMenuItem
             // 
@@ -107,6 +109,7 @@
             this.menuDocumentosAlta.Name = "menuDocumentosAlta";
             this.menuDocumentosAlta.Size = new System.Drawing.Size(359, 44);
             this.menuDocumentosAlta.Text = "Alta";
+            this.menuDocumentosAlta.Click += new System.EventHandler(this.menuDocumentosAlta_Click);
             // 
             // menuDocumentosBaja
             // 
@@ -130,6 +133,24 @@
             this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(149, 38);
             this.ejemplaresToolStripMenuItem.Text = "Ejemplares";
             // 
+            // menuEjemplaresAlta
+            // 
+            this.menuEjemplaresAlta.Name = "menuEjemplaresAlta";
+            this.menuEjemplaresAlta.Size = new System.Drawing.Size(216, 44);
+            this.menuEjemplaresAlta.Text = "Alta";
+            // 
+            // menuEjemplaresBaja
+            // 
+            this.menuEjemplaresBaja.Name = "menuEjemplaresBaja";
+            this.menuEjemplaresBaja.Size = new System.Drawing.Size(216, 44);
+            this.menuEjemplaresBaja.Text = "Baja";
+            // 
+            // menuEjemplaresBuscar
+            // 
+            this.menuEjemplaresBuscar.Name = "menuEjemplaresBuscar";
+            this.menuEjemplaresBuscar.Size = new System.Drawing.Size(216, 44);
+            this.menuEjemplaresBuscar.Text = "Buscar";
+            // 
             // préstamosToolStripMenuItem
             // 
             this.préstamosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -140,51 +161,33 @@
             this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(143, 38);
             this.préstamosToolStripMenuItem.Text = "Préstamos";
             // 
-            // menuEjemplaresAlta
-            // 
-            this.menuEjemplaresAlta.Name = "menuEjemplaresAlta";
-            this.menuEjemplaresAlta.Size = new System.Drawing.Size(359, 44);
-            this.menuEjemplaresAlta.Text = "Alta";
-            // 
-            // menuEjemplaresBaja
-            // 
-            this.menuEjemplaresBaja.Name = "menuEjemplaresBaja";
-            this.menuEjemplaresBaja.Size = new System.Drawing.Size(359, 44);
-            this.menuEjemplaresBaja.Text = "Baja";
-            // 
-            // menuEjemplaresBuscar
-            // 
-            this.menuEjemplaresBuscar.Name = "menuEjemplaresBuscar";
-            this.menuEjemplaresBuscar.Size = new System.Drawing.Size(359, 44);
-            this.menuEjemplaresBuscar.Text = "Buscar";
-            // 
             // menuPrestamosNuevo
             // 
             this.menuPrestamosNuevo.Name = "menuPrestamosNuevo";
-            this.menuPrestamosNuevo.Size = new System.Drawing.Size(359, 44);
+            this.menuPrestamosNuevo.Size = new System.Drawing.Size(242, 44);
             this.menuPrestamosNuevo.Text = "Nuevo";
             // 
             // menuPrestamosBuscar
             // 
             this.menuPrestamosBuscar.Name = "menuPrestamosBuscar";
-            this.menuPrestamosBuscar.Size = new System.Drawing.Size(359, 44);
+            this.menuPrestamosBuscar.Size = new System.Drawing.Size(242, 44);
             this.menuPrestamosBuscar.Text = "Buscar";
             // 
             // menuPrestamosDevolver
             // 
             this.menuPrestamosDevolver.Name = "menuPrestamosDevolver";
-            this.menuPrestamosDevolver.Size = new System.Drawing.Size(359, 44);
+            this.menuPrestamosDevolver.Size = new System.Drawing.Size(242, 44);
             this.menuPrestamosDevolver.Text = "Devolver";
             // 
-            // FPrincipal
+            // FPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FPrincipal";
-            this.Text = "FPSala";
+            this.Name = "FPersonal";
+            this.Text = "Gestión de biblioteca";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -11,8 +11,12 @@ namespace Persistencia
         private int idPrestamo;
         private int codigoEjemplar;
 
-        public int IdPrestamo { get; private set; }
-        public int CodigoEjemplar { get; private set; }
+        public int IdPrestamo {
+            get { return idPrestamo; } set { idPrestamo = value; }
+        }
+        public int CodigoEjemplar {
+            get { return codigoEjemplar; } set { codigoEjemplar = value; }
+        }
 
         public ClavePrestamoEjemplar(int idPrestamo, int codigoEjemplar)
         {
