@@ -70,6 +70,12 @@
     <Compile Include="FIntroducirDNI.Designer.cs">
       <DependentUpon>FIntroducirDNI.cs</DependentUpon>
     </Compile>
+    <Compile Include="FListaDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FListaDocumentos.Designer.cs">
+      <DependentUpon>FListaDocumentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FListaUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,12 @@
     <Compile Include="FPSala.Designer.cs">
       <DependentUpon>FPSala.cs</DependentUpon>
     </Compile>
+    <Compile Include="FUsuariosUnoAUno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FUsuariosUnoAUno.Designer.cs">
+      <DependentUpon>FUsuariosUnoAUno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FClave.resx">
@@ -114,11 +126,20 @@
     <EmbeddedResource Include="FIntroducirDNI.resx">
       <DependentUpon>FIntroducirDNI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FListaDocumentos.resx">
+      <DependentUpon>FListaDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FListaUsuarios.resx">
+      <DependentUpon>FListaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FPrincipal.resx">
       <DependentUpon>FPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FUsuariosUnoAUno.resx">
+      <DependentUpon>FUsuariosUnoAUno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
