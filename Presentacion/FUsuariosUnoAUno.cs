@@ -13,9 +13,9 @@ namespace Presentacion
 {
     public partial class FUsuariosUnoAUno : Form
     {
-        private LNPersonal lnp;
+        private ILNPersonal lnp;
         private BindingSource bindingSource;
-        public FUsuariosUnoAUno(LNPersonal lnp)
+        public FUsuariosUnoAUno(ILNPersonal lnp)
         {
             InitializeComponent();
             this.lnp = lnp;

@@ -160,5 +160,31 @@ namespace Presentacion
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
+
+        private void menuListado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FListaUsuarios formulario = new FListaUsuarios(lnp);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al abrir el listado de usuarios: {ex.Message}", "Error");
+            }
+        }
+
+        private void menuRecorrerUnoAUno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FUsuariosUnoAUno formulario = new FUsuariosUnoAUno(lnp);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al abrir el recorrido de usuarios: {ex.Message}", "Error");
+            }
+        }
     }
 }
