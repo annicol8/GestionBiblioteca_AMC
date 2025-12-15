@@ -59,7 +59,7 @@
             this.préstamosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 48);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 42);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,27 +70,28 @@
             this.menuUsuariosBaja,
             this.menuUsuariosBuscar});
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(124, 44);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(124, 38);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // menuUsuariosAlta
             // 
             this.menuUsuariosAlta.Name = "menuUsuariosAlta";
-            this.menuUsuariosAlta.Size = new System.Drawing.Size(216, 44);
+            this.menuUsuariosAlta.Size = new System.Drawing.Size(359, 44);
             this.menuUsuariosAlta.Text = "Alta ";
             this.menuUsuariosAlta.Click += new System.EventHandler(this.menuUsuariosAlta_Click);
             // 
             // menuUsuariosBaja
             // 
             this.menuUsuariosBaja.Name = "menuUsuariosBaja";
-            this.menuUsuariosBaja.Size = new System.Drawing.Size(216, 44);
+            this.menuUsuariosBaja.Size = new System.Drawing.Size(359, 44);
             this.menuUsuariosBaja.Text = "Baja";
             // 
             // menuUsuariosBuscar
             // 
             this.menuUsuariosBuscar.Name = "menuUsuariosBuscar";
-            this.menuUsuariosBuscar.Size = new System.Drawing.Size(216, 44);
+            this.menuUsuariosBuscar.Size = new System.Drawing.Size(359, 44);
             this.menuUsuariosBuscar.Text = "Buscar";
+            this.menuUsuariosBuscar.Click += new System.EventHandler(this.menuUsuariosBuscar_Click);
             // 
             // documentosToolStripMenuItem
             // 
@@ -99,7 +100,7 @@
             this.menuDocumentosBaja,
             this.menuDocumentosBuscar});
             this.documentosToolStripMenuItem.Name = "documentosToolStripMenuItem";
-            this.documentosToolStripMenuItem.Size = new System.Drawing.Size(170, 44);
+            this.documentosToolStripMenuItem.Size = new System.Drawing.Size(170, 38);
             this.documentosToolStripMenuItem.Text = "Documentos";
             // 
             // menuDocumentosAlta
@@ -127,7 +128,7 @@
             this.menuEjemplaresBaja,
             this.menuEjemplaresBuscar});
             this.ejemplaresToolStripMenuItem.Name = "ejemplaresToolStripMenuItem";
-            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(149, 44);
+            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(149, 38);
             this.ejemplaresToolStripMenuItem.Text = "Ejemplares";
             // 
             // menuEjemplaresAlta
@@ -155,7 +156,7 @@
             this.menuPrestamosBuscar,
             this.menuPrestamosDevolver});
             this.préstamosToolStripMenuItem.Name = "préstamosToolStripMenuItem";
-            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(143, 44);
+            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(143, 38);
             this.préstamosToolStripMenuItem.Text = "Préstamos";
             // 
             // menuPrestamosNuevo

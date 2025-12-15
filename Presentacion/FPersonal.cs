@@ -86,5 +86,34 @@ namespace Presentacion
             }
             return null;
         }
+
+        private void menuUsuariosBuscar_Click(object sender, EventArgs e)
+        {
+            string dni;
+            while (true)
+            {
+                dni = pedirDNI();
+                if (dni == null)
+                    return; // cancelado
+
+                Usuario usuario = lnp.GetUsuario(dni);
+
+                if (usuario == null)
+                {
+                    DialogResult dr = MostrarPregunta(
+                        "¿Quieres introducir otro?",
+                        "No existe un usuario con ese DNI"
+                    );
+                    if (dr == DialogResult.Yes)
+                        continue;
+                    else
+                        return;
+                }
+
+                FBuscarUsuario formulario = new FBuscarUsuario(usuario);
+                formulario.ShowDialog(this);
+                return;
+            }
+        }
     }
 }
