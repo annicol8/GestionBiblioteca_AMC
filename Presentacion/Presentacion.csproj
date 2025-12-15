@@ -70,6 +70,12 @@
     <Compile Include="FIntroducirDNI.Designer.cs">
       <DependentUpon>FIntroducirDNI.cs</DependentUpon>
     </Compile>
+    <Compile Include="FListaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FListaUsuarios.Designer.cs">
+      <DependentUpon>FListaUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="FLogin.cs">
       <SubType>Form</SubType>
     </Compile>
