@@ -107,19 +107,20 @@
             // menuDocumentosAlta
             // 
             this.menuDocumentosAlta.Name = "menuDocumentosAlta";
-            this.menuDocumentosAlta.Size = new System.Drawing.Size(216, 44);
+            this.menuDocumentosAlta.Size = new System.Drawing.Size(359, 44);
             this.menuDocumentosAlta.Text = "Alta";
+            this.menuDocumentosAlta.Click += new System.EventHandler(this.menuDocumentosAlta_Click);
             // 
             // menuDocumentosBaja
             // 
             this.menuDocumentosBaja.Name = "menuDocumentosBaja";
-            this.menuDocumentosBaja.Size = new System.Drawing.Size(216, 44);
+            this.menuDocumentosBaja.Size = new System.Drawing.Size(359, 44);
             this.menuDocumentosBaja.Text = "Baja";
             // 
             // menuDocumentosBuscar
             // 
             this.menuDocumentosBuscar.Name = "menuDocumentosBuscar";
-            this.menuDocumentosBuscar.Size = new System.Drawing.Size(216, 44);
+            this.menuDocumentosBuscar.Size = new System.Drawing.Size(359, 44);
             this.menuDocumentosBuscar.Text = "Buscar";
             // 
             // ejemplaresToolStripMenuItem

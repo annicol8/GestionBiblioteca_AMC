@@ -12,7 +12,7 @@ using ModeloDominio;
 
 namespace Presentacion
 {
-    public partial class FPersonal : FComun
+    public abstract partial class FPersonal : FComun
     {
         /*private Personal personal;
          * 
@@ -35,6 +35,16 @@ namespace Presentacion
         public FPersonal(ILNPersonal lnp) : this()
         {
             this.lnp = lnp;
+        }
+
+        protected void OcultarDocumentos()
+        {
+            documentosToolStripMenuItem.Visible = false;
+        }
+
+        protected void OcultarEjemplares()
+        {
+            ejemplaresToolStripMenuItem.Visible = false;
         }
 
 
@@ -144,6 +154,11 @@ namespace Presentacion
             }
 
 
+        }
+
+        protected virtual void menuDocumentosAlta_Click(object sender, EventArgs e)
+        {
+                       MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
     }
 }

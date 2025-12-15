@@ -26,5 +26,11 @@ namespace Presentacion
         {
             InitializeComponent();
         }
+
+        public void menuDocumentosAlta_Click(object sender, EventArgs e)
+        {
+            string isbn;
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+        }
     }
 }
