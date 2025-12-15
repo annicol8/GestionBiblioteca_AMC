@@ -12,7 +12,7 @@ using ModeloDominio;
 
 namespace Presentacion
 {
-    public abstract partial class FPersonal : FComun
+    public partial class FPersonal : FComun
     {
         /*private Personal personal;
          * 
@@ -158,7 +158,7 @@ namespace Presentacion
 
         protected virtual void menuDocumentosAlta_Click(object sender, EventArgs e)
         {
-                       MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
     }
 }
