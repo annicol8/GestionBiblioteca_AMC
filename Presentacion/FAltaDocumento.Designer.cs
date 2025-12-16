@@ -39,14 +39,16 @@
             this.rbLibro = new System.Windows.Forms.RadioButton();
             this.rbAudioLibro = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbAudioLibro = new System.Windows.Forms.GroupBox();
+            this.tbDuracion = new System.Windows.Forms.TextBox();
+            this.lbFormatoDigital = new System.Windows.Forms.Label();
+            this.tbFormatoDigital = new System.Windows.Forms.TextBox();
+            this.lbDuracion = new System.Windows.Forms.Label();
             this.btAñadirEjemplares = new System.Windows.Forms.Button();
             this.btDarAlta = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
-            this.lbFormatoDigital = new System.Windows.Forms.Label();
-            this.lbDuracion = new System.Windows.Forms.Label();
-            this.tbFormatoDigital = new System.Windows.Forms.TextBox();
-            this.tbDuracion = new System.Windows.Forms.TextBox();
-            this.gbAudioLibro = new System.Windows.Forms.GroupBox();
+            this.tbAnoEdicion = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gbAudioLibro.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +65,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(123, 135);
+            this.label2.Location = new System.Drawing.Point(123, 137);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 25);
             this.label2.TabIndex = 1;
@@ -72,7 +74,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(123, 197);
+            this.label3.Location = new System.Drawing.Point(123, 202);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 25);
             this.label3.TabIndex = 2;
@@ -81,7 +83,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(123, 261);
+            this.label4.Location = new System.Drawing.Point(123, 267);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 25);
             this.label4.TabIndex = 3;
@@ -96,21 +98,21 @@
             // 
             // tbTitulo
             // 
-            this.tbTitulo.Location = new System.Drawing.Point(379, 129);
+            this.tbTitulo.Location = new System.Drawing.Point(379, 131);
             this.tbTitulo.Name = "tbTitulo";
             this.tbTitulo.Size = new System.Drawing.Size(552, 31);
             this.tbTitulo.TabIndex = 6;
             // 
             // tbAutor
             // 
-            this.tbAutor.Location = new System.Drawing.Point(379, 191);
+            this.tbAutor.Location = new System.Drawing.Point(379, 196);
             this.tbAutor.Name = "tbAutor";
             this.tbAutor.Size = new System.Drawing.Size(552, 31);
             this.tbAutor.TabIndex = 7;
             // 
             // tbEditorial
             // 
-            this.tbEditorial.Location = new System.Drawing.Point(379, 255);
+            this.tbEditorial.Location = new System.Drawing.Point(379, 261);
             this.tbEditorial.Name = "tbEditorial";
             this.tbEditorial.Size = new System.Drawing.Size(552, 31);
             this.tbEditorial.TabIndex = 8;
@@ -151,65 +153,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de Documento";
             // 
-            // btAñadirEjemplares
-            // 
-            this.btAñadirEjemplares.Location = new System.Drawing.Point(129, 681);
-            this.btAñadirEjemplares.Name = "btAñadirEjemplares";
-            this.btAñadirEjemplares.Size = new System.Drawing.Size(320, 45);
-            this.btAñadirEjemplares.TabIndex = 12;
-            this.btAñadirEjemplares.Text = "Añadir ejemplares";
-            this.btAñadirEjemplares.UseVisualStyleBackColor = true;
-            // 
-            // btDarAlta
-            // 
-            this.btDarAlta.Location = new System.Drawing.Point(583, 681);
-            this.btDarAlta.Name = "btDarAlta";
-            this.btDarAlta.Size = new System.Drawing.Size(189, 45);
-            this.btDarAlta.TabIndex = 13;
-            this.btDarAlta.Text = "Dar alta";
-            this.btDarAlta.UseVisualStyleBackColor = true;
-            // 
-            // btCancelar
-            // 
-            this.btCancelar.Location = new System.Drawing.Point(796, 681);
-            this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(189, 45);
-            this.btCancelar.TabIndex = 14;
-            this.btCancelar.Text = "Cancelar";
-            this.btCancelar.UseVisualStyleBackColor = true;
-            // 
-            // lbFormatoDigital
-            // 
-            this.lbFormatoDigital.AutoSize = true;
-            this.lbFormatoDigital.Location = new System.Drawing.Point(32, 46);
-            this.lbFormatoDigital.Name = "lbFormatoDigital";
-            this.lbFormatoDigital.Size = new System.Drawing.Size(154, 25);
-            this.lbFormatoDigital.TabIndex = 11;
-            this.lbFormatoDigital.Text = "Formato digital";
-            // 
-            // lbDuracion
-            // 
-            this.lbDuracion.AutoSize = true;
-            this.lbDuracion.Location = new System.Drawing.Point(32, 93);
-            this.lbDuracion.Name = "lbDuracion";
-            this.lbDuracion.Size = new System.Drawing.Size(98, 25);
-            this.lbDuracion.TabIndex = 12;
-            this.lbDuracion.Text = "Duración";
-            // 
-            // tbFormatoDigital
-            // 
-            this.tbFormatoDigital.Location = new System.Drawing.Point(217, 40);
-            this.tbFormatoDigital.Name = "tbFormatoDigital";
-            this.tbFormatoDigital.Size = new System.Drawing.Size(140, 31);
-            this.tbFormatoDigital.TabIndex = 13;
-            // 
-            // tbDuracion
-            // 
-            this.tbDuracion.Location = new System.Drawing.Point(217, 93);
-            this.tbDuracion.Name = "tbDuracion";
-            this.tbDuracion.Size = new System.Drawing.Size(140, 31);
-            this.tbDuracion.TabIndex = 14;
-            // 
             // gbAudioLibro
             // 
             this.gbAudioLibro.Controls.Add(this.tbDuracion);
@@ -222,11 +165,91 @@
             this.gbAudioLibro.TabIndex = 15;
             this.gbAudioLibro.TabStop = false;
             // 
+            // tbDuracion
+            // 
+            this.tbDuracion.Location = new System.Drawing.Point(217, 93);
+            this.tbDuracion.Name = "tbDuracion";
+            this.tbDuracion.Size = new System.Drawing.Size(140, 31);
+            this.tbDuracion.TabIndex = 14;
+            // 
+            // lbFormatoDigital
+            // 
+            this.lbFormatoDigital.AutoSize = true;
+            this.lbFormatoDigital.Location = new System.Drawing.Point(32, 46);
+            this.lbFormatoDigital.Name = "lbFormatoDigital";
+            this.lbFormatoDigital.Size = new System.Drawing.Size(154, 25);
+            this.lbFormatoDigital.TabIndex = 11;
+            this.lbFormatoDigital.Text = "Formato digital";
+            // 
+            // tbFormatoDigital
+            // 
+            this.tbFormatoDigital.Location = new System.Drawing.Point(217, 40);
+            this.tbFormatoDigital.Name = "tbFormatoDigital";
+            this.tbFormatoDigital.Size = new System.Drawing.Size(140, 31);
+            this.tbFormatoDigital.TabIndex = 13;
+            // 
+            // lbDuracion
+            // 
+            this.lbDuracion.AutoSize = true;
+            this.lbDuracion.Location = new System.Drawing.Point(32, 93);
+            this.lbDuracion.Name = "lbDuracion";
+            this.lbDuracion.Size = new System.Drawing.Size(98, 25);
+            this.lbDuracion.TabIndex = 12;
+            this.lbDuracion.Text = "Duración";
+            // 
+            // btAñadirEjemplares
+            // 
+            this.btAñadirEjemplares.Location = new System.Drawing.Point(129, 681);
+            this.btAñadirEjemplares.Name = "btAñadirEjemplares";
+            this.btAñadirEjemplares.Size = new System.Drawing.Size(320, 45);
+            this.btAñadirEjemplares.TabIndex = 12;
+            this.btAñadirEjemplares.Text = "Añadir ejemplares";
+            this.btAñadirEjemplares.UseVisualStyleBackColor = true;
+            this.btAñadirEjemplares.Click += new System.EventHandler(this.btAñadirEjemplares_Click);
+            // 
+            // btDarAlta
+            // 
+            this.btDarAlta.Location = new System.Drawing.Point(583, 681);
+            this.btDarAlta.Name = "btDarAlta";
+            this.btDarAlta.Size = new System.Drawing.Size(189, 45);
+            this.btDarAlta.TabIndex = 13;
+            this.btDarAlta.Text = "Dar alta";
+            this.btDarAlta.UseVisualStyleBackColor = true;
+            this.btDarAlta.Click += new System.EventHandler(this.btDarAlta_Click);
+            // 
+            // btCancelar
+            // 
+            this.btCancelar.Location = new System.Drawing.Point(796, 681);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(189, 45);
+            this.btCancelar.TabIndex = 14;
+            this.btCancelar.Text = "Cancelar";
+            this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
+            // 
+            // tbAnoEdicion
+            // 
+            this.tbAnoEdicion.Location = new System.Drawing.Point(379, 326);
+            this.tbAnoEdicion.Name = "tbAnoEdicion";
+            this.tbAnoEdicion.Size = new System.Drawing.Size(552, 31);
+            this.tbAnoEdicion.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(123, 332);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(167, 25);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Año de edicion: ";
+            // 
             // FAltaDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1177, 782);
+            this.Controls.Add(this.tbAnoEdicion);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btDarAlta);
             this.Controls.Add(this.btAñadirEjemplares);
@@ -272,5 +295,7 @@
         private System.Windows.Forms.Label lbDuracion;
         private System.Windows.Forms.Label lbFormatoDigital;
         private System.Windows.Forms.GroupBox gbAudioLibro;
+        private System.Windows.Forms.TextBox tbAnoEdicion;
+        private System.Windows.Forms.Label label5;
     }
 }
