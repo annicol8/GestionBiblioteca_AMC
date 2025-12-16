@@ -1,0 +1,101 @@
+[33m1fef71e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #1 from annicol8/bajadocumento_clara
+[33m73880ba[m[33m ([m[1;31morigin/bajadocumento_clara[m[33m)[m Merge branch 'master' into bajadocumento_clara
+[33m69761ff[m[33m ([m[1;32mbajadocumento_clara[m[33m)[m terminado
+[33m17c50cd[m empezar con prestamos uno a uno falta alguna cosa por completar
+[33mf866961[m[33m ([m[1;31morigin/form1[m[33m)[m Merge remote-tracking branch 'origin/master' into form1
+[33m6fb8069[m empezar con prestamos uno a uno
+[33mcc7ef24[m Funcion alta ejemplar añadida, ejemplar MD cambiado
+[33m03f3983[m comprobado que funciona
+[33m38df1ca[m nuevo form de busqueda por dni con funciones opcionales
+[33m6289d89[m Funcionalidad de alta de documentos implementada
+[33m4e14810[m form listados se abren, pero tengo que cambiar codigo
+[33m1887d2e[m Merge remote-tracking branch 'origin/master' into form1
+[33m0a96cbd[m empezar con listados
+[33m916f92f[m faltaba un parentesis
+[33m9cc70c4[m Formulario de alta documento creado, aunque falta implementar la lógica
+[33m90a79f2[m Ocultar a FPSala los menus doucmento y ejemplar
+[33m05d3799[m Funcionalidad de baja de usuarios terminada. He tenido que cambiar el Alta de Usuarios de LNPersonal para que si se intenta dar de alta un usuario inactivo, no intente crear un nuevo usuario sino que actualice (modifice a true el activo)
+[33m8aae1ae[m formulario para baja de usuario creado
+[33mf701f07[m Funcionalidad de busqueda de usuarios
+[33md04dc03[m Funcionalidad de alta de usuario hecha
+[33mf0371c7[m Propiedades públicas de clases persistencia puestas y constructores arreglados
+[33m9f9b5f5[m .
+[33m4b93569[m subir login y sigo en rama
+[33m3142405[m Creados Personales cuando arrancas, funcion login funciona (no hace caso de la contraseña) y cambiados propiedades y constructores de todas las clases MD. Faltan las de Persistencia
+[33m84d9ec4[m Herencias de interfaces añadidas
+[33m2e47741[m cambiar a interfaces
+[33m4399e44[m cambiar a interfaces
+[33m93da448[m commit sin conflictos
+[33m9e99e44[m comentado las cosas que no compilan y peusto para que salga el formulario de login
+[33me8bcd6f[m Merge branch 'master' of https://github.com/annicol8/GestionBiblioteca_AMC
+[33m84f49a3[m sale el formulario de loguearse
+[33mf327aeb[m merge
+[33m84ca167[m creo que funcionan los formularios
+[33mfb25b76[m Merge branch 'master' of https://github.com/annicol8/GestionBiblioteca_AMC
+[33m092ee50[m subir rama
+[33m8b7db8b[m[33m ([m[1;32mclara_formPrincipal[m[33m)[m Merge remote-tracking branch 'origin/master' into clara_formPrincipal
+[33m3b1dd1a[m Creado un formulario base del que deberian heredar todos para tener funcionalidad comun
+[33me90e0bb[m subir
+[33m55ed5d4[m unir
+[33m47a05d5[m juntar
+[33m040daa9[m form principal
+[33m60e7f82[m prueba
+[33mfcd63e6[m hacer FClave
+[33m10cc1b3[m seguido
+[33m5fc6bf1[m cambios hecho en LN segun la Persistencia
+[33m55f8745[m Merge remote-tracking branch 'origin/master' into ln_clara
+[33mbb0a063[m terminada lnpersonalsala menos metodos que tienen que ver con fehcas. metodos de persistencia.cs modificados porque estaban mal muchos
+[33m2838184[m Hecha LNPAdq menos un método que no entiendo. Revisar comentarios que he puesto
+[33m29cd654[m continuar con implementacion formLogin
+[33m2f59814[m empezar form login
+[33m51bd4c1[m Merge remote-tracking branch 'origin/master' into ln_clara
+[33ma6d8e7b[m primer intento, fallan muchas cosas
+[33m981aaa1[m cambio para push
+[33md4dfc17[m cambio caducado
+[33m530b00f[m acabar LNPersonal
+[33m984b1a6[m continuar con lo que quedaba de LNPersonal
+[33md765ffd[m personal adquisiciones empezada
+[33mc050570[m ln de personal sala empezada
+[33m9c6f4f3[m lnpersonal
+[33m76e22d7[m persistencia actualizada
+[33mc89b12f[m cambiado modelo dominio
+[33m04a59f7[m cambios modelo
+[33m1ae8543[m .
+[33mde0cdc1[m seguir persistencia y crear interfaces y clases LN
+[33m15a829b[m terminar transformers y seguir persistencia
+[33me8e3455[m bd
+[33m1aa03c4[m Transformers terminado. Cambiado constructores de audioLibro y LibroPapel a public
+[33m684e1e8[m cambios documentos
+[33m04073bb[m revisar lo anterior y empezar ln
+[33mc950281[m persistencia casi acabada
+[33m3413ff7[m empezar persistencia
+[33ma5fba2c[m cambios hechos en md y persistencia para completar transformadores
+[33m826d4e5[m cambios
+[33m9e3fbb7[m completar
+[33m1dadb49[m intento de merge
+[33m55f3df8[m claveprestamoejemplar
+[33mb5bd542[m clase BD programada
+[33m2622ed8[m transformeres
+[33mfca31a1[m BD, Transformers y ClavePrestamoEjemplar creados
+[33me6d034f[m Enumaracion tipoPersonal añadido
+[33m6b41ede[m referencia
+[33m17a1f65[m Merge branch 'master' of https://github.com/annicol8/GestionBiblioteca_AMC
+[33m17c83ed[m prestamo dato
+[33m2c59a5e[m datos clara: añadida clave foranea en ejemplardato
+[33m8243701[m PersonalDato y UsuarioDato programados
+[33m0041c28[m Datos clara
+[33ma9ea84d[m Datos creados
+[33m4abf1ad[m Creada persistencia
+[33m2ea7ab0[m proyectos añadidos
+[33maaf606c[m clases prestamo
+[33mc70fbae[m Personal
+[33mb92ecbb[m documento y ejemplar
+[33ma7f8d66[m MD documentos y ejemplar hecho
+[33mc900c83[m Cambios clara 2
+[33m9ab3cd9[m Merge branch 'master' of https://github.com/annicol8/GestionBiblioteca_AMC
+[33ma1bd34a[m Cambios en documento
+[33m96b7dcb[m Usuario añadido
+[33m0e6401f[m ER
+[33m93fd90d[m Foto y codigo del diagrama, y word, añadidos
+[33ma305849[m Add project files.
+[33m61dbe72[m Add .gitattributes and .gitignore.
