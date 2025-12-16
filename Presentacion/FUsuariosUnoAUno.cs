@@ -29,6 +29,8 @@ namespace Presentacion
                 bindingSource = new BindingSource();
                 bindingSource.DataSource = lnp.GetUsuariosActivos();
 
+                bindingNavigator1.BindingSource = bindingSource;
+
                 textBox_Dni.DataBindings.Add("Text", bindingSource, "Dni");
                 textBox_Nombre.DataBindings.Add("Text", bindingSource, "Nombre");
 

@@ -19,5 +19,12 @@ namespace LogicaNegocio
         List<Usuario> GetTodosUsuarios();
         List<Ejemplar> GetEjemplaresPrestadosPorUsuario(string dni);
         bool TieneDocumentosFueraPlazo(string dniUsuario);
+
+        List<Prestamo> GetPrestamosPorUsuario(string dni);
+
+        int GetNumPrestamosActivosPorUsuario(string dni);
+        int GetNumEjemplaresUltimoMes(string dni);
+
+        int GetNumPrestamosVencidos(string dni);
     }
 }

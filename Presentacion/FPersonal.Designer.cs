@@ -33,6 +33,8 @@
             this.menuUsuariosAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.menuUsuariosBaja = new System.Windows.Forms.ToolStripMenuItem();
             this.menuUsuariosBuscar = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuListado = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuRecorrerUnoAUno = new System.Windows.Forms.ToolStripMenuItem();
             this.documentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDocumentosAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDocumentosBaja = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,9 +47,7 @@
             this.menuPrestamosNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosBuscar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosDevolver = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuBuscarPorDni = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuListado = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuRecorrerUnoAUno = new System.Windows.Forms.ToolStripMenuItem();
+            this.busquedaPorDniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +73,7 @@
             this.menuUsuariosAlta,
             this.menuUsuariosBaja,
             this.menuUsuariosBuscar,
-            this.menuBuscarPorDni,
+            this.busquedaPorDniToolStripMenuItem,
             this.menuListado,
             this.menuRecorrerUnoAUno});
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
@@ -100,6 +100,20 @@
             this.menuUsuariosBuscar.Size = new System.Drawing.Size(276, 34);
             this.menuUsuariosBuscar.Text = "Buscar";
             this.menuUsuariosBuscar.Click += new System.EventHandler(this.menuUsuariosBuscar_Click);
+            // 
+            // menuListado
+            // 
+            this.menuListado.Name = "menuListado";
+            this.menuListado.Size = new System.Drawing.Size(276, 34);
+            this.menuListado.Text = "Listado";
+            this.menuListado.Click += new System.EventHandler(this.menuListado_Click);
+            // 
+            // menuRecorrerUnoAUno
+            // 
+            this.menuRecorrerUnoAUno.Name = "menuRecorrerUnoAUno";
+            this.menuRecorrerUnoAUno.Size = new System.Drawing.Size(276, 34);
+            this.menuRecorrerUnoAUno.Text = "Recorrido uno a uno";
+            this.menuRecorrerUnoAUno.Click += new System.EventHandler(this.menuRecorrerUnoAUno_Click);
             // 
             // documentosToolStripMenuItem
             // 
@@ -186,25 +200,12 @@
             this.menuPrestamosDevolver.Size = new System.Drawing.Size(184, 34);
             this.menuPrestamosDevolver.Text = "Devolver";
             // 
-            // menuBuscarPorDni
+            // busquedaPorDniToolStripMenuItem
             // 
-            this.menuBuscarPorDni.Name = "menuBuscarPorDni";
-            this.menuBuscarPorDni.Size = new System.Drawing.Size(276, 34);
-            this.menuBuscarPorDni.Text = "Búsqueda por DNI";
-            // 
-            // menuListado
-            // 
-            this.menuListado.Name = "menuListado";
-            this.menuListado.Size = new System.Drawing.Size(276, 34);
-            this.menuListado.Text = "Listado";
-            this.menuListado.Click += new System.EventHandler(this.menuListado_Click);
-            // 
-            // menuRecorrerUnoAUno
-            // 
-            this.menuRecorrerUnoAUno.Name = "menuRecorrerUnoAUno";
-            this.menuRecorrerUnoAUno.Size = new System.Drawing.Size(276, 34);
-            this.menuRecorrerUnoAUno.Text = "Recorrido uno a uno";
-            this.menuRecorrerUnoAUno.Click += new System.EventHandler(this.menuRecorrerUnoAUno_Click);
+            this.busquedaPorDniToolStripMenuItem.Name = "busquedaPorDniToolStripMenuItem";
+            this.busquedaPorDniToolStripMenuItem.Size = new System.Drawing.Size(276, 34);
+            this.busquedaPorDniToolStripMenuItem.Text = "Búsqueda por dni";
+            this.busquedaPorDniToolStripMenuItem.Click += new System.EventHandler(this.busquedaPorDniToolStripMenuItem_Click);
             // 
             // FPersonal
             // 
@@ -213,7 +214,7 @@
             this.ClientSize = new System.Drawing.Size(600, 360);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FPersonal";
             this.Text = "Gestión de biblioteca";
             this.menuStrip1.ResumeLayout(false);
@@ -241,8 +242,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuPrestamosNuevo;
         private System.Windows.Forms.ToolStripMenuItem menuPrestamosBuscar;
         private System.Windows.Forms.ToolStripMenuItem menuPrestamosDevolver;
-        private System.Windows.Forms.ToolStripMenuItem menuBuscarPorDni;
         private System.Windows.Forms.ToolStripMenuItem menuListado;
         private System.Windows.Forms.ToolStripMenuItem menuRecorrerUnoAUno;
+        private System.Windows.Forms.ToolStripMenuItem busquedaPorDniToolStripMenuItem;
     }
 }

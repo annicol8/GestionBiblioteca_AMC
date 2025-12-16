@@ -16,7 +16,8 @@ namespace Presentacion
     {
         private ILNPersonal ln;
         private List<Usuario> usuarios;
-        private BindingSource bindingSource;
+        private BindingSource bindingSourceDni;
+        private BindingSource bindingSourceNombre;
         public FListaUsuarios(ILNPersonal ln)
         {
             this.ln = ln;
@@ -27,33 +28,44 @@ namespace Presentacion
         private void CargarUsuarios()
         {
             usuarios = ln.GetUsuariosActivos(); //obtener los usuarios dados de alta
-            bindingSource = new BindingSource();
-            bindingSource.DataSource = usuarios;
+            
+            bindingSourceDni = new BindingSource();
+            bindingSourceDni.DataSource = usuarios;
+
+            bindingSourceNombre = new BindingSource();
+            bindingSourceNombre.DataSource = usuarios;
 
             //Sincronizamos ambas listas, si se cambia el orden de una de la otra también
-            listBox_Dni.DataSource = bindingSource;
+            listBox_Dni.DataSource = bindingSourceDni;
             listBox_Dni.DisplayMember = "Dni";
+            listBox_Dni.ValueMember = "Dni";
 
-            listBox_Nombre.DataSource = bindingSource;
+
+            listBox_Nombre.DataSource = bindingSourceNombre;
             listBox_Nombre.DisplayMember = "Nombre";
+            listBox_Nombre.ValueMember = "Nombre";
         }
 
         private void bt_OrdenDni_Click(object sender, EventArgs e)
         {
             usuarios.Sort((u1, u2) => string.Compare(u1.Dni, u2.Dni, StringComparison.Ordinal));
-            bindingSource.ResetBindings(false);
+            
+            bindingSourceDni.ResetBindings(false);
+            bindingSourceNombre.ResetBindings(false);
 
-            bt_OrdenDni.Text = "Dni ▲" ;
-            bt_OrdenNombre.Text = " Nombre ▼";
+            bt_OrdenDni.Text = "DNI ▲";
+            bt_OrdenNombre.Text = "Nombre ";
         }
 
         private void bt_OrdenNombre_Click(object sender, EventArgs e)
         {
             usuarios.Sort((u1, u2) => string.Compare(u1.Nombre, u2.Nombre, StringComparison.OrdinalIgnoreCase));
-            bindingSource.ResetBindings(false);
 
-            bt_OrdenDni.Text = "Nombre ▲";
-            bt_OrdenNombre.Text = "DNI ▼";
+            bindingSourceDni.ResetBindings(false);
+            bindingSourceNombre.ResetBindings(false);
+
+            bt_OrdenDni.Text = "DNI";
+            bt_OrdenNombre.Text = "Nombre ▲";
         }
 
         private void bt_Cerrar_Click(object sender, EventArgs e)
@@ -61,6 +73,7 @@ namespace Presentacion
             this.Close();
         }
 
+        /*
         private void listBox_Dni_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox_Nombre.SelectedIndex != listBox_Dni.SelectedIndex)
@@ -76,5 +89,6 @@ namespace Presentacion
                 listBox_Dni.SelectedIndex = listBox_Nombre.SelectedIndex;
             }
         }
+        */
     }
 }

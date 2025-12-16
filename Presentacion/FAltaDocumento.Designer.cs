@@ -56,73 +56,82 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(123, 72);
+            this.label1.Location = new System.Drawing.Point(92, 58);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 25);
+            this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "ISBN:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(123, 137);
+            this.label2.Location = new System.Drawing.Point(92, 110);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 25);
+            this.label2.Size = new System.Drawing.Size(51, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Título:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(123, 202);
+            this.label3.Location = new System.Drawing.Point(92, 162);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 25);
+            this.label3.Size = new System.Drawing.Size(52, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Autor:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(123, 267);
+            this.label4.Location = new System.Drawing.Point(92, 214);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 25);
+            this.label4.Size = new System.Drawing.Size(70, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Editorial:";
             // 
             // tbIsbn
             // 
-            this.tbIsbn.Location = new System.Drawing.Point(379, 66);
+            this.tbIsbn.Location = new System.Drawing.Point(284, 53);
+            this.tbIsbn.Margin = new System.Windows.Forms.Padding(2);
             this.tbIsbn.Name = "tbIsbn";
-            this.tbIsbn.Size = new System.Drawing.Size(239, 31);
+            this.tbIsbn.Size = new System.Drawing.Size(180, 26);
             this.tbIsbn.TabIndex = 5;
             // 
             // tbTitulo
             // 
-            this.tbTitulo.Location = new System.Drawing.Point(379, 131);
+            this.tbTitulo.Location = new System.Drawing.Point(284, 105);
+            this.tbTitulo.Margin = new System.Windows.Forms.Padding(2);
             this.tbTitulo.Name = "tbTitulo";
-            this.tbTitulo.Size = new System.Drawing.Size(552, 31);
+            this.tbTitulo.Size = new System.Drawing.Size(415, 26);
             this.tbTitulo.TabIndex = 6;
             // 
             // tbAutor
             // 
-            this.tbAutor.Location = new System.Drawing.Point(379, 196);
+            this.tbAutor.Location = new System.Drawing.Point(284, 157);
+            this.tbAutor.Margin = new System.Windows.Forms.Padding(2);
             this.tbAutor.Name = "tbAutor";
-            this.tbAutor.Size = new System.Drawing.Size(552, 31);
+            this.tbAutor.Size = new System.Drawing.Size(415, 26);
             this.tbAutor.TabIndex = 7;
             // 
             // tbEditorial
             // 
-            this.tbEditorial.Location = new System.Drawing.Point(379, 261);
+            this.tbEditorial.Location = new System.Drawing.Point(284, 209);
+            this.tbEditorial.Margin = new System.Windows.Forms.Padding(2);
             this.tbEditorial.Name = "tbEditorial";
-            this.tbEditorial.Size = new System.Drawing.Size(552, 31);
+            this.tbEditorial.Size = new System.Drawing.Size(415, 26);
             this.tbEditorial.TabIndex = 8;
             // 
             // rbLibro
             // 
             this.rbLibro.AutoSize = true;
-            this.rbLibro.Location = new System.Drawing.Point(27, 61);
+            this.rbLibro.Location = new System.Drawing.Point(20, 49);
+            this.rbLibro.Margin = new System.Windows.Forms.Padding(2);
             this.rbLibro.Name = "rbLibro";
-            this.rbLibro.Size = new System.Drawing.Size(91, 29);
+            this.rbLibro.Size = new System.Drawing.Size(69, 24);
             this.rbLibro.TabIndex = 9;
             this.rbLibro.TabStop = true;
             this.rbLibro.Text = "Libro";
@@ -132,9 +141,10 @@
             // rbAudioLibro
             // 
             this.rbAudioLibro.AutoSize = true;
-            this.rbAudioLibro.Location = new System.Drawing.Point(27, 133);
+            this.rbAudioLibro.Location = new System.Drawing.Point(20, 106);
+            this.rbAudioLibro.Margin = new System.Windows.Forms.Padding(2);
             this.rbAudioLibro.Name = "rbAudioLibro";
-            this.rbAudioLibro.Size = new System.Drawing.Size(146, 29);
+            this.rbAudioLibro.Size = new System.Drawing.Size(110, 24);
             this.rbAudioLibro.TabIndex = 10;
             this.rbAudioLibro.TabStop = true;
             this.rbAudioLibro.Text = "AudioLibro";
@@ -146,9 +156,11 @@
             this.groupBox1.Controls.Add(this.rbAudioLibro);
             this.groupBox1.Controls.Add(this.rbLibro);
             this.groupBox1.Controls.Add(this.gbAudioLibro);
-            this.groupBox1.Location = new System.Drawing.Point(128, 405);
+            this.groupBox1.Location = new System.Drawing.Point(96, 324);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(857, 213);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(643, 170);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de Documento";
@@ -159,49 +171,56 @@
             this.gbAudioLibro.Controls.Add(this.lbFormatoDigital);
             this.gbAudioLibro.Controls.Add(this.tbFormatoDigital);
             this.gbAudioLibro.Controls.Add(this.lbDuracion);
-            this.gbAudioLibro.Location = new System.Drawing.Point(418, 30);
+            this.gbAudioLibro.Location = new System.Drawing.Point(314, 24);
+            this.gbAudioLibro.Margin = new System.Windows.Forms.Padding(2);
             this.gbAudioLibro.Name = "gbAudioLibro";
-            this.gbAudioLibro.Size = new System.Drawing.Size(385, 160);
+            this.gbAudioLibro.Padding = new System.Windows.Forms.Padding(2);
+            this.gbAudioLibro.Size = new System.Drawing.Size(289, 128);
             this.gbAudioLibro.TabIndex = 15;
             this.gbAudioLibro.TabStop = false;
             // 
             // tbDuracion
             // 
-            this.tbDuracion.Location = new System.Drawing.Point(217, 93);
+            this.tbDuracion.Location = new System.Drawing.Point(163, 74);
+            this.tbDuracion.Margin = new System.Windows.Forms.Padding(2);
             this.tbDuracion.Name = "tbDuracion";
-            this.tbDuracion.Size = new System.Drawing.Size(140, 31);
+            this.tbDuracion.Size = new System.Drawing.Size(106, 26);
             this.tbDuracion.TabIndex = 14;
             // 
             // lbFormatoDigital
             // 
             this.lbFormatoDigital.AutoSize = true;
-            this.lbFormatoDigital.Location = new System.Drawing.Point(32, 46);
+            this.lbFormatoDigital.Location = new System.Drawing.Point(24, 37);
+            this.lbFormatoDigital.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbFormatoDigital.Name = "lbFormatoDigital";
-            this.lbFormatoDigital.Size = new System.Drawing.Size(154, 25);
+            this.lbFormatoDigital.Size = new System.Drawing.Size(114, 20);
             this.lbFormatoDigital.TabIndex = 11;
             this.lbFormatoDigital.Text = "Formato digital";
             // 
             // tbFormatoDigital
             // 
-            this.tbFormatoDigital.Location = new System.Drawing.Point(217, 40);
+            this.tbFormatoDigital.Location = new System.Drawing.Point(163, 32);
+            this.tbFormatoDigital.Margin = new System.Windows.Forms.Padding(2);
             this.tbFormatoDigital.Name = "tbFormatoDigital";
-            this.tbFormatoDigital.Size = new System.Drawing.Size(140, 31);
+            this.tbFormatoDigital.Size = new System.Drawing.Size(106, 26);
             this.tbFormatoDigital.TabIndex = 13;
             // 
             // lbDuracion
             // 
             this.lbDuracion.AutoSize = true;
-            this.lbDuracion.Location = new System.Drawing.Point(32, 93);
+            this.lbDuracion.Location = new System.Drawing.Point(24, 74);
+            this.lbDuracion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDuracion.Name = "lbDuracion";
-            this.lbDuracion.Size = new System.Drawing.Size(98, 25);
+            this.lbDuracion.Size = new System.Drawing.Size(73, 20);
             this.lbDuracion.TabIndex = 12;
             this.lbDuracion.Text = "Duración";
             // 
             // btAñadirEjemplares
             // 
-            this.btAñadirEjemplares.Location = new System.Drawing.Point(129, 681);
+            this.btAñadirEjemplares.Location = new System.Drawing.Point(97, 545);
+            this.btAñadirEjemplares.Margin = new System.Windows.Forms.Padding(2);
             this.btAñadirEjemplares.Name = "btAñadirEjemplares";
-            this.btAñadirEjemplares.Size = new System.Drawing.Size(320, 45);
+            this.btAñadirEjemplares.Size = new System.Drawing.Size(240, 36);
             this.btAñadirEjemplares.TabIndex = 12;
             this.btAñadirEjemplares.Text = "Añadir ejemplares";
             this.btAñadirEjemplares.UseVisualStyleBackColor = true;
@@ -209,9 +228,10 @@
             // 
             // btDarAlta
             // 
-            this.btDarAlta.Location = new System.Drawing.Point(583, 681);
+            this.btDarAlta.Location = new System.Drawing.Point(437, 545);
+            this.btDarAlta.Margin = new System.Windows.Forms.Padding(2);
             this.btDarAlta.Name = "btDarAlta";
-            this.btDarAlta.Size = new System.Drawing.Size(189, 45);
+            this.btDarAlta.Size = new System.Drawing.Size(142, 36);
             this.btDarAlta.TabIndex = 13;
             this.btDarAlta.Text = "Dar alta";
             this.btDarAlta.UseVisualStyleBackColor = true;
@@ -219,9 +239,10 @@
             // 
             // btCancelar
             // 
-            this.btCancelar.Location = new System.Drawing.Point(796, 681);
+            this.btCancelar.Location = new System.Drawing.Point(597, 545);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(189, 45);
+            this.btCancelar.Size = new System.Drawing.Size(142, 36);
             this.btCancelar.TabIndex = 14;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
@@ -229,25 +250,27 @@
             // 
             // tbAnoEdicion
             // 
-            this.tbAnoEdicion.Location = new System.Drawing.Point(379, 326);
+            this.tbAnoEdicion.Location = new System.Drawing.Point(284, 261);
+            this.tbAnoEdicion.Margin = new System.Windows.Forms.Padding(2);
             this.tbAnoEdicion.Name = "tbAnoEdicion";
-            this.tbAnoEdicion.Size = new System.Drawing.Size(552, 31);
+            this.tbAnoEdicion.Size = new System.Drawing.Size(415, 26);
             this.tbAnoEdicion.TabIndex = 16;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(123, 332);
+            this.label5.Location = new System.Drawing.Point(92, 266);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(167, 25);
+            this.label5.Size = new System.Drawing.Size(122, 20);
             this.label5.TabIndex = 15;
             this.label5.Text = "Año de edicion: ";
             // 
             // FAltaDocumento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1177, 782);
+            this.ClientSize = new System.Drawing.Size(883, 626);
             this.Controls.Add(this.tbAnoEdicion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btCancelar);
@@ -262,7 +285,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FAltaDocumento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Alta de Documento";
             this.Load += new System.EventHandler(this.FAltaDocumento_Load);
             this.groupBox1.ResumeLayout(false);

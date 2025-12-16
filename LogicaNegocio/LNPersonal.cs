@@ -128,7 +128,37 @@ namespace LogicaNegocio
             return false;
         }
 
-        
+        public List<Prestamo> GetPrestamosPorUsuario(string dni)
+        {
+            return Persistencia.Persistencia.GetPrestamosPorUsuario(dni); 
+        }
+
+        public int GetNumPrestamosActivosPorUsuario(string dni)
+        {
+            return Persistencia.Persistencia.GetPrestamosPorUsuario(dni).Count(p => p.Estado == EstadoPrestamo.enProceso); ;
+        }
+
+        public int GetNumEjemplaresUltimoMes(string dni)
+        {
+            DateTime unMesAtras = DateTime.Now.AddMonths(-1);
+            var prestamos = GetPrestamosPorUsuario(dni);
+
+            int total = 0;
+            foreach( var prestamo in prestamos.Where(p => p.FechaPrestamo >= unMesAtras))
+            {
+                var ejemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(prestamo.Id);
+                total += ejemplares.Count;
+            }
+            return total;
+        }
+
+        public int GetNumPrestamosVencidos (string dni)
+        {
+            var prestamos = GetPrestamosPorUsuario(dni);
+            return prestamos.Count(p =>p.Estado == EstadoPrestamo.enProceso &&p.FechaDevolucion < DateTime.Now);
+        }
+
+
 
     }
 }

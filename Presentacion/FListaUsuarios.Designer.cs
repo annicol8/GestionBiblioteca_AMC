@@ -40,9 +40,9 @@
             this.bt_OrdenDni.BackColor = System.Drawing.SystemColors.ControlLight;
             this.bt_OrdenDni.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_OrdenDni.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bt_OrdenDni.Location = new System.Drawing.Point(80, 92);
+            this.bt_OrdenDni.Location = new System.Drawing.Point(80, 84);
             this.bt_OrdenDni.Name = "bt_OrdenDni";
-            this.bt_OrdenDni.Size = new System.Drawing.Size(190, 27);
+            this.bt_OrdenDni.Size = new System.Drawing.Size(190, 35);
             this.bt_OrdenDni.TabIndex = 0;
             this.bt_OrdenDni.Text = "DNI";
             this.bt_OrdenDni.UseVisualStyleBackColor = false;
@@ -53,9 +53,9 @@
             this.bt_OrdenNombre.BackColor = System.Drawing.SystemColors.ControlLight;
             this.bt_OrdenNombre.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_OrdenNombre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bt_OrdenNombre.Location = new System.Drawing.Point(347, 92);
+            this.bt_OrdenNombre.Location = new System.Drawing.Point(347, 84);
             this.bt_OrdenNombre.Name = "bt_OrdenNombre";
-            this.bt_OrdenNombre.Size = new System.Drawing.Size(191, 27);
+            this.bt_OrdenNombre.Size = new System.Drawing.Size(191, 35);
             this.bt_OrdenNombre.TabIndex = 1;
             this.bt_OrdenNombre.Text = "Nombre";
             this.bt_OrdenNombre.UseVisualStyleBackColor = false;
@@ -71,7 +71,6 @@
             this.listBox_Dni.Name = "listBox_Dni";
             this.listBox_Dni.Size = new System.Drawing.Size(190, 284);
             this.listBox_Dni.TabIndex = 2;
-            this.listBox_Dni.SelectedIndexChanged += new System.EventHandler(this.listBox_Dni_SelectedIndexChanged);
             // 
             // listBox_Nombre
             // 
@@ -83,13 +82,12 @@
             this.listBox_Nombre.Name = "listBox_Nombre";
             this.listBox_Nombre.Size = new System.Drawing.Size(191, 284);
             this.listBox_Nombre.TabIndex = 3;
-            this.listBox_Nombre.SelectedIndexChanged += new System.EventHandler(this.listBox_Nombre_SelectedIndexChanged);
             // 
             // bt_Cerrar
             // 
             this.bt_Cerrar.Location = new System.Drawing.Point(255, 484);
             this.bt_Cerrar.Name = "bt_Cerrar";
-            this.bt_Cerrar.Size = new System.Drawing.Size(103, 27);
+            this.bt_Cerrar.Size = new System.Drawing.Size(103, 36);
             this.bt_Cerrar.TabIndex = 4;
             this.bt_Cerrar.Text = "Cerrar";
             this.bt_Cerrar.UseVisualStyleBackColor = true;

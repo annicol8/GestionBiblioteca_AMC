@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -27,7 +29,51 @@ namespace Persistencia
         {  
             TablaPersonales.Add(new PersonalDato("12345678A", "Juan", TipoPersonal.personalSala));
             TablaPersonales.Add(new PersonalDato("87654321B", "María", TipoPersonal.personalAdquisiciones));
+
+            /* LO HE ESCRITO DE PRUEBA PARA PROBAR UNA COSA 
+             * 
+            TablaLibrosPapel.Add(new LibroPapelDato(
+                "978-0-13-468599-1",
+                "Clean Code",
+                "Robert C. Martin",
+                "Prentice Hall",
+                2008
+            ));
+
+            TablaLibrosPapel.Add(new LibroPapelDato(
+                "978-0-13-235088-4",
+                "Clean Architecture",
+                "Robert C. Martin",
+                "Prentice Hall",
+                2017
+            ));
+
+            TablaLibrosPapel.Add(new LibroPapelDato(
+                "978-0-13-957331-8",
+                "Refactoring",
+                "Martin Fowler",
+                "Addison-Wesley",
+                1999
+            ));
+
+            // AUDIOLIBROS
+            TablaAudioLibros.Add(new AudioLibroDato(
+                "978-1-4001-2345-6",
+                "El Quijote",
+                "Miguel de Cervantes",
+                "Santillana",
+                2020, "CD", 114
+            ));
+
+
+            // EJEMPLARES (usando el DNI del personal de adquisiciones que acabamos de crear)
+            TablaEjemplares.Add(new EjemplarDato(1,  "978-0-13-468599-1", true, "87654321B"));
+            TablaEjemplares.Add(new EjemplarDato(2,  "978-0-13-468599-1",true, "87654321B"));
+            TablaEjemplares.Add(new EjemplarDato(3,  "978-0-13-235088-4", true, "87654321B"));
+             * 
+             * **/
         }
+
 
         public static Tabla<string, AudioLibroDato> TablaAudioLibros
         {

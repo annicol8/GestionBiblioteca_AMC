@@ -186,5 +186,18 @@ namespace Presentacion
                 MostrarError($"Error al abrir el recorrido de usuarios: {ex.Message}", "Error");
             }
         }
+
+        private void busquedaPorDniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FBusquedaUsuarioExtra formulario = new FBusquedaUsuarioExtra(lnp);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al abrir la búsqueda de usuarios por dni: {ex.Message}", "Error");
+            }
+        }
     }
 }
