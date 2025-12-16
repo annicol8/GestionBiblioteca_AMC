@@ -62,9 +62,9 @@ namespace Presentacion
 
         private void MostrarUsuarioSeleccionado()
         {
-            if (comboBox_Dnis.SelectedIndex != null)
+            if (comboBox_Dnis.SelectedIndex>= 0 && comboBox_Dnis.SelectedItem != null)
             {
-                Usuario usuario = comboBox_Dnis.SelectedIndex as Usuario;
+                Usuario usuario = comboBox_Dnis.SelectedItem as Usuario;
                 if (usuario != null)
                 {
                     textBox_Nombre.Text = usuario.Nombre;

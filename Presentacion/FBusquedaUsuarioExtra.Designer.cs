@@ -73,7 +73,7 @@
             // 
             // textBox_Nombre
             // 
-            this.textBox_Nombre.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBox_Nombre.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.textBox_Nombre.Location = new System.Drawing.Point(277, 33);
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.ReadOnly = true;
@@ -110,7 +110,7 @@
             // 
             // textBox_PrestamosActivos
             // 
-            this.textBox_PrestamosActivos.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBox_PrestamosActivos.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.textBox_PrestamosActivos.Location = new System.Drawing.Point(407, 35);
             this.textBox_PrestamosActivos.Name = "textBox_PrestamosActivos";
             this.textBox_PrestamosActivos.ReadOnly = true;
@@ -120,7 +120,7 @@
             // 
             // textBox_EjemUltMes
             // 
-            this.textBox_EjemUltMes.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBox_EjemUltMes.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.textBox_EjemUltMes.Location = new System.Drawing.Point(407, 90);
             this.textBox_EjemUltMes.Name = "textBox_EjemUltMes";
             this.textBox_EjemUltMes.ReadOnly = true;
@@ -130,7 +130,7 @@
             // 
             // textBox_PrestVencidos
             // 
-            this.textBox_PrestVencidos.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBox_PrestVencidos.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.textBox_PrestVencidos.Location = new System.Drawing.Point(407, 145);
             this.textBox_PrestVencidos.Name = "textBox_PrestVencidos";
             this.textBox_PrestVencidos.ReadOnly = true;
