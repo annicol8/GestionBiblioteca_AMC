@@ -199,5 +199,11 @@ namespace Presentacion
                 MostrarError($"Error al abrir la búsqueda de usuarios por dni: {ex.Message}", "Error");
             }
         }
+
+        protected virtual void menuDocumentosBaja_Click(object sender, EventArgs e)
+        {
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+
+        }
     }
 }

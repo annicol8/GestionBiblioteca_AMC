@@ -62,7 +62,7 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.AltaAudioLibro(audioLibro);
         }
 
-        public bool BajaDocumento(string isbn)
+       /* public bool BajaDocumento(string isbn)
             //Hacer un método que dé de baja a todos los ejemplares de un libro???
         {
             if (string.IsNullOrWhiteSpace(isbn))
@@ -82,6 +82,53 @@ namespace LogicaNegocio
                 return Persistencia.Persistencia.BajaLibroPapel((LibroPapel)doc);
             else
                 return Persistencia.Persistencia.BajaAudioLibro((AudioLibro)doc);
+        }
+       */
+
+        public bool BajaDocumento(string isbn)
+        {
+            if (string.IsNullOrWhiteSpace(isbn))
+                throw new ArgumentException("El ISBN no puede estar vacío");
+
+            Documento doc = Persistencia.Persistencia.GetDocumento(isbn);
+            if (doc == null)
+                throw new InvalidOperationException("El documento no existe");
+
+            // Obtener todos los ejemplares del documento
+            List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
+
+            // Verificar si hay ejemplares activos prestados
+            foreach (Ejemplar ej in ejemplares)
+            {
+                if (ej.Activo && EstaPrestadoEjemplar(ej.Codigo))
+                {
+                    throw new InvalidOperationException(
+                        $"No se puede eliminar el documento porque el ejemplar {ej.Codigo} está actualmente prestado. Debe esperar a que se devuelva."
+                    );
+                }
+            }
+
+            // Marcar todos los ejemplares como inactivos (baja lógica)
+            foreach (Ejemplar ej in ejemplares)
+            {
+                if (ej.Activo)  // Solo si está activo
+                {
+                    ej.Activo = false;
+                    Persistencia.Persistencia.UpdateEjemplar(ej);
+                }
+            }
+
+            // Eliminar el documento de la base de datos (baja física)
+            if (doc is LibroPapel)
+            {
+                return Persistencia.Persistencia.BajaLibroPapel((LibroPapel)doc);
+            }
+            else if (doc is AudioLibro)
+            {
+                return Persistencia.Persistencia.BajaAudioLibro((AudioLibro)doc);
+            }
+
+            return false;
         }
         public Documento getDocumento(string isbn)
             //PRE:

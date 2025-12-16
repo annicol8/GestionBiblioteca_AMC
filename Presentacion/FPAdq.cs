@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using LogicaNegocio;
 using ModeloDominio;
 
@@ -65,6 +66,38 @@ namespace Presentacion
                 return fClave.Clave;
             }
             return null;
+        }
+
+
+        protected override void menuDocumentosBaja_Click(object sender, EventArgs e)
+        {
+            string isbn;
+
+            while (true)
+            {
+                isbn = pedirISBN();
+                if (isbn == null)
+                    return;
+
+                Documento documentoExistente = lnAdq.getDocumento(isbn);
+
+                if (documentoExistente == null)
+                {
+                    DialogResult dr = MostrarPregunta(
+                        "¿Quieres introducir otro?",
+                        "No existe ningún documento con ese ISBN"
+                    );
+
+                    if (dr == DialogResult.Yes)
+                        continue;
+                    else
+                        return;
+                }
+                // Documento encontrado, abrir formulario de baja
+                FBajaDocumento formulario = new FBajaDocumento(lnAdq, documentoExistente);
+                formulario.ShowDialog(this);
+                return;
+            }
         }
     }
 }
