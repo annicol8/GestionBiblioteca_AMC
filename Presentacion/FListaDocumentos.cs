@@ -12,7 +12,7 @@ using ModeloDominio;
 
 namespace Presentacion
 {
-    public partial class FListaDocumentos : Form
+    public partial class FListaDocumentos : FComun
     {
         private ILNPAdq lnpa;
         private BindingSource bindingSourceDoc; //Docuemntos
@@ -35,8 +35,7 @@ namespace Presentacion
 
             } catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar los documentos: {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MostrarError($"Error al cargar los documentos: {ex.Message}");
             }
         }
 
@@ -58,14 +57,10 @@ namespace Presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar ejemplares: {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MostrarError($"Error al cargar ejemplares: {ex.Message}");
             }
            
         }
     }
 
-     /*
-      * 
-      * */
 }
