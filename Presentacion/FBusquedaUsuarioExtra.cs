@@ -13,7 +13,7 @@ using ModeloDominio;
 
 namespace Presentacion
 {
-    public partial class FBusquedaUsuarioExtra : Form
+    public partial class FBusquedaUsuarioExtra : FComun
     {
         private ILNPersonal lnp;
         private BindingSource bindingSourceUsuarios;
@@ -32,8 +32,7 @@ namespace Presentacion
                 var usuarios = lnp.GetUsuariosActivos();
                 if (usuarios == null || usuarios.Count == 0)
                 {
-                    MessageBox.Show("No hay usuarios activos.", "Información",
-                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MostrarInformacion("No hay usuarios activos en el sistema.");
                     return;
                 }
 
@@ -50,8 +49,7 @@ namespace Presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al inicializar el formulario: {ex.Message}",
-                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MostrarError($"Error al inicializar el formulario: {ex.Message}");
             }
         }
 

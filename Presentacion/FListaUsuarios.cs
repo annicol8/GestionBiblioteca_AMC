@@ -12,7 +12,7 @@ using ModeloDominio;
 
 namespace Presentacion
 {
-    public partial class FListaUsuarios : Form
+    public partial class FListaUsuarios : FComun
     {
         private ILNPersonal ln;
         private List<Usuario> usuarios;
@@ -73,22 +73,6 @@ namespace Presentacion
             this.Close();
         }
 
-        /*
-        private void listBox_Dni_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox_Nombre.SelectedIndex != listBox_Dni.SelectedIndex)
-            {
-                listBox_Nombre.SelectedIndex = listBox_Dni.SelectedIndex;
-            }
-        }
-
-        private void listBox_Nombre_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox_Dni.SelectedIndex != listBox_Nombre.SelectedIndex)
-            {
-                listBox_Dni.SelectedIndex = listBox_Nombre.SelectedIndex;
-            }
-        }
-        */
+        
     }
 }
