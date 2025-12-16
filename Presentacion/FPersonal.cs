@@ -160,6 +160,10 @@ namespace Presentacion
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
+        protected virtual void menuEjemplaresAlta_Click(object sender, EventArgs e)
+        {
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+        }
 
         private void menuListado_Click(object sender, EventArgs e)
         {
@@ -199,5 +203,7 @@ namespace Presentacion
                 MostrarError($"Error al abrir la búsqueda de usuarios por dni: {ex.Message}", "Error");
             }
         }
+
+        
     }
 }
