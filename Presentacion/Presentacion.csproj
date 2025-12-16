@@ -52,6 +52,12 @@
     <Compile Include="FAltaDocumento.Designer.cs">
       <DependentUpon>FAltaDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="FAltaEjemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAltaEjemplar.Designer.cs">
+      <DependentUpon>FAltaEjemplar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FAltaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FAltaDocumento.resx">
       <DependentUpon>FAltaDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FAltaEjemplar.resx">
+      <DependentUpon>FAltaEjemplar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FAltaUsuario.resx">
       <DependentUpon>FAltaUsuario.cs</DependentUpon>

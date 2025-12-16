@@ -30,6 +30,8 @@ namespace Persistencia
             TablaPersonales.Add(new PersonalDato("12345678A", "Juan", TipoPersonal.personalSala));
             TablaPersonales.Add(new PersonalDato("87654321B", "María", TipoPersonal.personalAdquisiciones));
 
+            TablaLibrosPapel.Add(new LibroPapelDato("123A", "Quijote", "Cervantes", "alaDelta", 2002));
+
             /* LO HE ESCRITO DE PRUEBA PARA PROBAR UNA COSA 
              * 
             TablaLibrosPapel.Add(new LibroPapelDato(
