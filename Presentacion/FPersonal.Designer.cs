@@ -104,7 +104,7 @@
             // busquedaPorDniToolStripMenuItem
             // 
             this.busquedaPorDniToolStripMenuItem.Name = "busquedaPorDniToolStripMenuItem";
-            this.busquedaPorDniToolStripMenuItem.Size = new System.Drawing.Size(276, 34);
+            this.busquedaPorDniToolStripMenuItem.Size = new System.Drawing.Size(365, 44);
             this.busquedaPorDniToolStripMenuItem.Text = "Búsqueda por dni";
             this.busquedaPorDniToolStripMenuItem.Click += new System.EventHandler(this.busquedaPorDniToolStripMenuItem_Click);
             // 
@@ -135,21 +135,21 @@
             // menuDocumentosAlta
             // 
             this.menuDocumentosAlta.Name = "menuDocumentosAlta";
-            this.menuDocumentosAlta.Size = new System.Drawing.Size(270, 34);
+            this.menuDocumentosAlta.Size = new System.Drawing.Size(359, 44);
             this.menuDocumentosAlta.Text = "Alta";
             this.menuDocumentosAlta.Click += new System.EventHandler(this.menuDocumentosAlta_Click);
             // 
             // menuDocumentosBaja
             // 
             this.menuDocumentosBaja.Name = "menuDocumentosBaja";
-            this.menuDocumentosBaja.Size = new System.Drawing.Size(270, 34);
+            this.menuDocumentosBaja.Size = new System.Drawing.Size(359, 44);
             this.menuDocumentosBaja.Text = "Baja";
             this.menuDocumentosBaja.Click += new System.EventHandler(this.menuDocumentosBaja_Click);
             // 
             // menuDocumentosBuscar
             // 
             this.menuDocumentosBuscar.Name = "menuDocumentosBuscar";
-            this.menuDocumentosBuscar.Size = new System.Drawing.Size(270, 34);
+            this.menuDocumentosBuscar.Size = new System.Drawing.Size(359, 44);
             this.menuDocumentosBuscar.Text = "Buscar";
             // 
             // ejemplaresToolStripMenuItem
@@ -165,20 +165,20 @@
             // menuEjemplaresAlta
             // 
             this.menuEjemplaresAlta.Name = "menuEjemplaresAlta";
-            this.menuEjemplaresAlta.Size = new System.Drawing.Size(270, 34);
+            this.menuEjemplaresAlta.Size = new System.Drawing.Size(216, 44);
             this.menuEjemplaresAlta.Text = "Alta";
             this.menuEjemplaresAlta.Click += new System.EventHandler(this.menuEjemplaresAlta_Click);
             // 
             // menuEjemplaresBaja
             // 
             this.menuEjemplaresBaja.Name = "menuEjemplaresBaja";
-            this.menuEjemplaresBaja.Size = new System.Drawing.Size(270, 34);
+            this.menuEjemplaresBaja.Size = new System.Drawing.Size(216, 44);
             this.menuEjemplaresBaja.Text = "Baja";
             // 
             // menuEjemplaresBuscar
             // 
             this.menuEjemplaresBuscar.Name = "menuEjemplaresBuscar";
-            this.menuEjemplaresBuscar.Size = new System.Drawing.Size(270, 34);
+            this.menuEjemplaresBuscar.Size = new System.Drawing.Size(216, 44);
             this.menuEjemplaresBuscar.Text = "Buscar";
             // 
             // préstamosToolStripMenuItem
