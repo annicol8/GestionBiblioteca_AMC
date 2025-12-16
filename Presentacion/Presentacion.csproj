@@ -52,6 +52,12 @@
     <Compile Include="FAltaDocumento.Designer.cs">
       <DependentUpon>FAltaDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="FAltaEjemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAltaEjemplar.Designer.cs">
+      <DependentUpon>FAltaEjemplar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FAltaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,12 @@
     </Compile>
     <Compile Include="FComun.Designer.cs">
       <DependentUpon>FComun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FDocumentosUnoAUno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FDocumentosUnoAUno.Designer.cs">
+      <DependentUpon>FDocumentosUnoAUno.cs</DependentUpon>
     </Compile>
     <Compile Include="FIntroducirDNI.cs">
       <SubType>Form</SubType>
@@ -136,6 +148,12 @@
     <Compile Include="FPersonal.Designer.cs">
       <DependentUpon>FPersonal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FPrestamosUnoAUno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FPrestamosUnoAUno.Designer.cs">
+      <DependentUpon>FPrestamosUnoAUno.cs</DependentUpon>
+    </Compile>
     <Compile Include="FPSala.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +170,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FAltaDocumento.resx">
       <DependentUpon>FAltaDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FAltaEjemplar.resx">
+      <DependentUpon>FAltaEjemplar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FAltaUsuario.resx">
       <DependentUpon>FAltaUsuario.cs</DependentUpon>
@@ -171,6 +192,9 @@
     <EmbeddedResource Include="FClave.resx">
       <DependentUpon>FClave.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FDocumentosUnoAUno.resx">
+      <DependentUpon>FDocumentosUnoAUno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FIntroducirDNI.resx">
       <DependentUpon>FIntroducirDNI.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FPersonal.resx">
       <DependentUpon>FPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FPrestamosUnoAUno.resx">
+      <DependentUpon>FPrestamosUnoAUno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FUsuariosUnoAUno.resx">
       <DependentUpon>FUsuariosUnoAUno.cs</DependentUpon>

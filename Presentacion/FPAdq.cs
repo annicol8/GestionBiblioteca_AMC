@@ -33,7 +33,7 @@ namespace Presentacion
 
             while (true)
             {
-                isbn = pedirISBN();
+                isbn = pedirClave<string>("ISBN");
 
                 if (isbn == null)
                     return;
@@ -58,34 +58,24 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
-        private string pedirISBN()
+        protected override void menuEjemplaresAlta_Click(object sender, EventArgs e)
         {
-            FClave fClave = new FClave("ISBN");
-            if (fClave.ShowDialog(this) == DialogResult.OK)
-            {
-                return fClave.Clave;
-            }
-            return null;
-        }
-
-
-        protected override void menuDocumentosBaja_Click(object sender, EventArgs e)
-        {
-            string isbn;
+            int codigo;
 
             while (true)
             {
-                isbn = pedirISBN();
-                if (isbn == null)
+                codigo = pedirClave<int>("Código del ejemplar");
+
+                if (codigo == 0)
                     return;
 
-                Documento documentoExistente = lnAdq.getDocumento(isbn);
+                Ejemplar ejemplarExistente = lnAdq.GetEjemplar(codigo);
 
-                if (documentoExistente == null)
+                if (ejemplarExistente != null)
                 {
                     DialogResult dr = MostrarPregunta(
                         "¿Quieres introducir otro?",
-                        "No existe ningún documento con ese ISBN"
+                        "Ya existe un ejemplar con ese código"
                     );
 
                     if (dr == DialogResult.Yes)
@@ -93,11 +83,52 @@ namespace Presentacion
                     else
                         return;
                 }
-                // Documento encontrado, abrir formulario de baja
-                FBajaDocumento formulario = new FBajaDocumento(lnAdq, documentoExistente);
-                formulario.ShowDialog(this);
-                return;
+
+                break;
+            }
+
+            FAltaEjemplar formulario = new FAltaEjemplar(lnAdq, codigo);
+            formulario.ShowDialog(this);
+        }
+
+
+        private T pedirClave<T>(string mensaje)
+        {
+            while (true)
+            {
+                FClave fClave = new FClave(mensaje);
+
+                if (fClave.ShowDialog(this) != DialogResult.OK)
+                    return default; // cancelado
+
+                string texto = fClave.Clave;
+
+                try
+                {
+                    return (T)Convert.ChangeType(texto, typeof(T));
+                }
+                catch
+                {
+                    MessageBox.Show(
+                        $"El valor introducido no es un {typeof(T).Name} válido",
+                        "Valor incorrecto",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                }
             }
         }
+
+
+        /*  LO VOY A HACER GENÉRICO: ejemplar tiene código que es int
+         * private string pedirISBN()
+        {
+            FClave fClave = new FClave("ISBN");
+            if (fClave.ShowDialog(this) == DialogResult.OK)
+            {
+                return fClave.Clave;
+            }
+            return null;
+        }*/
     }
 }

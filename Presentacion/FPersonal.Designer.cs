@@ -167,6 +167,7 @@
             this.menuEjemplaresAlta.Name = "menuEjemplaresAlta";
             this.menuEjemplaresAlta.Size = new System.Drawing.Size(216, 44);
             this.menuEjemplaresAlta.Text = "Alta";
+            this.menuEjemplaresAlta.Click += new System.EventHandler(this.menuEjemplaresAlta_Click);
             // 
             // menuEjemplaresBaja
             // 

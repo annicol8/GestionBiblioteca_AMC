@@ -125,5 +125,10 @@ namespace LogicaNegocio
             }
             return Persistencia.Persistencia.GetUsuario(prestamo.DniUsuario);
         }
+
+        public List<Prestamo> GetTodosPrestamos()
+        {
+            return Persistencia.Persistencia.GetPrestamos();
+        }
     }
 }

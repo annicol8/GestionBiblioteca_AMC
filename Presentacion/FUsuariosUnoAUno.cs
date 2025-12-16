@@ -11,7 +11,7 @@ using LogicaNegocio;
 
 namespace Presentacion
 {
-    public partial class FUsuariosUnoAUno : Form
+    public partial class FUsuariosUnoAUno : FComun
     {
         private ILNPersonal lnp;
         private BindingSource bindingSource;
@@ -38,8 +38,7 @@ namespace Presentacion
             }
             catch (Exception ex) 
             {
-                MessageBox.Show($"Error al inicializar el formulario: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MostrarError($"Error al inicializar el formulario: {ex.Message}");
             }
             
 

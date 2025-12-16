@@ -12,6 +12,8 @@ namespace ModeloDominio
         // Atributos
         private int codigo;         // Clave primaria
         private bool activo;          // Para bajas lógicas
+        private string dniPAdq;
+        private string isbnDocumento;
         
 
         // Propiedades
@@ -24,12 +26,14 @@ namespace ModeloDominio
             set { activo = value; }
         }
 
-        //MIRARRRR
-        public string DniPAdq { get; } 
-
-        // Relaciones
-        //MIRARRRR
-        public string IsbnDocumento { get; }  // Clave foranea
+        public string DniPAdq {
+            get { return dniPAdq; }
+            set { dniPAdq = value; }
+        } 
+        public string IsbnDocumento {
+            get { return isbnDocumento; }
+            set { isbnDocumento = value; }
+        }
         public Documento Documento { get; set; }    // Documento asociado
 
         public Ejemplar(int cod)
