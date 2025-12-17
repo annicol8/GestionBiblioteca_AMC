@@ -70,6 +70,12 @@
     <Compile Include="FBajaDocumento.Designer.cs">
       <DependentUpon>FBajaDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="FBajaEjemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBajaEjemplar.Designer.cs">
+      <DependentUpon>FBajaEjemplar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FBajaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FBajaDocumento.resx">
       <DependentUpon>FBajaDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBajaEjemplar.resx">
+      <DependentUpon>FBajaEjemplar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FBajaUsuario.resx">
       <DependentUpon>FBajaUsuario.cs</DependentUpon>

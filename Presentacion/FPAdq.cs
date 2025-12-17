@@ -161,5 +161,38 @@ namespace Presentacion
                 return;
             }
         }
+
+        protected override void menuEjemplaresBaja_Click(object sender, EventArgs e)
+        {
+            int codigo;
+
+            while (true)
+            {
+                codigo = pedirClave<int>("Código del ejemplar");
+
+                if (codigo == 0)
+                    return;
+
+                Ejemplar ejemplarExistente = lnAdq.GetEjemplar(codigo);
+
+                if (ejemplarExistente == null)
+                {
+                    DialogResult dr = MostrarPregunta(
+                        "¿Quieres introducir otro?",
+                        "No existe ningún ejemplar con ese código"
+                    );
+
+                    if (dr == DialogResult.Yes)
+                        continue;
+                    else
+                        return;
+                }
+
+                // Ejemplar encontrado, abrir formulario de baja
+                FBajaEjemplar formulario = new FBajaEjemplar(lnAdq, ejemplarExistente);
+                formulario.ShowDialog(this);
+                return;
+            }
+        }
     }
 }

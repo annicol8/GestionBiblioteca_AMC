@@ -34,7 +34,6 @@ namespace ModeloDominio
             get { return isbnDocumento; }
             set { isbnDocumento = value; }
         }
-        public Documento Documento { get; set; }    // Documento asociado
 
         public Ejemplar(int cod)
         {
