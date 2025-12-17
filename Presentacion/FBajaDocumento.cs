@@ -27,7 +27,7 @@ namespace Presentacion
             this.lnAdq = lnAdq;
             this.documento = documento;
         }
-        /*
+        
         private void FBajaDocumento_Load(object sender, EventArgs e)
         {
             tbIsbn.Text = documento.Isbn;
@@ -40,6 +40,9 @@ namespace Presentacion
             if (documento is LibroPapel)
             {
                 lblTipoDocumento.Text = "Tipo: Libro en papel";
+                lblDuracion.Visible = false;
+                lblFormatoDigital.Visible = false;
+
             }
             else if (documento is AudioLibro)
             {
@@ -60,13 +63,16 @@ namespace Presentacion
             tbAutor.ReadOnly = true;
             tbEditorial.ReadOnly = true;
             tbAnoEdicion.ReadOnly = true;
-        }*/
+
+            this.Text = $"Baja de Documento - ISBN: {documento.Isbn}";
+
+        }
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
             DialogResult dr = MostrarPregunta(
-                "¿Está seguro que desea dar de baja el documento?\nSe darán de baja también todos sus ejemplares asociados.",
-                "Confirmación de baja"
+                "¿Está seguro que desea eliminar el documento?\nLos ejemplares asociados quedarán inactivos.\nEsta operación no se puede deshacer.",
+                "Confirmación de eliminación"
             );
 
             if (dr == DialogResult.Yes)
@@ -92,5 +98,6 @@ namespace Presentacion
         {
             this.Close();
         }
+
     }
 }

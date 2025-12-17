@@ -120,8 +120,7 @@ namespace Presentacion
         }
 
 
-        /*  LO VOY A HACER GENÉRICO: ejemplar tiene código que es int
-         * private string pedirISBN()
+          private string pedirISBN()
         {
             FClave fClave = new FClave("ISBN");
             if (fClave.ShowDialog(this) == DialogResult.OK)
@@ -129,7 +128,7 @@ namespace Presentacion
                 return fClave.Clave;
             }
             return null;
-        }*/
+        }
 
 
         protected override void menuDocumentosBaja_Click(object sender, EventArgs e)
@@ -138,7 +137,7 @@ namespace Presentacion
 
             while (true)
             {
-                isbn = null; //pedirISBN();
+                isbn = pedirISBN();
                 if (isbn == null)
                     return;
 
