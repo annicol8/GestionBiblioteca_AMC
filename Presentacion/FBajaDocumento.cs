@@ -22,12 +22,12 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        public FBajaDocumento(ILNPAdq lnAdq, object documento) : this()
+        public FBajaDocumento(ILNPAdq lnAdq, Documento documento) : this()
         {
             this.lnAdq = lnAdq;
             this.documento = documento;
         }
-
+        /*
         private void FBajaDocumento_Load(object sender, EventArgs e)
         {
             tbIsbn.Text = documento.Isbn;
@@ -60,7 +60,7 @@ namespace Presentacion
             tbAutor.ReadOnly = true;
             tbEditorial.ReadOnly = true;
             tbAnoEdicion.ReadOnly = true;
-        }
+        }*/
 
         private void btAceptar_Click(object sender, EventArgs e)
         {

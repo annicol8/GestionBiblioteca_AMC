@@ -138,7 +138,7 @@ namespace Presentacion
 
             while (true)
             {
-                isbn = pedirISBN();
+                isbn = null; //pedirISBN();
                 if (isbn == null)
                     return;
 

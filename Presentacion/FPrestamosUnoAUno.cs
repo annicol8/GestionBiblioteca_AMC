@@ -75,7 +75,7 @@ namespace Presentacion
                     textBox_Estado.Text = estado.ToString();
 
                     // Prestador (Personal) con nombre
-                    Personal personal = lnps.GetPersonal(prestamo.DniPersonal);
+                    Personal personal = null; // lnps.GetPersonal(prestamo.DniPersonal);
                     textBox_Personal.Text = personal.Dni + ", " + personal.Nombre;
 
                     // Cargar documentos/ejemplares en el ListBox

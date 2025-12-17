@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "FBajaDocumento";
             this.Text = "FBajaDocumento";
-            this.Load += new System.EventHandler(this.FBajaDocumento_Load);
+            //this.Load += new System.EventHandler(this.FBajaDocumento_Load);
             this.ResumeLayout(false);
 
         }
