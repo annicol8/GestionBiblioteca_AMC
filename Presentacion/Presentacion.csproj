@@ -124,6 +124,12 @@
     <Compile Include="FListaDocumentos.Designer.cs">
       <DependentUpon>FListaDocumentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FListaPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FListaPrestamos.Designer.cs">
+      <DependentUpon>FListaPrestamos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FListaUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,17 +216,26 @@
     <EmbeddedResource Include="FListaDocumentos.resx">
       <DependentUpon>FListaDocumentos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FListaPrestamos.resx">
+      <DependentUpon>FListaPrestamos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FListaUsuarios.resx">
       <DependentUpon>FListaUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FPAdq.resx">
+      <DependentUpon>FPAdq.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FPersonal.resx">
       <DependentUpon>FPersonal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FPrestamosUnoAUno.resx">
       <DependentUpon>FPrestamosUnoAUno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FPSala.resx">
+      <DependentUpon>FPSala.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FUsuariosUnoAUno.resx">
       <DependentUpon>FUsuariosUnoAUno.cs</DependentUpon>

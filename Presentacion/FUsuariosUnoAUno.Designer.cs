@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FUsuariosUnoAUno));
+            this.textBox_Nombre = new System.Windows.Forms.TextBox();
+            this.textBox_Dni = new System.Windows.Forms.TextBox();
+            this.lb_Nombre = new System.Windows.Forms.Label();
+            this.lb_Dni = new System.Windows.Forms.Label();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -40,13 +44,41 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.lb_Dni = new System.Windows.Forms.Label();
-            this.lb_Nombre = new System.Windows.Forms.Label();
-            this.textBox_Dni = new System.Windows.Forms.TextBox();
-            this.textBox_Nombre = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // textBox_Nombre
+            // 
+            this.textBox_Nombre.Location = new System.Drawing.Point(189, 163);
+            this.textBox_Nombre.Name = "textBox_Nombre";
+            this.textBox_Nombre.Size = new System.Drawing.Size(194, 26);
+            this.textBox_Nombre.TabIndex = 4;
+            // 
+            // textBox_Dni
+            // 
+            this.textBox_Dni.Location = new System.Drawing.Point(189, 95);
+            this.textBox_Dni.Name = "textBox_Dni";
+            this.textBox_Dni.Size = new System.Drawing.Size(194, 26);
+            this.textBox_Dni.TabIndex = 3;
+            // 
+            // lb_Nombre
+            // 
+            this.lb_Nombre.AutoSize = true;
+            this.lb_Nombre.Location = new System.Drawing.Point(70, 169);
+            this.lb_Nombre.Name = "lb_Nombre";
+            this.lb_Nombre.Size = new System.Drawing.Size(69, 20);
+            this.lb_Nombre.TabIndex = 2;
+            this.lb_Nombre.Text = "Nombre:";
+            // 
+            // lb_Dni
+            // 
+            this.lb_Dni.AutoSize = true;
+            this.lb_Dni.Location = new System.Drawing.Point(70, 101);
+            this.lb_Dni.Name = "lb_Dni";
+            this.lb_Dni.Size = new System.Drawing.Size(41, 20);
+            this.lb_Dni.TabIndex = 1;
+            this.lb_Dni.Text = "DNI:";
             // 
             // bindingNavigator1
             // 
@@ -109,7 +141,6 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 31);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -143,38 +174,6 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 38);
             // 
-            // lb_Dni
-            // 
-            this.lb_Dni.AutoSize = true;
-            this.lb_Dni.Location = new System.Drawing.Point(70, 101);
-            this.lb_Dni.Name = "lb_Dni";
-            this.lb_Dni.Size = new System.Drawing.Size(41, 20);
-            this.lb_Dni.TabIndex = 1;
-            this.lb_Dni.Text = "DNI:";
-            // 
-            // lb_Nombre
-            // 
-            this.lb_Nombre.AutoSize = true;
-            this.lb_Nombre.Location = new System.Drawing.Point(70, 169);
-            this.lb_Nombre.Name = "lb_Nombre";
-            this.lb_Nombre.Size = new System.Drawing.Size(69, 20);
-            this.lb_Nombre.TabIndex = 2;
-            this.lb_Nombre.Text = "Nombre:";
-            // 
-            // textBox_Dni
-            // 
-            this.textBox_Dni.Location = new System.Drawing.Point(189, 95);
-            this.textBox_Dni.Name = "textBox_Dni";
-            this.textBox_Dni.Size = new System.Drawing.Size(194, 26);
-            this.textBox_Dni.TabIndex = 3;
-            // 
-            // textBox_Nombre
-            // 
-            this.textBox_Nombre.Location = new System.Drawing.Point(189, 163);
-            this.textBox_Nombre.Name = "textBox_Nombre";
-            this.textBox_Nombre.Size = new System.Drawing.Size(194, 26);
-            this.textBox_Nombre.TabIndex = 4;
-            // 
             // FUsuariosUnoAUno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -186,6 +185,7 @@
             this.Controls.Add(this.lb_Dni);
             this.Controls.Add(this.bindingNavigator1);
             this.Name = "FUsuariosUnoAUno";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Usuarios";
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);

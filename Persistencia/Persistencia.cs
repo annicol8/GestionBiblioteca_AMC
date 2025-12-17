@@ -79,6 +79,11 @@ namespace Persistencia
             return null;
         }
 
+        public static Personal GetPersonal(string dni)
+        {
+            PersonalDato pd = BD.READ_ALL(BD.TablaPersonales).FirstOrDefault(p => p.Clave.Equals(dni));
+            return pd != null ? Transformers.PersonalDatoAPersonal(pd) : null;
+        }
 
 
         #region AUDIOLIBRO

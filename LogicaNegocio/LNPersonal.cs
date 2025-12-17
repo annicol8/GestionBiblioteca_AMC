@@ -158,10 +158,12 @@ namespace LogicaNegocio
             return prestamos.Count(p =>p.Estado == EstadoPrestamo.enProceso &&p.FechaDevolucion < DateTime.Now);
         }
 
-        public List<Personal> GetPersonal()
+        public Personal GetPersonal(string dni)
         {
-            return Persistencia.Persistencia.GetPersonal();
+            return Persistencia.Persistencia.GetPersonal(dni);
         }
+
+        
 
     }
 }

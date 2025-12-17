@@ -67,15 +67,15 @@ namespace Presentacion
                         textBox_FechaDevolucion.Text = "No devuelto todavía";
                     }
 
-                    Usuario usuario = lnps.GetUsuario(prestamo.DniUsuario)
-; textBox_Usuario.Text = usuario.Dni + ", " + usuario.Nombre;
+                    Usuario usuario = lnps.GetUsuario(prestamo.DniUsuario);
+                    textBox_Usuario.Text = usuario.Dni + ", " + usuario.Nombre;
 
                     // Estado
                     EstadoPrestamo estado = prestamo.Estado;
                     textBox_Estado.Text = estado.ToString();
 
                     // Prestador (Personal) con nombre
-                    Personal personal = null; // para que no de fallo de compilacion lnps.GetPersonal(prestamo.DniPersonal);
+                    Personal personal = lnps.GetPersonal(prestamo.DniPersonal); 
                     textBox_Personal.Text = personal.Dni + ", " + personal.Nombre;
 
                     // Cargar documentos/ejemplares en el ListBox
@@ -105,14 +105,6 @@ namespace Presentacion
                         contador++;
                     }
                 }
-
-                /*
-                // Si no hay documentos no creo que se vaya a dar pq en un prestamo siempre va a haber documentos
-                if (listBox_Doc.Items.Count == 0)
-                {
-                    listBox_Doc.Items.Add("(Sin ejemplares)");
-                }
-                */
             }
             catch (Exception ex)
             {

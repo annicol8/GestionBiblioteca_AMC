@@ -39,49 +39,55 @@
             // Nombre
             // 
             this.Nombre.AutoSize = true;
-            this.Nombre.Location = new System.Drawing.Point(233, 259);
+            this.Nombre.Location = new System.Drawing.Point(175, 207);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(87, 25);
+            this.Nombre.Size = new System.Drawing.Size(65, 20);
             this.Nombre.TabIndex = 7;
             this.Nombre.Text = "Nombre";
             // 
             // tbNombre
             // 
-            this.tbNombre.Location = new System.Drawing.Point(407, 254);
+            this.tbNombre.Location = new System.Drawing.Point(305, 203);
+            this.tbNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(165, 31);
+            this.tbNombre.Size = new System.Drawing.Size(125, 26);
             this.tbNombre.TabIndex = 6;
             // 
             // tbDni
             // 
-            this.tbDni.Location = new System.Drawing.Point(407, 165);
+            this.tbDni.Location = new System.Drawing.Point(305, 132);
+            this.tbDni.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbDni.Name = "tbDni";
-            this.tbDni.Size = new System.Drawing.Size(165, 31);
+            this.tbDni.Size = new System.Drawing.Size(125, 26);
             this.tbDni.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(228, 165);
+            this.label1.Location = new System.Drawing.Point(171, 132);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 25);
+            this.label1.Size = new System.Drawing.Size(45, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "DNI: ";
             // 
             // btCancelar
             // 
-            this.btCancelar.Location = new System.Drawing.Point(439, 394);
+            this.btCancelar.Location = new System.Drawing.Point(329, 315);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(119, 43);
+            this.btCancelar.Size = new System.Drawing.Size(89, 34);
             this.btCancelar.TabIndex = 9;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
             // 
             // btAceptar
             // 
-            this.btAceptar.Location = new System.Drawing.Point(243, 395);
+            this.btAceptar.Location = new System.Drawing.Point(182, 316);
+            this.btAceptar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btAceptar.Name = "btAceptar";
-            this.btAceptar.Size = new System.Drawing.Size(129, 42);
+            this.btAceptar.Size = new System.Drawing.Size(97, 34);
             this.btAceptar.TabIndex = 8;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
@@ -89,16 +95,18 @@
             // 
             // FBajaUsuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 559);
+            this.ClientSize = new System.Drawing.Size(600, 447);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btAceptar);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.tbDni);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FBajaUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Baja de Usuario";
             this.Load += new System.EventHandler(this.FBajaUsuario_Load);
             this.ResumeLayout(false);

@@ -14,18 +14,7 @@ namespace Presentacion
 {
     public partial class FPersonal : FComun
     {
-        /*private Personal personal;
-         * 
-        private Personal Personal
-        {
-            get { return personal; }
-            set { personal = value; }
-        }*/
-
         protected ILNPersonal lnp;
-
-
-
 
         public FPersonal()
         {
@@ -82,7 +71,6 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
-        
 
         private string pedirDNI()
         {
@@ -211,6 +199,26 @@ namespace Presentacion
         }
 
         protected virtual void menuEjemplaresBaja_Click(object sender, EventArgs e)
+        {
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+        }
+
+        protected virtual void menuDocumentosListado_Click(object sender, EventArgs e)
+        {
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+        }
+
+        protected virtual void menuDocumentosRecorrido_Click(object sender, EventArgs e)
+        {
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+        }
+
+        protected virtual void menuPrestamosRecorrido_Click(object sender, EventArgs e)
+        {
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+        }
+
+        protected virtual void menuPrestamosListado_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }

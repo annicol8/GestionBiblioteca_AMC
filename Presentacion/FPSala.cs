@@ -13,6 +13,8 @@ namespace Presentacion
 {
     public partial class FPSala : FPersonal
     {
+        private ILNPSala lnSala;
+
         public FPSala(ILNPSala lnSala) : base(lnSala)
         {
             InitializeComponent();
@@ -26,7 +28,34 @@ namespace Presentacion
             OcultarEjemplares();
         }
 
-        // Si necesitas lógica específica de sala
-        private ILNPSala LNPSala => (ILNPSala) lnp;
+        protected override void menuPrestamosRecorrido_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FPrestamosUnoAUno formulario = new FPrestamosUnoAUno(lnSala);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al abrir el recorrido de préstamos: {ex.Message}");
+            }
+        }
+
+        /*
+        private void menuPrestamosListado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FListaPrestamos formulario = new FListaPrestamos(lnSala);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al abrir el listado de préstamos: {ex.Message}");
+            }
+        }
+        */
+
+
     }
 }

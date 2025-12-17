@@ -32,8 +32,7 @@ namespace Persistencia
 
             TablaLibrosPapel.Add(new LibroPapelDato("123A", "Quijote", "Cervantes", "alaDelta", 2002));
 
-            /* LO HE ESCRITO DE PRUEBA PARA PROBAR UNA COSA 
-             * 
+            
             TablaLibrosPapel.Add(new LibroPapelDato(
                 "978-0-13-468599-1",
                 "Clean Code",
@@ -72,8 +71,7 @@ namespace Persistencia
             TablaEjemplares.Add(new EjemplarDato(1,  "978-0-13-468599-1", true, "87654321B"));
             TablaEjemplares.Add(new EjemplarDato(2,  "978-0-13-468599-1",true, "87654321B"));
             TablaEjemplares.Add(new EjemplarDato(3,  "978-0-13-235088-4", true, "87654321B"));
-             * 
-             * **/
+            
         }
 
 

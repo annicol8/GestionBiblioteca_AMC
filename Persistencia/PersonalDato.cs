@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class PersonalDato: Entity<String>
+    internal class PersonalDato: Entity<string>
     {
         private string nombre;
         private TipoPersonal tipoPersonal;

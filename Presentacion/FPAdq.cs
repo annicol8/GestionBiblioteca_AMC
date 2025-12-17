@@ -120,7 +120,7 @@ namespace Presentacion
         }
 
 
-          private string pedirISBN()
+        private string pedirISBN()
         {
             FClave fClave = new FClave("ISBN");
             if (fClave.ShowDialog(this) == DialogResult.OK)
@@ -192,6 +192,33 @@ namespace Presentacion
                 FBajaEjemplar formulario = new FBajaEjemplar(lnAdq, ejemplarExistente);
                 formulario.ShowDialog(this);
                 return;
+            }
+        }
+
+
+        protected override void menuDocumentosListado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FListaDocumentos formulario = new FListaDocumentos(lnAdq);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al abrir el listado de documentos: {ex.Message}");
+            }
+        }
+
+        protected override void menuDocumentosRecorrido_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FDocumentosUnoAUno formulario = new FDocumentosUnoAUno(lnAdq);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al abrir el recorrido de documentos: {ex.Message}");
             }
         }
     }

@@ -26,5 +26,6 @@ namespace LogicaNegocio
         int GetNumEjemplaresUltimoMes(string dni);
 
         int GetNumPrestamosVencidos(string dni);
+        Personal GetPersonal(string dni);
     }
 }

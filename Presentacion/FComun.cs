@@ -20,8 +20,6 @@ namespace Presentacion
             InitializeComponent();
         }
 
-
-
         // Métodos para mostrar mensajes al usuario. Falta añadir los iconoes
 
         protected void MostrarInformacion(string mensaje, string titulo = "Información")
@@ -44,7 +42,6 @@ namespace Presentacion
             return MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
-
         protected bool SolicitarConfirmacion(string mensaje, string titulo = "Confirmación")
         {
             DialogResult result = MessageBox.Show(
@@ -55,7 +52,6 @@ namespace Presentacion
 
             return result == DialogResult.Yes;
         }
-
 
         protected void MostrarExito(string mensaje, string titulo = "Operación Exitosa")
         {

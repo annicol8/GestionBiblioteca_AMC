@@ -28,38 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxCodigoEj = new System.Windows.Forms.TextBox();
-            this.comboBoxISBN = new System.Windows.Forms.ComboBox();
-            this.botonAceptar = new System.Windows.Forms.Button();
-            this.botonCancelar = new System.Windows.Forms.Button();
-            this.labelCodigo = new System.Windows.Forms.Label();
             this.labelIsbn = new System.Windows.Forms.Label();
+            this.labelCodigo = new System.Windows.Forms.Label();
+            this.botonCancelar = new System.Windows.Forms.Button();
+            this.botonAceptar = new System.Windows.Forms.Button();
+            this.comboBoxISBN = new System.Windows.Forms.ComboBox();
+            this.textBoxCodigoEj = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBoxCodigoEj
+            // labelIsbn
             // 
-            this.textBoxCodigoEj.Location = new System.Drawing.Point(548, 79);
-            this.textBoxCodigoEj.Name = "textBoxCodigoEj";
-            this.textBoxCodigoEj.Size = new System.Drawing.Size(121, 26);
-            this.textBoxCodigoEj.TabIndex = 0;
+            this.labelIsbn.AutoSize = true;
+            this.labelIsbn.Location = new System.Drawing.Point(158, 167);
+            this.labelIsbn.Name = "labelIsbn";
+            this.labelIsbn.Size = new System.Drawing.Size(144, 20);
+            this.labelIsbn.TabIndex = 5;
+            this.labelIsbn.Text = "Documento (ISBN)";
             // 
-            // comboBoxISBN
+            // labelCodigo
             // 
-            this.comboBoxISBN.FormattingEnabled = true;
-            this.comboBoxISBN.Location = new System.Drawing.Point(548, 160);
-            this.comboBoxISBN.Name = "comboBoxISBN";
-            this.comboBoxISBN.Size = new System.Drawing.Size(121, 28);
-            this.comboBoxISBN.TabIndex = 1;
-            // 
-            // botonAceptar
-            // 
-            this.botonAceptar.Location = new System.Drawing.Point(158, 293);
-            this.botonAceptar.Name = "botonAceptar";
-            this.botonAceptar.Size = new System.Drawing.Size(129, 35);
-            this.botonAceptar.TabIndex = 2;
-            this.botonAceptar.Text = "Aceptar";
-            this.botonAceptar.UseVisualStyleBackColor = true;
-            this.botonAceptar.Click += new System.EventHandler(this.botonAceptar_Click);
+            this.labelCodigo.AutoSize = true;
+            this.labelCodigo.Location = new System.Drawing.Point(158, 85);
+            this.labelCodigo.Name = "labelCodigo";
+            this.labelCodigo.Size = new System.Drawing.Size(59, 20);
+            this.labelCodigo.TabIndex = 4;
+            this.labelCodigo.Text = "Código";
             // 
             // botonCancelar
             // 
@@ -71,23 +64,30 @@
             this.botonCancelar.UseVisualStyleBackColor = true;
             this.botonCancelar.Click += new System.EventHandler(this.botonCancelar_Click);
             // 
-            // labelCodigo
+            // botonAceptar
             // 
-            this.labelCodigo.AutoSize = true;
-            this.labelCodigo.Location = new System.Drawing.Point(158, 85);
-            this.labelCodigo.Name = "labelCodigo";
-            this.labelCodigo.Size = new System.Drawing.Size(59, 20);
-            this.labelCodigo.TabIndex = 4;
-            this.labelCodigo.Text = "Código";
+            this.botonAceptar.Location = new System.Drawing.Point(158, 293);
+            this.botonAceptar.Name = "botonAceptar";
+            this.botonAceptar.Size = new System.Drawing.Size(129, 35);
+            this.botonAceptar.TabIndex = 2;
+            this.botonAceptar.Text = "Aceptar";
+            this.botonAceptar.UseVisualStyleBackColor = true;
+            this.botonAceptar.Click += new System.EventHandler(this.botonAceptar_Click);
             // 
-            // labelIsbn
+            // comboBoxISBN
             // 
-            this.labelIsbn.AutoSize = true;
-            this.labelIsbn.Location = new System.Drawing.Point(158, 167);
-            this.labelIsbn.Name = "labelIsbn";
-            this.labelIsbn.Size = new System.Drawing.Size(144, 20);
-            this.labelIsbn.TabIndex = 5;
-            this.labelIsbn.Text = "Documento (ISBN)";
+            this.comboBoxISBN.FormattingEnabled = true;
+            this.comboBoxISBN.Location = new System.Drawing.Point(548, 160);
+            this.comboBoxISBN.Name = "comboBoxISBN";
+            this.comboBoxISBN.Size = new System.Drawing.Size(121, 28);
+            this.comboBoxISBN.TabIndex = 1;
+            // 
+            // textBoxCodigoEj
+            // 
+            this.textBoxCodigoEj.Location = new System.Drawing.Point(548, 79);
+            this.textBoxCodigoEj.Name = "textBoxCodigoEj";
+            this.textBoxCodigoEj.Size = new System.Drawing.Size(121, 26);
+            this.textBoxCodigoEj.TabIndex = 0;
             // 
             // FAltaEjemplar
             // 
@@ -101,6 +101,7 @@
             this.Controls.Add(this.comboBoxISBN);
             this.Controls.Add(this.textBoxCodigoEj);
             this.Name = "FAltaEjemplar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FAltaEjemplar";
             this.Load += new System.EventHandler(this.FAltaEjemplar_Load);
             this.ResumeLayout(false);
