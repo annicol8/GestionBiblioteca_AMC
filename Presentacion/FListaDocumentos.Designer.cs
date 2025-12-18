@@ -37,6 +37,7 @@
             this.lb_Documentos = new System.Windows.Forms.Label();
             this.dataGridView_Ejemplares = new System.Windows.Forms.DataGridView();
             this.dataGridView_Doc = new System.Windows.Forms.DataGridView();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ejemplares)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Doc)).BeginInit();
             this.SuspendLayout();
@@ -125,11 +126,21 @@
             this.dataGridView_Doc.TabIndex = 0;
             this.dataGridView_Doc.SelectionChanged += new System.EventHandler(this.dataGridView_Doc_SelectionChanged);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 528);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(975, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // FListaDocumentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(975, 550);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.vScrollBar2);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.lb_Ejemplares);
@@ -154,5 +165,6 @@
         private System.Windows.Forms.Label lb_Ejemplares;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.VScrollBar vScrollBar2;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }

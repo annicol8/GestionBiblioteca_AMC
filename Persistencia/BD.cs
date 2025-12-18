@@ -75,9 +75,11 @@ namespace Persistencia
             // USUARIOS
             TablaUsuarios.Add(new UsuarioDato(
                 "11111111C",
-                "Pedro Gómez",
+                "Pedro",
                 true
             ));
+
+            TablaUsuarios.Add(new UsuarioDato("11122233V", "Eva", true));
 
             // PRESTAMO
             int idPrestamo = GenerarIdPrestamo();
