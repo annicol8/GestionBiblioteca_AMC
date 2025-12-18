@@ -213,7 +213,7 @@ namespace Presentacion
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
-        protected virtual void menuPrestamosRecorrido_Click(object sender, EventArgs e)
+        protected virtual void menuPrestamosRecorrido_Click(object sender, EventArgs e) //falla al entrar
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }

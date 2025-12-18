@@ -24,15 +24,15 @@ namespace Persistencia
 
         private static int ultimoIdPrestamo = 0;
 
-        
+
         public static void CargarDatosPrueba()
-        {  
+        {
             TablaPersonales.Add(new PersonalDato("12345678A", "Juan", TipoPersonal.personalSala));
             TablaPersonales.Add(new PersonalDato("87654321B", "María", TipoPersonal.personalAdquisiciones));
 
             TablaLibrosPapel.Add(new LibroPapelDato("123A", "Quijote", "Cervantes", "alaDelta", 2002));
 
-            
+
             TablaLibrosPapel.Add(new LibroPapelDato(
                 "978-0-13-468599-1",
                 "Clean Code",
@@ -68,10 +68,42 @@ namespace Persistencia
 
 
             // EJEMPLARES (usando el DNI del personal de adquisiciones que acabamos de crear)
-            TablaEjemplares.Add(new EjemplarDato(1,  "978-0-13-468599-1", true, "87654321B"));
-            TablaEjemplares.Add(new EjemplarDato(2,  "978-0-13-468599-1",true, "87654321B"));
-            TablaEjemplares.Add(new EjemplarDato(3,  "978-0-13-235088-4", true, "87654321B"));
-            
+            TablaEjemplares.Add(new EjemplarDato(1, "978-0-13-468599-1", true, "87654321B"));
+            TablaEjemplares.Add(new EjemplarDato(2, "978-0-13-468599-1", true, "87654321B"));
+            TablaEjemplares.Add(new EjemplarDato(3, "978-0-13-235088-4", true, "87654321B"));
+
+            // USUARIOS
+            TablaUsuarios.Add(new UsuarioDato(
+                "11111111C",
+                "Pedro Gómez",
+                true
+            ));
+
+            // PRESTAMO
+            int idPrestamo = GenerarIdPrestamo();
+
+            TablaPrestamos.Add(new PrestamoDato(
+                idPrestamo,
+                DateTime.Now,
+                DateTime.Now.AddDays(15),
+                EstadoPrestamo.enProceso,
+                "11111111C",   // DNI Usuario
+                "12345678A"    // DNI Personal (personal de sala)
+            ));
+
+            // PRESTAMO - EJEMPLARES
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo,
+                1,
+                DateTime.MinValue // aún no devuelto
+            ));
+
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo,
+                2,
+                DateTime.MinValue
+            ));
+
         }
 
 

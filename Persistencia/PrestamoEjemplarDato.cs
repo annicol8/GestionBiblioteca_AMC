@@ -13,13 +13,11 @@ namespace Persistencia
         private DateTime fechaDevolucion;
 
         
-        
         public int IdPrestamo {
             get { return idPrestamo; } set { idPrestamo = value; }
         }
 
         
-
         
         public int CodigoEjemplar { 
             get { return codigoEjemplar; } set { codigoEjemplar = value; }

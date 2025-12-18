@@ -18,6 +18,7 @@ namespace Presentacion
         public FPSala(ILNPSala lnSala) : base(lnSala)
         {
             InitializeComponent();
+            this.lnSala = lnSala;
             ConfigurarPermisos();
         }
 
@@ -41,8 +42,7 @@ namespace Presentacion
             }
         }
 
-        /*
-        private void menuPrestamosListado_Click(object sender, EventArgs e)
+        protected override void menuPrestamosListado_Click(object sender, EventArgs e)
         {
             try
             {
@@ -54,7 +54,6 @@ namespace Presentacion
                 MostrarError($"Error al abrir el listado de préstamos: {ex.Message}");
             }
         }
-        */
 
 
     }

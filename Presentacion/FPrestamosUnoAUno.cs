@@ -27,6 +27,7 @@ namespace Presentacion
         {
             try
             {
+                /*
                 bindingSourcePrest = new BindingSource();
                 bindingSourcePrest.DataSource = lnps.GetTodosPrestamos();
 
@@ -35,6 +36,22 @@ namespace Presentacion
                 bindingSourcePrest.CurrentChanged += BindingSource_CurrentChanged;
                 
                 MostrarPrestamoActual();
+                */
+                if (lnps == null)
+                    throw new Exception("Lógica de negocio no inicializada");
+
+                bindingSourcePrest = new BindingSource();
+
+                var prestamos = lnps.GetTodosPrestamos() ?? new List<Prestamo>();
+                bindingSourcePrest.DataSource = prestamos;
+
+                if (bindingNavigator1 != null)
+                    bindingNavigator1.BindingSource = bindingSourcePrest;
+
+                bindingSourcePrest.CurrentChanged += BindingSource_CurrentChanged;
+
+                if (bindingSourcePrest.Count > 0)
+                    MostrarPrestamoActual();
             }
             catch (Exception ex)
             {

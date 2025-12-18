@@ -33,6 +33,7 @@
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
             this.lb_Prestamos = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Prest)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             this.dataGridView_Prest.Name = "dataGridView_Prest";
             this.dataGridView_Prest.RowHeadersWidth = 62;
             this.dataGridView_Prest.RowTemplate.Height = 28;
-            this.dataGridView_Prest.Size = new System.Drawing.Size(740, 210);
+            this.dataGridView_Prest.Size = new System.Drawing.Size(1059, 210);
             this.dataGridView_Prest.TabIndex = 0;
             this.dataGridView_Prest.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvPrestamos_CellFormatting);
             this.dataGridView_Prest.SelectionChanged += new System.EventHandler(this.DgvPrestamos_SelectionChanged);
@@ -54,19 +55,19 @@
             this.listBox_Doc.ItemHeight = 20;
             this.listBox_Doc.Location = new System.Drawing.Point(21, 289);
             this.listBox_Doc.Name = "listBox_Doc";
-            this.listBox_Doc.Size = new System.Drawing.Size(740, 144);
+            this.listBox_Doc.Size = new System.Drawing.Size(1059, 144);
             this.listBox_Doc.TabIndex = 1;
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(725, 34);
+            this.vScrollBar1.Location = new System.Drawing.Point(1054, 34);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(26, 214);
+            this.vScrollBar1.Size = new System.Drawing.Size(26, 210);
             this.vScrollBar1.TabIndex = 2;
             // 
             // vScrollBar2
             // 
-            this.vScrollBar2.Location = new System.Drawing.Point(725, 289);
+            this.vScrollBar2.Location = new System.Drawing.Point(1054, 289);
             this.vScrollBar2.Name = "vScrollBar2";
             this.vScrollBar2.Size = new System.Drawing.Size(26, 144);
             this.vScrollBar2.TabIndex = 3;
@@ -80,11 +81,21 @@
             this.lb_Prestamos.TabIndex = 4;
             this.lb_Prestamos.Text = "Préstamos";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 266);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(184, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Ejemplares del préstamo";
+            // 
             // FListaPrestamos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1122, 460);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lb_Prestamos);
             this.Controls.Add(this.vScrollBar2);
             this.Controls.Add(this.vScrollBar1);
@@ -92,7 +103,7 @@
             this.Controls.Add(this.dataGridView_Prest);
             this.Name = "FListaPrestamos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Listado de préstamos con sus documentos";
+            this.Text = "Listado de préstamos con sus ejemplares";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Prest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -106,5 +117,6 @@
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.VScrollBar vScrollBar2;
         private System.Windows.Forms.Label lb_Prestamos;
+        private System.Windows.Forms.Label label1;
     }
 }

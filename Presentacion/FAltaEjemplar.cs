@@ -38,7 +38,7 @@ namespace Presentacion
         
         private void CargarDocumentos()
         {
-                List<Documento> documentos = lnAdq.getDocumentos();
+            List<Documento> documentos = lnAdq.getDocumentos();
 
             foreach (Documento documento in documentos)
             {

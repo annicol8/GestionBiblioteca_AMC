@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FPrestamosUnoAUno));
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
@@ -47,14 +47,14 @@
             this.lb_Personal = new System.Windows.Forms.Label();
             this.lb_Estado = new System.Windows.Forms.Label();
             this.groupBox_Documentos = new System.Windows.Forms.GroupBox();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.listBox_Doc = new System.Windows.Forms.ListBox();
             this.textBox_Id = new System.Windows.Forms.TextBox();
             this.textBox_FechaPrest = new System.Windows.Forms.TextBox();
             this.textBox_FechaDevolucion = new System.Windows.Forms.TextBox();
             this.textBox_Estado = new System.Windows.Forms.TextBox();
             this.textBox_Personal = new System.Windows.Forms.TextBox();
             this.textBox_Usuario = new System.Windows.Forms.TextBox();
-            this.listBox_Doc = new System.Windows.Forms.ListBox();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.groupBox_Documentos.SuspendLayout();
@@ -83,9 +83,16 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(800, 33);
+            this.bindingNavigator1.Size = new System.Drawing.Size(800, 38);
             this.bindingNavigator1.TabIndex = 0;
             this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(54, 28);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -93,7 +100,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(34, 28);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(34, 33);
             this.bindingNavigatorMoveFirstItem.Text = "Move first";
             // 
             // bindingNavigatorMovePreviousItem
@@ -120,16 +127,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(54, 28);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 33);
             // 
             // bindingNavigatorMoveNextItem
@@ -152,7 +152,7 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 33);
             // 
             // lb_Id
@@ -220,59 +220,12 @@
             this.groupBox_Documentos.TabStop = false;
             this.groupBox_Documentos.Text = "Documentos del préstamo";
             // 
-            // textBox_Id
+            // vScrollBar1
             // 
-            this.textBox_Id.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox_Id.Location = new System.Drawing.Point(338, 74);
-            this.textBox_Id.Name = "textBox_Id";
-            this.textBox_Id.ReadOnly = true;
-            this.textBox_Id.Size = new System.Drawing.Size(100, 26);
-            this.textBox_Id.TabIndex = 9;
-            // 
-            // textBox_FechaPrest
-            // 
-            this.textBox_FechaPrest.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox_FechaPrest.Location = new System.Drawing.Point(338, 119);
-            this.textBox_FechaPrest.Name = "textBox_FechaPrest";
-            this.textBox_FechaPrest.ReadOnly = true;
-            this.textBox_FechaPrest.Size = new System.Drawing.Size(100, 26);
-            this.textBox_FechaPrest.TabIndex = 10;
-            // 
-            // textBox_FechaDevolucion
-            // 
-            this.textBox_FechaDevolucion.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox_FechaDevolucion.Location = new System.Drawing.Point(338, 168);
-            this.textBox_FechaDevolucion.Name = "textBox_FechaDevolucion";
-            this.textBox_FechaDevolucion.ReadOnly = true;
-            this.textBox_FechaDevolucion.Size = new System.Drawing.Size(100, 26);
-            this.textBox_FechaDevolucion.TabIndex = 11;
-            // 
-            // textBox_Estado
-            // 
-            this.textBox_Estado.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox_Estado.Location = new System.Drawing.Point(338, 214);
-            this.textBox_Estado.Name = "textBox_Estado";
-            this.textBox_Estado.ReadOnly = true;
-            this.textBox_Estado.Size = new System.Drawing.Size(100, 26);
-            this.textBox_Estado.TabIndex = 12;
-            // 
-            // textBox_Personal
-            // 
-            this.textBox_Personal.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox_Personal.Location = new System.Drawing.Point(338, 316);
-            this.textBox_Personal.Name = "textBox_Personal";
-            this.textBox_Personal.ReadOnly = true;
-            this.textBox_Personal.Size = new System.Drawing.Size(100, 26);
-            this.textBox_Personal.TabIndex = 13;
-            // 
-            // textBox_Usuario
-            // 
-            this.textBox_Usuario.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox_Usuario.Location = new System.Drawing.Point(338, 260);
-            this.textBox_Usuario.Name = "textBox_Usuario";
-            this.textBox_Usuario.ReadOnly = true;
-            this.textBox_Usuario.Size = new System.Drawing.Size(100, 26);
-            this.textBox_Usuario.TabIndex = 14;
+            this.vScrollBar1.Location = new System.Drawing.Point(573, 25);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(26, 144);
+            this.vScrollBar1.TabIndex = 1;
             // 
             // listBox_Doc
             // 
@@ -283,12 +236,59 @@
             this.listBox_Doc.Size = new System.Drawing.Size(587, 144);
             this.listBox_Doc.TabIndex = 0;
             // 
-            // vScrollBar1
+            // textBox_Id
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(573, 25);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(26, 144);
-            this.vScrollBar1.TabIndex = 1;
+            this.textBox_Id.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBox_Id.Location = new System.Drawing.Point(338, 66);
+            this.textBox_Id.Name = "textBox_Id";
+            this.textBox_Id.ReadOnly = true;
+            this.textBox_Id.Size = new System.Drawing.Size(354, 26);
+            this.textBox_Id.TabIndex = 9;
+            // 
+            // textBox_FechaPrest
+            // 
+            this.textBox_FechaPrest.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox_FechaPrest.Location = new System.Drawing.Point(338, 116);
+            this.textBox_FechaPrest.Name = "textBox_FechaPrest";
+            this.textBox_FechaPrest.ReadOnly = true;
+            this.textBox_FechaPrest.Size = new System.Drawing.Size(354, 26);
+            this.textBox_FechaPrest.TabIndex = 10;
+            // 
+            // textBox_FechaDevolucion
+            // 
+            this.textBox_FechaDevolucion.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox_FechaDevolucion.Location = new System.Drawing.Point(338, 165);
+            this.textBox_FechaDevolucion.Name = "textBox_FechaDevolucion";
+            this.textBox_FechaDevolucion.ReadOnly = true;
+            this.textBox_FechaDevolucion.Size = new System.Drawing.Size(354, 26);
+            this.textBox_FechaDevolucion.TabIndex = 11;
+            // 
+            // textBox_Estado
+            // 
+            this.textBox_Estado.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox_Estado.Location = new System.Drawing.Point(338, 211);
+            this.textBox_Estado.Name = "textBox_Estado";
+            this.textBox_Estado.ReadOnly = true;
+            this.textBox_Estado.Size = new System.Drawing.Size(354, 26);
+            this.textBox_Estado.TabIndex = 12;
+            // 
+            // textBox_Personal
+            // 
+            this.textBox_Personal.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox_Personal.Location = new System.Drawing.Point(338, 295);
+            this.textBox_Personal.Name = "textBox_Personal";
+            this.textBox_Personal.ReadOnly = true;
+            this.textBox_Personal.Size = new System.Drawing.Size(354, 26);
+            this.textBox_Personal.TabIndex = 13;
+            // 
+            // textBox_Usuario
+            // 
+            this.textBox_Usuario.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox_Usuario.Location = new System.Drawing.Point(338, 254);
+            this.textBox_Usuario.Name = "textBox_Usuario";
+            this.textBox_Usuario.ReadOnly = true;
+            this.textBox_Usuario.Size = new System.Drawing.Size(354, 26);
+            this.textBox_Usuario.TabIndex = 14;
             // 
             // FPrestamosUnoAUno
             // 

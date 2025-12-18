@@ -293,8 +293,11 @@ namespace Persistencia
 
         public static List<Prestamo> GetPrestamos()
         {
-            return BD.READ_ALL(BD.TablaPrestamos)
+            /*return BD.READ_ALL(BD.TablaPrestamos)
                      .Select(Transformers.PrestamoDatoAPrestamo)
+                     .ToList(); */
+            return BD.READ_ALL(BD.TablaPrestamos)
+                     .Select(Transformers.PrestamoDatoAPrestamo).Where(p => p != null)
                      .ToList();
         }
 
@@ -303,7 +306,7 @@ namespace Persistencia
             return BD.READ_ALL(BD.TablaPrestamos)
                      .Where(p => p.DniUsuario == dniUsuario)
                      .Select(Transformers.PrestamoDatoAPrestamo)
-                     .ToList();
+                     .OrderByDescending(p => p.FechaPrestamo).ToList();
         }
 
         public static Prestamo GetPrestamoPorId(int id)
