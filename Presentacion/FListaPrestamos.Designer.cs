@@ -30,8 +30,6 @@
         {
             this.dataGridView_Prest = new System.Windows.Forms.DataGridView();
             this.listBox_Doc = new System.Windows.Forms.ListBox();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
             this.lb_Prestamos = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Prest)).BeginInit();
@@ -40,11 +38,11 @@
             // dataGridView_Prest
             // 
             this.dataGridView_Prest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Prest.Location = new System.Drawing.Point(21, 34);
+            this.dataGridView_Prest.Location = new System.Drawing.Point(36, 32);
             this.dataGridView_Prest.Name = "dataGridView_Prest";
             this.dataGridView_Prest.RowHeadersWidth = 62;
             this.dataGridView_Prest.RowTemplate.Height = 28;
-            this.dataGridView_Prest.Size = new System.Drawing.Size(1059, 210);
+            this.dataGridView_Prest.Size = new System.Drawing.Size(1096, 210);
             this.dataGridView_Prest.TabIndex = 0;
             this.dataGridView_Prest.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvPrestamos_CellFormatting);
             this.dataGridView_Prest.SelectionChanged += new System.EventHandler(this.DgvPrestamos_SelectionChanged);
@@ -55,22 +53,8 @@
             this.listBox_Doc.ItemHeight = 20;
             this.listBox_Doc.Location = new System.Drawing.Point(21, 289);
             this.listBox_Doc.Name = "listBox_Doc";
-            this.listBox_Doc.Size = new System.Drawing.Size(1059, 144);
+            this.listBox_Doc.Size = new System.Drawing.Size(1111, 144);
             this.listBox_Doc.TabIndex = 1;
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(1054, 34);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(26, 210);
-            this.vScrollBar1.TabIndex = 2;
-            // 
-            // vScrollBar2
-            // 
-            this.vScrollBar2.Location = new System.Drawing.Point(1054, 289);
-            this.vScrollBar2.Name = "vScrollBar2";
-            this.vScrollBar2.Size = new System.Drawing.Size(26, 144);
-            this.vScrollBar2.TabIndex = 3;
             // 
             // lb_Prestamos
             // 
@@ -94,11 +78,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 460);
+            this.ClientSize = new System.Drawing.Size(1184, 460);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lb_Prestamos);
-            this.Controls.Add(this.vScrollBar2);
-            this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.listBox_Doc);
             this.Controls.Add(this.dataGridView_Prest);
             this.Name = "FListaPrestamos";
@@ -114,8 +96,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView_Prest;
         private System.Windows.Forms.ListBox listBox_Doc;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.VScrollBar vScrollBar2;
         private System.Windows.Forms.Label lb_Prestamos;
         private System.Windows.Forms.Label label1;
     }

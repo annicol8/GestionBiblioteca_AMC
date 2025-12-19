@@ -31,6 +31,7 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
                 bindingSourcePrest.DataSource = lnps.GetTodosPrestamos();
 
                 dataGridView_Prest.DataSource = bindingSourcePrest;
+                ConfigurarColumnas();
 
                 dataGridView_Prest.CellFormatting += DgvPrestamos_CellFormatting;
                 dataGridView_Prest.SelectionChanged += DgvPrestamos_SelectionChanged;
@@ -46,52 +47,95 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
             }
         }
 
+        private void ConfigurarColumnas()
+        {
+            dataGridView_Prest.AutoGenerateColumns = true;
+
+            dataGridView_Prest.Refresh();
+            foreach (DataGridViewColumn col in dataGridView_Prest.Columns)
+            {
+                switch (col.Name)
+                {
+                    case "Id":
+                        col.HeaderText = "ID";
+                        col.Width = 50;
+                        col.DisplayIndex = 0;
+                        break;
+                    case "FechaPrestamo":
+                        col.HeaderText = "Fecha Préstamo";
+                        col.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+                        col.Width = 150;
+                        col.DisplayIndex = 1;
+                        break;
+                    case "FechaDevolucion":
+                        col.HeaderText = "Fecha Devolución";
+                        col.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+                        col.Width = 150;
+                        col.DisplayIndex = 2;
+                        break;
+                    case "Estado":
+                        col.HeaderText = "Estado";
+                        col.Width = 100;
+                        col.DisplayIndex = 3;
+                        break;
+                    case "DniUsuario":
+                        col.HeaderText = "DNI Usuario";
+                        col.Width = 100;
+                        col.DisplayIndex = 4;
+                        break;
+                    case "DniPersonal":
+                        col.HeaderText = "DNI Personal";
+                        col.Width = 100;
+                        col.DisplayIndex = 5;
+                        break;
+                }
+            }
+        }
+
         private void DgvPrestamos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (e.RowIndex < 0 || e.RowIndex >= dataGridView_Prest.Rows.Count)
+                return;
+
+            DataGridViewRow row = dataGridView_Prest.Rows[e.RowIndex];
+            Prestamo prestamo = row.DataBoundItem as Prestamo;
+
+            if (prestamo == null)
+                return;
+
             // columna de Fecha Devolución
             if (dataGridView_Prest.Columns[e.ColumnIndex].Name == "FechaDevolucion")
             {
-                if (e.RowIndex >= 0)
+                if (prestamo != null && prestamo.Estado != EstadoPrestamo.finalizado)
                 {
-                    DataGridViewRow row = dataGridView_Prest.Rows[e.RowIndex];
-                    Prestamo prestamo = row.DataBoundItem as Prestamo;
-
-                    if (prestamo != null && prestamo.Estado != EstadoPrestamo.finalizado)
-                    {
-                        e.Value = "No devuelto";
-                        e.FormattingApplied = true;
-                    }
+                    e.Value = "No devuelto";
+                    e.FormattingApplied = true;
                 }
             }
 
             // columna de Estado
-            if (dataGridView_Prest.Columns[e.ColumnIndex].Name == "colEstado")
+            if (dataGridView_Prest.Columns[e.ColumnIndex].Name == "Estado")
             {
-                if (e.Value != null)
+                if (prestamo.Caducado())
                 {
-                    DataGridViewRow row = dataGridView_Prest.Rows[e.RowIndex];
-                    Prestamo prestamo = row.DataBoundItem as Prestamo;
-                    EstadoPrestamo estado = (EstadoPrestamo)e.Value;
-                    if (prestamo.Caducado())
+                    e.Value = "Vencido";
+                    e.CellStyle.BackColor = Color.LightCoral;
+                    e.CellStyle.ForeColor = Color.DarkRed;
+                }else
+                {
+                    switch (prestamo.Estado)
                     {
-                        e.Value = "Vencido";
-                        e.CellStyle.BackColor = System.Drawing.Color.LightCoral;
-                    } else 
-                    {
-                        switch (estado)
-                        {
-                            case EstadoPrestamo.enProceso:
-                                e.Value = "En proceso";
-                                e.CellStyle.BackColor = System.Drawing.Color.LightYellow;
-                                break;
-                            case EstadoPrestamo.finalizado:
-                                e.Value = "Devuelto";
-                                e.CellStyle.BackColor = System.Drawing.Color.LightGreen;
-                                break;
-                        }
-                    } 
-                    e.FormattingApplied = true;
+                        case EstadoPrestamo.enProceso:
+                            e.Value = "En proceso";
+                            e.CellStyle.BackColor = Color.LightYellow;
+                            break;
+                        case EstadoPrestamo.finalizado:
+                            e.Value = "Devuelto";
+                            e.CellStyle.BackColor = Color.LightGreen;
+                            break;
+                    }
                 }
+                e.FormattingApplied = true;
             }
         }
 
@@ -105,34 +149,43 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
             try
             {
                 listBox_Doc.Items.Clear();
-                if (dataGridView_Prest.CurrentRow != null && dataGridView_Prest.CurrentRow.DataBoundItem != null)
+                if (dataGridView_Prest.CurrentRow == null || dataGridView_Prest.CurrentRow.DataBoundItem == null)
                 {
-                    Prestamo prestamo = dataGridView_Prest.CurrentRow.DataBoundItem as Prestamo;
-                    if (prestamo != null)
-                    {
-                        var ejemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(prestamo.Id);
-                        if (ejemplares.Count > 0)
-                        {
-                            int contador = 1;
-                            foreach (var ejemplar in ejemplares)
-                            {
-                                var documento = Persistencia.Persistencia.GetDocumento(ejemplar.IsbnDocumento);
-                                if (documento != null)
-                                {
-                                    listBox_Doc.Items.Add($"{contador}. \"{documento.Titulo}\" (Código: {ejemplar.Codigo})");
-                                } else
-                                {
-                                    listBox_Doc.Items.Add($"{contador}. Ejemplar código: {ejemplar.Codigo}");
-                                }
-                                contador++;
-                            }
-                        }
-                    } else
-                    {
-                        listBox_Doc.Items.Add("(Sin ejemplares asociados)");
-                    }
+                    listBox_Doc.Items.Add("(Selecciona un préstamo)");
+                    return;
                 }
-            } catch (Exception ex)
+
+                Prestamo prestamo = dataGridView_Prest.CurrentRow.DataBoundItem as Prestamo;
+                if (prestamo == null)
+                {
+                    listBox_Doc.Items.Add("(Error al obtener el préstamo)");
+                    return;
+                }
+
+                var ejemplares = lnps.GetEjemplaresDePrestamo(prestamo.Id);
+
+                if (ejemplares == null || ejemplares.Count == 0)
+                {
+                    listBox_Doc.Items.Add("(Sin ejemplares asociados)");
+                    return;
+                }
+
+                int contador = 1;
+                foreach (var ejemplar in ejemplares)
+                {
+                    var documento = lnps.GetDocumento(ejemplar.IsbnDocumento);
+                    if (documento != null)
+                    {
+                        listBox_Doc.Items.Add($"{contador}. \"{documento.Titulo}\" (Código: {ejemplar.Codigo})");
+                    }
+                    else
+                    {
+                        listBox_Doc.Items.Add($"{contador}. Ejemplar código: {ejemplar.Codigo}");
+                    }
+                    contador++;
+                }
+            }
+            catch (Exception ex)
             {
                 listBox_Doc.Items.Clear();
                 listBox_Doc.Items.Add($"Error al cargar documentos: {ex.Message}");

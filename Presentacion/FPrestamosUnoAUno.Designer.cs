@@ -47,7 +47,6 @@
             this.lb_Personal = new System.Windows.Forms.Label();
             this.lb_Estado = new System.Windows.Forms.Label();
             this.groupBox_Documentos = new System.Windows.Forms.GroupBox();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.listBox_Doc = new System.Windows.Forms.ListBox();
             this.textBox_Id = new System.Windows.Forms.TextBox();
             this.textBox_FechaPrest = new System.Windows.Forms.TextBox();
@@ -83,7 +82,7 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(800, 38);
+            this.bindingNavigator1.Size = new System.Drawing.Size(800, 33);
             this.bindingNavigator1.TabIndex = 0;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -100,7 +99,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(34, 33);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(34, 28);
             this.bindingNavigatorMoveFirstItem.Text = "Move first";
             // 
             // bindingNavigatorMovePreviousItem
@@ -211,7 +210,6 @@
             // 
             // groupBox_Documentos
             // 
-            this.groupBox_Documentos.Controls.Add(this.vScrollBar1);
             this.groupBox_Documentos.Controls.Add(this.listBox_Doc);
             this.groupBox_Documentos.Location = new System.Drawing.Point(82, 348);
             this.groupBox_Documentos.Name = "groupBox_Documentos";
@@ -219,13 +217,6 @@
             this.groupBox_Documentos.TabIndex = 8;
             this.groupBox_Documentos.TabStop = false;
             this.groupBox_Documentos.Text = "Documentos del préstamo";
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(573, 25);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(26, 144);
-            this.vScrollBar1.TabIndex = 1;
             // 
             // listBox_Doc
             // 
@@ -345,7 +336,6 @@
         private System.Windows.Forms.TextBox textBox_Estado;
         private System.Windows.Forms.TextBox textBox_Personal;
         private System.Windows.Forms.TextBox textBox_Usuario;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.ListBox listBox_Doc;
     }
 }

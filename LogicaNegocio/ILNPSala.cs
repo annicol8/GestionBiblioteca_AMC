@@ -22,6 +22,11 @@ namespace LogicaNegocio
         List<Prestamo> GetPrestamosFueraDePlazo();
 
         List<Prestamo> GetTodosPrestamos();
+        List<Ejemplar> GetEjemplaresDePrestamo(int id);
+
+        Documento GetDocumento(string isbn);
+
+
         //bool HayEjemplaresDisponibles(string isbn);
         //DateTime? GetFechaDisponibilidadDocumento(string isbn);
     }

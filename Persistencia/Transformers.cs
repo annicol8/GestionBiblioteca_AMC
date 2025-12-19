@@ -74,7 +74,7 @@ namespace Persistencia
         // EJEMPLAR
         public static Ejemplar EjemplarDatoAEjemplar(EjemplarDato eDato)
         {
-            return new Ejemplar(eDato.Clave, eDato.Activo, eDato.Isbn, eDato.DniPersonalAdq);
+            return new Ejemplar(eDato.Clave, eDato.Activo, eDato.IsbnDocumento, eDato.DniPersonalAdq);
         }
 
         public static EjemplarDato EjemplarAEjemplarDato(Ejemplar e)

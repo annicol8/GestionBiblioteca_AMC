@@ -20,8 +20,8 @@ namespace Presentacion
 
         public FBusquedaUsuarioExtra(ILNPersonal lnp)
         {
-            InitializeComponent();
             this.lnp = lnp;
+            InitializeComponent();
             InicializarFormulario();
         }
 

@@ -30,8 +30,8 @@ namespace Persistencia
             TablaPersonales.Add(new PersonalDato("12345678A", "Juan", TipoPersonal.personalSala));
             TablaPersonales.Add(new PersonalDato("87654321B", "María", TipoPersonal.personalAdquisiciones));
 
+            // LIBROS EN PAPEL
             TablaLibrosPapel.Add(new LibroPapelDato("123A", "Quijote", "Cervantes", "alaDelta", 2002));
-
 
             TablaLibrosPapel.Add(new LibroPapelDato(
                 "978-0-13-468599-1",
@@ -66,47 +66,129 @@ namespace Persistencia
                 2020, "CD", 114
             ));
 
+            TablaAudioLibros.Add(new AudioLibroDato(
+                "978-1-5555-7777-8",
+                "1984",
+                "George Orwell",
+                "Audible",
+                2019, "MP3", 180
+            ));
 
-            // EJEMPLARES (usando el DNI del personal de adquisiciones que acabamos de crear)
+            // EJEMPLARES
             TablaEjemplares.Add(new EjemplarDato(1, "978-0-13-468599-1", true, "87654321B"));
             TablaEjemplares.Add(new EjemplarDato(2, "978-0-13-468599-1", true, "87654321B"));
             TablaEjemplares.Add(new EjemplarDato(3, "978-0-13-235088-4", true, "87654321B"));
+            TablaEjemplares.Add(new EjemplarDato(4, "978-0-13-957331-8", true, "87654321B"));
+            TablaEjemplares.Add(new EjemplarDato(5, "978-1-4001-2345-6", true, "87654321B"));
+            TablaEjemplares.Add(new EjemplarDato(6, "978-1-5555-7777-8", true, "87654321B"));
+            TablaEjemplares.Add(new EjemplarDato(7, "123A", true, "87654321B"));
 
             // USUARIOS
-            TablaUsuarios.Add(new UsuarioDato(
-                "11111111C",
-                "Pedro",
-                true
-            ));
-
+            TablaUsuarios.Add(new UsuarioDato("11111111C", "Pedro", true));
             TablaUsuarios.Add(new UsuarioDato("11122233V", "Eva", true));
+            TablaUsuarios.Add(new UsuarioDato("22233344D", "Carlos", true));
 
-            // PRESTAMO
-            int idPrestamo = GenerarIdPrestamo();
+            // ===== PRÉSTAMO 1 (En Proceso) =====
+            int idPrestamo1 = GenerarIdPrestamo();
 
             TablaPrestamos.Add(new PrestamoDato(
-                idPrestamo,
-                DateTime.Now,
-                DateTime.Now.AddDays(15),
+                idPrestamo1,
+                DateTime.Now.AddDays(-5),           // Hace 5 días
+                DateTime.Now.AddDays(10),           // Vence en 10 días
                 EstadoPrestamo.enProceso,
-                "11111111C",   // DNI Usuario
-                "12345678A"    // DNI Personal (personal de sala)
+                "11111111C",   // DNI Usuario: Pedro
+                "12345678A"    // DNI Personal: Juan
             ));
 
-            // PRESTAMO - EJEMPLARES
+            // Ejemplares del préstamo 1
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
-                idPrestamo,
-                1,
+                idPrestamo1,
+                1,              // Ejemplar de "Clean Code"
                 DateTime.MinValue // aún no devuelto
             ));
 
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
-                idPrestamo,
-                2,
+                idPrestamo1,
+                2,              // Otro ejemplar de "Clean Code"
                 DateTime.MinValue
             ));
 
+            // ===== PRÉSTAMO 2 (Finalizado) =====
+            int idPrestamo2 = GenerarIdPrestamo();
+
+            TablaPrestamos.Add(new PrestamoDato(
+                idPrestamo2,
+                DateTime.Now.AddDays(-20),          // Hace 20 días
+                DateTime.Now.AddDays(-5),           // Venció hace 5 días
+                EstadoPrestamo.finalizado,
+                "11122233V",   // DNI Usuario: Eva
+                "12345678A"    // DNI Personal: Juan
+            ));
+
+            // Ejemplares del préstamo 2
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo2,
+                3,              // Ejemplar de "Clean Architecture"
+                DateTime.Now.AddDays(-7) // Devuelto hace 7 días
+            ));
+
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo2,
+                4,              // Ejemplar de "Refactoring"
+                DateTime.Now.AddDays(-7) // Devuelto hace 7 días
+            ));
+
+            // ===== PRÉSTAMO 3 (En Proceso - con varios libros) =====
+            int idPrestamo3 = GenerarIdPrestamo();
+
+            TablaPrestamos.Add(new PrestamoDato(
+                idPrestamo3,
+                DateTime.Now.AddDays(-2),           // Hace 2 días
+                DateTime.Now.AddDays(13),           // Vence en 13 días
+                EstadoPrestamo.enProceso,
+                "22233344D",   // DNI Usuario: Carlos
+                "12345678A"    // DNI Personal: Juan
+            ));
+
+            // Ejemplares del préstamo 3
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo3,
+                5,              // AudioLibro "El Quijote"
+                DateTime.MinValue
+            ));
+
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo3,
+                6,              // AudioLibro "1984"
+                DateTime.MinValue
+            ));
+
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo3,
+                7,              // Libro "Quijote" en papel
+                DateTime.MinValue
+            ));
+
+            // ===== PRÉSTAMO 4 (Vencido - sin devolver) =====
+            int idPrestamo4 = GenerarIdPrestamo();
+
+            TablaPrestamos.Add(new PrestamoDato(
+                idPrestamo4,
+                DateTime.Now.AddDays(-25),          // Hace 25 días
+                DateTime.Now.AddDays(-10),          // Venció hace 10 días
+                EstadoPrestamo.enProceso,           // AÚN NO DEVUELTO (vencido)
+                "11111111C",   // DNI Usuario: Pedro
+                "12345678A"    // DNI Personal: Juan
+            ));
+
+            // Ejemplares del préstamo 4
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo4,
+                4,              // Ejemplar de "Refactoring"
+                DateTime.MinValue // NO devuelto
+            ));
         }
+            
 
 
         public static Tabla<string, AudioLibroDato> TablaAudioLibros

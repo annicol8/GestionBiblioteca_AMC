@@ -17,8 +17,8 @@ namespace Presentacion
 
         public FPSala(ILNPSala lnSala) : base(lnSala)
         {
-            InitializeComponent();
             this.lnSala = lnSala;
+            InitializeComponent();
             ConfigurarPermisos();
         }
 
@@ -38,7 +38,7 @@ namespace Presentacion
             }
             catch (Exception ex)
             {
-                MostrarError($"Error al abrir el recorrido de préstamos: {ex.Message}");
+                MostrarError($"Error al abrir préstamos: {ex.Message}");
             }
         }
 

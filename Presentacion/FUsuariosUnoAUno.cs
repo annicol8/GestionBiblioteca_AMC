@@ -17,8 +17,8 @@ namespace Presentacion
         private BindingSource bindingSource;
         public FUsuariosUnoAUno(ILNPersonal lnp)
         {
-            InitializeComponent();
             this.lnp = lnp;
+            InitializeComponent();
             InicializarFormulario();
         }
 

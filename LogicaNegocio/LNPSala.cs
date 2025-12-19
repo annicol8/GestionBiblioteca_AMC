@@ -130,5 +130,17 @@ namespace LogicaNegocio
         {
             return Persistencia.Persistencia.GetPrestamos();
         }
+
+        public List<Ejemplar> GetEjemplaresDePrestamo(int id)
+        {
+            return Persistencia.Persistencia.GetEjemplaresDePrestamo(id);
+        }
+
+        public Documento GetDocumento(string isbn)
+        //PRE:
+        //POST: Si no existe, null; si existe, devuelve el objeto AudLibro o LiPapel
+        {
+            return Persistencia.Persistencia.GetDocumento(isbn);
+        }
     }
 }

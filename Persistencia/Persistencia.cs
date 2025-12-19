@@ -35,8 +35,14 @@ namespace Persistencia
 
         public static Usuario GetUsuario(string dni)
         {
-            Usuario busqueda = new Usuario(dni);
-            return GetUsuario(busqueda);
+            UsuarioDato ud = BD.READ_ALL(BD.TablaUsuarios)
+                       .FirstOrDefault(u => u.Clave == dni);
+
+            if (ud != null)
+            {
+                return Transformers.UsuarioDatoAUsuario(ud);
+            }
+            return null;
         }
 
         public static bool BajaUsuario(Usuario u)
@@ -81,7 +87,9 @@ namespace Persistencia
 
         public static Personal GetPersonal(string dni)
         {
-            PersonalDato pd = BD.READ_ALL(BD.TablaPersonales).FirstOrDefault(p => p.Clave.Equals(dni));
+            PersonalDato pd = BD.READ_ALL(BD.TablaPersonales)
+                        .FirstOrDefault(p => p.Clave == dni);
+
             return pd != null ? Transformers.PersonalDatoAPersonal(pd) : null;
         }
 
@@ -255,7 +263,7 @@ namespace Persistencia
         public static List<Ejemplar> GetEjemplaresPorDocumento(string isbn)
         {
             return BD.READ_ALL(BD.TablaEjemplares)
-                     .Where(e => e.Isbn == isbn)
+                     .Where(e => e.IsbnDocumento == isbn)
                      .Select(Transformers.EjemplarDatoAEjemplar)
                      .ToList();
         }
@@ -359,29 +367,6 @@ namespace Persistencia
         
 
         }
-
-        /* 
-
-        Creo que no son correctas, porque devuelven PrestamoEjemplarDato en lugar de Ejemplar o Prestamo (y se rompe la arquitectura de tres capas)
-
-                public static List<PrestamoEjemplarDato> GetEjemplaresDePrestamo(int idPrestamo)
-                {
-                    return BD.READ_ALL(BD.TablaPrestamoEjemplar)
-                             .Where(pe => pe.IdPrestamo == idPrestamo)
-                             .ToList();
-                }
-                // Devuelve los PrestamoEjemplarDato asociados al ejemplar con código codigoEjemplar
-                public static List<PrestamoEjemplarDato> GetPrestamosPorEjemplar(int codigoEjemplar)
-                {
-                    return BD.READ_ALL(BD.TablaPrestamoEjemplar)
-                             .Where(pe => pe.CodigoEjemplar == codigoEjemplar)
-                             .ToList();
-                }
-
-        */
-
-        // Creo que estas son las buenas:
-
 
         // Devuelve los ejemplares asociados al préstamo con id idPrestamo
         public static List<Ejemplar> GetEjemplaresDePrestamo(int idPrestamo)

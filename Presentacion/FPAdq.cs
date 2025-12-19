@@ -23,8 +23,8 @@ namespace Presentacion
 
         public FPAdq(ILNPAdq lnpa): base(lnpa)
         {
-            InitializeComponent();
             this.lnAdq = lnpa;
+            InitializeComponent();
         }
 
         protected override void menuDocumentosAlta_Click(object sender, EventArgs e)

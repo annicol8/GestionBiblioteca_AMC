@@ -16,7 +16,7 @@ namespace Persistencia
 
 
         // Propiedades públicas
-        public string Isbn { 
+        public string IsbnDocumento { 
             get { return isbn; } set { isbn = value; }
         }
         public bool Activo { 
@@ -29,7 +29,7 @@ namespace Persistencia
 
         public EjemplarDato(int codigo, string isbn, bool activo, string dniPersonalAdq) : base(codigo)
         {
-            Isbn = isbn;
+            IsbnDocumento = isbn;
             Activo = activo;
             DniPersonalAdq = dniPersonalAdq;
         }

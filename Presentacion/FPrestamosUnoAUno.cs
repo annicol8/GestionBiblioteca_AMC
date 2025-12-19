@@ -84,16 +84,53 @@ namespace Presentacion
                         textBox_FechaDevolucion.Text = "No devuelto todavía";
                     }
 
-                    Usuario usuario = lnps.GetUsuario(prestamo.DniUsuario);
-                    textBox_Usuario.Text = usuario.Dni + ", " + usuario.Nombre;
 
-                    // Estado
-                    EstadoPrestamo estado = prestamo.Estado;
-                    textBox_Estado.Text = estado.ToString();
+                    //Usuario del prestamo
+                    Usuario usuario = lnps.GetUsuario(prestamo.DniUsuario);
+                    if (usuario != null)
+                    {
+                        textBox_Usuario.Text = usuario.Dni + ", " + usuario.Nombre;
+                    }
+                    else
+                    {
+                        textBox_Usuario.Text = prestamo.DniUsuario + " (Usuario no encontrado)";
+                    }
+
+                    //Estado del prestamo
+                    if (prestamo.Caducado())
+                    {
+                        textBox_Estado.Text = "Vencido";
+                        textBox_Estado.BackColor = Color.LightCoral;
+                    }
+                    else
+                    {
+                        switch (prestamo.Estado)
+                        {
+                            case EstadoPrestamo.enProceso:
+                                textBox_Estado.Text = "En proceso";
+                                textBox_Estado.BackColor = Color.LightYellow;
+                                break;
+                            case EstadoPrestamo.finalizado:
+                                textBox_Estado.Text = "Devuelto";
+                                textBox_Estado.BackColor = Color.LightGreen;
+                                break;
+                            default:
+                                textBox_Estado.Text = prestamo.Estado.ToString();
+                                textBox_Estado.BackColor = Color.White;
+                                break;
+                        }
+                    }
 
                     // Prestador (Personal) con nombre
-                    Personal personal = lnps.GetPersonal(prestamo.DniPersonal); 
-                    textBox_Personal.Text = personal.Dni + ", " + personal.Nombre;
+                    Personal personal = lnps.GetPersonal(prestamo.DniPersonal);
+                    if (personal != null)
+                    {
+                        textBox_Personal.Text = personal.Dni + ", " + personal.Nombre;
+                    }
+                    else
+                    {
+                        textBox_Personal.Text = prestamo.DniPersonal + " (Personal no encontrado)";
+                    }
 
                     // Cargar documentos/ejemplares en el ListBox
                     CargarEjemplaresPrestamo(prestamo.Id);

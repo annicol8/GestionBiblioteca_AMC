@@ -18,8 +18,8 @@ namespace Presentacion
         private BindingSource bindingSourceDoc;
         public FDocumentosUnoAUno(ILNPAdq lnpa)
         {
-            InitializeComponent();
             this.lnpa = lnpa;
+            InitializeComponent();
             InicializarFormulario();
         }
 

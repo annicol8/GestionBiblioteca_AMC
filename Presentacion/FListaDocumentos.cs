@@ -20,8 +20,8 @@ namespace Presentacion
         
         public FListaDocumentos(ILNPAdq lnpa)
         {
-            InitializeComponent();
             this.lnpa = lnpa;
+            InitializeComponent();
             InicializarFormulario();
         }
 
