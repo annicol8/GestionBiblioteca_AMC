@@ -238,7 +238,53 @@ namespace Presentacion
 
         private void btAñadirEjemplares_Click(object sender, EventArgs e)
         {
-            MostrarInformacion("Funcionalidad de añadir ejemplares no implementada aún");
+            if (!ValidarDatos())
+            {
+                return;
+            }
+
+            try
+            {
+                if (rbLibro.Checked)
+                {
+                    DarAltaLibroPapel();
+                }
+                else if (rbAudioLibro.Checked)
+                {
+                    DarAltaAudioLibro();
+                }
+
+                MostrarExito("Documento dado de alta correctamente");
+
+                // Pedir el código del ejemplar
+                int codigo = pedirClave<int>("Introduce el código del ejemplar:");
+                if (codigo == 0) // Cancelado
+                {
+                    this.Close();
+                    return;
+                }
+                Console.WriteLine(isbn);
+                FAltaEjemplar fAltaEjemplar = new FAltaEjemplar(lnAdq, codigo, isbn);
+                fAltaEjemplar.ShowDialog();
+
+                this.Close();
+            }
+            catch (ArgumentNullException ex)
+            {
+                MostrarError(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                MostrarError(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MostrarError(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MostrarError(ex.Message);
+            }
         }
 
     }

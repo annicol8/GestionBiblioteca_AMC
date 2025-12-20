@@ -100,7 +100,7 @@
             this.btAñadirEjemplares.Name = "btAñadirEjemplares";
             this.btAñadirEjemplares.Size = new System.Drawing.Size(240, 36);
             this.btAñadirEjemplares.TabIndex = 12;
-            this.btAñadirEjemplares.Text = "Añadir ejemplares";
+            this.btAñadirEjemplares.Text = "Crear y añadir ejemplares";
             this.btAñadirEjemplares.UseVisualStyleBackColor = true;
             this.btAñadirEjemplares.Click += new System.EventHandler(this.btAñadirEjemplares_Click);
             // 

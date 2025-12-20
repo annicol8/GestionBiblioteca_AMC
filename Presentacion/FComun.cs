@@ -302,6 +302,33 @@ namespace Presentacion
             // Logger.Error(ex, operacion);
         }
 
+        protected T pedirClave<T>(string mensaje)
+        {
+            while (true)
+            {
+                FClave fClave = new FClave(mensaje);
+
+                if (fClave.ShowDialog(this) != DialogResult.OK)
+                    return default;
+
+                string texto = fClave.Clave;
+
+                try
+                {
+                    return (T)Convert.ChangeType(texto, typeof(T));
+                }
+                catch
+                {
+                    MessageBox.Show(
+                        $"El valor introducido no es un {typeof(T).Name} válido",
+                        "Valor incorrecto",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
+
 
     }
 }

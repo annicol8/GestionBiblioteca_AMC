@@ -17,6 +17,7 @@ namespace Presentacion
 
         private ILNPAdq lnAdq;
         private int codigo;
+        private string isbn;
         public FAltaEjemplar()
         {
             InitializeComponent();
@@ -26,6 +27,11 @@ namespace Presentacion
         {
             this.lnAdq = lnAdq;
             this.codigo = codigo;
+        }
+
+        public FAltaEjemplar(ILNPAdq lnAdq, int codigo, string isbnFijo): this(lnAdq, codigo)
+        {
+            this.isbn = isbnFijo;
         }
         
         private void FAltaEjemplar_Load(object sender, EventArgs e)
@@ -44,6 +50,17 @@ namespace Presentacion
             {
                 this.comboBoxISBN.Items.Add(documento.Isbn);
             }
+
+            if (!string.IsNullOrEmpty(this.isbn))
+            {
+                int index = comboBoxISBN.Items.IndexOf(this.isbn);
+                if (index >= 0)
+                {
+                    comboBoxISBN.SelectedIndex = index;
+                    comboBoxISBN.Enabled = false;
+                }
+            }
+
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)

@@ -91,35 +91,6 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
-
-        private T pedirClave<T>(string mensaje)
-        {
-            while (true)
-            {
-                FClave fClave = new FClave(mensaje);
-
-                if (fClave.ShowDialog(this) != DialogResult.OK)
-                    return default; // cancelado
-
-                string texto = fClave.Clave;
-
-                try
-                {
-                    return (T)Convert.ChangeType(texto, typeof(T));
-                }
-                catch
-                {
-                    MessageBox.Show(
-                        $"El valor introducido no es un {typeof(T).Name} válido",
-                        "Valor incorrecto",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                }
-            }
-        }
-
-
         private string pedirISBN()
         {
             FClave fClave = new FClave("ISBN");
