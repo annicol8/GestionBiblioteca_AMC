@@ -28,10 +28,26 @@ namespace Persistencia
         public static void CargarDatosPrueba()
         {
             TablaPersonales.Add(new PersonalDato("12345678A", "Juan", "admin", TipoPersonal.personalSala));
-            TablaPersonales.Add(new PersonalDato("87654321B", "María", "admin",TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("87654321B", "María", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("11223344C", "Carlos", "admin", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("22334455D", "Laura", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("33445566E", "Pedro", "admin", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("44556677F", "Ana", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("55667788G", "Lucía", "admin", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("66778899H", "Miguel", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("77889900J", "Elena", "admin", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("88990011K", "David", "admin", TipoPersonal.personalAdquisiciones));
+
+
 
             // LIBROS EN PAPEL
-            TablaLibrosPapel.Add(new LibroPapelDato("123A", "Quijote", "Cervantes", "alaDelta", 2002));
+            TablaLibrosPapel.Add(new LibroPapelDato(
+                "978-0-00-000000-2",
+                "Quijote",
+                "Cervantes",
+                "alaDelta",
+                2002
+            ));
 
             TablaLibrosPapel.Add(new LibroPapelDato(
                 "978-0-13-468599-1",
@@ -50,7 +66,7 @@ namespace Persistencia
             ));
 
             TablaLibrosPapel.Add(new LibroPapelDato(
-                "978-0-13-957331-8",
+                "978-0-13-957331-6",
                 "Refactoring",
                 "Martin Fowler",
                 "Addison-Wesley",
@@ -59,7 +75,7 @@ namespace Persistencia
 
             // AUDIOLIBROS
             TablaAudioLibros.Add(new AudioLibroDato(
-                "978-1-4001-2345-6",
+                "978-1-4001-2345-2",
                 "El Quijote",
                 "Miguel de Cervantes",
                 "Santillana",
@@ -67,12 +83,16 @@ namespace Persistencia
             ));
 
             TablaAudioLibros.Add(new AudioLibroDato(
-                "978-1-5555-7777-8",
+                "978-1-5555-7777-3",
                 "1984",
                 "George Orwell",
                 "Audible",
                 2019, "MP3", 180
             ));
+
+
+        
+
 
             // EJEMPLARES
             TablaEjemplares.Add(new EjemplarDato(1, "978-0-13-468599-1", true, "87654321B"));
@@ -188,7 +208,7 @@ namespace Persistencia
                 DateTime.MinValue // NO devuelto
             ));
         }
-            
+
 
 
         public static Tabla<string, AudioLibroDato> TablaAudioLibros
@@ -252,13 +272,13 @@ namespace Persistencia
                 if (tablaUsuarios == null) { tablaUsuarios = new Tabla<string, UsuarioDato>(); }
                 return tablaUsuarios;
             }
-        } 
+        }
 
         public static Tabla<ClavePrestamoEjemplar, PrestamoEjemplarDato> TablaPrestamoEjemplar
         {
             get
             {
-                if (tablaPrestamoEjemplar == null) { tablaPrestamoEjemplar = new Tabla<ClavePrestamoEjemplar, PrestamoEjemplarDato> (); }
+                if (tablaPrestamoEjemplar == null) { tablaPrestamoEjemplar = new Tabla<ClavePrestamoEjemplar, PrestamoEjemplarDato>(); }
                 return tablaPrestamoEjemplar;
             }
         }

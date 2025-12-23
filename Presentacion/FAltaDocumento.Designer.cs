@@ -223,13 +223,13 @@ namespace Presentacion
             this.gbAudioLibro.Margin = new System.Windows.Forms.Padding(2);
             this.gbAudioLibro.Name = "gbAudioLibro";
             this.gbAudioLibro.Padding = new System.Windows.Forms.Padding(2);
-            this.gbAudioLibro.Size = new System.Drawing.Size(289, 128);
+            this.gbAudioLibro.Size = new System.Drawing.Size(310, 128);
             this.gbAudioLibro.TabIndex = 15;
             this.gbAudioLibro.TabStop = false;
             // 
             // tbDuracion
             // 
-            this.tbDuracion.Location = new System.Drawing.Point(163, 74);
+            this.tbDuracion.Location = new System.Drawing.Point(190, 74);
             this.tbDuracion.Margin = new System.Windows.Forms.Padding(2);
             this.tbDuracion.Name = "tbDuracion";
             this.tbDuracion.Size = new System.Drawing.Size(106, 31);
@@ -248,7 +248,7 @@ namespace Presentacion
             // 
             // tbFormatoDigital
             // 
-            this.tbFormatoDigital.Location = new System.Drawing.Point(163, 32);
+            this.tbFormatoDigital.Location = new System.Drawing.Point(190, 32);
             this.tbFormatoDigital.Margin = new System.Windows.Forms.Padding(2);
             this.tbFormatoDigital.Name = "tbFormatoDigital";
             this.tbFormatoDigital.Size = new System.Drawing.Size(106, 31);
