@@ -29,14 +29,18 @@ namespace LogicaNegocio
         
         //Método estático para obtener un personal en el formulario
         //Por ser estático da error si lo intentas poner en la interfaz
-        public static Personal Login(string nombre, TipoPersonal tipo)
+        public static Personal Login(string nombre,string contraseña, TipoPersonal tipo)
         {
-            
-            return Persistencia.Persistencia
+             Personal personal = Persistencia.Persistencia
                 .GetPersonales()
                 .FirstOrDefault(p =>
                     p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)
                     && p.Tipo == tipo);
+            
+            if(personal == null) { return null; }
+            if (!personal.ValidarContraseña(contraseña))
+                return null;
+            return personal;
         }
         
 

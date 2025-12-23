@@ -65,13 +65,13 @@ namespace Presentacion
             if (radioButton_PSala.Checked) { tipoSeleccionado = TipoPersonal.personalSala;  }
             else { tipoSeleccionado = TipoPersonal.personalAdquisiciones; }
 
-            Personal personalABuscar = LNPersonal.Login(nombre, tipoSeleccionado);
+            Personal personalABuscar = LNPersonal.Login(nombre, password, tipoSeleccionado);
 
             if (personalABuscar == null)
             {
                 MessageBox.Show(
-                    "No se encontró ningún personal con los datos introducidos.\n\n" +
-                    "Verifique el nombre y tipo seleccionado.",
+                    "Credenciales incorrectas.\n\n" +
+                    "Verifique el nombre, contraseña y tipo seleccionado.",
                     "Personal no encontrado",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

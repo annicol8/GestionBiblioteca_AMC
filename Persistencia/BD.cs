@@ -27,8 +27,8 @@ namespace Persistencia
 
         public static void CargarDatosPrueba()
         {
-            TablaPersonales.Add(new PersonalDato("12345678A", "Juan", TipoPersonal.personalSala));
-            TablaPersonales.Add(new PersonalDato("87654321B", "María", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("12345678A", "Juan", "admin", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("87654321B", "María", "admin",TipoPersonal.personalAdquisiciones));
 
             // LIBROS EN PAPEL
             TablaLibrosPapel.Add(new LibroPapelDato("123A", "Quijote", "Cervantes", "alaDelta", 2002));

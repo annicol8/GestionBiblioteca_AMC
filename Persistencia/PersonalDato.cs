@@ -11,6 +11,7 @@ namespace Persistencia
     {
         private string nombre;
         private TipoPersonal tipoPersonal;
+        private string contraseña;
 
         public string Nombre { 
             get { return nombre; }
@@ -21,9 +22,16 @@ namespace Persistencia
             set {  tipoPersonal = value; }
         }
 
-        public PersonalDato(string dni, string nombre, TipoPersonal tipoPersonal): base(dni)
+        public string Contraseña
+        {
+            get { return contraseña; }
+            set { contraseña = value; }
+        }
+
+        public PersonalDato(string dni, string nombre, string contraseña, TipoPersonal tipoPersonal) : base(dni)
         {
             Nombre = nombre;
+            Contraseña = contraseña;
             TipoPersonal = tipoPersonal;
         }
     }

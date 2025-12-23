@@ -24,16 +24,16 @@ namespace Persistencia
         //PERSONAL
         public static Personal PersonalDatoAPersonal(PersonalDato pDato)
         {
-            if(pDato.TipoPersonal.Equals(TipoPersonal.personalSala))
+            if (pDato.TipoPersonal.Equals(TipoPersonal.personalSala))
             {
-                return new PersonalSala(pDato.Clave, pDato.Nombre);
+                return new PersonalSala(pDato.Clave, pDato.Nombre, pDato.Contraseña);
             }
-            return new PersonalAdquisiciones(pDato.Clave, pDato.Nombre);
+            return new PersonalAdquisiciones(pDato.Clave, pDato.Nombre, pDato.Contraseña);
         }
 
         public static PersonalDato PersonalAPersonalDato(Personal p)
         {
-            return new PersonalDato(p.Dni, p.Nombre, p.Tipo);
+            return new PersonalDato(p.Dni, p.Nombre, p.Contraseña, p.Tipo);
         }
 
         //LIBRO PAPEL
