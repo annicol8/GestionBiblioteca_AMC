@@ -67,8 +67,15 @@ namespace Presentacion
 
                 break;
             }
-            FAltaDocumento formulario = new FAltaDocumento(lnAdq, isbn);
-            formulario.ShowDialog(this);
+            try
+            {
+                FAltaDocumento formulario = new FAltaDocumento(lnAdq, isbn);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al dar de alta el documento: {ex.Message}", "Error");
+            }
         }
 
         protected override void menuEjemplaresAlta_Click(object sender, EventArgs e)

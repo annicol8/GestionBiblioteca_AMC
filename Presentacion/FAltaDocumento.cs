@@ -91,6 +91,7 @@ namespace Presentacion
                 }
 
                 MostrarExito("Documento dado de alta correctamente");
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             catch (ArgumentNullException ex)
@@ -233,10 +234,11 @@ namespace Presentacion
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
-        private void btAñadirEjemplares_Click(object sender, EventArgs e)
+        /*private void btAñadirEjemplares_Click(object sender, EventArgs e)
         {
             if (!ValidarDatos())
             {
@@ -286,45 +288,7 @@ namespace Presentacion
                 MostrarError(ex.Message);
             }
         }
+        */
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbFormatoDigital_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbDuracion_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

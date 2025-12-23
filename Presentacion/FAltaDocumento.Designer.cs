@@ -32,7 +32,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btDarAlta = new System.Windows.Forms.Button();
-            this.btAñadirEjemplares = new System.Windows.Forms.Button();
             this.tbEditorial = new System.Windows.Forms.TextBox();
             this.tbAutor = new System.Windows.Forms.TextBox();
             this.tbTitulo = new System.Windows.Forms.TextBox();
@@ -70,7 +69,6 @@
             this.label5.Size = new System.Drawing.Size(167, 25);
             this.label5.TabIndex = 15;
             this.label5.Text = "Año de edicion: ";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // btCancelar
             // 
@@ -93,17 +91,6 @@
             this.btDarAlta.Text = "Dar alta";
             this.btDarAlta.UseVisualStyleBackColor = true;
             this.btDarAlta.Click += new System.EventHandler(this.btDarAlta_Click);
-            // 
-            // btAñadirEjemplares
-            // 
-            this.btAñadirEjemplares.Location = new System.Drawing.Point(97, 545);
-            this.btAñadirEjemplares.Margin = new System.Windows.Forms.Padding(2);
-            this.btAñadirEjemplares.Name = "btAñadirEjemplares";
-            this.btAñadirEjemplares.Size = new System.Drawing.Size(240, 36);
-            this.btAñadirEjemplares.TabIndex = 12;
-            this.btAñadirEjemplares.Text = "Crear y añadir ejemplares";
-            this.btAñadirEjemplares.UseVisualStyleBackColor = true;
-            this.btAñadirEjemplares.Click += new System.EventHandler(this.btAñadirEjemplares_Click);
             // 
             // tbEditorial
             // 
@@ -146,7 +133,6 @@
             this.label4.Size = new System.Drawing.Size(96, 25);
             this.label4.TabIndex = 3;
             this.label4.Text = "Editorial:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -157,7 +143,6 @@
             this.label3.Size = new System.Drawing.Size(69, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "Autor:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -168,7 +153,6 @@
             this.label2.Size = new System.Drawing.Size(71, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Título:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -179,7 +163,6 @@
             this.label1.Size = new System.Drawing.Size(66, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "ISBN:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 
@@ -194,7 +177,6 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de Documento";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // rbAudioLibro
             // 
@@ -253,7 +235,6 @@
             this.lbFormatoDigital.Size = new System.Drawing.Size(154, 25);
             this.lbFormatoDigital.TabIndex = 11;
             this.lbFormatoDigital.Text = "Formato digital";
-            this.lbFormatoDigital.Click += new System.EventHandler(this.lbFormatoDigital_Click);
             // 
             // tbFormatoDigital
             // 
@@ -272,7 +253,6 @@
             this.lbDuracion.Size = new System.Drawing.Size(98, 25);
             this.lbDuracion.TabIndex = 12;
             this.lbDuracion.Text = "Duración";
-            this.lbDuracion.Click += new System.EventHandler(this.lbDuracion_Click);
             // 
             // FAltaDocumento
             // 
@@ -283,7 +263,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btDarAlta);
-            this.Controls.Add(this.btAñadirEjemplares);
             this.Controls.Add(this.tbEditorial);
             this.Controls.Add(this.tbAutor);
             this.Controls.Add(this.tbTitulo);
@@ -320,7 +299,6 @@
         private System.Windows.Forms.RadioButton rbLibro;
         private System.Windows.Forms.RadioButton rbAudioLibro;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btAñadirEjemplares;
         private System.Windows.Forms.Button btDarAlta;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.TextBox tbDuracion;
