@@ -45,6 +45,12 @@ namespace Presentacion
                 if (isbn == null)
                     return;
 
+                if (!ValidarISBN(isbn))
+                {
+                    MostrarError("El ISBN introducido no tiene un formato válido");
+                    continue; // Volver a pedir
+                }
+
                 Documento documentoExistente = lnAdq.getDocumento(isbn);
 
                 if (documentoExistente != null)
