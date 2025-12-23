@@ -37,18 +37,20 @@
             // lb_Mensaje
             // 
             this.lb_Mensaje.AutoSize = true;
-            this.lb_Mensaje.Location = new System.Drawing.Point(64, 51);
+            this.lb_Mensaje.Location = new System.Drawing.Point(215, 134);
+            this.lb_Mensaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_Mensaje.Name = "lb_Mensaje";
-            this.lb_Mensaje.Size = new System.Drawing.Size(69, 20);
+            this.lb_Mensaje.Size = new System.Drawing.Size(94, 25);
             this.lb_Mensaje.TabIndex = 0;
             this.lb_Mensaje.Text = "Mensaje";
-            this.lb_Mensaje.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lb_Mensaje.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // button_Aceptar
             // 
-            this.button_Aceptar.Location = new System.Drawing.Point(68, 126);
+            this.button_Aceptar.Location = new System.Drawing.Point(197, 272);
+            this.button_Aceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Aceptar.Name = "button_Aceptar";
-            this.button_Aceptar.Size = new System.Drawing.Size(113, 39);
+            this.button_Aceptar.Size = new System.Drawing.Size(151, 49);
             this.button_Aceptar.TabIndex = 1;
             this.button_Aceptar.Text = "Aceptar";
             this.button_Aceptar.UseVisualStyleBackColor = true;
@@ -56,9 +58,10 @@
             // 
             // button_Cancelar
             // 
-            this.button_Cancelar.Location = new System.Drawing.Point(260, 126);
+            this.button_Cancelar.Location = new System.Drawing.Point(452, 272);
+            this.button_Cancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Cancelar.Name = "button_Cancelar";
-            this.button_Cancelar.Size = new System.Drawing.Size(113, 39);
+            this.button_Cancelar.Size = new System.Drawing.Size(151, 49);
             this.button_Cancelar.TabIndex = 2;
             this.button_Cancelar.Text = "Cancelar";
             this.button_Cancelar.UseVisualStyleBackColor = true;
@@ -66,22 +69,24 @@
             // 
             // textBox_Clave
             // 
-            this.textBox_Clave.Location = new System.Drawing.Point(195, 48);
+            this.textBox_Clave.Location = new System.Drawing.Point(367, 131);
+            this.textBox_Clave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_Clave.MaxLength = 50;
             this.textBox_Clave.Name = "textBox_Clave";
-            this.textBox_Clave.Size = new System.Drawing.Size(178, 26);
+            this.textBox_Clave.Size = new System.Drawing.Size(236, 31);
             this.textBox_Clave.TabIndex = 0;
             // 
             // FClave
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 232);
+            this.ClientSize = new System.Drawing.Size(776, 394);
             this.Controls.Add(this.textBox_Clave);
             this.Controls.Add(this.button_Cancelar);
             this.Controls.Add(this.button_Aceptar);
             this.Controls.Add(this.lb_Mensaje);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FClave";

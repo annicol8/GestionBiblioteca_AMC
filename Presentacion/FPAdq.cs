@@ -66,7 +66,7 @@ namespace Presentacion
 
             while (true)
             {
-                codigo = pedirClave<int>("Código del ejemplar");
+                codigo = pedirClave<int>("Código");
 
                 if (codigo == 0)
                     return;
@@ -141,7 +141,7 @@ namespace Presentacion
 
             while (true)
             {
-                codigo = pedirClave<int>("Código del ejemplar");
+                codigo = pedirClave<int>("Código");
 
                 if (codigo == 0)
                     return;
