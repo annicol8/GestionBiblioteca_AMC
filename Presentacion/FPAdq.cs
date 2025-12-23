@@ -140,6 +140,39 @@ namespace Presentacion
             }
         }
 
+        protected override void menuDocumentosBuscar_Click(object sender, EventArgs e)
+        {
+
+            while (true)
+            {
+                String isbnBuscado = pedirClave<string>("ISBN");
+
+                Documento documento = lnAdq.getDocumento(isbnBuscado);
+
+                if (documento == null)
+                {
+                    DialogResult dr = MostrarPregunta(
+                            "¿Quieres introducir otro?",
+                            "No existe ningún documento con ese ISBN"
+                        );
+
+                    if (dr == DialogResult.Yes)
+                    {
+                        continue;
+                    }
+                    else
+                        return;
+                }
+
+                FBuscarDocumento formulario = new FBuscarDocumento(documento);
+                formulario.ShowDialog(this);
+                return;
+            }
+            
+
+        }
+
+
         protected override void menuEjemplaresBaja_Click(object sender, EventArgs e)
         {
             int codigo;
