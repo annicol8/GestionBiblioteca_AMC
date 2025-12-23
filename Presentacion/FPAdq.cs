@@ -173,6 +173,34 @@ namespace Presentacion
             }
         }
 
+        protected override void menuEjemplaresBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FBuscarEjemplar formulario = new FBuscarEjemplar(lnAdq);
+
+                if (formulario.ShowDialog(this) == DialogResult.OK)
+                {
+                    Ejemplar ejemplar = formulario.EjemplarEncontrado;
+
+                    if (ejemplar != null)
+                    {
+                        // Opcional: Mostrar un mensaje de confirmación con los datos
+                        string mensaje = $"Ejemplar encontrado:\n\n" +
+                                        $"Código: {ejemplar.Codigo}\n" +
+                                        $"ISBN: {ejemplar.IsbnDocumento}\n" +
+                                        $"DNI Personal: {ejemplar.DniPAdq}\n" +
+                                        $"Estado: {(ejemplar.Activo ? "Activo" : "Inactivo")}";
+
+                        MostrarInformacion(mensaje, "Datos del Ejemplar");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al buscar el ejemplar: {ex.Message}");
+            }
+        }
 
         protected override void menuDocumentosListado_Click(object sender, EventArgs e)
         {

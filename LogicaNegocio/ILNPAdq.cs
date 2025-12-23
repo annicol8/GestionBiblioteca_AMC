@@ -9,6 +9,7 @@ namespace LogicaNegocio
 {
     public interface ILNPAdq: ILNPersonal
     {
+        
         bool AltaLibroPapel(LibroPapel libro);
 
         bool AltaAudioLibro(AudioLibro audioLibro);

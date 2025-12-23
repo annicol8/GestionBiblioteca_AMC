@@ -34,7 +34,8 @@ namespace Presentacion
                 if (lnp.Personal.Tipo == TipoPersonal.personalSala)
                 {
                     tipoPersonal = "Personal de sala";
-                } else
+                }
+                else
                 {
                     tipoPersonal = "Personal de servicio de adquisiciones";
                 }
@@ -223,6 +224,10 @@ namespace Presentacion
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
+        protected virtual void menuEjemplaresBuscar_Click(object sender, EventArgs e)
+        {
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+        }
 
         protected virtual void menuDocumentosListado_Click(object sender, EventArgs e)
         {
@@ -244,4 +249,5 @@ namespace Presentacion
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
     }
+        
 }

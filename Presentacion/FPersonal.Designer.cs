@@ -185,22 +185,23 @@
             // menuEjemplaresAlta
             // 
             this.menuEjemplaresAlta.Name = "menuEjemplaresAlta";
-            this.menuEjemplaresAlta.Size = new System.Drawing.Size(165, 34);
+            this.menuEjemplaresAlta.Size = new System.Drawing.Size(270, 34);
             this.menuEjemplaresAlta.Text = "Alta";
             this.menuEjemplaresAlta.Click += new System.EventHandler(this.menuEjemplaresAlta_Click);
             // 
             // menuEjemplaresBaja
             // 
             this.menuEjemplaresBaja.Name = "menuEjemplaresBaja";
-            this.menuEjemplaresBaja.Size = new System.Drawing.Size(165, 34);
+            this.menuEjemplaresBaja.Size = new System.Drawing.Size(270, 34);
             this.menuEjemplaresBaja.Text = "Baja";
             this.menuEjemplaresBaja.Click += new System.EventHandler(this.menuEjemplaresBaja_Click);
             // 
             // menuEjemplaresBuscar
             // 
             this.menuEjemplaresBuscar.Name = "menuEjemplaresBuscar";
-            this.menuEjemplaresBuscar.Size = new System.Drawing.Size(165, 34);
+            this.menuEjemplaresBuscar.Size = new System.Drawing.Size(270, 34);
             this.menuEjemplaresBuscar.Text = "Buscar";
+            this.menuEjemplaresBuscar.Click += new System.EventHandler(this.menuEjemplaresBuscar_Click);
             // 
             // prestamosToolStripMenuItem
             // 

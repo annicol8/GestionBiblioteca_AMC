@@ -39,41 +39,63 @@ namespace Presentacion
             textBoxCodigoEj.Text = codigo.ToString();
             textBoxCodigoEj.ReadOnly = true;
 
+            textBox_Personal.Text = lnAdq.Personal.Nombre; 
             CargarDocumentos();
+            
+            
         }
         
         private void CargarDocumentos()
         {
-            List<Documento> documentos = lnAdq.getDocumentos();
-
-            foreach (Documento documento in documentos)
+            try
             {
-                this.comboBoxISBN.Items.Add(documento.Isbn);
-            }
+                List<Documento> documentos = lnAdq.getDocumentos();
 
-            if (!string.IsNullOrEmpty(this.isbn))
-            {
-                int index = comboBoxISBN.Items.IndexOf(this.isbn);
-                if (index >= 0)
+                foreach (Documento documento in documentos)
                 {
-                    comboBoxISBN.SelectedIndex = index;
-                    comboBoxISBN.Enabled = false;
+                    this.comboBoxISBN.Items.Add(documento.Isbn);
                 }
+
+                if (!string.IsNullOrEmpty(this.isbn))
+                {
+                    int index = comboBoxISBN.Items.IndexOf(this.isbn);
+                    if (index >= 0)
+                    {
+                        comboBoxISBN.SelectedIndex = index;
+                        comboBoxISBN.Enabled = false;
+                    }
+                }
+            } catch (Exception ex)
+            {
+                ManejarExcepcion(ex, "cargar los documentos");
             }
+
 
         }
+
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             if (!ValidarDatos()) return;
 
-            string isbn = comboBoxISBN.Text;
+            try
+            {
+                string isbn = comboBoxISBN.Text;
 
-            lnAdq.AltaEjemplar(codigo, isbn);
+                // El personal que da de alta es el que está logueado
+                string dniPersonal = lnAdq.Personal.Dni;
 
-            MostrarExito("Ejemplar dado de alta correctamente");
-            this.Close();
-            
+                lnAdq.AltaEjemplar(codigo, isbn);
+
+                MostrarExito("Ejemplar dado de alta correctamente");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                ManejarExcepcion(ex, "dar de alta el ejemplar");
+            }
+
         }
 
         private bool ValidarDatos()

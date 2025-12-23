@@ -14,7 +14,8 @@ namespace LogicaNegocio
         {
             
         }
-        
+
+
         /*
         public void AltaLibroPapel(LibroPapel lp)
         {

@@ -34,6 +34,9 @@
             this.botonAceptar = new System.Windows.Forms.Button();
             this.comboBoxISBN = new System.Windows.Forms.ComboBox();
             this.textBoxCodigoEj = new System.Windows.Forms.TextBox();
+            this.lb_Personal = new System.Windows.Forms.Label();
+            this.rb_Prestado = new System.Windows.Forms.RadioButton();
+            this.textBox_Personal = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelIsbn
@@ -41,22 +44,22 @@
             this.labelIsbn.AutoSize = true;
             this.labelIsbn.Location = new System.Drawing.Point(98, 160);
             this.labelIsbn.Name = "labelIsbn";
-            this.labelIsbn.Size = new System.Drawing.Size(144, 20);
+            this.labelIsbn.Size = new System.Drawing.Size(148, 20);
             this.labelIsbn.TabIndex = 5;
-            this.labelIsbn.Text = "Documento (ISBN)";
+            this.labelIsbn.Text = "Documento (ISBN):";
             // 
             // labelCodigo
             // 
             this.labelCodigo.AutoSize = true;
-            this.labelCodigo.Location = new System.Drawing.Point(98, 79);
+            this.labelCodigo.Location = new System.Drawing.Point(98, 85);
             this.labelCodigo.Name = "labelCodigo";
-            this.labelCodigo.Size = new System.Drawing.Size(59, 20);
+            this.labelCodigo.Size = new System.Drawing.Size(63, 20);
             this.labelCodigo.TabIndex = 4;
-            this.labelCodigo.Text = "Código";
+            this.labelCodigo.Text = "Código:";
             // 
             // botonCancelar
             // 
-            this.botonCancelar.Location = new System.Drawing.Point(369, 265);
+            this.botonCancelar.Location = new System.Drawing.Point(347, 389);
             this.botonCancelar.Name = "botonCancelar";
             this.botonCancelar.Size = new System.Drawing.Size(129, 35);
             this.botonCancelar.TabIndex = 3;
@@ -66,7 +69,7 @@
             // 
             // botonAceptar
             // 
-            this.botonAceptar.Location = new System.Drawing.Point(172, 265);
+            this.botonAceptar.Location = new System.Drawing.Point(136, 389);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(129, 35);
             this.botonAceptar.TabIndex = 2;
@@ -84,17 +87,53 @@
             // 
             // textBoxCodigoEj
             // 
+            this.textBoxCodigoEj.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxCodigoEj.Location = new System.Drawing.Point(347, 79);
             this.textBoxCodigoEj.Name = "textBoxCodigoEj";
+            this.textBoxCodigoEj.ReadOnly = true;
             this.textBoxCodigoEj.Size = new System.Drawing.Size(240, 26);
             this.textBoxCodigoEj.TabIndex = 0;
             this.textBoxCodigoEj.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lb_Personal
+            // 
+            this.lb_Personal.AutoSize = true;
+            this.lb_Personal.Location = new System.Drawing.Point(98, 228);
+            this.lb_Personal.Name = "lb_Personal";
+            this.lb_Personal.Size = new System.Drawing.Size(79, 20);
+            this.lb_Personal.TabIndex = 6;
+            this.lb_Personal.Text = "Personal: ";
+            // 
+            // rb_Prestado
+            // 
+            this.rb_Prestado.AutoSize = true;
+            this.rb_Prestado.Enabled = false;
+            this.rb_Prestado.Location = new System.Drawing.Point(102, 302);
+            this.rb_Prestado.Name = "rb_Prestado";
+            this.rb_Prestado.Size = new System.Drawing.Size(98, 24);
+            this.rb_Prestado.TabIndex = 8;
+            this.rb_Prestado.TabStop = true;
+            this.rb_Prestado.Text = "Prestado";
+            this.rb_Prestado.UseVisualStyleBackColor = true;
+            // 
+            // textBox_Personal
+            // 
+            this.textBox_Personal.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBox_Personal.Location = new System.Drawing.Point(347, 222);
+            this.textBox_Personal.Name = "textBox_Personal";
+            this.textBox_Personal.ReadOnly = true;
+            this.textBox_Personal.Size = new System.Drawing.Size(240, 26);
+            this.textBox_Personal.TabIndex = 9;
+            this.textBox_Personal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // FAltaEjemplar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 364);
+            this.ClientSize = new System.Drawing.Size(646, 498);
+            this.Controls.Add(this.textBox_Personal);
+            this.Controls.Add(this.rb_Prestado);
+            this.Controls.Add(this.lb_Personal);
             this.Controls.Add(this.labelIsbn);
             this.Controls.Add(this.labelCodigo);
             this.Controls.Add(this.botonCancelar);
@@ -118,5 +157,8 @@
         private System.Windows.Forms.Button botonCancelar;
         private System.Windows.Forms.Label labelCodigo;
         private System.Windows.Forms.Label labelIsbn;
+        private System.Windows.Forms.Label lb_Personal;
+        private System.Windows.Forms.RadioButton rb_Prestado;
+        private System.Windows.Forms.TextBox textBox_Personal;
     }
 }
