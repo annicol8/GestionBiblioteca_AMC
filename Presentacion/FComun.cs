@@ -244,6 +244,7 @@ namespace Presentacion
             return letraCalculada == letra;
         }
 
+        // Acepta cualquier cadena que, quitando guiones y espacios, sea un número de 13 dígitos y tenga un dígito de control ISBN-13 correcto. Ej: 978-0-306-40615-7
         protected bool ValidarISBN(string isbn)
         {
             if (string.IsNullOrWhiteSpace(isbn))
