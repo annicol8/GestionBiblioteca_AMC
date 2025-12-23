@@ -32,6 +32,8 @@ namespace Presentacion
         {
             tbIsbn.Text = isbn;
             tbIsbn.ReadOnly = true;
+            tbTitulo.Focus();
+
 
             OcultarCamposAudioLibro();
 
@@ -236,6 +238,14 @@ namespace Presentacion
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void FAltaDocumento_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DialogResult == DialogResult.None)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
         }
 
         /*private void btAñadirEjemplares_Click(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿namespace Presentacion
+﻿using ModeloDominio;
+
+namespace Presentacion
 {
     partial class FAltaDocumento
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbAnoEdicion = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btCancelar = new System.Windows.Forms.Button();
@@ -40,7 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbTipoDocumento = new System.Windows.Forms.GroupBox();
             this.rbAudioLibro = new System.Windows.Forms.RadioButton();
             this.rbLibro = new System.Windows.Forms.RadioButton();
             this.gbAudioLibro = new System.Windows.Forms.GroupBox();
@@ -48,7 +51,8 @@
             this.lbFormatoDigital = new System.Windows.Forms.Label();
             this.tbFormatoDigital = new System.Windows.Forms.TextBox();
             this.lbDuracion = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.gbTipoDocumento.SuspendLayout();
             this.gbAudioLibro.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +62,8 @@
             this.tbAnoEdicion.Margin = new System.Windows.Forms.Padding(2);
             this.tbAnoEdicion.Name = "tbAnoEdicion";
             this.tbAnoEdicion.Size = new System.Drawing.Size(415, 31);
-            this.tbAnoEdicion.TabIndex = 16;
+            this.tbAnoEdicion.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.tbAnoEdicion, "Año de edición (formato: YYYY)");
             // 
             // label5
             // 
@@ -76,7 +81,7 @@
             this.btCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(142, 36);
-            this.btCancelar.TabIndex = 14;
+            this.btCancelar.TabIndex = 10;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
             this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
@@ -87,7 +92,7 @@
             this.btDarAlta.Margin = new System.Windows.Forms.Padding(2);
             this.btDarAlta.Name = "btDarAlta";
             this.btDarAlta.Size = new System.Drawing.Size(142, 36);
-            this.btDarAlta.TabIndex = 13;
+            this.btDarAlta.TabIndex = 9;
             this.btDarAlta.Text = "Dar alta";
             this.btDarAlta.UseVisualStyleBackColor = true;
             this.btDarAlta.Click += new System.EventHandler(this.btDarAlta_Click);
@@ -98,7 +103,8 @@
             this.tbEditorial.Margin = new System.Windows.Forms.Padding(2);
             this.tbEditorial.Name = "tbEditorial";
             this.tbEditorial.Size = new System.Drawing.Size(415, 31);
-            this.tbEditorial.TabIndex = 8;
+            this.tbEditorial.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.tbEditorial, "Editorial del documento");
             // 
             // tbAutor
             // 
@@ -106,7 +112,8 @@
             this.tbAutor.Margin = new System.Windows.Forms.Padding(2);
             this.tbAutor.Name = "tbAutor";
             this.tbAutor.Size = new System.Drawing.Size(415, 31);
-            this.tbAutor.TabIndex = 7;
+            this.tbAutor.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.tbAutor, "Autor del documento");
             // 
             // tbTitulo
             // 
@@ -114,7 +121,8 @@
             this.tbTitulo.Margin = new System.Windows.Forms.Padding(2);
             this.tbTitulo.Name = "tbTitulo";
             this.tbTitulo.Size = new System.Drawing.Size(415, 31);
-            this.tbTitulo.TabIndex = 6;
+            this.tbTitulo.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.tbTitulo, "Título del documento");
             // 
             // tbIsbn
             // 
@@ -122,7 +130,8 @@
             this.tbIsbn.Margin = new System.Windows.Forms.Padding(2);
             this.tbIsbn.Name = "tbIsbn";
             this.tbIsbn.Size = new System.Drawing.Size(180, 31);
-            this.tbIsbn.TabIndex = 5;
+            this.tbIsbn.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.tbIsbn, "ISBN del documento (solo lectura)");
             // 
             // label4
             // 
@@ -164,19 +173,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ISBN:";
             // 
-            // groupBox1
+            // gbTipoDocumento
             // 
-            this.groupBox1.Controls.Add(this.rbAudioLibro);
-            this.groupBox1.Controls.Add(this.rbLibro);
-            this.groupBox1.Controls.Add(this.gbAudioLibro);
-            this.groupBox1.Location = new System.Drawing.Point(96, 324);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(643, 170);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tipo de Documento";
+            this.gbTipoDocumento.Controls.Add(this.rbAudioLibro);
+            this.gbTipoDocumento.Controls.Add(this.rbLibro);
+            this.gbTipoDocumento.Controls.Add(this.gbAudioLibro);
+            this.gbTipoDocumento.Location = new System.Drawing.Point(96, 324);
+            this.gbTipoDocumento.Margin = new System.Windows.Forms.Padding(2);
+            this.gbTipoDocumento.Name = "gbTipoDocumento";
+            this.gbTipoDocumento.Padding = new System.Windows.Forms.Padding(2);
+            this.gbTipoDocumento.Size = new System.Drawing.Size(643, 170);
+            this.gbTipoDocumento.TabIndex = 11;
+            this.gbTipoDocumento.TabStop = false;
+            this.gbTipoDocumento.Text = "Tipo de Documento";
             // 
             // rbAudioLibro
             // 
@@ -185,7 +194,7 @@
             this.rbAudioLibro.Margin = new System.Windows.Forms.Padding(2);
             this.rbAudioLibro.Name = "rbAudioLibro";
             this.rbAudioLibro.Size = new System.Drawing.Size(146, 29);
-            this.rbAudioLibro.TabIndex = 10;
+            this.rbAudioLibro.TabIndex = 6;
             this.rbAudioLibro.TabStop = true;
             this.rbAudioLibro.Text = "AudioLibro";
             this.rbAudioLibro.UseVisualStyleBackColor = true;
@@ -198,7 +207,7 @@
             this.rbLibro.Margin = new System.Windows.Forms.Padding(2);
             this.rbLibro.Name = "rbLibro";
             this.rbLibro.Size = new System.Drawing.Size(91, 29);
-            this.rbLibro.TabIndex = 9;
+            this.rbLibro.TabIndex = 5;
             this.rbLibro.TabStop = true;
             this.rbLibro.Text = "Libro";
             this.rbLibro.UseVisualStyleBackColor = true;
@@ -224,7 +233,8 @@
             this.tbDuracion.Margin = new System.Windows.Forms.Padding(2);
             this.tbDuracion.Name = "tbDuracion";
             this.tbDuracion.Size = new System.Drawing.Size(106, 31);
-            this.tbDuracion.TabIndex = 14;
+            this.tbDuracion.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.tbDuracion, "Duración en segundos");
             // 
             // lbFormatoDigital
             // 
@@ -242,7 +252,8 @@
             this.tbFormatoDigital.Margin = new System.Windows.Forms.Padding(2);
             this.tbFormatoDigital.Name = "tbFormatoDigital";
             this.tbFormatoDigital.Size = new System.Drawing.Size(106, 31);
-            this.tbFormatoDigital.TabIndex = 13;
+            this.tbFormatoDigital.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.tbFormatoDigital, "Formato digital del audiolibro (mp3, aac, wav, etc.)");
             // 
             // lbDuracion
             // 
@@ -271,20 +282,21 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbTipoDocumento);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FAltaDocumento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Alta de Documento";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FAltaDocumento_FormClosing);
             this.Load += new System.EventHandler(this.FAltaDocumento_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbTipoDocumento.ResumeLayout(false);
+            this.gbTipoDocumento.PerformLayout();
             this.gbAudioLibro.ResumeLayout(false);
             this.gbAudioLibro.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
+        }      
 
         #endregion
 
@@ -298,7 +310,7 @@
         private System.Windows.Forms.TextBox tbEditorial;
         private System.Windows.Forms.RadioButton rbLibro;
         private System.Windows.Forms.RadioButton rbAudioLibro;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbTipoDocumento;
         private System.Windows.Forms.Button btDarAlta;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.TextBox tbDuracion;
@@ -308,5 +320,6 @@
         private System.Windows.Forms.GroupBox gbAudioLibro;
         private System.Windows.Forms.TextBox tbAnoEdicion;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
