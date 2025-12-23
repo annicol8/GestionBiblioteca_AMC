@@ -110,6 +110,10 @@ namespace Presentacion
                 {
                     MostrarError(ex.Message, "Error de validación");
                 }
+                catch (Exception ex)
+                {
+                    MostrarError($"Error inesperado: {ex.Message}", "Error");
+                }
             }
         }
 
@@ -119,5 +123,12 @@ namespace Presentacion
             this.Close();
         }
 
+        private void FBajaDocumento_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DialogResult == DialogResult.None)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
     }
 }

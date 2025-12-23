@@ -33,13 +33,14 @@
             this.lbAutor = new System.Windows.Forms.Label();
             this.lbTitulo = new System.Windows.Forms.Label();
             this.lbIsbn = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbTipoDocumento = new System.Windows.Forms.GroupBox();
             this.rbAudioLibro = new System.Windows.Forms.RadioButton();
             this.rbLibro = new System.Windows.Forms.RadioButton();
             this.gbAudioLibro = new System.Windows.Forms.GroupBox();
             this.lbFormatoDigital = new System.Windows.Forms.Label();
             this.lbDuracion = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.btCerrar = new System.Windows.Forms.Button();
+            this.gbTipoDocumento.SuspendLayout();
             this.gbAudioLibro.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,19 +94,19 @@
             this.lbIsbn.TabIndex = 16;
             this.lbIsbn.Text = "ISBN:";
             // 
-            // groupBox1
+            // gbTipoDocumento
             // 
-            this.groupBox1.Controls.Add(this.rbAudioLibro);
-            this.groupBox1.Controls.Add(this.rbLibro);
-            this.groupBox1.Controls.Add(this.gbAudioLibro);
-            this.groupBox1.Location = new System.Drawing.Point(102, 334);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(643, 170);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tipo de Documento";
+            this.gbTipoDocumento.Controls.Add(this.rbAudioLibro);
+            this.gbTipoDocumento.Controls.Add(this.rbLibro);
+            this.gbTipoDocumento.Controls.Add(this.gbAudioLibro);
+            this.gbTipoDocumento.Location = new System.Drawing.Point(102, 334);
+            this.gbTipoDocumento.Margin = new System.Windows.Forms.Padding(2);
+            this.gbTipoDocumento.Name = "gbTipoDocumento";
+            this.gbTipoDocumento.Padding = new System.Windows.Forms.Padding(2);
+            this.gbTipoDocumento.Size = new System.Drawing.Size(643, 170);
+            this.gbTipoDocumento.TabIndex = 21;
+            this.gbTipoDocumento.TabStop = false;
+            this.gbTipoDocumento.Text = "Tipo de Documento";
             // 
             // rbAudioLibro
             // 
@@ -165,22 +166,35 @@
             this.lbDuracion.TabIndex = 12;
             this.lbDuracion.Text = "Duración: ";
             // 
+            // btCerrar
+            // 
+            this.btCerrar.Location = new System.Drawing.Point(638, 527);
+            this.btCerrar.Name = "btCerrar";
+            this.btCerrar.Size = new System.Drawing.Size(107, 44);
+            this.btCerrar.TabIndex = 22;
+            this.btCerrar.Text = "Cerrar";
+            this.btCerrar.UseVisualStyleBackColor = true;
+            this.btCerrar.Click += new System.EventHandler(this.btCerrar_Click);
+            // 
             // FBuscarDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 583);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btCerrar);
+            this.Controls.Add(this.gbTipoDocumento);
             this.Controls.Add(this.lbAno);
             this.Controls.Add(this.lbEditorial);
             this.Controls.Add(this.lbAutor);
             this.Controls.Add(this.lbTitulo);
             this.Controls.Add(this.lbIsbn);
             this.Name = "FBuscarDocumento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FBuscarDocumento";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FBuscarDocumento_FormClosing);
             this.Load += new System.EventHandler(this.FBuscarDocumento_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbTipoDocumento.ResumeLayout(false);
+            this.gbTipoDocumento.PerformLayout();
             this.gbAudioLibro.ResumeLayout(false);
             this.gbAudioLibro.PerformLayout();
             this.ResumeLayout(false);
@@ -195,11 +209,12 @@
         private System.Windows.Forms.Label lbAutor;
         private System.Windows.Forms.Label lbTitulo;
         private System.Windows.Forms.Label lbIsbn;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbTipoDocumento;
         private System.Windows.Forms.RadioButton rbAudioLibro;
         private System.Windows.Forms.RadioButton rbLibro;
         private System.Windows.Forms.GroupBox gbAudioLibro;
         private System.Windows.Forms.Label lbFormatoDigital;
         private System.Windows.Forms.Label lbDuracion;
+        private System.Windows.Forms.Button btCerrar;
     }
 }

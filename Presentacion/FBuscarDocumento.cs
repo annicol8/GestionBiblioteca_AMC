@@ -61,6 +61,17 @@ namespace Presentacion
 
         }
 
+        private void btCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void FBuscarDocumento_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DialogResult == DialogResult.None)
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+        }
     }
 }
