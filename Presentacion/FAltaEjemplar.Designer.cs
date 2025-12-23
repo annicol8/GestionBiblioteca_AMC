@@ -39,7 +39,7 @@
             // labelIsbn
             // 
             this.labelIsbn.AutoSize = true;
-            this.labelIsbn.Location = new System.Drawing.Point(158, 167);
+            this.labelIsbn.Location = new System.Drawing.Point(98, 160);
             this.labelIsbn.Name = "labelIsbn";
             this.labelIsbn.Size = new System.Drawing.Size(144, 20);
             this.labelIsbn.TabIndex = 5;
@@ -48,7 +48,7 @@
             // labelCodigo
             // 
             this.labelCodigo.AutoSize = true;
-            this.labelCodigo.Location = new System.Drawing.Point(158, 85);
+            this.labelCodigo.Location = new System.Drawing.Point(98, 79);
             this.labelCodigo.Name = "labelCodigo";
             this.labelCodigo.Size = new System.Drawing.Size(59, 20);
             this.labelCodigo.TabIndex = 4;
@@ -56,7 +56,7 @@
             // 
             // botonCancelar
             // 
-            this.botonCancelar.Location = new System.Drawing.Point(438, 293);
+            this.botonCancelar.Location = new System.Drawing.Point(369, 265);
             this.botonCancelar.Name = "botonCancelar";
             this.botonCancelar.Size = new System.Drawing.Size(129, 35);
             this.botonCancelar.TabIndex = 3;
@@ -66,7 +66,7 @@
             // 
             // botonAceptar
             // 
-            this.botonAceptar.Location = new System.Drawing.Point(158, 293);
+            this.botonAceptar.Location = new System.Drawing.Point(172, 265);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(129, 35);
             this.botonAceptar.TabIndex = 2;
@@ -77,23 +77,24 @@
             // comboBoxISBN
             // 
             this.comboBoxISBN.FormattingEnabled = true;
-            this.comboBoxISBN.Location = new System.Drawing.Point(548, 160);
+            this.comboBoxISBN.Location = new System.Drawing.Point(347, 152);
             this.comboBoxISBN.Name = "comboBoxISBN";
-            this.comboBoxISBN.Size = new System.Drawing.Size(121, 28);
+            this.comboBoxISBN.Size = new System.Drawing.Size(240, 28);
             this.comboBoxISBN.TabIndex = 1;
             // 
             // textBoxCodigoEj
             // 
-            this.textBoxCodigoEj.Location = new System.Drawing.Point(548, 79);
+            this.textBoxCodigoEj.Location = new System.Drawing.Point(347, 79);
             this.textBoxCodigoEj.Name = "textBoxCodigoEj";
-            this.textBoxCodigoEj.Size = new System.Drawing.Size(121, 26);
+            this.textBoxCodigoEj.Size = new System.Drawing.Size(240, 26);
             this.textBoxCodigoEj.TabIndex = 0;
+            this.textBoxCodigoEj.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // FAltaEjemplar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(683, 364);
             this.Controls.Add(this.labelIsbn);
             this.Controls.Add(this.labelCodigo);
             this.Controls.Add(this.botonCancelar);
@@ -102,7 +103,7 @@
             this.Controls.Add(this.textBoxCodigoEj);
             this.Name = "FAltaEjemplar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FAltaEjemplar";
+            this.Text = "Alta de Ejemplar";
             this.Load += new System.EventHandler(this.FAltaEjemplar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

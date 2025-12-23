@@ -32,7 +32,7 @@ namespace Presentacion
         private void FAltaUsuario_Load(object sender, EventArgs e)
         {
             tbDni.Text = dniUsuario;
-            tbDni.ReadOnly = true;  // Mejor que Enabled = false
+            tbDni.ReadOnly = true;  
         }
 
         private void btAceptar_Click(object sender, EventArgs e)
@@ -58,6 +58,12 @@ namespace Presentacion
         {
             this.Close();
         }
+
+        private void FAltaUsuario_Shown(object sender, EventArgs e)
+        {
+            tbNombre.Focus();
+        }
+
 
     }
 }

@@ -43,7 +43,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(169, 278);
+            this.label4.Location = new System.Drawing.Point(99, 272);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 20);
             this.label4.TabIndex = 9;
@@ -52,7 +52,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(169, 211);
+            this.label3.Location = new System.Drawing.Point(99, 205);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 20);
             this.label3.TabIndex = 8;
@@ -61,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(169, 149);
+            this.label2.Location = new System.Drawing.Point(99, 137);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 20);
             this.label2.TabIndex = 7;
@@ -70,7 +70,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(165, 68);
+            this.label1.Location = new System.Drawing.Point(99, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 20);
             this.label1.TabIndex = 6;
@@ -78,7 +78,7 @@
             // 
             // btCancelar
             // 
-            this.btCancelar.Location = new System.Drawing.Point(594, 384);
+            this.btCancelar.Location = new System.Drawing.Point(382, 356);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(105, 40);
             this.btCancelar.TabIndex = 5;
@@ -88,7 +88,7 @@
             // 
             // btAceptar
             // 
-            this.btAceptar.Location = new System.Drawing.Point(393, 384);
+            this.btAceptar.Location = new System.Drawing.Point(156, 356);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(99, 40);
             this.btAceptar.TabIndex = 4;
@@ -98,28 +98,28 @@
             // 
             // tbEstado
             // 
-            this.tbEstado.Location = new System.Drawing.Point(392, 272);
+            this.tbEstado.Location = new System.Drawing.Point(292, 266);
             this.tbEstado.Name = "tbEstado";
             this.tbEstado.Size = new System.Drawing.Size(266, 26);
             this.tbEstado.TabIndex = 3;
             // 
             // tbTitulo
             // 
-            this.tbTitulo.Location = new System.Drawing.Point(393, 205);
+            this.tbTitulo.Location = new System.Drawing.Point(293, 199);
             this.tbTitulo.Name = "tbTitulo";
             this.tbTitulo.Size = new System.Drawing.Size(265, 26);
             this.tbTitulo.TabIndex = 2;
             // 
             // tbIsbn
             // 
-            this.tbIsbn.Location = new System.Drawing.Point(392, 143);
+            this.tbIsbn.Location = new System.Drawing.Point(292, 131);
             this.tbIsbn.Name = "tbIsbn";
             this.tbIsbn.Size = new System.Drawing.Size(266, 26);
             this.tbIsbn.TabIndex = 1;
             // 
             // tbCodigo
             // 
-            this.tbCodigo.Location = new System.Drawing.Point(393, 62);
+            this.tbCodigo.Location = new System.Drawing.Point(293, 62);
             this.tbCodigo.Name = "tbCodigo";
             this.tbCodigo.Size = new System.Drawing.Size(265, 26);
             this.tbCodigo.TabIndex = 0;
@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(645, 438);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -141,7 +141,7 @@
             this.Controls.Add(this.tbCodigo);
             this.Name = "FBajaEjemplar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FBajaEjemplar";
+            this.Text = "Baja de Ejemplar";
             this.Load += new System.EventHandler(this.FBajaEjemplar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

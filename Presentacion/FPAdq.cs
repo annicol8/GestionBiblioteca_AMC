@@ -20,13 +20,18 @@ namespace Presentacion
         {
             InitializeComponent();
             ActualizarTituloFormulario();
-
         }
 
         public FPAdq(ILNPAdq lnpa): base(lnpa)
         {
             this.lnAdq = lnpa;
             InitializeComponent();
+            ConfigurarPermisos();
+            ActualizarTituloFormulario();
+        }
+        private void ConfigurarPermisos()
+        {
+            OcultarPrestamos();
         }
 
         protected override void menuDocumentosAlta_Click(object sender, EventArgs e)

@@ -49,7 +49,7 @@
             // tbNombre
             // 
             this.tbNombre.Location = new System.Drawing.Point(305, 203);
-            this.tbNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbNombre.Margin = new System.Windows.Forms.Padding(2);
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(125, 26);
             this.tbNombre.TabIndex = 6;
@@ -57,7 +57,7 @@
             // tbDni
             // 
             this.tbDni.Location = new System.Drawing.Point(305, 132);
-            this.tbDni.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbDni.Margin = new System.Windows.Forms.Padding(2);
             this.tbDni.Name = "tbDni";
             this.tbDni.Size = new System.Drawing.Size(125, 26);
             this.tbDni.TabIndex = 5;
@@ -75,17 +75,18 @@
             // btCancelar
             // 
             this.btCancelar.Location = new System.Drawing.Point(329, 315);
-            this.btCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(89, 34);
             this.btCancelar.TabIndex = 9;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
             // btAceptar
             // 
             this.btAceptar.Location = new System.Drawing.Point(182, 316);
-            this.btAceptar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(97, 34);
             this.btAceptar.TabIndex = 8;
@@ -104,7 +105,7 @@
             this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.tbDni);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FBajaUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Baja de Usuario";

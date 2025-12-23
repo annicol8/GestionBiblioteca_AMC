@@ -31,8 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.lb_Ejemplares = new System.Windows.Forms.Label();
             this.lb_Documentos = new System.Windows.Forms.Label();
             this.dataGridView_Ejemplares = new System.Windows.Forms.DataGridView();
@@ -41,20 +39,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ejemplares)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Doc)).BeginInit();
             this.SuspendLayout();
-            // 
-            // vScrollBar2
-            // 
-            this.vScrollBar2.Location = new System.Drawing.Point(865, 314);
-            this.vScrollBar2.Name = "vScrollBar2";
-            this.vScrollBar2.Size = new System.Drawing.Size(26, 224);
-            this.vScrollBar2.TabIndex = 5;
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(865, 29);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(26, 210);
-            this.vScrollBar1.TabIndex = 4;
             // 
             // lb_Ejemplares
             // 
@@ -129,9 +113,9 @@
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 528);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 522);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(975, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(975, 28);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -141,8 +125,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(975, 550);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.vScrollBar2);
-            this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.lb_Ejemplares);
             this.Controls.Add(this.lb_Documentos);
             this.Controls.Add(this.dataGridView_Ejemplares);
@@ -163,8 +145,6 @@
         private System.Windows.Forms.DataGridView dataGridView_Ejemplares;
         private System.Windows.Forms.Label lb_Documentos;
         private System.Windows.Forms.Label lb_Ejemplares;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.VScrollBar vScrollBar2;
         private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }

@@ -46,7 +46,7 @@
             this.menuEjemplaresAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEjemplaresBaja = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEjemplaresBuscar = new System.Windows.Forms.ToolStripMenuItem();
-            this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prestamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosBuscar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrestamosDevolver = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +63,7 @@
             this.usuariosToolStripMenuItem,
             this.documentosToolStripMenuItem,
             this.ejemplaresToolStripMenuItem,
-            this.préstamosToolStripMenuItem});
+            this.prestamosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -202,17 +202,17 @@
             this.menuEjemplaresBuscar.Size = new System.Drawing.Size(165, 34);
             this.menuEjemplaresBuscar.Text = "Buscar";
             // 
-            // préstamosToolStripMenuItem
+            // prestamosToolStripMenuItem
             // 
-            this.préstamosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prestamosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuPrestamosNuevo,
             this.menuPrestamosBuscar,
             this.menuPrestamosDevolver,
             this.listadoToolStripMenuItem1,
             this.recorridoUnoAUnoToolStripMenuItem1});
-            this.préstamosToolStripMenuItem.Name = "préstamosToolStripMenuItem";
-            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(111, 29);
-            this.préstamosToolStripMenuItem.Text = "Préstamos";
+            this.prestamosToolStripMenuItem.Name = "prestamosToolStripMenuItem";
+            this.prestamosToolStripMenuItem.Size = new System.Drawing.Size(111, 29);
+            this.prestamosToolStripMenuItem.Text = "Préstamos";
             // 
             // menuPrestamosNuevo
             // 
@@ -268,7 +268,7 @@
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem documentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ejemplaresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem préstamosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prestamosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuUsuariosAlta;
         private System.Windows.Forms.ToolStripMenuItem menuUsuariosBaja;
         private System.Windows.Forms.ToolStripMenuItem menuUsuariosBuscar;

@@ -51,5 +51,10 @@ namespace Presentacion
                 this.Close();
             }
         }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

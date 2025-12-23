@@ -24,14 +24,21 @@ namespace Presentacion
         public FPersonal(ILNPersonal lnp) : this()
         {
             this.lnp = lnp;
-            
         }
 
         protected void ActualizarTituloFormulario()
         {
             if (lnp?.Personal != null)
             {
-                this.Text = $"{lnp.Personal.Nombre} - Gestión de biblioteca";
+                string tipoPersonal;
+                if (lnp.Personal.Tipo == TipoPersonal.personalSala)
+                {
+                    tipoPersonal = "Personal de sala";
+                } else
+                {
+                    tipoPersonal = "Personal de servicio de adquisiciones";
+                }
+                this.Text = $"{lnp.Personal.Nombre} - Gestión de biblioteca - {tipoPersonal}";
             }
         }
 
@@ -43,6 +50,11 @@ namespace Presentacion
         protected void OcultarEjemplares()
         {
             ejemplaresToolStripMenuItem.Visible = false;
+        }
+
+        protected void OcultarPrestamos()
+        {
+            prestamosToolStripMenuItem.Visible = false;
         }
 
 

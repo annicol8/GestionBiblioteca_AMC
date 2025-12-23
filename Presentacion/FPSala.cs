@@ -15,6 +15,11 @@ namespace Presentacion
     {
         private ILNPSala lnSala;
 
+        public FPSala ()
+        {
+            InitializeComponent();
+            ActualizarTituloFormulario();
+        }
         public FPSala(ILNPSala lnSala) : base(lnSala)
         {
             this.lnSala = lnSala;

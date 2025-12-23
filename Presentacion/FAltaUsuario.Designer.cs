@@ -105,11 +105,12 @@
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.tbDni);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FAltaUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Alta de Usuario";
             this.Load += new System.EventHandler(this.FAltaUsuario_Load);
+            this.Shown += new System.EventHandler(this.FAltaUsuario_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
