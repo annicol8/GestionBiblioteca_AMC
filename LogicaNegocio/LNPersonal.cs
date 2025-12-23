@@ -71,6 +71,17 @@ namespace LogicaNegocio
             }
         }
 
+        public void ModificarUsuario(Usuario usuario)
+        {
+            if (usuario == null)
+                throw new ArgumentNullException(nameof(usuario));
+
+            bool resultado = Persistencia.Persistencia.UpdateUsuario(usuario);
+
+            if (!resultado)
+                throw new InvalidOperationException("No se pudo actualizar el usuario");
+        }
+
         public void BajaUsuario(Usuario u)
         {
             if (u == null)

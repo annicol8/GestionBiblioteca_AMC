@@ -13,6 +13,7 @@ namespace LogicaNegocio
 
         //USUARIOS
         void AltaUsuario(Usuario usuario);
+        void ModificarUsuario(Usuario usuario);
         void BajaUsuario(Usuario usuario);
         Usuario GetUsuario(string dni);
         List<Usuario> GetUsuariosActivos();

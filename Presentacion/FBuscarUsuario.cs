@@ -27,12 +27,33 @@ namespace Presentacion
 
         private void FBuscarUsuario_Load(object sender, EventArgs e)
         {
-            // Cargar los datos del usuario
             tbDni.Text = usuario.Dni;
             tbNombre.Text = usuario.Nombre;
 
             tbDni.ReadOnly = true;
             tbNombre.ReadOnly = true;
+
+            if (usuario.DadoAlta)
+            {
+                label_Estado.Text = "Estado: ACTIVO";
+                label_Estado.ForeColor = Color.Green;
+                this.BackColor = SystemColors.Control; 
+            }
+            else
+            {
+                label_Estado.Text = "Estado: DADO DE BAJA";
+                label_Estado.ForeColor = Color.Black;
+                this.BackColor = Color.LightCoral;
+
+                MostrarAdvertencia(
+                    "Este usuario está dado de baja y no puede realizar operaciones.",
+                    "Usuario Inactivo");
+            }
+        }
+
+        private void btCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

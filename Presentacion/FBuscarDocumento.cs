@@ -35,8 +35,6 @@ namespace Presentacion
             lbAno.Text = $"Año de edición: {documento.AnoEdicion}";
             //lbPersonalRegistro.Text = $"Registrado por: {documento.Personal}";
 
-
-
             if (documento is AudioLibro audioLibro)
             {
                 rbAudioLibro.Checked = true;
@@ -51,7 +49,6 @@ namespace Presentacion
 
 
         }
-
 
     }
 }

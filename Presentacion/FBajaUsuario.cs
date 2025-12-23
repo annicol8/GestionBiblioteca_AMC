@@ -20,6 +20,7 @@ namespace Presentacion
         public FBajaUsuario()
         {
             InitializeComponent();
+            this.AcceptButton = btAceptar;
         }
 
         public FBajaUsuario(ILNPersonal lnp, Usuario usuario) : this()
@@ -37,23 +38,39 @@ namespace Presentacion
             tbDni.ReadOnly = true;
             tbNombre.ReadOnly = true;
 
-
+            if (!usuario.DadoAlta)
+            {
+                MostrarError("Este usuario ya está dado de baja.");
+                this.Close();
+            }
         }
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MostrarPregunta("¿Está seguro que desea dar de baja al usuario?", "Aviso");
-
+            DialogResult dr = MostrarPregunta(
+                $"¿Está seguro que desea dar de baja al usuario?\n\n" +
+                "Esta acción marcará al usuario como inactivo.",
+                "Confirmar baja"); 
+            
             if (dr == DialogResult.Yes)
             {
-                lnp.BajaUsuario(usuario);
-                MostrarInformacion("Usuario eliminado", "Aviso");
-                this.Close();
+                try
+                {
+                    lnp.BajaUsuario(usuario);
+                    MostrarExito($"Usuario '{usuario.Nombre}' dado de baja correctamente.");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    ManejarExcepcion(ex, "dar de baja al usuario");
+                }
             }
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }

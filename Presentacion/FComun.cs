@@ -138,6 +138,84 @@ namespace Presentacion
             return true;
         }
 
+        
+        protected bool ValidarNombre(string nombre, string nombreCampo = "Nombre")
+        {
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                MostrarAdvertencia($"El campo '{nombreCampo}' no puede estar vacío.");
+                return false;
+            }
+
+            nombre = nombre.Trim();
+
+            // longitud mínima
+            if (nombre.Length < 2)
+            {
+                MostrarAdvertencia($"El campo '{nombreCampo}' debe tener al menos 2 caracteres.");
+                return false;
+            }
+
+            // longitud máxima
+            if (nombre.Length > 20)
+            {
+                MostrarAdvertencia($"El campo '{nombreCampo}' no puede superar los 20 caracteres.");
+                return false;
+            }
+
+            // Validar que solo contenga letras, espacios, guiones, apóstrofes y tildes
+            // Permite nombres como: "María", "José Luis", "O'Brien", "García-Pérez"
+            foreach (char c in nombre)
+            {
+                if (!char.IsLetter(c) && c != ' ' && c != '-' && c != '\'' && c != 'ñ' && c != 'Ñ')
+                {
+                    MostrarAdvertencia(
+                        $"El campo '{nombreCampo}' solo puede contener letras, espacios, guiones y apóstrofes.\n\n" +
+                        "No se permiten números ni caracteres especiales.",
+                        "Formato inválido");
+                    return false;
+                }
+            }
+
+            // Validar que no tenga múltiples espacios consecutivos
+            if (nombre.Contains("  "))
+            {
+                MostrarAdvertencia(
+                    $"El campo '{nombreCampo}' no puede contener espacios consecutivos.",
+                    "Formato inválido");
+                return false;
+            }
+
+            // Validar que no empiece ni termine con espacio, guion o apóstrofe
+            if (nombre.StartsWith(" ") || nombre.EndsWith(" ") ||
+                nombre.StartsWith("-") || nombre.EndsWith("-") ||
+                nombre.StartsWith("'") || nombre.EndsWith("'"))
+            {
+                MostrarAdvertencia(
+                    $"El campo '{nombreCampo}' tiene un formato incorrecto.",
+                    "Formato inválido");
+                return false;
+            }
+
+            return true;
+        }
+
+        
+        protected string NormalizarNombre(string nombre)
+        {
+            if (string.IsNullOrWhiteSpace(nombre))
+                return nombre;
+
+            nombre = nombre.Trim();
+
+            nombre = nombre.ToLower();
+
+            System.Globalization.TextInfo textInfo =
+                System.Globalization.CultureInfo.CurrentCulture.TextInfo;
+
+            return textInfo.ToTitleCase(nombre);
+        }
+
         protected bool ValidarDNI(string dni)
         {
             if (string.IsNullOrWhiteSpace(dni))
@@ -302,6 +380,7 @@ namespace Presentacion
             // Logger.Error(ex, operacion);
         }
 
+        
         protected T pedirClave<T>(string mensaje)
         {
             while (true)
@@ -328,8 +407,9 @@ namespace Presentacion
                 }
             }
         }
-
         
+
+
 
 
     }

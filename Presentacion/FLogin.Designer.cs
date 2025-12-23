@@ -44,46 +44,41 @@
             // lb_Nombre
             // 
             this.lb_Nombre.AutoSize = true;
-            this.lb_Nombre.Location = new System.Drawing.Point(85, 75);
-            this.lb_Nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_Nombre.Location = new System.Drawing.Point(64, 60);
             this.lb_Nombre.Name = "lb_Nombre";
-            this.lb_Nombre.Size = new System.Drawing.Size(93, 25);
+            this.lb_Nombre.Size = new System.Drawing.Size(69, 20);
             this.lb_Nombre.TabIndex = 0;
             this.lb_Nombre.Text = "Nombre:";
             // 
             // lb_Contraseña
             // 
             this.lb_Contraseña.AutoSize = true;
-            this.lb_Contraseña.Location = new System.Drawing.Point(85, 150);
-            this.lb_Contraseña.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_Contraseña.Location = new System.Drawing.Point(64, 120);
             this.lb_Contraseña.Name = "lb_Contraseña";
-            this.lb_Contraseña.Size = new System.Drawing.Size(129, 25);
+            this.lb_Contraseña.Size = new System.Drawing.Size(96, 20);
             this.lb_Contraseña.TabIndex = 1;
             this.lb_Contraseña.Text = "Contraseña:";
             // 
             // textBox_Nombre
             // 
-            this.textBox_Nombre.Location = new System.Drawing.Point(288, 71);
-            this.textBox_Nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_Nombre.Location = new System.Drawing.Point(216, 57);
             this.textBox_Nombre.Name = "textBox_Nombre";
-            this.textBox_Nombre.Size = new System.Drawing.Size(193, 31);
+            this.textBox_Nombre.Size = new System.Drawing.Size(146, 26);
             this.textBox_Nombre.TabIndex = 0;
             // 
             // textBox_Contraseña
             // 
-            this.textBox_Contraseña.Location = new System.Drawing.Point(288, 150);
-            this.textBox_Contraseña.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_Contraseña.Location = new System.Drawing.Point(216, 120);
             this.textBox_Contraseña.Name = "textBox_Contraseña";
-            this.textBox_Contraseña.Size = new System.Drawing.Size(193, 31);
+            this.textBox_Contraseña.Size = new System.Drawing.Size(146, 26);
             this.textBox_Contraseña.TabIndex = 1;
             this.textBox_Contraseña.UseSystemPasswordChar = true;
-            // 
+             // 
             // bt_Entrar
             // 
-            this.bt_Entrar.Location = new System.Drawing.Point(372, 426);
-            this.bt_Entrar.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_Entrar.Location = new System.Drawing.Point(279, 341);
             this.bt_Entrar.Name = "bt_Entrar";
-            this.bt_Entrar.Size = new System.Drawing.Size(111, 39);
+            this.bt_Entrar.Size = new System.Drawing.Size(83, 31);
             this.bt_Entrar.TabIndex = 4;
             this.bt_Entrar.Text = "Entrar";
             this.bt_Entrar.UseVisualStyleBackColor = true;
@@ -93,11 +88,9 @@
             // 
             this.groupB_TipoEmp.Controls.Add(this.radioButton_PAdq);
             this.groupB_TipoEmp.Controls.Add(this.radioButton_PSala);
-            this.groupB_TipoEmp.Location = new System.Drawing.Point(91, 244);
-            this.groupB_TipoEmp.Margin = new System.Windows.Forms.Padding(4);
+            this.groupB_TipoEmp.Location = new System.Drawing.Point(68, 195);
             this.groupB_TipoEmp.Name = "groupB_TipoEmp";
-            this.groupB_TipoEmp.Padding = new System.Windows.Forms.Padding(4);
-            this.groupB_TipoEmp.Size = new System.Drawing.Size(392, 145);
+            this.groupB_TipoEmp.Size = new System.Drawing.Size(294, 116);
             this.groupB_TipoEmp.TabIndex = 5;
             this.groupB_TipoEmp.TabStop = false;
             this.groupB_TipoEmp.Text = "Tipo empleado";
@@ -105,10 +98,9 @@
             // radioButton_PAdq
             // 
             this.radioButton_PAdq.AutoSize = true;
-            this.radioButton_PAdq.Location = new System.Drawing.Point(56, 86);
-            this.radioButton_PAdq.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButton_PAdq.Location = new System.Drawing.Point(42, 69);
             this.radioButton_PAdq.Name = "radioButton_PAdq";
-            this.radioButton_PAdq.Size = new System.Drawing.Size(266, 29);
+            this.radioButton_PAdq.Size = new System.Drawing.Size(196, 24);
             this.radioButton_PAdq.TabIndex = 1;
             this.radioButton_PAdq.TabStop = true;
             this.radioButton_PAdq.Text = "Personal adquisiciones";
@@ -117,10 +109,9 @@
             // radioButton_PSala
             // 
             this.radioButton_PSala.AutoSize = true;
-            this.radioButton_PSala.Location = new System.Drawing.Point(56, 49);
-            this.radioButton_PSala.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButton_PSala.Location = new System.Drawing.Point(42, 39);
             this.radioButton_PSala.Name = "radioButton_PSala";
-            this.radioButton_PSala.Size = new System.Drawing.Size(174, 29);
+            this.radioButton_PSala.Size = new System.Drawing.Size(129, 24);
             this.radioButton_PSala.TabIndex = 0;
             this.radioButton_PSala.TabStop = true;
             this.radioButton_PSala.Text = "Personal sala";
@@ -129,9 +120,9 @@
             // FLogin
             // 
             this.AcceptButton = this.bt_Entrar;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 538);
+            this.ClientSize = new System.Drawing.Size(482, 430);
             this.Controls.Add(this.groupB_TipoEmp);
             this.Controls.Add(this.bt_Entrar);
             this.Controls.Add(this.textBox_Contraseña);
@@ -139,7 +130,6 @@
             this.Controls.Add(this.lb_Contraseña);
             this.Controls.Add(this.lb_Nombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FLogin";

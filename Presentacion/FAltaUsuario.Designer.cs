@@ -111,6 +111,7 @@
             this.Text = "Alta de Usuario";
             this.Load += new System.EventHandler(this.FAltaUsuario_Load);
             this.Shown += new System.EventHandler(this.FAltaUsuario_Shown);
+            this.Click += new System.EventHandler(this.btAceptar_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

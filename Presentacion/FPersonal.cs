@@ -70,6 +70,15 @@ namespace Presentacion
                 if (dni == null)
                     return; // cancelado
 
+                if (!ValidarDNI(dni))
+                {
+                    MostrarAdvertencia(
+                        "El DNI introducido no tiene un formato válido.\n\n" +
+                        "Formato correcto: 8 dígitos seguidos de una letra (ej: 12345678Z)",
+                        "DNI inválido");
+                    continue; // Pedir de nuevo
+                }
+
                 Usuario usuarioExistente = lnp.GetUsuario(dni);
 
 
@@ -101,7 +110,7 @@ namespace Presentacion
             if (fClave.ShowDialog(this) == DialogResult.OK)
 
             {
-                return fClave.Clave;
+                return fClave.Clave?.Trim().ToUpper();
 
             }
             return null;
@@ -121,13 +130,33 @@ namespace Presentacion
                 if (usuario == null)
                 {
                     DialogResult dr = MostrarPregunta(
-                        "¿Quieres introducir otro?",
-                        "No existe un usuario con ese DNI"
-                    );
+                        $"No existe ningún usuario con el DNI {dni}.\n\n" +
+                        "¿Desea introducir otro DNI?",
+                        "Usuario no encontrado");
                     if (dr == DialogResult.Yes)
                         continue;
                     else
                         return;
+                }
+
+                if (!usuario.DadoAlta)
+                {
+                    DialogResult dr = MostrarPregunta(
+                        $"El usuario con DNI {dni} está dado de baja.\n\n" +
+                        "¿Desea ver los datos del usuario inactivo de todos modos?",
+                        "Usuario dado de baja");
+
+                    if (dr == DialogResult.No)
+                    {
+                        DialogResult buscarOtro = MostrarPregunta(
+                            "¿Desea buscar otro usuario?",
+                            "Buscar otro");
+
+                        if (buscarOtro == DialogResult.Yes)
+                            continue;
+                        else
+                            return;
+                    }
                 }
 
                 FBuscarUsuario formulario = new FBuscarUsuario(usuario);
@@ -149,15 +178,21 @@ namespace Presentacion
                 Usuario usuario = lnp.GetUsuario(dni);
                 if (usuario == null || !usuario.DadoAlta)
                 {
+                    string mensaje = usuario == null
+                        ? $"No existe ningún usuario con el DNI {dni}."
+                        : $"El usuario con DNI {dni} ya está dado de baja.";
+
+
                     DialogResult dr = MostrarPregunta(
-                        "¿Quieres introducir otro?",
-                        "No existe un usuario activo con ese DNI"
-                    );
+                        mensaje + "\n\n¿Desea introducir otro DNI?",
+                        "Usuario no disponible");
+                    
                     if (dr == DialogResult.Yes)
                         continue;
                     else
                         return;
                 }
+
                 FBajaUsuario formulario = new FBajaUsuario(lnp, usuario);
                 formulario.ShowDialog(this);
                 return;
