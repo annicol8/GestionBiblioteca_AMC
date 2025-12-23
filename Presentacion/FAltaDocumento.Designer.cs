@@ -77,10 +77,10 @@ namespace Presentacion
             // 
             // btCancelar
             // 
-            this.btCancelar.Location = new System.Drawing.Point(597, 545);
+            this.btCancelar.Location = new System.Drawing.Point(597, 523);
             this.btCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(142, 36);
+            this.btCancelar.Size = new System.Drawing.Size(142, 49);
             this.btCancelar.TabIndex = 10;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
@@ -88,10 +88,10 @@ namespace Presentacion
             // 
             // btDarAlta
             // 
-            this.btDarAlta.Location = new System.Drawing.Point(437, 545);
+            this.btDarAlta.Location = new System.Drawing.Point(437, 523);
             this.btDarAlta.Margin = new System.Windows.Forms.Padding(2);
             this.btDarAlta.Name = "btDarAlta";
-            this.btDarAlta.Size = new System.Drawing.Size(142, 36);
+            this.btDarAlta.Size = new System.Drawing.Size(142, 49);
             this.btDarAlta.TabIndex = 9;
             this.btDarAlta.Text = "Dar alta";
             this.btDarAlta.UseVisualStyleBackColor = true;
@@ -129,7 +129,7 @@ namespace Presentacion
             this.tbIsbn.Location = new System.Drawing.Point(284, 53);
             this.tbIsbn.Margin = new System.Windows.Forms.Padding(2);
             this.tbIsbn.Name = "tbIsbn";
-            this.tbIsbn.Size = new System.Drawing.Size(180, 31);
+            this.tbIsbn.Size = new System.Drawing.Size(231, 31);
             this.tbIsbn.TabIndex = 0;
             this.toolTip1.SetToolTip(this.tbIsbn, "ISBN del documento (solo lectura)");
             // 
@@ -267,9 +267,9 @@ namespace Presentacion
             // 
             // FAltaDocumento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(883, 626);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(832, 583);
             this.Controls.Add(this.tbAnoEdicion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btCancelar);
