@@ -27,16 +27,18 @@ namespace Persistencia
 
         public static void CargarDatosPrueba()
         {
-            TablaPersonales.Add(new PersonalDato("12345678A", "Juan", "admin", TipoPersonal.personalSala));
-            TablaPersonales.Add(new PersonalDato("87654321B", "María", "admin", TipoPersonal.personalAdquisiciones));
-            TablaPersonales.Add(new PersonalDato("11223344C", "Carlos", "admin", TipoPersonal.personalSala));
-            TablaPersonales.Add(new PersonalDato("22334455D", "Laura", "admin", TipoPersonal.personalAdquisiciones));
-            TablaPersonales.Add(new PersonalDato("33445566E", "Pedro", "admin", TipoPersonal.personalSala));
-            TablaPersonales.Add(new PersonalDato("44556677F", "Ana", "admin", TipoPersonal.personalAdquisiciones));
-            TablaPersonales.Add(new PersonalDato("55667788G", "Lucía", "admin", TipoPersonal.personalSala));
-            TablaPersonales.Add(new PersonalDato("66778899H", "Miguel", "admin", TipoPersonal.personalAdquisiciones));
-            TablaPersonales.Add(new PersonalDato("77889900J", "Elena", "admin", TipoPersonal.personalSala));
-            TablaPersonales.Add(new PersonalDato("88990011K", "David", "admin", TipoPersonal.personalAdquisiciones));
+            // PERSONALES
+            TablaPersonales.Add(new PersonalDato("12345678Z", "Juan", "admin", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("87654321T", "María", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("11223344Q", "Carlos", "admin", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("22334455J", "Laura", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("33445566M", "Pedro", "admin", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("44556677W", "Ana", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("55667788C", "Lucía", "admin", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("66778899S", "Miguel", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("77889900P", "Elena", "admin", TipoPersonal.personalSala));
+            TablaPersonales.Add(new PersonalDato("88990011A", "David", "admin", TipoPersonal.personalAdquisiciones));
+
 
 
 
@@ -104,9 +106,10 @@ namespace Persistencia
             TablaEjemplares.Add(new EjemplarDato(7, "123A", true, "87654321B"));
 
             // USUARIOS
-            TablaUsuarios.Add(new UsuarioDato("11111111C", "Pedro", true));
-            TablaUsuarios.Add(new UsuarioDato("11122233V", "Eva", true));
-            TablaUsuarios.Add(new UsuarioDato("22233344D", "Carlos", true));
+            TablaUsuarios.Add(new UsuarioDato("11111111F", "Pedro", true));
+            TablaUsuarios.Add(new UsuarioDato("11122233Z", "Eva", true));
+            TablaUsuarios.Add(new UsuarioDato("22233344G", "Carlos", true));
+
 
             // ===== PRÉSTAMO 1 (En Proceso) =====
             int idPrestamo1 = GenerarIdPrestamo();
