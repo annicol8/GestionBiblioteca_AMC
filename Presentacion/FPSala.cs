@@ -19,6 +19,7 @@ namespace Presentacion
         {
             this.lnSala = lnSala;
             InitializeComponent();
+            ActualizarTituloFormulario();
             ConfigurarPermisos();
         }
 

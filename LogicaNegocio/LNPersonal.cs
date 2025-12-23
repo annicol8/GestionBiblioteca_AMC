@@ -24,6 +24,7 @@ namespace LogicaNegocio
                 throw new ArgumentNullException("El personal no puede ser nulo");
             }
             this.personal = personal;
+        
         }
         
         //Método estático para obtener un personal en el formulario

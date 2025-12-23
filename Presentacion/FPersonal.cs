@@ -24,6 +24,15 @@ namespace Presentacion
         public FPersonal(ILNPersonal lnp) : this()
         {
             this.lnp = lnp;
+            
+        }
+
+        protected void ActualizarTituloFormulario()
+        {
+            if (lnp?.Personal != null)
+            {
+                this.Text = $"{lnp.Personal.Nombre} - Gestión de biblioteca";
+            }
         }
 
         protected void OcultarDocumentos()

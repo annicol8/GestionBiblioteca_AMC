@@ -19,6 +19,8 @@ namespace Presentacion
         public FPAdq()
         {
             InitializeComponent();
+            ActualizarTituloFormulario();
+
         }
 
         public FPAdq(ILNPAdq lnpa): base(lnpa)
