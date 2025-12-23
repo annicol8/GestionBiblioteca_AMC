@@ -82,6 +82,12 @@
     <Compile Include="FBajaUsuario.Designer.cs">
       <DependentUpon>FBajaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FBuscarDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBuscarDocumento.Designer.cs">
+      <DependentUpon>FBuscarDocumento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FBuscarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FBajaUsuario.resx">
       <DependentUpon>FBajaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBuscarDocumento.resx">
+      <DependentUpon>FBuscarDocumento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FBuscarUsuario.resx">
       <DependentUpon>FBuscarUsuario.cs</DependentUpon>
