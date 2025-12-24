@@ -47,8 +47,11 @@ namespace Presentacion
 
                 if (!ValidarISBN(isbn))
                 {
-                    MostrarError("El ISBN introducido no tiene un formato válido");
-                    continue; // Volver a pedir
+                    MostrarAdvertencia(
+                        "El ISBN introducido no es válido.\n\n" +
+                        "Formato: 13 dígitos (ej: 9788420412146 o 978-84-204-1214-6)",
+                        "ISBN inválido");
+                    continue; //Volver a pedir
                 }
 
                 Documento documentoExistente = lnAdq.getDocumento(isbn);

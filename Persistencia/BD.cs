@@ -93,9 +93,6 @@ namespace Persistencia
             ));
 
 
-        
-
-
             // EJEMPLARES
             TablaEjemplares.Add(new EjemplarDato(1, "978-0-13-468599-1", true, "87654321B"));
             TablaEjemplares.Add(new EjemplarDato(2, "978-0-13-468599-1", true, "87654321B"));
@@ -103,7 +100,6 @@ namespace Persistencia
             TablaEjemplares.Add(new EjemplarDato(4, "978-0-13-957331-8", true, "87654321B"));
             TablaEjemplares.Add(new EjemplarDato(5, "978-1-4001-2345-6", true, "87654321B"));
             TablaEjemplares.Add(new EjemplarDato(6, "978-1-5555-7777-8", true, "87654321B"));
-            TablaEjemplares.Add(new EjemplarDato(7, "123A", true, "87654321B"));
 
             // USUARIOS
             TablaUsuarios.Add(new UsuarioDato("11111111F", "Pedro", true));
