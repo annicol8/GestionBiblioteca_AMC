@@ -132,7 +132,7 @@ namespace LogicaNegocio
             return false;
         }
         public Documento getDocumento(string isbn)
-            //PRE:
+            //PRE: isbn distinto de null
             //POST: Si no existe, null; si existe, devuelve el objeto AudLibro o LiPapel
         {
             return Persistencia.Persistencia.GetDocumento(isbn);

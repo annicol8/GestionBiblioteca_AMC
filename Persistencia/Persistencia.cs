@@ -167,6 +167,7 @@ namespace Persistencia
         #region DOCUMENTO
         //DOCUMENTOS TANTO AUDIO LIBRO COMO LIBRO PAPEL
         public static Documento GetDocumento(string isbn)
+
         {
             var lp = GetLibroPapel(new LibroPapel(isbn));
             if (lp != null) return lp;

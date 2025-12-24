@@ -163,26 +163,35 @@ namespace Presentacion
             {
                 String isbnBuscado = pedirClave<string>("ISBN");
 
-                Documento documento = lnAdq.getDocumento(isbnBuscado);
-
-                if (documento == null)
+                if (isbnBuscado != null)
                 {
-                    DialogResult dr = MostrarPregunta(
-                            "¿Quieres introducir otro?",
-                            "No existe ningún documento con ese ISBN"
-                        );
 
-                    if (dr == DialogResult.Yes)
+                    Documento documento = lnAdq.getDocumento(isbnBuscado);
+
+                    if (documento == null)
                     {
-                        continue;
+                        DialogResult dr = MostrarPregunta(
+                                "¿Quieres introducir otro?",
+                                "No existe ningún documento con ese ISBN"
+                            );
+
+                        if (dr == DialogResult.Yes)
+                        {
+                            continue;
+                        }
+                        else
+                            return;
                     }
-                    else
-                        return;
+
+                    FBuscarDocumento formulario = new FBuscarDocumento(documento);
+                    formulario.ShowDialog(this);
+                    return;
+                }
+                else
+                {
+                    break;
                 }
 
-                FBuscarDocumento formulario = new FBuscarDocumento(documento);
-                formulario.ShowDialog(this);
-                return;
             }
             
 
