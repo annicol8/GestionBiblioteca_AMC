@@ -136,6 +136,12 @@
     <Compile Include="FListaDocumentos.Designer.cs">
       <DependentUpon>FListaDocumentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FListaEjemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FListaEjemplar.Designer.cs">
+      <DependentUpon>FListaEjemplar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FListaPrestamos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FListaDocumentos.resx">
       <DependentUpon>FListaDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FListaEjemplar.resx">
+      <DependentUpon>FListaEjemplar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FListaPrestamos.resx">
       <DependentUpon>FListaPrestamos.cs</DependentUpon>

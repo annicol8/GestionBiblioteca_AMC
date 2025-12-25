@@ -38,11 +38,11 @@
             // dataGridView_Prest
             // 
             this.dataGridView_Prest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Prest.Location = new System.Drawing.Point(36, 32);
+            this.dataGridView_Prest.Location = new System.Drawing.Point(21, 32);
             this.dataGridView_Prest.Name = "dataGridView_Prest";
             this.dataGridView_Prest.RowHeadersWidth = 62;
             this.dataGridView_Prest.RowTemplate.Height = 28;
-            this.dataGridView_Prest.Size = new System.Drawing.Size(1096, 210);
+            this.dataGridView_Prest.Size = new System.Drawing.Size(1111, 210);
             this.dataGridView_Prest.TabIndex = 0;
             this.dataGridView_Prest.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvPrestamos_CellFormatting);
             this.dataGridView_Prest.SelectionChanged += new System.EventHandler(this.DgvPrestamos_SelectionChanged);

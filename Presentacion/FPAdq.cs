@@ -312,6 +312,19 @@ namespace Presentacion
             }
         }
 
+        protected override void menuEjemplarListado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FListaEjemplar formulario = new FListaEjemplar(lnAdq);
+                formulario.Show();
+            }
+            catch (Exception ex) 
+            {
+                ManejarExcepcion(ex, "abrir listado de ejemplares");
+            }
+        }
+
         protected override void menuDocumentosListado_Click(object sender, EventArgs e)
         {
             try
