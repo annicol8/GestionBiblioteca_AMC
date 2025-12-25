@@ -87,32 +87,61 @@ namespace Presentacion
 
             while (true)
             {
-                codigo = pedirClave<int>("Código");
+                codigo = pedirClave<int>("Código ");
 
                 if (codigo == 0)
-                    return;
+                    return; 
 
+                if (codigo < 0)
+                {
+                    MostrarAdvertencia(
+                        "El código debe ser un número entero mayor que 0.\n\n" ,
+                        "Código inválido");
+                     continue;
+                }
+               
                 Ejemplar ejemplarExistente = lnAdq.GetEjemplar(codigo);
 
                 if (ejemplarExistente != null)
                 {
+                    if (ejemplarExistente.Activo)
+                    {
+                        MostrarAdvertencia(
+                            $"Ya existe un ejemplar ACTIVO con el código {codigo}.\n\n" ,
+                            "Código duplicado");
+                    }
+                    else
+                    {
+                        MostrarAdvertencia(
+                            $"Ya existe un ejemplar DADO DE BAJA con el código {codigo}.\n\n" 
+                            ,"Código duplicado");
+                    }
+
                     DialogResult dr = MostrarPregunta(
-                        "¿Quieres introducir otro?",
-                        "Ya existe un ejemplar con ese código"
-                    );
+                        "¿Desea introducir otro código?",
+                        "Ya existe un ejemplar con ese código.");
 
                     if (dr == DialogResult.Yes)
                         continue;
                     else
                         return;
                 }
-
                 break;
             }
 
-            FAltaEjemplar formulario = new FAltaEjemplar(lnAdq, codigo);
-            formulario.ShowDialog(this);
+            try
+            {
+                FAltaEjemplar formulario = new FAltaEjemplar(lnAdq, codigo);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                ManejarExcepcion(ex, "dar de alta el ejemplar");
+            }
         }
+
+
+
 
         private string pedirISBN()
         {
@@ -214,7 +243,7 @@ namespace Presentacion
                 if (ejemplarExistente == null)
                 {
                     DialogResult dr = MostrarPregunta(
-                        "¿Quieres introducir otro?",
+                        "¿Desea introducir otro?",
                         "No existe ningún ejemplar con ese código"
                     );
 
@@ -224,9 +253,32 @@ namespace Presentacion
                         return;
                 }
 
-                // Ejemplar encontrado, abrir formulario de baja
-                FBajaEjemplar formulario = new FBajaEjemplar(lnAdq, ejemplarExistente);
-                formulario.ShowDialog(this);
+                if (!ejemplarExistente.Activo)
+                {
+                    MostrarAdvertencia(
+                        $"El ejemplar con código {codigo} ya está dado de baja.\n\n" ,
+                        "Ejemplar inactivo");
+
+                    DialogResult dr = MostrarPregunta(
+                        "¿Desea buscar otro?",
+                        "Ejemplar ya dado de baja");
+
+                    if (dr == DialogResult.Yes)
+                        continue;
+                    else
+                        return;
+                }
+
+                try
+                {
+                    // Ejemplar encontrado, abrir formulario de baja
+                    FBajaEjemplar formulario = new FBajaEjemplar(lnAdq, ejemplarExistente);
+                    formulario.ShowDialog(this);
+                }
+                catch (Exception ex)
+                {
+                    ManejarExcepcion(ex, "dar de baja el ejemplar");
+                }
                 return;
             }
         }

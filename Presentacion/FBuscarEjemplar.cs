@@ -85,7 +85,23 @@ namespace Presentacion
         {
             tb_Codigo.Text = ejemplar.Codigo.ToString();
             tb_Isbn.Text = ejemplar.IsbnDocumento ?? "N/A";
-            tb_DniPersonal.Text = ejemplar.DniPAdq ?? "N/A";
+
+            if (!string.IsNullOrEmpty(ejemplar.DniPAdq))
+            {
+                Personal personal = lnpa.GetPersonal(ejemplar.DniPAdq);
+                if (personal != null)
+                {
+                    tb_DniPersonal.Text = $"{ejemplar.DniPAdq}, {personal.Nombre}";
+                }
+                else
+                {
+                    tb_DniPersonal.Text = $"{ejemplar.DniPAdq}, (Desconocido)";
+                }
+            }
+            else
+            {
+                tb_DniPersonal.Text = "N/A";
+            }
 
             // Marcar o desmarcar el checkbox según el estado activo
             check_Activo.Checked = ejemplar.Activo;
@@ -102,15 +118,27 @@ namespace Presentacion
             {
                 this.BackColor = SystemColors.Control;
             }
+            MostrarInfoDocumento(ejemplar.IsbnDocumento);
         }
 
-        private void LimpiarDatosEjemplar()
+        private void MostrarInfoDocumento(string isbn)
         {
-            tb_Codigo.Clear();
-            tb_Isbn.Clear();
-            tb_DniPersonal.Clear();
-            check_Activo.Checked = false;
+            try
+            {
+                if (string.IsNullOrEmpty(isbn))
+                    return;
+
+                Documento documento = lnpa.getDocumento(isbn);
+
+                if (documento != null && lb_Titulo != null)
+                {
+                    lb_Titulo.Text = $"Título documento: {documento.Titulo}";
+                }
+            }
+            catch { }
         }
+
+        
     }
 
 }

@@ -36,11 +36,31 @@ namespace Presentacion
         
         private void FAltaEjemplar_Load(object sender, EventArgs e)
         {
-            textBoxCodigoEj.Text = codigo.ToString();
-            textBoxCodigoEj.ReadOnly = true;
+            try
+            {
+                textBoxCodigoEj.Text = codigo.ToString();
+                textBoxCodigoEj.ReadOnly = true;
 
-            textBox_Personal.Text = lnAdq.Personal.Nombre; 
-            CargarDocumentos();
+                textBox_Personal.Text = $"{lnAdq.Personal.Dni} - {lnAdq.Personal.Nombre}";
+
+                Ejemplar ejemplarExistente = lnAdq.GetEjemplar(codigo);
+                if (ejemplarExistente != null)
+                {
+                    MostrarError(
+                        $"Ya existe un ejemplar con el código {codigo}.\n" +
+                        "No se puede continuar con el alta.",
+                        "Error");
+                    this.Close();
+                    return;
+                }
+
+                CargarDocumentos();
+            } catch (Exception ex)
+            {
+                ManejarExcepcion(ex, "cargar el formulario");
+                this.Close();
+            }
+            
             
             
         }
@@ -50,6 +70,18 @@ namespace Presentacion
             try
             {
                 List<Documento> documentos = lnAdq.getDocumentos();
+                 
+                if (documentos == null || documentos.Count == 0)
+                {
+                    MostrarAdvertencia(
+                        "No hay documentos disponibles en el sistema.\n" +
+                        "Debe dar de alta al menos un documento antes de crear ejemplares.",
+                        "Sin documentos");
+                    this.Close();
+                    return;
+                }
+
+                comboBoxISBN.Items.Clear();
 
                 foreach (Documento documento in documentos)
                 {
@@ -63,6 +95,12 @@ namespace Presentacion
                     {
                         comboBoxISBN.SelectedIndex = index;
                         comboBoxISBN.Enabled = false;
+                    }
+                    else
+                    {
+                        MostrarAdvertencia(
+                            $"El documento con ISBN {this.isbn} no existe en el sistema.",
+                            "Documento no encontrado");
                     }
                 }
             } catch (Exception ex)
@@ -112,6 +150,7 @@ namespace Presentacion
 
         private void botonCancelar_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 

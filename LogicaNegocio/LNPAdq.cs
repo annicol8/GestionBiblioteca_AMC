@@ -140,7 +140,6 @@ namespace LogicaNegocio
 
 
         public bool AltaEjemplar(int codigo, string isbnDocumento)
-            //Pasarle mejor un objeto ejemplar como parámetro?
         {
             if (string.IsNullOrWhiteSpace(isbnDocumento))
                 throw new ArgumentException("El ISBN no puede estar vacío");
@@ -170,6 +169,9 @@ namespace LogicaNegocio
             if (EstaEjemplarPrestado(codigo))
                 throw new InvalidOperationException("No se puede dar de baja un ejemplar prestado");
             */
+            if (!ej.Activo)
+                throw new InvalidOperationException("El ejemplar ya está dado de baja");
+
             ej.Activo = false;
             return Persistencia.Persistencia.UpdateEjemplar(ej);
         }

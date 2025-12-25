@@ -29,17 +29,39 @@ namespace Presentacion
 
         private void FBajaEjemplar_Load(object sender, EventArgs e)
         {
-            tbCodigo.Text = ejemplar.Codigo.ToString();
-            tbIsbn.Text = ejemplar.IsbnDocumento;
-            tbTitulo.Text = lnAdq.getDocumento(tbIsbn.Text).Titulo;
-            tbEstado.Text = ejemplar.Activo ? "Activo" : "Inactivo";
+            try
+            {
+                if (!ejemplar.Activo)
+                {
+                    MostrarAdvertencia(
+                        "Este ejemplar ya está dado de baja.\n" +
+                        "No se puede continuar con la operación.",
+                        "Ejemplar inactivo");
+                    this.DialogResult = DialogResult.Cancel;
+                    this.Close();
+                    return;
+                }
+                tbCodigo.Text = ejemplar.Codigo.ToString();
+                tbIsbn.Text = ejemplar.IsbnDocumento ?? "N/A";
 
-            tbCodigo.ReadOnly = true;
-            tbIsbn.ReadOnly = true;
-            tbTitulo.ReadOnly = true;
-            tbEstado.ReadOnly = true;
+                Documento documento = lnAdq.getDocumento(ejemplar.IsbnDocumento);
+                tbTitulo.Text = documento != null ? documento.Titulo : "Documento no encontrado";
 
-            this.Text = $"Baja de Ejemplar - Código: {ejemplar.Codigo}";
+                tbEstado.Text = ejemplar.Activo ? "Activo" : "Inactivo";
+
+                tbCodigo.ReadOnly = true;
+                tbIsbn.ReadOnly = true;
+                tbTitulo.ReadOnly = true;
+                tbEstado.ReadOnly = true;
+
+                this.Text = $"Baja de Ejemplar - Código: {ejemplar.Codigo}";
+            }
+            catch (Exception ex)
+            {
+                ManejarExcepcion(ex, "cargar los datos del ejemplar");
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
         }
 
         private void btAceptar_Click(object sender, EventArgs e)
@@ -47,6 +69,8 @@ namespace Presentacion
             if (!ejemplar.Activo)
             {
                 MostrarInformacion("El ejemplar ya está dado de baja.");
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
                 return;
             }
 
@@ -59,9 +83,18 @@ namespace Presentacion
             {
                 try
                 {
-                    lnAdq.BajaEjemplar(ejemplar.Codigo);
-                    MostrarExito("Ejemplar dado de baja correctamente.");
-                    this.Close();
+                    bool resultado = lnAdq.BajaEjemplar(ejemplar.Codigo);
+
+                    if (resultado)
+                    {
+                        MostrarExito($"Ejemplar {ejemplar.Codigo} dado de baja correctamente.");
+                        this.DialogResult = DialogResult.OK; 
+                        this.Close();
+                    }
+                    else
+                    {
+                        MostrarError("No se pudo dar de baja el ejemplar.");
+                    }
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -76,6 +109,7 @@ namespace Presentacion
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }

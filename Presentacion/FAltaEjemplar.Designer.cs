@@ -79,6 +79,7 @@
             // 
             // comboBoxISBN
             // 
+            this.comboBoxISBN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxISBN.FormattingEnabled = true;
             this.comboBoxISBN.Location = new System.Drawing.Point(347, 152);
             this.comboBoxISBN.Name = "comboBoxISBN";
@@ -123,7 +124,7 @@
             this.textBox_Personal.Name = "textBox_Personal";
             this.textBox_Personal.ReadOnly = true;
             this.textBox_Personal.Size = new System.Drawing.Size(240, 26);
-            this.textBox_Personal.TabIndex = 9;
+            this.textBox_Personal.TabIndex = 2;
             this.textBox_Personal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // FAltaEjemplar

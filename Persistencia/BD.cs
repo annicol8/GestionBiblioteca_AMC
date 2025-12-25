@@ -37,7 +37,7 @@ namespace Persistencia
             TablaPersonales.Add(new PersonalDato("55667788C", "Lucía", "admin", TipoPersonal.personalSala));
             TablaPersonales.Add(new PersonalDato("66778899S", "Miguel", "admin", TipoPersonal.personalAdquisiciones));
             TablaPersonales.Add(new PersonalDato("77889900P", "Elena", "admin", TipoPersonal.personalSala));
-            TablaPersonales.Add(new PersonalDato("88990011A", "David", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("87654321B", "David", "admin", TipoPersonal.personalAdquisiciones));
 
 
 

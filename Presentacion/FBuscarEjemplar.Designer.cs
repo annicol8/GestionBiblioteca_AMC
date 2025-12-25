@@ -36,6 +36,7 @@
             this.tb_Isbn = new System.Windows.Forms.TextBox();
             this.tb_DniPersonal = new System.Windows.Forms.TextBox();
             this.check_Activo = new System.Windows.Forms.CheckBox();
+            this.lb_Titulo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -81,7 +82,7 @@
             this.tb_Codigo.Name = "tb_Codigo";
             this.tb_Codigo.ReadOnly = true;
             this.tb_Codigo.Size = new System.Drawing.Size(261, 26);
-            this.tb_Codigo.TabIndex = 4;
+            this.tb_Codigo.TabIndex = 0;
             this.tb_Codigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tb_Isbn
@@ -91,7 +92,7 @@
             this.tb_Isbn.Name = "tb_Isbn";
             this.tb_Isbn.ReadOnly = true;
             this.tb_Isbn.Size = new System.Drawing.Size(261, 26);
-            this.tb_Isbn.TabIndex = 6;
+            this.tb_Isbn.TabIndex = 2;
             this.tb_Isbn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tb_DniPersonal
@@ -101,7 +102,7 @@
             this.tb_DniPersonal.Name = "tb_DniPersonal";
             this.tb_DniPersonal.ReadOnly = true;
             this.tb_DniPersonal.Size = new System.Drawing.Size(261, 26);
-            this.tb_DniPersonal.TabIndex = 7;
+            this.tb_DniPersonal.TabIndex = 1;
             this.tb_DniPersonal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // check_Activo
@@ -114,11 +115,20 @@
             this.check_Activo.TabIndex = 8;
             this.check_Activo.UseVisualStyleBackColor = true;
             // 
+            // lb_Titulo
+            // 
+            this.lb_Titulo.AutoSize = true;
+            this.lb_Titulo.Location = new System.Drawing.Point(109, 270);
+            this.lb_Titulo.Name = "lb_Titulo";
+            this.lb_Titulo.Size = new System.Drawing.Size(0, 20);
+            this.lb_Titulo.TabIndex = 9;
+            // 
             // FBuscarEjemplar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 340);
+            this.Controls.Add(this.lb_Titulo);
             this.Controls.Add(this.check_Activo);
             this.Controls.Add(this.tb_DniPersonal);
             this.Controls.Add(this.tb_Isbn);
@@ -146,5 +156,6 @@
         private System.Windows.Forms.TextBox tb_Isbn;
         private System.Windows.Forms.TextBox tb_DniPersonal;
         private System.Windows.Forms.CheckBox check_Activo;
+        private System.Windows.Forms.Label lb_Titulo;
     }
 }
