@@ -141,26 +141,13 @@ namespace Presentacion
         }
 
 
-
-
-        private string pedirISBN()
-        {
-            FClave fClave = new FClave("ISBN");
-            if (fClave.ShowDialog(this) == DialogResult.OK)
-            {
-                return fClave.Clave;
-            }
-            return null;
-        }
-
-
         protected override void menuDocumentosBaja_Click(object sender, EventArgs e)
         {
             string isbn;
 
             while (true)
             {
-                isbn = pedirISBN();
+                isbn = pedirClave<String>("ISBN");
                 if (isbn == null)
                     return;
 
