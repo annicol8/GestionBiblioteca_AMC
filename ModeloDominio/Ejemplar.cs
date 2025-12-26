@@ -35,21 +35,25 @@ namespace ModeloDominio
             set { isbnDocumento = value; }
         }
 
+        //PRE: cod debe ser un entero positivo (>0) 
+        //POST: se instancia un Ejemplar con el codigo inicializado y se crea como ejemplar activo por defecto
         public Ejemplar(int cod)
         {
             Codigo = cod;
             Activo = true;
         }
 
-        //TENDRÁ QUE HEREDAR DEL DE ARRIBA, NO?
-        public Ejemplar(int codigo, bool activo, string isbnDocumento, string dniPersonalAdq)
+        //PRE: todos los parámetros de entrada distintos de null y válidos
+        //POST: Todos los atributos quedan inicializados con los valores proporcionados
+        public Ejemplar(int codigo, bool activo, string isbnDocumento, string dniPersonalAdq) : this(codigo)
         {
-            Codigo = codigo;
             Activo = activo;
             IsbnDocumento = isbnDocumento;
             DniPAdq = dniPersonalAdq;
         }
 
+        //PRE:
+        //POST: devuelve true si other no es nulo y coinciden los códigos, falso en caso contrario
         public bool Equals(Ejemplar other)
         {
             if (other == null) return false;
@@ -61,8 +65,7 @@ namespace ModeloDominio
             return codigo.GetHashCode();
         }
 
-        //public List<Prestamo> Prestamos { get; set; }
-
+        
         // Métodos 
         /*public bool EstaPrestado()
         {

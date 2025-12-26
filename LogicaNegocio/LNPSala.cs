@@ -9,19 +9,23 @@ namespace LogicaNegocio
 {
     public class LNPSala : LNPersonal, ILNPSala
     {
+        //PRE: personal no nulo y debe ser de tipo personalSala
+        //POST: Se inicializa la clase llamando al constructor base. Si es null, se lanza excepción desde la clase base
         public LNPSala(Personal personal) : base(personal)
         {
         }
 
-
+        //PRE:
+        //POST:
         public int AltaPrestamo(Prestamo prestamo)
         {
             return Persistencia.Persistencia.AltaPrestamo(prestamo);
         }
 
+        //PRE:
+        //POST: 
         public void DevolverEjemplar(int idPrestamo, int codigoEjemplar)
         {
-            // Verificar que el ejemplar existe en el préstamo
             if (Persistencia.Persistencia.GetPrestamoEjemplar(idPrestamo, codigoEjemplar) == null)
             {
                 throw new Exception("El ejemplar no pertenece a este préstamo");
@@ -61,6 +65,8 @@ namespace LogicaNegocio
             return null;
         }
 
+        //PRE:
+        //POST:
         public EstadoPrestamo? GetEstadoPrestamo(int idPrestamo)
         {
             Prestamo prestamo = Persistencia.Persistencia.GetPrestamoPorId(idPrestamo);
@@ -72,11 +78,15 @@ namespace LogicaNegocio
             return prestamo.Estado;
         }
 
+        //PRE:
+        //POST:
         public Prestamo GetPrestamo(int idPrestamo)
         {
             return Persistencia.Persistencia.GetPrestamoPorId(idPrestamo);
         }
 
+        //PRE:
+        //POST:
         public List<Prestamo> GetPrestamosFueraDePlazo()
         {
             List<Prestamo> prestamos = Persistencia.Persistencia.GetPrestamos();
@@ -93,6 +103,8 @@ namespace LogicaNegocio
             return prestamosFueraDePlazo;
         }
 
+        //PRE:
+        //POST:
         public List<Prestamo> GetPrestamosPorDocumento(string isbn)
         {
             List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
@@ -116,6 +128,8 @@ namespace LogicaNegocio
             return prestamos;
         }
 
+        //PRE:
+        //POST:
         public Usuario GetUsuarioPrestamo(int idPrestamo)
         {
             Prestamo prestamo = Persistencia.Persistencia.GetPrestamoPorId(idPrestamo);
@@ -126,20 +140,25 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.GetUsuario(prestamo.DniUsuario);
         }
 
+        //PRE:
+        //POST:
         public List<Prestamo> GetTodosPrestamos()
         {
             return Persistencia.Persistencia.GetPrestamos();
         }
 
+        //PRE:
+        //POST:
         public List<Ejemplar> GetEjemplaresDePrestamo(int id)
         {
             return Persistencia.Persistencia.GetEjemplaresDePrestamo(id);
         }
 
-        public Documento GetDocumento(string isbn)
         //PRE:
         //POST: Si no existe, null; si existe, devuelve el objeto AudLibro o LiPapel
-        {
+
+        public Documento GetDocumento(string isbn)
+       {
             return Persistencia.Persistencia.GetDocumento(isbn);
         }
     }

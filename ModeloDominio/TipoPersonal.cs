@@ -8,6 +8,7 @@ namespace ModeloDominio
 {
     public enum TipoPersonal
     {
+        //dos únicos tipos de personales posibles
         personalSala, personalAdquisiciones
     }
 }

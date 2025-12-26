@@ -10,15 +10,15 @@ namespace ModeloDominio
 {
     public class Prestamo: IEquatable<Prestamo>
     {
+        //Atributos
         private int id;
         private DateTime fechaPrestamo;
         private DateTime fechaDevolucion;
         private EstadoPrestamo estado;
         private string dniUsuario;
         private string dniPersonal;
-        //private List<Ejemplar> prestamoEjemplares;
-        
 
+        //Propiedades
         public int Id { 
             get { return id; } set { id = value; }
         }
@@ -28,7 +28,6 @@ namespace ModeloDominio
         public DateTime FechaDevolucion { 
             get { return fechaDevolucion; } set {fechaDevolucion = value; }
         }
-
         public EstadoPrestamo Estado { 
             get { return estado; } set { estado = value; }
         } //ver si lo ponemos aqui o se obtiene directamente en la tabla Prestamo_Ejemplar
@@ -39,7 +38,9 @@ namespace ModeloDominio
             get { return dniPersonal; } set {dniPersonal = value; }
         }
 
-       
+        //PRE: parámetros de entrada no nulos, el id debe ser un entero positivo, fechaPrestamo una fehca válida al igual que fechaDevolucion pero además fechaDevolucion >= fechaPrestamo,
+        //     estado puede ser o finalizado o enProceso y tanto el dniPersonal como dniusuario deben ser válidos
+        //POST: se crea una instancia de Prestamo con todos los atributos inicializados con los valores proporcionados
         public Prestamo(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, string dniPersonal, string dniUsuario) //List<Ejemplar> prestamoEjemplares si eso añadir este arg
         {
             Id = id;
@@ -48,11 +49,12 @@ namespace ModeloDominio
             Estado = estado;
             DniPersonal = dniPersonal;
             DniUsuario = dniUsuario;
-            //this.prestamoEjemplares = new List<Ejemplar>();
         }
 
         //  Constructor para préstamo nuevo 
-        public Prestamo(string dniUsuario, string dniPersonal, DateTime fechaDevolucion)
+        //PRE: los dnis deben ser no nulos y válidos al igual que la fechaDevolucion, además fechaDevolucion > DateTime.Now
+        //POST: se crea una instancia a Prestamo pero con la fecha de prestamo la fecha actual y el estado como enProceso
+        public Prestamo(int id, string dniUsuario, string dniPersonal, DateTime fechaDevolucion): this(id)
         {
             this.fechaPrestamo = DateTime.Now;
             this.fechaDevolucion = fechaDevolucion;
@@ -60,19 +62,24 @@ namespace ModeloDominio
             this.dniUsuario = dniUsuario;
             this.dniPersonal = dniPersonal;
         }
-        
 
+        //PRE: fechaDevolucion y Estado deben estar inicializados
+        //POST: devuelve true si DateTime.Now > fechaDevolucion && Estado == enProceso, false en caso contrario
         public bool Caducado()
         {
             return DateTime.Now > fechaDevolucion && Estado == EstadoPrestamo.enProceso;
         }
 
-        // Constructor búsquedas
+        // Constructor búsqueda
+        //PRE: id un entero positivo
+        //POST: solo id queda inicializado 
         public Prestamo(int id)
         {
             this.id = id;
         }
 
+        //PRE:
+        //POST: devuelve true si other no es nulo y los id coinciden, false en caso contrario
         public bool Equals(Prestamo other)
         {
             if (other == null) return false;

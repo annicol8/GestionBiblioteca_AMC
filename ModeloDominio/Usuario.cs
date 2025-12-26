@@ -8,10 +8,12 @@ namespace ModeloDominio
 {
     public class Usuario: IEquatable<Usuario>
     {
+        //Atributos
         private string dni;
         private string nombre;
         private bool dadoAlta;
 
+        //Propiedades
         public string Dni {
             get { return dni; } set { dni = value; }
         }
@@ -26,6 +28,8 @@ namespace ModeloDominio
             get { return dadoAlta; } set { dadoAlta = value; }
         }
 
+        //PRE: parámetros de entrada no nulos y válidos
+        //POST: se ccrea una instancia de Usuario con todos los atributos incializados con los valores pasados como parámetros
         public Usuario(string dni, string nombre, bool dadoAlta)
         {
             Dni = dni;
@@ -33,13 +37,18 @@ namespace ModeloDominio
             DadoAlta = dadoAlta;
         }
 
-        //constructor para búsquedas
+        //Constructor búsqueda
+        //PRE: dni debe ser no nulo y válido
+        //POST: se crea una instancia de Usuario con el dni inicializado con el valor pasado y luego nombre se asigna como null y por defecto dado de alta como false
         public Usuario(string dni)
         {
             Dni = dni;
             Nombre = null;
             DadoAlta = false;
-        }       
+        }   
+        
+        //PRE:
+        //POST: devuelve true si otroUsuario es no nulo y los dnis coinciden, false en caso contrario
         public bool Equals(Usuario otroUsuario)
         {
             if (otroUsuario == null) return false;

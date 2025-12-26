@@ -15,7 +15,7 @@ namespace ModeloDominio
         private string editorial;
         private int anoEdicion;
 
-        // Propiedades públicas
+        // Propiedades
         public string Isbn {
             get { return isbn; }
             set { isbn = value; }
@@ -43,6 +43,8 @@ namespace ModeloDominio
         // Método abstracto
         public abstract int DiasPrestamoPermitidos();
 
+        //PRE: todos los parametros de entrada deben ser no nulos y el anoEdicion debe ser >1000 y menor o igual al año actual
+        //POST: Se inicializan todos los atributos básicos del documento
         public Documento(string isbn, string titulo, string autor, string editorial, int anoEdicion)
         {
             Isbn = isbn;
@@ -52,12 +54,16 @@ namespace ModeloDominio
             AnoEdicion = anoEdicion;
         }
 
-        //constructor para busqueda
+        //Constructor búsqueda
+        //PRE: el isbn debe ser distinto de nulo y un isbn válido de 13 números
+        //POST: solo isbn inicializado
         public Documento(string isbn)
         {
             this.isbn = isbn;
         }
 
+        //PRE:
+        //POST: devuelve true si otroDocumento es distinto de null y si los isbn coinciden, falso en caso contrario
         public bool Equals(Documento otroDocumento)
         {
             if (otroDocumento == null) return false;

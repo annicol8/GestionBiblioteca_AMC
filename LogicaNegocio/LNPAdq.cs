@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using ModeloDominio;
 using Persistencia;
 
@@ -10,29 +13,15 @@ namespace LogicaNegocio
 {
     public class LNPAdq : LNPersonal, ILNPAdq
     {
+        //PRE: personal no nulo y debe ser de tipo personalAdquisiciones
+        //POST: Se inicializa la clase llamando al constructor base. Si es null, se lanza excepción desde la clase base
         public LNPAdq(PersonalAdquisiciones personal) : base(personal)
         {
             
         }
 
-
-        /*
-        public void AltaLibroPapel(LibroPapel lp)
-        {
-            Persistencia.Persistencia.AltaLibroPapel(lp);
-        }
-
-        public void AltaAudioLibro(AudioLibro al)
-        //PRE: COMPLETAR
-        //POST: Se crea el audiolibro
-        {
-            Persistencia.Persistencia.AltaAudioLibro(al);
-        } 
-        public Documento getDocumento(String isbn)
-        {
-            return Persistencia.Persistencia.GetDocuemnto(isbn);
-        }*/
-
+        //PRE: libro no null y libro.Isbn no null ni vacío. El ISBN no debe existir previamente en el sistema y el personal que ejecuta debe ser PersonalAdquisiciones 
+        //POST: El libro queda registrado en la BD. Se asocia al trabajador actual. Retorna true si la operación fue exitosa si no lanza excepcion.
         public bool AltaLibroPapel(LibroPapel libro)
         {
             if (libro == null)
@@ -48,6 +37,8 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.AltaLibroPapel(libro);
         }
 
+        //PRE: audioLibro no null y audioLibro.Isbn no null ni vacio. El ISBN no debe existir previamente en el sistema y el personal que ejecuta debe ser PersonalAdquisiciones
+        //POST: El libro queda registrado en la BD. Se asocia al trabajador actual. Retorna true si la operación fue exitosa si no lanza excepcion.
         public bool AltaAudioLibro(AudioLibro audioLibro)
         {
             if (audioLibro == null)
@@ -63,29 +54,33 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.AltaAudioLibro(audioLibro);
         }
 
-       /* public bool BajaDocumento(string isbn)
-            //Hacer un método que dé de baja a todos los ejemplares de un libro???
-        {
-            if (string.IsNullOrWhiteSpace(isbn))
-                throw new ArgumentException("El ISBN no puede estar vacío");
+        /* public bool BajaDocumento(string isbn)
+             //Hacer un método que dé de baja a todos los ejemplares de un libro???
+         {
+             if (string.IsNullOrWhiteSpace(isbn))
+                 throw new ArgumentException("El ISBN no puede estar vacío");
 
-            Documento doc = Persistencia.Persistencia.GetDocumento(isbn);
-            if (doc == null)
-                throw new InvalidOperationException("El documento no existe");
+             Documento doc = Persistencia.Persistencia.GetDocumento(isbn);
+             if (doc == null)
+                 throw new InvalidOperationException("El documento no existe");
 
-            List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
-            foreach (Ejemplar ej in ejemplares)
-            {
-                if (ej.Activo)
-                    throw new InvalidOperationException("No se puede eliminar el documento porque tiene ejemplares activos");
-            }
-            if (doc is LibroPapel)
-                return Persistencia.Persistencia.BajaLibroPapel((LibroPapel)doc);
-            else
-                return Persistencia.Persistencia.BajaAudioLibro((AudioLibro)doc);
-        }
-       */
+             List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
+             foreach (Ejemplar ej in ejemplares)
+             {
+                 if (ej.Activo)
+                     throw new InvalidOperationException("No se puede eliminar el documento porque tiene ejemplares activos");
+             }
+             if (doc is LibroPapel)
+                 return Persistencia.Persistencia.BajaLibroPapel((LibroPapel)doc);
+             else
+                 return Persistencia.Persistencia.BajaAudioLibro((AudioLibro)doc);
+         }
+        */
 
+        //PRE: isbn no null ni vacio, el documento con dicho isbn debe existir en el sistema. Ninguno de los ejemplares activos del documento puede estar actualmente prestado (estado enProceso)
+        //      El personal que ejecuta debe ser PersonalAdquisiciones
+        //POST: Todos los ejemplares del documento quedan marcados como inactivos (Activo = false). El documento se elimina de la BD
+        //      Retorna true si la operación fue exitosa. Si no lanza excepcion
         public bool BajaDocumento(string isbn)
         {
             if (string.IsNullOrWhiteSpace(isbn))
@@ -131,14 +126,18 @@ namespace LogicaNegocio
 
             return false;
         }
+
+        //PRE: isbn no null
+        //POST: Si existe un documento con ese ISBN: retorna el objeto Documento (LibroPapel o AudioLibro). Si no existe: retorna null
         public Documento getDocumento(string isbn)
-            //PRE: isbn distinto de null
-            //POST: Si no existe, null; si existe, devuelve el objeto AudLibro o LiPapel
         {
             return Persistencia.Persistencia.GetDocumento(isbn);
         }
 
-
+        //PRE: isbnDocumneto no null ni vacio, el docuemnto debe existir en el sistema.
+        //     El codigo debe ser un entero positivo y no existir previamente. El personal debe ser de adquisiciones
+        //POST: El ejemplar queda registrado en la BD con:  Codigo = codigo / Activo = true / IsbnDocumento = isbnDocumento / DniPAdq = DNI del personal actual
+        //      Retorna true si la operación fue exitosa. Si no lanza excepcion
         public bool AltaEjemplar(int codigo, string isbnDocumento)
         {
             if (string.IsNullOrWhiteSpace(isbnDocumento))
@@ -157,6 +156,8 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.AltaEjemplar(nuevoEjemplar);
         }
 
+        //PRE: El ejemplar con ese código debe existir en el sistema y debe estar activo. El personal que ejecuta debe ser PersonalAdquisiciones
+        //POST: El ejemplar queda marcado como inactivo: Activo = false. Se actualiza en la BD. Retorna true si la operación fue exitosa
         public bool BajaEjemplar(int codigo) //Parámetro objeto ejemplar?
             //PRE:
             //POST: El ejemplar con ese código se actualiza en la base de datos (NO se borra)
@@ -176,23 +177,23 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.UpdateEjemplar(ej);
         }
 
-        public Ejemplar GetEjemplar(int codigo) //paráetro objeto ejemplar??
-            //PRE:
-            //POST: Si el ejemplar no existe, null; si existe, se devuelve
-            
+        //PRE:
+        //POST: Si existe un ejemplar con ese código: retorna el objeto Ejemplar. Si no existe: retorna null
+        public Ejemplar GetEjemplar(int codigo) 
         {
             return Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigo));
         }
 
-        
+        //PRE:
+        //POST: Retorna true si el ejemplar está asociado a algún préstamo en estado enProceso, false si el ejemplar no está prestado o no existe
         public bool EstaPrestadoEjemplar(int codigo)    
-            //PRE:
-            //POST: true si el ejemplar está presado; false si está disponible
         {
             List<Prestamo> prestamos = Persistencia.Persistencia.GetPrestamosPorEjemplar(codigo);
             return prestamos.Any(p => p.Estado == EstadoPrestamo.enProceso);
         }
-        
+
+        //PRE: ibsn no null y el documento debe tener al menos un ejemplar registrado sino excepcion
+        //POST: Retorna true si existe al menos un ejemplar del documento que NO está prestado, false si todos los ejemplares están prestados
         public bool HayEjemplaresDisponibles(string isbn) {
             List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
             if (ejemplares.Count == 0)
@@ -200,7 +201,9 @@ namespace LogicaNegocio
 
             return ejemplares.Any(ej => !EstaPrestadoEjemplar(ej.Codigo));
         }
-        
+
+        //PRE:
+        //POST: Retorna el ISBN del documento incluido en el mayor número de préstamos en los últimos 30 días (cada préstamo cuenta 1 vez por documento único, sin importar cuántos ejemplares del mismo documento incluya). Si no hay préstamos en el último mes, retorna null
         public string GetDocumentoMasPrestadoUltimoMes()
         {
             DateTime desde = DateTime.Now.AddMonths(-1);
@@ -214,14 +217,22 @@ namespace LogicaNegocio
             {
                 var ejemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(p.Id);
 
-                foreach (Ejemplar ej in ejemplares)
+                var isbnsUnicos = ejemplares
+                    .Select(ej => ej.IsbnDocumento)
+                    .Distinct()
+                    .ToList();
+
+                foreach (string isbn in isbnsUnicos)
                 {
-                    if (contador.ContainsKey(ej.IsbnDocumento))
-                        contador[ej.IsbnDocumento]++;
+                    if (contador.ContainsKey(isbn))
+                        contador[isbn]++;
                     else
-                        contador[ej.IsbnDocumento] = 1;
+                        contador[isbn] = 1;
                 }
             }
+
+            if (contador.Count == 0)
+                return null; 
 
             return contador
                 .OrderByDescending(x => x.Value)
@@ -229,20 +240,17 @@ namespace LogicaNegocio
                 .FirstOrDefault();
         }
 
-        public List<Documento> getDocumentos()
         //PRE:
-        //POST: todos los documentos de la biblioteca si hay; si no, lista vacía
-
-        //TIene sentido hacerlo si ya se hace en persistencia? No aporta nada
+        //POST: Retorna una lista con TODOS los documentos de la biblioteca (LibroPapel y AudioLibro). Si no hay documentos: retorna lista vacía
+        public List<Documento> getDocumentos()
         {
             return Persistencia.Persistencia.GetTodosDocumentos();
         }
 
+        //PRE: isbn no null
+        //POST: Retorna una lista con todos los ejemplares del documento especificado
+        //      Si el documento no tiene ejemplares o no exist: retorna lista vacía
         public List<Ejemplar> ejemplaresPorDocumento(string isbn)
-            //PRE:
-            //POST: ejemplares de un documento si hay; si no, lista vacía
-
-            //TIene sentido hacerlo si ya se hace en persistencia? No aporta nada
         {
             return Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
         }
