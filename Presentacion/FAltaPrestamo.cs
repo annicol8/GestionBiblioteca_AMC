@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
@@ -11,123 +10,226 @@ namespace Presentacion
     public partial class FAltaPrestamo : FComun
     {
         private ILNPSala lnSala;
-        private List<EjemplarPrestamoDisplay> ejemplaresAñadidos;
-        private int yPosition = 10; // Para posicionar dinámicamente los controles
+        private List<int> codigosEjemplaresAñadidos;  // Códigos de ejemplares seleccionados
+        private BindingSource bindingSourceEjemplares;
 
-        public FAltaPrestamo() : base()
+        public FAltaPrestamo()
         {
             InitializeComponent();
-            ejemplaresAñadidos = new List<EjemplarPrestamoDisplay>();
-
+            codigosEjemplaresAñadidos = new List<int>();
         }
+
         public FAltaPrestamo(ILNPSala lnSala) : this()
         {
             this.lnSala = lnSala;
         }
 
-        private void FAltaPrestamo_Load(object sender, System.EventArgs e)
+        private void FAltaPrestamo_Load(object sender, EventArgs e)
         {
-            dtpFecha.Value = DateTime.Now;
-            CargarUsuarios();
+            try
+            {
+                // Cargar datos iniciales
+                CargarUsuarios();
+                CargarFechaActual();
+                GenerarIdPrestamo();
+
+                // Inicializar BindingSource para ejemplares
+                bindingSourceEjemplares = new BindingSource();
+                ActualizarListaEjemplares();
+
+                // Configurar controles
+                btCancelar.Click += BtCancelar_Click;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al inicializar: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         private void CargarUsuarios()
         {
-            try
-            {
-                List<Usuario> usuariosActivos = lnSala.GetUsuariosActivos();
-
-                if (usuariosActivos.Count == 0)
-                {
-                    MostrarAdvertencia("No hay usuarios activos en el sistema.");
-                    btAceptar.Enabled = false;
-                    return;
-                }
-                cbUsuarios.DataSource = usuariosActivos;
-                cbUsuarios.DisplayMember = "Dni"; // Muestra el DNI
-                cbUsuarios.ValueMember = "Dni";   // Valor es el DNI
-                cbUsuarios.SelectedIndex = 0;
-            }
-            catch (Exception ex)
-            {
-                ManejarExcepcion(ex, "cargar los usuarios");
-            }
+            List<Usuario> usuariosActivos = lnSala.GetUsuariosActivos();
+            cbUsuarios.DataSource = usuariosActivos;
+            cbUsuarios.DisplayMember = "Dni";  // Mostrar DNI
+            cbUsuarios.ValueMember = "Dni";    // Valor seleccionado es el DNI
         }
 
-        private void btAceptar_Click(object sender, EventArgs e)
+        private void CargarFechaActual()
         {
+            dtpFecha.Value = DateTime.Now;
+        }
 
+        private void GenerarIdPrestamo()
+        {
+            // Si el ID es autogenerado en BD, puedes dejar esto vacío o mostrar "Autogenerado"
+            tbId.Text = "Autogenerado";
+        }
+
+        private void ActualizarListaEjemplares()
+        {
+            List<EjemplarPrestamoInfo> ejemplaresInfo = new List<EjemplarPrestamoInfo>();
+
+            // Obtener información de cada ejemplar añadido
+            foreach (int codigoEjemplar in codigosEjemplaresAñadidos)
+            {
+                Ejemplar ej = Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigoEjemplar)); // ESTO ESTÁ MAL. HAY QUE HACER UN MÉTODO EN LOGICA NEGOCIO
+                if (ej != null)
+                {
+                    Documento doc = lnSala.GetDocumento(ej.IsbnDocumento);
+                    ejemplaresInfo.Add(new EjemplarPrestamoInfo
+                    {
+                        Codigo = ej.Codigo,
+                        Titulo = doc?.Titulo ?? "Documento sin título",
+                        Isbn = ej.IsbnDocumento,
+                        Estado = "No devuelto"
+                    });
+                }
+            }
+
+            bindingSourceEjemplares.DataSource = ejemplaresInfo;
+            ActualizarPanelEjemplares(ejemplaresInfo);
         }
 
         private void btAñadirEjemplar_Click(object sender, EventArgs e)
         {
             try
             {
-                FAñadirEjemplarPrestamo formulario = new FAñadirEjemplarPrestamo(lnSala, ejemplaresAñadidos);
+                FAñadirEjemplarPrestamo formularioAñadir =
+                    new FAñadirEjemplarPrestamo(lnSala, codigosEjemplaresAñadidos);
 
-                if (formulario.ShowDialog(this) == DialogResult.OK)
+                if (formularioAñadir.ShowDialog(this) == DialogResult.OK)
                 {
-                    Ejemplar ejemplarSeleccionado = formulario.EjemplarSeleccionado;
+                    // PASO 3.7: Ejemplar fue seleccionado
+                    Ejemplar ejemplarSeleccionado = formularioAñadir.EjemplarSeleccionado;
                     if (ejemplarSeleccionado != null)
                     {
-                        // Obtener documento para mostrar el título
-                        Documento doc = lnSala.GetDocumento(ejemplarSeleccionado.IsbnDocumento);
-                        string titulo = doc != null ? doc.Titulo : "Desconocido";
-
-                        EjemplarPrestamoDisplay epd = new EjemplarPrestamoDisplay(
-                            ejemplarSeleccionado.Codigo,
-                            ejemplarSeleccionado.IsbnDocumento,
-                            titulo
-                        );
-
-                        ejemplaresAñadidos.Add(epd);
-                        AgregarEjemplarVisual(epd);
+                        // Añadir a la lista si no estaba ya
+                        if (!codigosEjemplaresAñadidos.Contains(ejemplarSeleccionado.Codigo))
+                        {
+                            codigosEjemplaresAñadidos.Add(ejemplarSeleccionado.Codigo);
+                            ActualizarListaEjemplares();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Este ejemplar ya ha sido añadido al préstamo",
+                                "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                ManejarExcepcion(ex, "añadir el ejemplar");
+                MessageBox.Show($"Error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void AgregarEjemplarVisual(EjemplarPrestamoDisplay epd)
+        // PASO 3.8: Eliminar un ejemplar de la lista
+        private void EliminarEjemplar(int codigoEjemplar)
         {
-            // Label con texto "ID ejemplar:"
-            Label lbl = new Label
-            {
-                Text = "ID ejemplar:",
-                Location = new Point(10, yPosition + 3),
-                Width = 80,
-                Tag = epd
-            };
-
-            // TextBox para mostrar el código
-            TextBox tb = new TextBox
-            {
-                Text = epd.Codigo.ToString(),
-                ReadOnly = true,
-                Width = 80,
-                Location = new Point(100, yPosition),
-                Tag = epd
-            };
-
-            // RadioButton para indicar "Prestado"
-            RadioButton rb = new RadioButton
-            {
-                Text = "Prestado",
-                Checked = true,
-                Enabled = false, // No editable en alta
-                Location = new Point(190, yPosition),
-                Width = 100,
-                Tag = epd
-            };
-
-            panelEjemplares.Controls.Add(lbl);
-            panelEjemplares.Controls.Add(tb);
-            panelEjemplares.Controls.Add(rb);
-
-            yPosition += 30; // Espaciado vertical
+            codigosEjemplaresAñadidos.Remove(codigoEjemplar);
+            ActualizarListaEjemplares();
         }
+
+
+
+
+        private void ActualizarPanelEjemplares(List<EjemplarPrestamoInfo> ejemplares)
+        {
+            panelEjemplares.Controls.Clear();
+            int posicionY = 10;
+
+            foreach (EjemplarPrestamoInfo ej in ejemplares)
+            {
+                // Crear panel para cada ejemplar
+                Panel pnlEjemplar = new Panel();
+                pnlEjemplar.BorderStyle = BorderStyle.FixedSingle;
+                pnlEjemplar.Height = 60;
+                pnlEjemplar.Width = panelEjemplares.Width - 20;
+                pnlEjemplar.Location = new System.Drawing.Point(5, posicionY);
+
+                // Label con información del ejemplar
+                Label lblInfo = new Label();
+                lblInfo.Text = $"Código: {ej.Codigo} - {ej.Titulo}";
+                lblInfo.AutoSize = false;
+                lblInfo.Width = pnlEjemplar.Width - 110;
+                lblInfo.Height = 50;
+                lblInfo.Location = new System.Drawing.Point(5, 5);
+                lblInfo.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
+
+                // Botón eliminar
+                Button btnEliminar = new Button();
+                btnEliminar.Text = "Eliminar";
+                btnEliminar.Width = 100;
+                btnEliminar.Location = new System.Drawing.Point(pnlEjemplar.Width - 105, 15);
+                btnEliminar.Tag = ej.Codigo;  // Guardar código para identificar qué eliminar
+                btnEliminar.Click += (s, e) => EliminarEjemplar(ej.Codigo);
+
+                pnlEjemplar.Controls.Add(lblInfo);
+                pnlEjemplar.Controls.Add(btnEliminar);
+                panelEjemplares.Controls.Add(pnlEjemplar);
+
+                posicionY += 70;
+            }
+        }
+
+        private void btAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validaciones
+                if (string.IsNullOrWhiteSpace(cbUsuarios.Text))
+                {
+                    MessageBox.Show("Debe seleccionar un usuario", "Validación",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (codigosEjemplaresAñadidos.Count == 0)
+                {
+                    MessageBox.Show("Debe añadir al menos un ejemplar", "Validación",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Crear objeto Préstamo
+                string dniUsuario = cbUsuarios.SelectedValue.ToString();
+                DateTime fechaPrestamo = dtpFecha.Value;
+                DateTime fechaDevolucion = fechaPrestamo.AddDays(15);  // 15 días por defecto
+
+                Prestamo prestamo = new Prestamo(
+                    0,  // ID será autogenerado
+                    fechaPrestamo,
+                    fechaDevolucion,
+                    EstadoPrestamo.enProceso,
+                    lnSala.Personal.Dni,  // DNI del personal logueado
+                    dniUsuario
+                );
+
+                // PASO 3.10: Llamar a LN para crear préstamo completo
+                int idPrestamoCreado = lnSala.CrearPrestamoCompleto(prestamo, codigosEjemplaresAñadidos);
+
+                MessageBox.Show($"Préstamo creado exitosamente. ID: {idPrestamoCreado}",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al crear el préstamo: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void BtCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+
     }
+
 }

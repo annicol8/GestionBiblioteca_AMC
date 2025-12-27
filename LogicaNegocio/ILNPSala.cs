@@ -1,13 +1,9 @@
-﻿using ModeloDominio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using ModeloDominio;
 
 namespace LogicaNegocio
 {
-    public interface ILNPSala: ILNPersonal
+    public interface ILNPSala : ILNPersonal
     {
         int AltaPrestamo(Prestamo prestamo);
         //bool BajaPrestamo(Prestamo p);
@@ -17,7 +13,7 @@ namespace LogicaNegocio
         Prestamo GetPrestamo(int idPrestamo);
 
         List<Prestamo> GetPrestamosPorDocumento(string isbn);
-        
+
         void DevolverEjemplar(int idPrestamo, int codigoEjemplar); // Codigo ejemplar es int?
         List<Prestamo> GetPrestamosFueraDePlazo();
 
@@ -29,5 +25,16 @@ namespace LogicaNegocio
 
         //bool HayEjemplaresDisponibles(string isbn);
         //DateTime? GetFechaDisponibilidadDocumento(string isbn);
+
+
+
+        // AÑAADIDOS
+
+        List<Ejemplar> GetEjemplaresActivos();
+        List<Ejemplar> GetEjemplaresDisponibles(List<int> codigosExcluidos);
+        int CrearPrestamoCompleto(Prestamo prestamo, List<int> codigosEjemplares);
+        bool PuedeRealizarPrestamo(string dni);
+        bool EjemplarDisponibleParaPrestamo(int codigoEjemplar);
+        Ejemplar GetEjemplar(int codigo);
     }
 }

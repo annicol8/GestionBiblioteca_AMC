@@ -9,8 +9,10 @@ namespace Presentacion
     public partial class FAñadirEjemplarPrestamo : Form
     {
         private ILNPSala lnSala;
-        private List<EjemplarPrestamoDisplay> ejemplaresAñadidos;
+        private List<int> codigosEjemplaresAñadidos;
         private Ejemplar ejemplarSeleccionado;
+        private List<Ejemplar> ejemplaresDisponibles;
+
 
         public Ejemplar EjemplarSeleccionado { get; private set; }
 
@@ -19,26 +21,77 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        public FAñadirEjemplarPrestamo(ILNPSala lnSala, List<EjemplarPrestamoDisplay> ejemplaresAñadidos) : this()
+        public FAñadirEjemplarPrestamo(ILNPSala lnSala, List<int> codigosEjemplaresAñadidos) : this()
         {
             this.lnSala = lnSala;
-            this.ejemplaresAñadidos = ejemplaresAñadidos;
+            this.codigosEjemplaresAñadidos = codigosEjemplaresAñadidos ?? new List<int>();
         }
 
-        private void FAñadirEjemplarPrestamo_Load(object sender, System.EventArgs e)
+        private void FAñadirEjemplarPrestamo_Load(object sender, EventArgs e)
         {
-            CargarEjemplaresDisponibles();
+            try
+            {
+                CargarEjemplaresDisponibles();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar ejemplares: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         private void CargarEjemplaresDisponibles()
         {
-            throw new NotImplementedException();
+
+            //Obtener todos los ejemplares activos desde LN
+            ejemplaresDisponibles = lnSala.GetEjemplaresActivos();
+
+            //Filtrar los que ya han sido añadidos al préstamo
+            List<Ejemplar> ejemplaresParaMostrar = new List<Ejemplar>();
+            foreach (Ejemplar ej in ejemplaresDisponibles)
+            {
+                // Si el código no está en los ya añadidos, y está disponible para préstamo
+                if (!codigosEjemplaresAñadidos.Contains(ej.Codigo) &&
+                    lnSala.EjemplarDisponibleParaPrestamo(ej.Codigo))
+                {
+                    ejemplaresParaMostrar.Add(ej);
+                }
+            }
+
+            // Asignar al ListBox
+            listBox1.DataSource = ejemplaresParaMostrar;
+            listBox1.DisplayMember = "Codigo";  // Muestra el código
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listBox1.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Debe seleccionar un ejemplar", "Validación",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                ejemplarSeleccionado = (Ejemplar)listBox1.SelectedItem;
+                this.EjemplarSeleccionado = ejemplarSeleccionado;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
