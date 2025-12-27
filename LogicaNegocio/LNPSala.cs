@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ModeloDominio;
 
 namespace LogicaNegocio
@@ -45,7 +42,7 @@ namespace LogicaNegocio
         }
 
 
-
+        /*
         public List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo)
         {
             /*
@@ -60,9 +57,31 @@ namespace LogicaNegocio
             }
 
             return Persistencia.Persistencia.GetEjemplaresNoDevueltosDePrestamo(idPrestamo); // Si el idPrestamo no existe, qué devuelve? Lista vacia o null?
-            */
+            
 
             return null;
+        }*/
+
+
+        public List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo)
+        {
+            // Obtener todos los ejemplares del préstamo
+            List<Ejemplar> todosEjemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(idPrestamo);
+            List<Ejemplar> ejemplaresNoDevueltos = new List<Ejemplar>();
+
+            foreach (Ejemplar ej in todosEjemplares)
+            {
+                // Obtener la información del préstamo-ejemplar
+                var prestamoEjemplar = Persistencia.Persistencia.GetPrestamoEjemplar(idPrestamo, ej.Codigo);
+
+                // Si no se ha devuelto (FechaDevolucion == DateTime.MinValue)
+                if (prestamoEjemplar != null && prestamoEjemplar.FechaDevolucion == DateTime.MinValue)
+                {
+                    ejemplaresNoDevueltos.Add(ej);
+                }
+            }
+
+            return ejemplaresNoDevueltos;
         }
 
         //PRE:
@@ -117,7 +136,7 @@ namespace LogicaNegocio
                 List<Prestamo> prestamosDelEjemplar =
                     Persistencia.Persistencia.GetPrestamosPorEjemplar(ejemplar.Codigo);
 
-                foreach(Prestamo p in prestamosDelEjemplar)
+                foreach (Prestamo p in prestamosDelEjemplar)
                 {
                     if (!prestamos.Contains(p))
                     {
@@ -158,7 +177,7 @@ namespace LogicaNegocio
         //POST: Si no existe, null; si existe, devuelve el objeto AudLibro o LiPapel
 
         public Documento GetDocumento(string isbn)
-       {
+        {
             return Persistencia.Persistencia.GetDocumento(isbn);
         }
     }
