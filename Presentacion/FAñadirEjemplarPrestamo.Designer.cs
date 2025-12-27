@@ -51,6 +51,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -70,7 +71,7 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Ejemplares disponibles:";
             // 
-            // FAñadirEjemplar
+            // FAñadirEjemplarPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,8 +80,9 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.listBox1);
-            this.Name = "FAñadirEjemplar";
+            this.Name = "FAñadirEjemplarPrestamo";
             this.Text = "Añadir ejemplar";
+            this.Load += new System.EventHandler(this.FAñadirEjemplarPrestamo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

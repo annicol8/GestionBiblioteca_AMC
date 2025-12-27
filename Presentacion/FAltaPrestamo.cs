@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
+
 
 namespace Presentacion
 {
@@ -9,6 +12,8 @@ namespace Presentacion
     {
         private ILNPSala lnSala;
         private List<EjemplarPrestamoDisplay> ejemplaresAñadidos;
+        private int yPosition = 10; // Para posicionar dinámicamente los controles
+
         public FAltaPrestamo() : base()
         {
             InitializeComponent();
@@ -59,7 +64,70 @@ namespace Presentacion
             try
             {
                 FAñadirEjemplarPrestamo formulario = new FAñadirEjemplarPrestamo(lnSala, ejemplaresAñadidos);
+
+                if (formulario.ShowDialog(this) == DialogResult.OK)
+                {
+                    Ejemplar ejemplarSeleccionado = formulario.EjemplarSeleccionado;
+                    if (ejemplarSeleccionado != null)
+                    {
+                        // Obtener documento para mostrar el título
+                        Documento doc = lnSala.GetDocumento(ejemplarSeleccionado.IsbnDocumento);
+                        string titulo = doc != null ? doc.Titulo : "Desconocido";
+
+                        EjemplarPrestamoDisplay epd = new EjemplarPrestamoDisplay(
+                            ejemplarSeleccionado.Codigo,
+                            ejemplarSeleccionado.IsbnDocumento,
+                            titulo
+                        );
+
+                        ejemplaresAñadidos.Add(epd);
+                        AgregarEjemplarVisual(epd);
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                ManejarExcepcion(ex, "añadir el ejemplar");
+            }
+        }
+
+        private void AgregarEjemplarVisual(EjemplarPrestamoDisplay epd)
+        {
+            // Label con texto "ID ejemplar:"
+            Label lbl = new Label
+            {
+                Text = "ID ejemplar:",
+                Location = new Point(10, yPosition + 3),
+                Width = 80,
+                Tag = epd
+            };
+
+            // TextBox para mostrar el código
+            TextBox tb = new TextBox
+            {
+                Text = epd.Codigo.ToString(),
+                ReadOnly = true,
+                Width = 80,
+                Location = new Point(100, yPosition),
+                Tag = epd
+            };
+
+            // RadioButton para indicar "Prestado"
+            RadioButton rb = new RadioButton
+            {
+                Text = "Prestado",
+                Checked = true,
+                Enabled = false, // No editable en alta
+                Location = new Point(190, yPosition),
+                Width = 100,
+                Tag = epd
+            };
+
+            panelEjemplares.Controls.Add(lbl);
+            panelEjemplares.Controls.Add(tb);
+            panelEjemplares.Controls.Add(rb);
+
+            yPosition += 30; // Espaciado vertical
         }
     }
 }

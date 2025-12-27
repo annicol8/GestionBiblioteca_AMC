@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    internal class EjemplarPrestamoDisplay
+    public class EjemplarPrestamoDisplay
     {
         public int Codigo { get; set; }
         public string IsbnDocumento { get; set; }
