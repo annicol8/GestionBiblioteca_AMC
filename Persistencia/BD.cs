@@ -20,9 +20,9 @@ namespace Persistencia
 
         public static void CargarDatosPrueba()
         {
-            // PERSONALES
+            // PERSONALES - DNIs válidos con letras correctas
             TablaPersonales.Add(new PersonalDato("12345678Z", "Juan", "admin", TipoPersonal.personalSala));
-            TablaPersonales.Add(new PersonalDato("87654321T", "María", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("87654321X", "María", "admin", TipoPersonal.personalAdquisiciones));
             TablaPersonales.Add(new PersonalDato("11223344Q", "Carlos", "admin", TipoPersonal.personalSala));
             TablaPersonales.Add(new PersonalDato("22334455J", "Laura", "admin", TipoPersonal.personalAdquisiciones));
             TablaPersonales.Add(new PersonalDato("33445566M", "Pedro", "admin", TipoPersonal.personalSala));
@@ -30,30 +30,19 @@ namespace Persistencia
             TablaPersonales.Add(new PersonalDato("55667788C", "Lucía", "admin", TipoPersonal.personalSala));
             TablaPersonales.Add(new PersonalDato("66778899S", "Miguel", "admin", TipoPersonal.personalAdquisiciones));
             TablaPersonales.Add(new PersonalDato("77889900P", "Elena", "admin", TipoPersonal.personalSala));
-            TablaPersonales.Add(new PersonalDato("87654321B", "David", "admin", TipoPersonal.personalAdquisiciones));
+            TablaPersonales.Add(new PersonalDato("23456789H", "David", "admin", TipoPersonal.personalAdquisiciones));
 
-
-
-
-            // LIBROS EN PAPEL
+            // LIBROS EN PAPEL - ISBNs válidos con dígitos de control correctos
             TablaLibrosPapel.Add(new LibroPapelDato(
-                "978-0-00-000000-2",
-                "Quijote",
-                "Cervantes",
-                "alaDelta",
+                "978-84-667-0234-5",  // ISBN válido
+                "Don Quijote",
+                "Miguel De Cervantes",
+                "Aladelta",
                 2002
             ));
 
             TablaLibrosPapel.Add(new LibroPapelDato(
-                "978-0-13-468599-1",
-                "Clean Code",
-                "Robert C. Martin",
-                "Prentice Hall",
-                2008
-            ));
-
-            TablaLibrosPapel.Add(new LibroPapelDato(
-                "978-0-13-235088-4",
+                "978-0-13-235088-4",  // ISBN válido
                 "Clean Architecture",
                 "Robert C. Martin",
                 "Prentice Hall",
@@ -61,44 +50,72 @@ namespace Persistencia
             ));
 
             TablaLibrosPapel.Add(new LibroPapelDato(
-                "978-0-13-957331-6",
+                "978-0-13-468599-1",  // ISBN válido
+                "Clean Code",
+                "Robert C. Martin",
+                "Prentice Hall",
+                2008
+            ));
+
+            TablaLibrosPapel.Add(new LibroPapelDato(
+                "978-0-20-161622-4",  // ISBN válido
                 "Refactoring",
                 "Martin Fowler",
                 "Addison-Wesley",
                 1999
             ));
 
-            // AUDIOLIBROS
+            TablaLibrosPapel.Add(new LibroPapelDato(
+                "978-84-376-0494-7",  // ISBN válido
+                "Cien Años De Soledad",
+                "Gabriel García Márquez",
+                "Sudamericana",
+                1967
+            ));
+
+            // AUDIOLIBROS - ISBNs válidos
             TablaAudioLibros.Add(new AudioLibroDato(
-                "978-1-4001-2345-2",
+                "978-84-204-8368-8",  // ISBN válido
                 "El Quijote",
-                "Miguel de Cervantes",
+                "Miguel De Cervantes",
                 "Santillana",
-                2020, "CD", 114
+                2020, "CD", 680
             ));
 
             TablaAudioLibros.Add(new AudioLibroDato(
-                "978-1-5555-7777-3",
+                "978-0-14-312774-3",  // ISBN válido
                 "1984",
                 "George Orwell",
                 "Audible",
-                2019, "MP3", 180
+                2019, "MP3", 720
             ));
 
+            TablaAudioLibros.Add(new AudioLibroDato(
+                "978-0-14-311984-7",  // ISBN válido
+                "Rebelión En La Granja",
+                "George Orwell",
+                "Audible",
+                2018, "MP3", 180
+            ));
 
-            // EJEMPLARES
-            TablaEjemplares.Add(new EjemplarDato(1, "978-0-13-468599-1", true, "87654321B"));
-            TablaEjemplares.Add(new EjemplarDato(2, "978-0-13-468599-1", true, "87654321B"));
-            TablaEjemplares.Add(new EjemplarDato(3, "978-0-13-235088-4", true, "87654321B"));
-            TablaEjemplares.Add(new EjemplarDato(4, "978-0-13-957331-8", true, "87654321B"));
-            TablaEjemplares.Add(new EjemplarDato(5, "978-1-4001-2345-6", true, "87654321B"));
-            TablaEjemplares.Add(new EjemplarDato(6, "978-1-5555-7777-8", true, "87654321B"));
+            // EJEMPLARES - Con ISBNs correctos que existen en los documentos
+            TablaEjemplares.Add(new EjemplarDato(1, "978-0-13-468599-1", true, "23456789H"));
+            TablaEjemplares.Add(new EjemplarDato(2, "978-0-13-468599-1", true, "23456789H"));
+            TablaEjemplares.Add(new EjemplarDato(3, "978-0-13-235088-4", true, "23456789H"));
+            TablaEjemplares.Add(new EjemplarDato(4, "978-0-20-161622-4", true, "23456789H"));
+            TablaEjemplares.Add(new EjemplarDato(5, "978-84-667-0234-5", true, "87654321X"));
+            TablaEjemplares.Add(new EjemplarDato(6, "978-84-204-8368-8", true, "87654321X"));
+            TablaEjemplares.Add(new EjemplarDato(7, "978-0-14-312774-3", true, "87654321X"));
+            TablaEjemplares.Add(new EjemplarDato(8, "978-0-14-311984-7", true, "22334455J"));
+            TablaEjemplares.Add(new EjemplarDato(9, "978-84-376-0494-7", true, "22334455J"));
+            TablaEjemplares.Add(new EjemplarDato(10, "978-0-13-235088-4", true, "22334455J"));
 
-            // USUARIOS
-            TablaUsuarios.Add(new UsuarioDato("11111111F", "Pedro", true));
-            TablaUsuarios.Add(new UsuarioDato("11122233Z", "Eva", true));
-            TablaUsuarios.Add(new UsuarioDato("22233344G", "Carlos", true));
-
+            // USUARIOS - DNIs válidos
+            TablaUsuarios.Add(new UsuarioDato("45678901R", "Pedro González", true));
+            TablaUsuarios.Add(new UsuarioDato("56789012E", "Eva Martínez", true));
+            TablaUsuarios.Add(new UsuarioDato("67890123D", "Carlos López", true));
+            TablaUsuarios.Add(new UsuarioDato("78901234K", "Sofía Rodríguez", true));
+            TablaUsuarios.Add(new UsuarioDato("89012345T", "Javier Fernández", false)); // Usuario dado de baja
 
             // ===== PRÉSTAMO 1 (En Proceso) =====
             int idPrestamo1 = GenerarIdPrestamo();
@@ -108,8 +125,8 @@ namespace Persistencia
                 DateTime.Now.AddDays(-5),           // Hace 5 días
                 DateTime.Now.AddDays(10),           // Vence en 10 días
                 EstadoPrestamo.enProceso,
-                "11111111C",   // DNI Usuario: Pedro
-                "12345678A"    // DNI Personal: Juan
+                "45678901R",   // DNI Usuario: Pedro González
+                "12345678Z"    // DNI Personal: Juan
             ));
 
             // Ejemplares del préstamo 1
@@ -133,8 +150,8 @@ namespace Persistencia
                 DateTime.Now.AddDays(-20),          // Hace 20 días
                 DateTime.Now.AddDays(-5),           // Venció hace 5 días
                 EstadoPrestamo.finalizado,
-                "11122233V",   // DNI Usuario: Eva
-                "12345678A"    // DNI Personal: Juan
+                "56789012E",   // DNI Usuario: Eva Martínez
+                "12345678Z"    // DNI Personal: Juan
             ));
 
             // Ejemplares del préstamo 2
@@ -158,26 +175,26 @@ namespace Persistencia
                 DateTime.Now.AddDays(-2),           // Hace 2 días
                 DateTime.Now.AddDays(13),           // Vence en 13 días
                 EstadoPrestamo.enProceso,
-                "22233344D",   // DNI Usuario: Carlos
-                "12345678A"    // DNI Personal: Juan
+                "67890123D",   // DNI Usuario: Carlos López
+                "11223344Q"    // DNI Personal: Carlos
             ));
 
             // Ejemplares del préstamo 3
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
                 idPrestamo3,
-                5,              // AudioLibro "El Quijote"
+                6,              // AudioLibro "El Quijote"
                 DateTime.MinValue
             ));
 
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
                 idPrestamo3,
-                6,              // AudioLibro "1984"
+                7,              // AudioLibro "1984"
                 DateTime.MinValue
             ));
 
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
                 idPrestamo3,
-                7,              // Libro "Quijote" en papel
+                5,              // Libro "Don Quijote" en papel
                 DateTime.MinValue
             ));
 
@@ -189,18 +206,36 @@ namespace Persistencia
                 DateTime.Now.AddDays(-25),          // Hace 25 días
                 DateTime.Now.AddDays(-10),          // Venció hace 10 días
                 EstadoPrestamo.enProceso,           // AÚN NO DEVUELTO (vencido)
-                "11111111C",   // DNI Usuario: Pedro
-                "12345678A"    // DNI Personal: Juan
+                "45678901R",   // DNI Usuario: Pedro González
+                "12345678Z"    // DNI Personal: Juan
             ));
 
             // Ejemplares del préstamo 4
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
                 idPrestamo4,
-                4,              // Ejemplar de "Refactoring"
+                9,              // Ejemplar de "Cien Años de Soledad"
                 DateTime.MinValue // NO devuelto
             ));
-        }
 
+            // ===== PRÉSTAMO 5 (Finalizado - ejemplo de audiolibro) =====
+            int idPrestamo5 = GenerarIdPrestamo();
+
+            TablaPrestamos.Add(new PrestamoDato(
+                idPrestamo5,
+                DateTime.Now.AddDays(-30),          // Hace 30 días
+                DateTime.Now.AddDays(-20),          // Venció hace 20 días
+                EstadoPrestamo.finalizado,
+                "78901234K",   // DNI Usuario: Sofía Rodríguez
+                "87654321X"    // DNI Personal: María
+            ));
+
+            // Ejemplares del préstamo 5
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo5,
+                8,              // AudioLibro "Rebelión en la granja"
+                DateTime.Now.AddDays(-21) // Devuelto hace 21 días
+            ));
+        }
 
 
         public static Tabla<string, AudioLibroDato> TablaAudioLibros
