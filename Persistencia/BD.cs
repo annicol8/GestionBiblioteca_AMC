@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Net;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using ModeloDominio;
 
 namespace Persistencia
@@ -281,12 +274,18 @@ namespace Persistencia
                 return tablaPrestamoEjemplar;
             }
         }
+        /*
+PRE: ninguna
+POST: devuelve un ID único aumentado 1
+*/
         public static int GenerarIdPrestamo()
         {
             return ++ultimoIdPrestamo;
         }
-
-        //CRUD GENERICO PARA TODOS
+        /*
+PRE: tabla != null && elemento != null
+POST: devuelve true si se insertó correctamente, false si ya existía un elemento con esa clave
+*/
         public static bool INSERT<TKey, TValue>(Tabla<TKey, TValue> tabla, TValue elemento)
             where TValue : Entity<TKey>
         {
@@ -297,7 +296,10 @@ namespace Persistencia
             tabla.Add(elemento);
             return true;
         }
-
+        /*
+PRE: tabla != null && elemento != null
+POST: devuelve el elemento si existe con esa clave, null en caso contrario
+*/
         public static TValue READ<TKey, TValue>(Tabla<TKey, TValue> tabla, TValue elemento)
             where TValue : Entity<TKey>
         {
@@ -313,7 +315,10 @@ namespace Persistencia
             }
             return null;
         }
-
+        /*
+PRE: tabla != null && elemento != null && existe un elemento con esa clave en la tabla
+POST: devuelve true si se actualizó correctamente, false si no existía
+*/
         public static bool UPDATE<TKey, TValue>(Tabla<TKey, TValue> tabla, TValue elemento)
             where TValue : Entity<TKey>
         {
@@ -325,7 +330,10 @@ namespace Persistencia
             }
             return false;
         }
-
+        /*
+PRE: tabla != null && elemento != null && existe un elemento con esa clave en la tabla
+POST: devuelve true si se eliminó correctamente, false si no existía
+*/
         public static bool DELETE<TKey, TValue>(Tabla<TKey, TValue> tabla, TValue elemento)
             where TValue : Entity<TKey>
         {
@@ -336,7 +344,10 @@ namespace Persistencia
             }
             return false;
         }
-
+        /*
+PRE: tabla != null
+POST: devuelve lista con todos los elementos de la tabla (puede estar vacía)
+*/
         public static List<TValue> READ_ALL<TKey, TValue>(Tabla<TKey, TValue> tabla)
             where TValue : Entity<TKey>
         {
