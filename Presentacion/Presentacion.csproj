@@ -58,11 +58,23 @@
     <Compile Include="FAltaEjemplar.Designer.cs">
       <DependentUpon>FAltaEjemplar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FAltaPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAltaPrestamo.Designer.cs">
+      <DependentUpon>FAltaPrestamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FAltaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FAltaUsuario.Designer.cs">
       <DependentUpon>FAltaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FAñadirEjemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAñadirEjemplar.Designer.cs">
+      <DependentUpon>FAñadirEjemplar.cs</DependentUpon>
     </Compile>
     <Compile Include="FBajaDocumento.cs">
       <SubType>Form</SubType>
@@ -204,8 +216,14 @@
     <EmbeddedResource Include="FAltaEjemplar.resx">
       <DependentUpon>FAltaEjemplar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FAltaPrestamo.resx">
+      <DependentUpon>FAltaPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FAltaUsuario.resx">
       <DependentUpon>FAltaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FAñadirEjemplar.resx">
+      <DependentUpon>FAñadirEjemplar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FBajaDocumento.resx">
       <DependentUpon>FBajaDocumento.cs</DependentUpon>

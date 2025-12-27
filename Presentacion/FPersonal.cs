@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
@@ -186,7 +179,7 @@ namespace Presentacion
                     DialogResult dr = MostrarPregunta(
                         mensaje + "\n\n¿Desea introducir otro DNI?",
                         "Usuario no disponible");
-                    
+
                     if (dr == DialogResult.Yes)
                         continue;
                     else
@@ -295,5 +288,5 @@ namespace Presentacion
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
     }
-        
+
 }
