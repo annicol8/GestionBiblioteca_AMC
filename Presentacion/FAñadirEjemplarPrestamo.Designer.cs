@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class FAñadirEjemplar
+    partial class FAñadirEjemplarPrestamo
     {
         /// <summary>
         /// Required designer variable.

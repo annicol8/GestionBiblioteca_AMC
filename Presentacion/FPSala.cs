@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using LogicaNegocio;
 
 namespace Presentacion
@@ -15,7 +7,7 @@ namespace Presentacion
     {
         private ILNPSala lnSala;
 
-        public FPSala ()
+        public FPSala()
         {
             InitializeComponent();
             ActualizarTituloFormulario();
@@ -30,7 +22,7 @@ namespace Presentacion
 
         private void ConfigurarPermisos()
         {
-            
+
             OcultarDocumentos();
             OcultarEjemplares();
         }
@@ -58,6 +50,19 @@ namespace Presentacion
             catch (Exception ex)
             {
                 MostrarError($"Error al abrir el listado de préstamos: {ex.Message}");
+            }
+        }
+
+        protected override void menuPrestamosNuevo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FAltaPrestamo formulario = new FAltaPrestamo(lnSala);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al abrir el alta de préstamos: {ex.Message}");
             }
         }
 

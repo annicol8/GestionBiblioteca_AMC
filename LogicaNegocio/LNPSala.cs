@@ -62,7 +62,10 @@ namespace LogicaNegocio
             return null;
         }*/
 
-
+        /*
+PRE: idPrestamo > 0
+POST: devuelve lista con los ejemplares del préstamo que aún no han sido devueltos (puede estar vacía)
+*/
         public List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo)
         {
             // Obtener todos los ejemplares del préstamo

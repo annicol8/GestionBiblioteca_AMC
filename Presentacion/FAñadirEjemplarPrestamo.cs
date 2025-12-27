@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FAñadirEjemplar : Form
+    public partial class FAñadirEjemplarPrestamo : Form
     {
-        public FAñadirEjemplar()
+        public FAñadirEjemplarPrestamo()
         {
             InitializeComponent();
         }

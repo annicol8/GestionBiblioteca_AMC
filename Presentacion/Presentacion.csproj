@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EjemplarPrestamoDisplay.cs" />
     <Compile Include="FAltaDocumento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,11 +71,11 @@
     <Compile Include="FAltaUsuario.Designer.cs">
       <DependentUpon>FAltaUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FAñadirEjemplar.cs">
+    <Compile Include="FAñadirEjemplarPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FAñadirEjemplar.Designer.cs">
-      <DependentUpon>FAñadirEjemplar.cs</DependentUpon>
+    <Compile Include="FAñadirEjemplarPrestamo.Designer.cs">
+      <DependentUpon>FAñadirEjemplarPrestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="FBajaDocumento.cs">
       <SubType>Form</SubType>
@@ -222,8 +223,8 @@
     <EmbeddedResource Include="FAltaUsuario.resx">
       <DependentUpon>FAltaUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FAñadirEjemplar.resx">
-      <DependentUpon>FAñadirEjemplar.cs</DependentUpon>
+    <EmbeddedResource Include="FAñadirEjemplarPrestamo.resx">
+      <DependentUpon>FAñadirEjemplarPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FBajaDocumento.resx">
       <DependentUpon>FBajaDocumento.cs</DependentUpon>

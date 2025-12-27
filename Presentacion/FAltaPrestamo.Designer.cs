@@ -31,13 +31,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.cbUsuarios = new System.Windows.Forms.ComboBox();
+            this.btAñadirEjemplar = new System.Windows.Forms.Button();
+            this.tbId = new System.Windows.Forms.TextBox();
+            this.gbEjemplares = new System.Windows.Forms.GroupBox();
+            this.panelEjemplares = new System.Windows.Forms.Panel();
+            this.btAceptar = new System.Windows.Forms.Button();
+            this.btCancelar = new System.Windows.Forms.Button();
+            this.gbEjemplares.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -48,7 +50,6 @@
             this.label1.Size = new System.Drawing.Size(38, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -68,83 +69,96 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Usuario:";
             // 
-            // dateTimePicker1
+            // dtpFecha
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(286, 129);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 31);
-            this.dateTimePicker1.TabIndex = 3;
+            this.dtpFecha.Enabled = false;
+            this.dtpFecha.Location = new System.Drawing.Point(286, 129);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(200, 31);
+            this.dtpFecha.TabIndex = 3;
             // 
-            // comboBox1
+            // cbUsuarios
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(286, 198);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 33);
-            this.comboBox1.TabIndex = 4;
+            this.cbUsuarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUsuarios.FormattingEnabled = true;
+            this.cbUsuarios.Location = new System.Drawing.Point(286, 198);
+            this.cbUsuarios.Name = "cbUsuarios";
+            this.cbUsuarios.Size = new System.Drawing.Size(200, 33);
+            this.cbUsuarios.TabIndex = 4;
             // 
-            // button1
+            // btAñadirEjemplar
             // 
-            this.button1.Location = new System.Drawing.Point(135, 279);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(348, 47);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Añadir ejemplar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btAñadirEjemplar.Location = new System.Drawing.Point(135, 279);
+            this.btAñadirEjemplar.Name = "btAñadirEjemplar";
+            this.btAñadirEjemplar.Size = new System.Drawing.Size(348, 47);
+            this.btAñadirEjemplar.TabIndex = 5;
+            this.btAñadirEjemplar.Text = "Añadir ejemplar";
+            this.btAñadirEjemplar.UseVisualStyleBackColor = true;
+            this.btAñadirEjemplar.Click += new System.EventHandler(this.btAñadirEjemplar_Click);
             // 
-            // textBox1
+            // tbId
             // 
-            this.textBox1.Location = new System.Drawing.Point(286, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 31);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tbId.Location = new System.Drawing.Point(286, 59);
+            this.tbId.Name = "tbId";
+            this.tbId.ReadOnly = true;
+            this.tbId.Size = new System.Drawing.Size(200, 31);
+            this.tbId.TabIndex = 6;
             // 
-            // groupBox1
+            // gbEjemplares
             // 
-            this.groupBox1.Location = new System.Drawing.Point(595, 62);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(701, 512);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ejemplares añadidos";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.gbEjemplares.Controls.Add(this.panelEjemplares);
+            this.gbEjemplares.Location = new System.Drawing.Point(595, 62);
+            this.gbEjemplares.Name = "gbEjemplares";
+            this.gbEjemplares.Size = new System.Drawing.Size(701, 512);
+            this.gbEjemplares.TabIndex = 7;
+            this.gbEjemplares.TabStop = false;
+            this.gbEjemplares.Text = "Ejemplares añadidos";
             // 
-            // button2
+            // panelEjemplares
             // 
-            this.button2.Location = new System.Drawing.Point(595, 626);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 46);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Aceptar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.panelEjemplares.AutoScroll = true;
+            this.panelEjemplares.Location = new System.Drawing.Point(51, 52);
+            this.panelEjemplares.Name = "panelEjemplares";
+            this.panelEjemplares.Size = new System.Drawing.Size(200, 100);
+            this.panelEjemplares.TabIndex = 0;
             // 
-            // button3
+            // btAceptar
             // 
-            this.button3.Location = new System.Drawing.Point(766, 626);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(140, 46);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btAceptar.Location = new System.Drawing.Point(595, 626);
+            this.btAceptar.Name = "btAceptar";
+            this.btAceptar.Size = new System.Drawing.Size(140, 46);
+            this.btAceptar.TabIndex = 8;
+            this.btAceptar.Text = "Aceptar";
+            this.btAceptar.UseVisualStyleBackColor = true;
+            this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
+            // 
+            // btCancelar
+            // 
+            this.btCancelar.Location = new System.Drawing.Point(766, 626);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(140, 46);
+            this.btCancelar.TabIndex = 9;
+            this.btCancelar.Text = "Cancelar";
+            this.btCancelar.UseVisualStyleBackColor = true;
             // 
             // FAltaPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1408, 726);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.btCancelar);
+            this.Controls.Add(this.btAceptar);
+            this.Controls.Add(this.gbEjemplares);
+            this.Controls.Add(this.tbId);
+            this.Controls.Add(this.btAñadirEjemplar);
+            this.Controls.Add(this.cbUsuarios);
+            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FAltaPrestamo";
             this.Text = "Alta de un prestamo";
+            this.gbEjemplares.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,12 +169,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.ComboBox cbUsuarios;
+        private System.Windows.Forms.Button btAñadirEjemplar;
+        private System.Windows.Forms.TextBox tbId;
+        private System.Windows.Forms.GroupBox gbEjemplares;
+        private System.Windows.Forms.Button btAceptar;
+        private System.Windows.Forms.Button btCancelar;
+        private System.Windows.Forms.Panel panelEjemplares;
     }
 }
