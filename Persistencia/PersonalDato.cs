@@ -1,25 +1,22 @@
 ﻿using ModeloDominio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class PersonalDato: Entity<string>
+    internal class PersonalDato : Entity<string>
     {
         private string nombre;
         private TipoPersonal tipoPersonal;
         private string contraseña;
 
-        public string Nombre { 
+        public string Nombre
+        {
             get { return nombre; }
             set { nombre = value; }
         }
-        public TipoPersonal TipoPersonal { 
+        public TipoPersonal TipoPersonal
+        {
             get { return tipoPersonal; }
-            set {  tipoPersonal = value; }
+            set { tipoPersonal = value; }
         }
 
         public string Contraseña
@@ -27,7 +24,11 @@ namespace Persistencia
             get { return contraseña; }
             set { contraseña = value; }
         }
-
+        /*
+PRE: dni != null && dni != "" && nombre != null && nombre != "" && 
+     contraseña != null && contraseña != ""
+POST: crea un nuevo PersonalDato con los datos proporcionados
+*/
         public PersonalDato(string dni, string nombre, string contraseña, TipoPersonal tipoPersonal) : base(dni)
         {
             Nombre = nombre;

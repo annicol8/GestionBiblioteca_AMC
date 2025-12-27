@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
 using ModeloDominio;
 
 
@@ -17,24 +12,38 @@ namespace Persistencia
         private EstadoPrestamo estado;
         private string dniUsuario;
         private string dniPersonal;
-        
-        
-        public DateTime FechaPrestamo {
-            get { return fechaPrestamo; } set { fechaPrestamo = value; }
-        }
-        public DateTime FechaDevolucion {
-            get { return fechaDevolucion; } set {fechaDevolucion = value; }
-        }
-        public EstadoPrestamo Estado { 
-            get { return estado; } set { estado = value; }
-        }
-        public string DniUsuario {
-            get { return dniUsuario; } set { dniUsuario = value; }
-        }
-        public string DniPersonal{  
-            get { return dniPersonal; } set {dniPersonal = value; }
-        }
 
+
+        public DateTime FechaPrestamo
+        {
+            get { return fechaPrestamo; }
+            set { fechaPrestamo = value; }
+        }
+        public DateTime FechaDevolucion
+        {
+            get { return fechaDevolucion; }
+            set { fechaDevolucion = value; }
+        }
+        public EstadoPrestamo Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
+        public string DniUsuario
+        {
+            get { return dniUsuario; }
+            set { dniUsuario = value; }
+        }
+        public string DniPersonal
+        {
+            get { return dniPersonal; }
+            set { dniPersonal = value; }
+        }
+        /*
+PRE: id > 0 && dniUsuario != null && dniUsuario != "" && 
+     dniPersonal != null && dniPersonal != "" && fechaPrestamo <= fechaDevolucion
+POST: crea un nuevo PrestamoDato con los datos proporcionados
+*/
         public PrestamoDato(int id, DateTime fechaPrestamo, DateTime fechaDevolucion, EstadoPrestamo estado, string dniUsuario, string dniPersonal) : base(id)
         {
             FechaPrestamo = fechaPrestamo;
@@ -44,9 +53,9 @@ namespace Persistencia
             DniPersonal = dniPersonal;
         }
 
-        
-        
-        
+
+
+
     }
 }
 

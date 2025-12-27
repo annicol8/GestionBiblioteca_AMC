@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Persistencia
+﻿namespace Persistencia
 {
     internal class AudioLibroDato : Entity<string>
     {
@@ -49,8 +43,13 @@ namespace Persistencia
 
 
 
-
-        public AudioLibroDato(string isbn, string titulo, string autor, string editorial, int anoEdicion, string  formatoDigital, int duracion) : base(isbn)
+        /*
+PRE: isbn != null && isbn != "" && titulo != null && titulo != "" && 
+     autor != null && autor != "" && editorial != null && editorial != "" && 
+     anoEdicion > 0 && formatoDigital != null && formatoDigital != "" && duracion > 0
+POST: crea un nuevo AudioLibroDato con los datos proporcionados
+*/
+        public AudioLibroDato(string isbn, string titulo, string autor, string editorial, int anoEdicion, string formatoDigital, int duracion) : base(isbn)
         {
             Titulo = titulo;
             Autor = autor;
@@ -59,9 +58,9 @@ namespace Persistencia
             FormatoDigital = formatoDigital;
             Duracion = duracion;
         }
-        
-        
-        
-        
+
+
+
+
     }
 }
