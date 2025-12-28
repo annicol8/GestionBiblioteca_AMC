@@ -330,6 +330,31 @@ namespace Presentacion
             return true;
         }
 
+        protected bool ValidarSeleccionListBox(ListBox listBox, string nombreCampo)
+        {
+            if (listBox.SelectedIndex == -1)
+            {
+                MostrarAdvertencia($"Debe seleccionar un elemento en '{nombreCampo}'.");
+                listBox.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        protected bool ValidarListaNoVacia<T>(List<T> lista, string nombreLista)
+        {
+            if (lista == null || lista.Count == 0)
+            {
+                MostrarAdvertencia($"Debe añadir al menos un elemento a '{nombreLista}'.");
+                return false;
+            }
+            return true;
+        }
+
+        protected void CambiarCursor(bool espera)
+        {
+            this.Cursor = espera ? Cursors.WaitCursor : Cursors.Default;
+        }
 
 
         #region Utilidades de Interfaz

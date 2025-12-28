@@ -4,25 +4,19 @@ namespace Persistencia
 {
     public class PrestamoEjemplarDato : Entity<ClavePrestamoEjemplar>
     {
-        private int idPrestamo;        // Esto tiene que estar???
-        private int codigoEjemplar;
         private DateTime fechaDevolucion;
-
 
         public int IdPrestamo
         {
-            get { return idPrestamo; }
-            set { idPrestamo = value; }
+            get { return Clave.IdPrestamo; }
+            set { Clave.IdPrestamo = value; }
         }
-
-
 
         public int CodigoEjemplar
         {
-            get { return codigoEjemplar; }
-            set { codigoEjemplar = value; }
+            get { return Clave.CodigoEjemplar; }
+            set { Clave.CodigoEjemplar = value; }
         }
-
 
         public DateTime FechaDevolucion
         {

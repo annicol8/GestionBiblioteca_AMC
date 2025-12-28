@@ -111,11 +111,11 @@ namespace Persistencia
             TablaEjemplares.Add(new EjemplarDato(10, "978-0-13-235088-4", true, "22334455J"));
 
             // USUARIOS - DNIs válidos
-            TablaUsuarios.Add(new UsuarioDato("45678901R", "Pedro González", true));
-            TablaUsuarios.Add(new UsuarioDato("56789012E", "Eva Martínez", true));
-            TablaUsuarios.Add(new UsuarioDato("67890123D", "Carlos López", true));
-            TablaUsuarios.Add(new UsuarioDato("78901234K", "Sofía Rodríguez", true));
-            TablaUsuarios.Add(new UsuarioDato("89012345T", "Javier Fernández", false)); // Usuario dado de baja
+            TablaUsuarios.Add(new UsuarioDato("45678901R", "Pedro ", true));
+            TablaUsuarios.Add(new UsuarioDato("56789012E", "Eva ", true));
+            TablaUsuarios.Add(new UsuarioDato("67890123D", "Carlos ", true));
+            TablaUsuarios.Add(new UsuarioDato("78901234K", "Sofía ", true));
+            TablaUsuarios.Add(new UsuarioDato("89012345T", "Javier ", false)); // Usuario dado de baja
 
             // ===== PRÉSTAMO 1 (En Proceso) =====
             int idPrestamo1 = GenerarIdPrestamo();

@@ -498,6 +498,15 @@ POST: devuelve lista con los ejemplares asociados al préstamo (puede estar vac�
                      .Where(e => e != null) // Filtrar nulos por si acaso
                      .ToList();
         }
+
+        public static List<Ejemplar> GetEjemplaresPrestamo (int idPrestamo)
+        {
+            return BD.TablaPrestamoEjemplar
+                 .Where(pe => pe.IdPrestamo == idPrestamo)
+                 .Select(pe => GetEjemplar(new Ejemplar(pe.CodigoEjemplar)))
+                 .Where(e => e != null)
+                 .ToList();
+        }
         /*
 PRE: codigoEjemplar > 0
 POST: devuelve lista con todos los préstamos en los que aparece ese ejemplar (puede estar vacía)

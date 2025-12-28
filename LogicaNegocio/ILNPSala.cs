@@ -27,7 +27,6 @@ namespace LogicaNegocio
         //DateTime? GetFechaDisponibilidadDocumento(string isbn);
 
 
-
         // AÑAADIDOS
 
         List<Ejemplar> GetEjemplaresActivos();

@@ -28,10 +28,20 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
             try
             {
                 bindingSourcePrest = new BindingSource();
-                bindingSourcePrest.DataSource = lnps.GetTodosPrestamos();
+                var prestamos = lnps.GetTodosPrestamos();
+
+                if (prestamos == null || prestamos.Count == 0)
+                {
+                    MostrarInformacion("No hay préstamos registrados en el sistema.");
+                    bindingSourcePrest.DataSource = new List<Prestamo>();
+                }
+                else
+                {
+                    bindingSourcePrest.DataSource = prestamos;
+                }
 
                 dataGridView_Prest.DataSource = bindingSourcePrest;
-                ConfigurarColumnas();
+                //ConfigurarColumnas();
 
                 dataGridView_Prest.CellFormatting += DgvPrestamos_CellFormatting;
                 dataGridView_Prest.SelectionChanged += DgvPrestamos_SelectionChanged;
@@ -40,13 +50,18 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
                 {
                     MostrarDocumentosPrestamo();
                 }
-
-            } catch (Exception ex)
+                else
+                {
+                    listBox_Doc.Items.Add("(No hay préstamos para mostrar)");
+                }
+            }
+            catch (Exception ex)
             {
-                MostrarError($"Error al cargar los préstamos: {ex.Message}");
+                ManejarExcepcion(ex, "cargar los préstamos");
             }
         }
 
+        /*
         private void ConfigurarColumnas()
         {
             dataGridView_Prest.AutoGenerateColumns = true;
@@ -90,7 +105,7 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
                         break;
                 }
             }
-        }
+        }*/
 
         private void DgvPrestamos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -121,7 +136,8 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
                     e.Value = "Vencido";
                     e.CellStyle.BackColor = Color.LightCoral;
                     e.CellStyle.ForeColor = Color.DarkRed;
-                }else
+                }
+                else
                 {
                     switch (prestamo.Estado)
                     {
@@ -146,6 +162,7 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
 
         private void MostrarDocumentosPrestamo()
         {
+            /*
             try
             {
                 listBox_Doc.Items.Clear();
@@ -189,7 +206,71 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
             {
                 listBox_Doc.Items.Clear();
                 listBox_Doc.Items.Add($"Error al cargar documentos: {ex.Message}");
+            }*/
+
+
+            try
+            {
+                listBox_Doc.Items.Clear();
+
+                if (dataGridView_Prest.CurrentRow == null ||
+                    dataGridView_Prest.CurrentRow.DataBoundItem == null)
+                {
+                    listBox_Doc.Items.Add("(Selecciona un préstamo)");
+                    return;
+                }
+
+                Prestamo prestamo = dataGridView_Prest.CurrentRow.DataBoundItem as Prestamo;
+
+                if (prestamo == null)
+                {
+                    listBox_Doc.Items.Add("(Error al obtener el préstamo)");
+                    return;
+                }
+
+                // DEBUG: Añadir para ver qué está pasando
+                System.Diagnostics.Debug.WriteLine($"Buscando ejemplares para préstamo ID: {prestamo.Id}");
+
+                var ejemplares = lnps.GetEjemplaresDePrestamo(prestamo.Id);
+
+                // DEBUG: Verificar qué devuelve
+                System.Diagnostics.Debug.WriteLine($"Ejemplares encontrados: {ejemplares?.Count ?? 0}");
+
+                if (ejemplares == null || ejemplares.Count == 0)
+                {
+                    listBox_Doc.Items.Add("(Sin ejemplares asociados)");
+                    return;
+                }
+
+                int contador = 1;
+                foreach (var ejemplar in ejemplares)
+                {
+                    if (ejemplar == null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Ejemplar {contador} es null");
+                        continue;
+                    }
+
+                    var documento = lnps.GetDocumento(ejemplar.IsbnDocumento);
+
+                    if (documento != null)
+                    {
+                        listBox_Doc.Items.Add($"{contador}. \"{documento.Titulo}\" (Código: {ejemplar.Codigo})");
+                    }
+                    else
+                    {
+                        listBox_Doc.Items.Add($"{contador}. Ejemplar código: {ejemplar.Codigo} (Sin documento)");
+                    }
+                    contador++;
+                }
             }
+            catch (Exception ex)
+            {
+                listBox_Doc.Items.Clear();
+                listBox_Doc.Items.Add($"Error: {ex.Message}");
+                ManejarExcepcion(ex, "cargar los documentos del préstamo");
+            }
+
         }
 
     }

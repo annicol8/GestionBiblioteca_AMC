@@ -19,6 +19,9 @@ namespace Presentacion
         {
             InitializeComponent();
             codigosEjemplaresAñadidos = new List<int>();
+
+            bindingSourceEjemplares = new BindingSource();
+            bindingSourceUsuarios = new BindingSource();
         }
 
         public FAltaPrestamo(ILNPSala lnSala) : this()
@@ -35,21 +38,19 @@ namespace Presentacion
                 CargarFechaActual();
                 GenerarIdPrestamo();
 
-                // Inicializar BindingSource para ejemplares
-                bindingSourceEjemplares = new BindingSource();
                 ActualizarListaEjemplares();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al inicializar: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ManejarExcepcion(ex, "inicializar el formulario");
                 this.Close();
             }
         }
 
         private void CargarUsuarios()
         {
+            /*
             try
             {
 
@@ -75,6 +76,27 @@ namespace Presentacion
                 MessageBox.Show($"Error al cargar usuarios: {ex.Message} \n {ex.StackTrace}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            */
+
+            try
+            {
+                var usuarios = lnSala.GetUsuariosActivos();
+
+                if (usuarios == null || usuarios.Count == 0)
+                {
+                    MostrarInformacion("No hay usuarios activos en el sistema.");
+                    return;
+                }
+
+                bindingSourceUsuarios.DataSource = usuarios;
+                cbUsuarios.DataSource = bindingSourceUsuarios;
+                cbUsuarios.DisplayMember = "Dni";
+                cbUsuarios.ValueMember = "Dni";
+            }
+            catch (Exception ex)
+            {
+                ManejarExcepcion(ex, "cargar usuarios");
+            }
         }
 
 
@@ -87,10 +109,12 @@ namespace Presentacion
         {
             // Si el ID es autogenerado en BD, puedes dejar esto vacío o mostrar "Autogenerado"
             tbId.Text = "Autogenerado";
+            tbId.ReadOnly = true;
         }
 
         private void ActualizarListaEjemplares()
         {
+            /*
             List<EjemplarPrestamoInfo> ejemplaresInfo = new List<EjemplarPrestamoInfo>();
 
             // Obtener información de cada ejemplar añadido
@@ -114,10 +138,35 @@ namespace Presentacion
 
             bindingSourceEjemplares.DataSource = ejemplaresInfo;
             ActualizarPanelEjemplares(ejemplaresInfo);
+            */
+
+            List<EjemplarPrestamoInfo> ejemplaresInfo = new List<EjemplarPrestamoInfo>();
+
+            foreach (int codigoEjemplar in codigosEjemplaresAñadidos)
+            {
+                Ejemplar ej = lnSala.GetEjemplar(codigoEjemplar);
+                if (ej != null)
+                {
+                    Documento doc = lnSala.GetDocumento(ej.IsbnDocumento);
+                    ejemplaresInfo.Add(new EjemplarPrestamoInfo
+                    {
+                        Codigo = ej.Codigo,
+                        Titulo = doc?.Titulo ?? "Documento sin título",
+                        Isbn = ej.IsbnDocumento,
+                        Estado = "No devuelto"
+                    });
+                }
+            }
+
+            bindingSourceEjemplares.DataSource = ejemplaresInfo;
+            bindingSourceEjemplares.ResetBindings(false);
+
+            ActualizarPanelEjemplares(ejemplaresInfo);
         }
 
         private void btAñadirEjemplar_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 FAñadirEjemplarPrestamo formularioAñadir =
@@ -148,13 +197,59 @@ namespace Presentacion
                 MessageBox.Show($"Error: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            */
+
+            try
+            {
+                FAñadirEjemplarPrestamo formularioAñadir =
+                    new FAñadirEjemplarPrestamo(lnSala, codigosEjemplaresAñadidos);
+
+                if (formularioAñadir.ShowDialog(this) == DialogResult.OK)
+                {
+                    Ejemplar ejemplarSeleccionado = formularioAñadir.EjemplarSeleccionado;
+
+                    if (ejemplarSeleccionado != null)
+                    {
+                        // Validar que no está duplicado y que esta disponible antes de añadirlo al prestamo
+                        if (codigosEjemplaresAñadidos.Contains(ejemplarSeleccionado.Codigo))
+                        {
+                            MostrarInformacion("Este ejemplar ya ha sido añadido al préstamo.");
+                            return;
+                        }
+
+                        if (!lnSala.EjemplarDisponibleParaPrestamo(ejemplarSeleccionado.Codigo))
+                        {
+                            MostrarError("El ejemplar ya no está disponible.");
+                            return;
+                        }
+
+                        codigosEjemplaresAñadidos.Add(ejemplarSeleccionado.Codigo);
+                        ActualizarListaEjemplares();
+
+                        MostrarExito("Ejemplar añadido correctamente.", "Éxito");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ManejarExcepcion(ex, "añadir ejemplar");
+            }
+
         }
 
         // PASO 3.8: Eliminar un ejemplar de la lista
         private void EliminarEjemplar(int codigoEjemplar)
         {
+            /*
             codigosEjemplaresAñadidos.Remove(codigoEjemplar);
             ActualizarListaEjemplares();
+            */
+
+            if (SolicitarConfirmacion("¿Está seguro de que desea eliminar el ejemplar del préstamo?", "Confirmar eliminación"))
+            {
+                codigosEjemplaresAñadidos.Remove(codigoEjemplar);
+                ActualizarListaEjemplares();
+            }
         }
 
 
@@ -162,7 +257,9 @@ namespace Presentacion
 
         private void ActualizarPanelEjemplares(List<EjemplarPrestamoInfo> ejemplares)
         {
+            panelEjemplares.SuspendLayout();
             panelEjemplares.Controls.Clear();
+
             int posicionY = 10;
 
             foreach (EjemplarPrestamoInfo ej in ejemplares)
@@ -197,10 +294,12 @@ namespace Presentacion
 
                 posicionY += 70;
             }
+            panelEjemplares.ResumeLayout();
         }
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 // Validaciones
@@ -246,9 +345,79 @@ namespace Presentacion
                 MessageBox.Show($"Error al crear el préstamo: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            */
+
+            try
+            {
+                if (!ValidarSeleccionComboBox(cbUsuarios, "Usuario"))
+                    return;
+
+                if (codigosEjemplaresAñadidos.Count == 0)
+                {
+                    MostrarAdvertencia("Debe añadir al menos un ejemplar al préstamo.", "Validación");
+                    return;
+                }
+
+
+                // Crear objeto Préstamo
+                string dniUsuario = cbUsuarios.SelectedValue.ToString();
+
+                if (!lnSala.PuedeRealizarPrestamo(dniUsuario))
+                {
+                    MostrarAdvertencia(
+                        "El usuario no puede realizar préstamos.\n" +
+                        "Puede tener documentos fuera de plazo o estar inactivo.",
+                        "Usuario no válido");
+                    return;
+                }
+                
+                DateTime fechaPrestamo = dtpFecha.Value;
+                DateTime fechaDevolucion = fechaPrestamo.AddDays(15);  // 15 días por defecto
+                Prestamo prestamo = new Prestamo(
+                    0,
+                    fechaPrestamo,
+                    fechaDevolucion,
+                    EstadoPrestamo.enProceso,
+                    lnSala.Personal.Dni,
+                    dniUsuario
+                );
+                EstablecerEstadoControles(false, btAceptar, btCancelar, btAñadirEjemplar);
+                this.Cursor = Cursors.WaitCursor;
+
+                try
+                {
+                    int idPrestamoCreado = lnSala.CrearPrestamoCompleto(prestamo, codigosEjemplaresAñadidos);
+
+                    MostrarExito(  $"Préstamo creado con éxito.\n");
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                finally
+                {
+                    // Re-habilitar controles en caso de error
+                    EstablecerEstadoControles(true, btAceptar, btCancelar, btAñadirEjemplar);
+                    this.Cursor = Cursors.Default;
+                }
+            }
+            catch (Exception ex)
+            {
+                ManejarExcepcion(ex, "crear el préstamo");
+            }
+
         }
         private void btCancelar_Click_1(object sender, EventArgs e)
         {
+            if (codigosEjemplaresAñadidos.Count > 0)
+            {
+                if (!SolicitarConfirmacion(
+                    "¿Está seguro de que desea cancelar?\nSe perderán los datos introducidos.",
+                    "Confirmar cancelación"))
+                {
+                    return;
+                }
+            }
+
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }

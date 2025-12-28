@@ -35,6 +35,11 @@ namespace ModeloDominio
             set { isbnDocumento = value; }
         }
 
+        public string InfoCompleta
+        {
+            get { return $"Código: {Codigo} - ISBN: {IsbnDocumento}"; }
+        }
+
         //PRE: cod debe ser un entero positivo (>0) 
         //POST: se instancia un Ejemplar con el codigo inicializado y se crea como ejemplar activo por defecto
         public Ejemplar(int cod)
@@ -65,11 +70,13 @@ namespace ModeloDominio
             return codigo.GetHashCode();
         }
 
-        
+        /*
         // Métodos 
-        /*public bool EstaPrestado()
+        public bool EstaPrestado()
         {
             return Prestamos?.Any(p => p.Estado == EstadoPrestamo.EnProceso) ?? false;
         }*/
+
+
     }
 }

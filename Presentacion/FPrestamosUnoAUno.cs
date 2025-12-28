@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
 
+
 namespace Presentacion
 {
     public partial class FPrestamosUnoAUno : FComun
@@ -27,22 +28,15 @@ namespace Presentacion
         {
             try
             {
-                /*
                 bindingSourcePrest = new BindingSource();
-                bindingSourcePrest.DataSource = lnps.GetTodosPrestamos();
-
-                bindingNavigator1.BindingSource = bindingSourcePrest;
-
-                bindingSourcePrest.CurrentChanged += BindingSource_CurrentChanged;
                 
-                MostrarPrestamoActual();
-                */
-                if (lnps == null)
-                    throw new Exception("Lógica de negocio no inicializada");
-
-                bindingSourcePrest = new BindingSource();
-
                 var prestamos = lnps.GetTodosPrestamos() ?? new List<Prestamo>();
+
+                if (prestamos.Count == 0)
+                {
+                    MostrarInformacion("No hay préstamos registrados en el sistema.");
+                }
+
                 bindingSourcePrest.DataSource = prestamos;
 
                 if (bindingNavigator1 != null)
@@ -51,7 +45,15 @@ namespace Presentacion
                 bindingSourcePrest.CurrentChanged += BindingSource_CurrentChanged;
 
                 if (bindingSourcePrest.Count > 0)
+                {
                     MostrarPrestamoActual();
+                }
+                else
+                {
+                    LimpiarCampos();
+                    listBox_Doc.Items.Add("(No hay préstamos para mostrar)");
+                }
+
             }
             catch (Exception ex)
             {
@@ -147,6 +149,12 @@ namespace Presentacion
                 // Obtener ejemplares del préstamo
                 List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(idPrestamo);
 
+                if (ejemplares == null || ejemplares.Count == 0)
+                {
+                    listBox_Doc.Items.Add("(Sin ejemplares asociados)");
+                    return;
+                }
+
                 int contador = 1;
                 foreach (Ejemplar ejemplar in ejemplares)
                 {
@@ -155,13 +163,18 @@ namespace Presentacion
 
                     if (doc != null)
                     {
-                        listBox_Doc.Items.Add($"{contador}. \"{doc.Titulo}\"");
-                        contador++;
+                        listBox_Doc.Items.Add($"{contador}. \"{doc.Titulo}\" (Código ejemplar: {ejemplar.Codigo})");
                     }
+                    else
+                    {
+                        listBox_Doc.Items.Add($"{contador}. Ejemplar código: {ejemplar.Codigo} (Sin documento)");
+                    }
+                    contador++;
                 }
             }
             catch (Exception ex)
             {
+                listBox_Doc.Items.Clear();
                 listBox_Doc.Items.Clear();
                 listBox_Doc.Items.Add($"Error: {ex.Message}");
             }

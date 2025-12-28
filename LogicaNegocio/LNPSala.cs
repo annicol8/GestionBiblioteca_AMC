@@ -13,15 +13,21 @@ namespace LogicaNegocio
         {
         }
 
-        //PRE:
-        //POST:
+        // PRE: prestamo != null y los datos del préstamo son válidos (usuario, personal, ejemplares, fechas).
+        // POST: El préstamo queda persistido en el sistema y se devuelve el identificador generado (> 0).
+
         public int AltaPrestamo(Prestamo prestamo)
         {
             return Persistencia.Persistencia.AltaPrestamo(prestamo);
         }
 
-        //PRE:
-        //POST: 
+        // PRE: idPrestamo > 0, codigoEjemplar > 0.
+        //      El préstamo debe existir.
+        // POST: Se registra la fecha de devolución del ejemplar en el préstamo.
+        //       Si el ejemplar no pertenece al préstamo, se lanza una excepción.
+        //       Si todos los ejemplares del préstamo fueron devueltos,
+        //       el estado del préstamo pasa a "finalizado".
+
         public void DevolverEjemplar(int idPrestamo, int codigoEjemplar)
         {
             if (Persistencia.Persistencia.GetPrestamoEjemplar(idPrestamo, codigoEjemplar) == null)
@@ -63,10 +69,9 @@ namespace LogicaNegocio
             return null;
         }*/
 
-        /*
-PRE: idPrestamo > 0
-POST: devuelve lista con los ejemplares del préstamo que aún no han sido devueltos (puede estar vacía)
-*/
+        
+        //PRE: idPrestamo > 0
+        //POST: devuelve lista con los ejemplares del préstamo que aún no han sido devueltos (puede estar vacía)
         public List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo)
         {
             // Obtener todos los ejemplares del préstamo
@@ -88,8 +93,8 @@ POST: devuelve lista con los ejemplares del préstamo que aún no han sido devue
             return ejemplaresNoDevueltos;
         }
 
-        //PRE:
-        //POST:
+        // PRE: idPrestamo > 0.
+        // POST: Devuelve el estado del préstamo si existe.Si el préstamo no existe, devuelve null.
         public EstadoPrestamo? GetEstadoPrestamo(int idPrestamo)
         {
             Prestamo prestamo = Persistencia.Persistencia.GetPrestamoPorId(idPrestamo);
@@ -101,15 +106,15 @@ POST: devuelve lista con los ejemplares del préstamo que aún no han sido devue
             return prestamo.Estado;
         }
 
-        //PRE:
-        //POST:
+        // PRE: idPrestamo > 0.
+        // POST: Devuelve el préstamo correspondiente al id. Si no existe, devuelve null.
         public Prestamo GetPrestamo(int idPrestamo)
         {
             return Persistencia.Persistencia.GetPrestamoPorId(idPrestamo);
         }
 
-        //PRE:
-        //POST:
+        // PRE: No tiene.
+        // POST: Devuelve una lista con todos los préstamos que se encuentran caducados. La lista puede estar vacía. No devuelve null.
         public List<Prestamo> GetPrestamosFueraDePlazo()
         {
             List<Prestamo> prestamos = Persistencia.Persistencia.GetPrestamos();
@@ -126,8 +131,9 @@ POST: devuelve lista con los ejemplares del préstamo que aún no han sido devue
             return prestamosFueraDePlazo;
         }
 
-        //PRE:
-        //POST:
+        // PRE: isbn != null y no vacío.
+        // POST: Devuelve una lista con todos los préstamos asociados a ejemplares del documento indicado.
+        //       No se repiten préstamos. La lista puede estar vacía si el documento no tiene préstamos.
         public List<Prestamo> GetPrestamosPorDocumento(string isbn)
         {
             List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
@@ -151,8 +157,8 @@ POST: devuelve lista con los ejemplares del préstamo que aún no han sido devue
             return prestamos;
         }
 
-        //PRE:
-        //POST:
+        // PRE: idPrestamo > 0.
+        // POST: Devuelve el usuario asociado al préstamo. Si el préstamo no existe, devuelve null.
         public Usuario GetUsuarioPrestamo(int idPrestamo)
         {
             Prestamo prestamo = Persistencia.Persistencia.GetPrestamoPorId(idPrestamo);
@@ -163,19 +169,21 @@ POST: devuelve lista con los ejemplares del préstamo que aún no han sido devue
             return Persistencia.Persistencia.GetUsuario(prestamo.DniUsuario);
         }
 
-        //PRE:
-        //POST:
+        // PRE: No tiene.
+        // POST: Devuelve la lista completa de préstamos del sistema.
         public List<Prestamo> GetTodosPrestamos()
         {
             return Persistencia.Persistencia.GetPrestamos();
         }
 
-        //PRE:
-        //POST:
+
+        // PRE: id > 0.
+        // POST: Devuelve la lista de ejemplares asociados al préstamo.
+        //       Puede estar vacía si el préstamo no tiene ejemplares o no existe.   No devuelve null.
         public List<Ejemplar> GetEjemplaresDePrestamo(int id)
         {
             return Persistencia.Persistencia.GetEjemplaresDePrestamo(id);
-        }
+        } 
 
         //PRE:
         //POST: Si no existe, null; si existe, devuelve el objeto AudLibro o LiPapel
@@ -185,12 +193,8 @@ POST: devuelve lista con los ejemplares del préstamo que aún no han sido devue
             return Persistencia.Persistencia.GetDocumento(isbn);
         }
 
-        // AÑADIDO 
-
-        /*
-PRE: ninguna
-POST: devuelve lista con todos los ejemplares activos del sistema (puede estar vacía)
-*/
+        //PRE: ninguna
+        //POST: devuelve lista con todos los ejemplares activos del sistema (puede estar vacía)
         public List<Ejemplar> GetEjemplaresActivos()
         {
             return Persistencia.Persistencia.GetEjemplares()
@@ -198,10 +202,9 @@ POST: devuelve lista con todos los ejemplares activos del sistema (puede estar v
                 .ToList();
         }
 
-        /*
-        PRE: codigosExcluidos puede ser null
-        POST: devuelve lista con ejemplares activos excluyendo los códigos especificados (puede estar vacía)
-        */
+        
+        //PRE: codigosExcluidos puede ser null
+        //POST: devuelve lista con ejemplares activos excluyendo los códigos especificados (puede estar vacía)
         public List<Ejemplar> GetEjemplaresDisponibles(List<int> codigosExcluidos)
         {
             List<Ejemplar> todosActivos = GetEjemplaresActivos();
@@ -212,11 +215,10 @@ POST: devuelve lista con todos los ejemplares activos del sistema (puede estar v
             return todosActivos.Where(e => !codigosExcluidos.Contains(e.Codigo)).ToList();
         }
 
-        /*
-        PRE: prestamo != null && ejemplares != null && ejemplares.Count > 0
-        POST: crea el préstamo en la BD, añade todos los ejemplares con estado no devuelto,
-              devuelve el ID del préstamo creado. Si falla, lanza excepción
-        */
+        
+        //PRE: prestamo != null && ejemplares != null && ejemplares.Count > 0
+        //POST: crea el préstamo en la BD, añade todos los ejemplares con estado no devuelto,
+        //      devuelve el ID del préstamo creado. Si falla, lanza excepción
         public int CrearPrestamoCompleto(Prestamo prestamo, List<int> codigosEjemplares)
         {
             if (prestamo == null)

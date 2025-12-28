@@ -37,11 +37,18 @@
             // 
             // dataGridView_Prest
             // 
+            this.dataGridView_Prest.AllowUserToAddRows = false;
+            this.dataGridView_Prest.AllowUserToDeleteRows = false;
+            this.dataGridView_Prest.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_Prest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Prest.Location = new System.Drawing.Point(21, 32);
+            this.dataGridView_Prest.MultiSelect = false;
             this.dataGridView_Prest.Name = "dataGridView_Prest";
+            this.dataGridView_Prest.ReadOnly = true;
+            this.dataGridView_Prest.RowHeadersVisible = false;
             this.dataGridView_Prest.RowHeadersWidth = 62;
             this.dataGridView_Prest.RowTemplate.Height = 28;
+            this.dataGridView_Prest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_Prest.Size = new System.Drawing.Size(1111, 210);
             this.dataGridView_Prest.TabIndex = 0;
             this.dataGridView_Prest.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvPrestamos_CellFormatting);

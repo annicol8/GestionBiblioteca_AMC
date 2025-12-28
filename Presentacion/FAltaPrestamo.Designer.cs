@@ -45,52 +45,58 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(135, 62);
+            this.label1.Location = new System.Drawing.Point(75, 50);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 25);
+            this.label1.Size = new System.Drawing.Size(30, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(135, 132);
+            this.label2.Location = new System.Drawing.Point(75, 103);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 25);
+            this.label2.Size = new System.Drawing.Size(58, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Fecha:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(135, 202);
+            this.label3.Location = new System.Drawing.Point(75, 161);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 25);
+            this.label3.Size = new System.Drawing.Size(68, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Usuario:";
             // 
             // dtpFecha
             // 
             this.dtpFecha.Enabled = false;
-            this.dtpFecha.Location = new System.Drawing.Point(286, 129);
+            this.dtpFecha.Location = new System.Drawing.Point(176, 103);
+            this.dtpFecha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(200, 31);
+            this.dtpFecha.Size = new System.Drawing.Size(189, 26);
             this.dtpFecha.TabIndex = 3;
             // 
             // cbUsuarios
             // 
             this.cbUsuarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUsuarios.FormattingEnabled = true;
-            this.cbUsuarios.Location = new System.Drawing.Point(286, 198);
+            this.cbUsuarios.Location = new System.Drawing.Point(176, 158);
+            this.cbUsuarios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbUsuarios.Name = "cbUsuarios";
-            this.cbUsuarios.Size = new System.Drawing.Size(200, 33);
+            this.cbUsuarios.Size = new System.Drawing.Size(189, 28);
             this.cbUsuarios.TabIndex = 4;
             // 
             // btAñadirEjemplar
             // 
-            this.btAñadirEjemplar.Location = new System.Drawing.Point(135, 279);
+            this.btAñadirEjemplar.Location = new System.Drawing.Point(79, 223);
+            this.btAñadirEjemplar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btAñadirEjemplar.Name = "btAñadirEjemplar";
-            this.btAñadirEjemplar.Size = new System.Drawing.Size(348, 47);
+            this.btAñadirEjemplar.Size = new System.Drawing.Size(286, 38);
             this.btAñadirEjemplar.TabIndex = 5;
             this.btAñadirEjemplar.Text = "Añadir ejemplar";
             this.btAñadirEjemplar.UseVisualStyleBackColor = true;
@@ -98,18 +104,21 @@
             // 
             // tbId
             // 
-            this.tbId.Location = new System.Drawing.Point(286, 59);
+            this.tbId.Location = new System.Drawing.Point(176, 47);
+            this.tbId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbId.Name = "tbId";
             this.tbId.ReadOnly = true;
-            this.tbId.Size = new System.Drawing.Size(200, 31);
+            this.tbId.Size = new System.Drawing.Size(189, 26);
             this.tbId.TabIndex = 6;
             // 
             // gbEjemplares
             // 
             this.gbEjemplares.Controls.Add(this.panelEjemplares);
-            this.gbEjemplares.Location = new System.Drawing.Point(595, 62);
+            this.gbEjemplares.Location = new System.Drawing.Point(446, 50);
+            this.gbEjemplares.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbEjemplares.Name = "gbEjemplares";
-            this.gbEjemplares.Size = new System.Drawing.Size(701, 512);
+            this.gbEjemplares.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbEjemplares.Size = new System.Drawing.Size(526, 410);
             this.gbEjemplares.TabIndex = 7;
             this.gbEjemplares.TabStop = false;
             this.gbEjemplares.Text = "Ejemplares añadidos";
@@ -117,16 +126,18 @@
             // panelEjemplares
             // 
             this.panelEjemplares.AutoScroll = true;
-            this.panelEjemplares.Location = new System.Drawing.Point(51, 52);
+            this.panelEjemplares.Location = new System.Drawing.Point(38, 42);
+            this.panelEjemplares.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelEjemplares.Name = "panelEjemplares";
-            this.panelEjemplares.Size = new System.Drawing.Size(607, 421);
+            this.panelEjemplares.Size = new System.Drawing.Size(455, 337);
             this.panelEjemplares.TabIndex = 0;
             // 
             // btAceptar
             // 
-            this.btAceptar.Location = new System.Drawing.Point(595, 626);
+            this.btAceptar.Location = new System.Drawing.Point(446, 501);
+            this.btAceptar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btAceptar.Name = "btAceptar";
-            this.btAceptar.Size = new System.Drawing.Size(140, 46);
+            this.btAceptar.Size = new System.Drawing.Size(105, 37);
             this.btAceptar.TabIndex = 8;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
@@ -134,9 +145,10 @@
             // 
             // btCancelar
             // 
-            this.btCancelar.Location = new System.Drawing.Point(766, 626);
+            this.btCancelar.Location = new System.Drawing.Point(574, 501);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(140, 46);
+            this.btCancelar.Size = new System.Drawing.Size(105, 37);
             this.btCancelar.TabIndex = 9;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
@@ -144,9 +156,9 @@
             // 
             // FAltaPrestamo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1408, 726);
+            this.ClientSize = new System.Drawing.Size(1056, 581);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btAceptar);
             this.Controls.Add(this.gbEjemplares);
@@ -157,6 +169,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FAltaPrestamo";
             this.Text = "Alta de un prestamo";
             this.Load += new System.EventHandler(this.FAltaPrestamo_Load);
