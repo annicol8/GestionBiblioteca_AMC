@@ -52,10 +52,8 @@ namespace Presentacion
         {
             try
             {
-                MessageBox.Show("Entrando en CargarUsuarios", "DEBUG");
 
                 var usuarios = lnSala.GetUsuariosActivos();
-                MessageBox.Show($"Usuarios obtenidos: {usuarios?.Count ?? 0}", "DEBUG");
 
                 if (usuarios == null || usuarios.Count == 0)
                 {
@@ -71,7 +69,6 @@ namespace Presentacion
                 cbUsuarios.DisplayMember = "Dni";
                 cbUsuarios.ValueMember = "Dni";
 
-                MessageBox.Show($"ComboBox cargado con {cbUsuarios.Items.Count} items", "DEBUG");
             }
             catch (Exception ex)
             {
@@ -99,7 +96,9 @@ namespace Presentacion
             // Obtener información de cada ejemplar añadido
             foreach (int codigoEjemplar in codigosEjemplaresAñadidos)
             {
-                Ejemplar ej = Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigoEjemplar)); // ESTO ESTÁ MAL. HAY QUE HACER UN MÉTODO EN LOGICA NEGOCIO
+                //Ejemplar ej = Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigoEjemplar)); // ESTO ESTÁ MAL. HAY QUE HACER UN MÉTODO EN LOGICA NEGOCIO
+
+                Ejemplar ej = lnSala.GetEjemplar(codigoEjemplar);
                 if (ej != null)
                 {
                     Documento doc = lnSala.GetDocumento(ej.IsbnDocumento);
