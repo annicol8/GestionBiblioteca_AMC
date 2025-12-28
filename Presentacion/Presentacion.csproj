@@ -131,6 +131,12 @@
     <Compile Include="FComun.Designer.cs">
       <DependentUpon>FComun.cs</DependentUpon>
     </Compile>
+    <Compile Include="FDevolverPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FDevolverPrestamo.Designer.cs">
+      <DependentUpon>FDevolverPrestamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FDocumentosUnoAUno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FClave.resx">
       <DependentUpon>FClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FDevolverPrestamo.resx">
+      <DependentUpon>FDevolverPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FDocumentosUnoAUno.resx">
       <DependentUpon>FDocumentosUnoAUno.cs</DependentUpon>

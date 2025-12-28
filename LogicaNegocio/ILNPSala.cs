@@ -14,7 +14,7 @@ namespace LogicaNegocio
 
         List<Prestamo> GetPrestamosPorDocumento(string isbn);
 
-        void DevolverEjemplar(int idPrestamo, int codigoEjemplar); // Codigo ejemplar es int?
+        void DevolverEjemplar(int idPrestamo, int codigoEjemplar);
         List<Prestamo> GetPrestamosFueraDePlazo();
 
         List<Prestamo> GetTodosPrestamos();

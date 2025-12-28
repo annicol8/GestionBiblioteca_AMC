@@ -1,5 +1,6 @@
 ﻿using System;
 using LogicaNegocio;
+using ModeloDominio;
 
 namespace Presentacion
 {
@@ -64,6 +65,29 @@ namespace Presentacion
             {
                 MostrarError($"Error al abrir el alta de préstamos: {ex.Message}");
             }
+        }
+
+        protected override void menuPrestamosDevolver_Click(object sender, EventArgs e)
+        {
+            int idPrestamo = pedirClave<int>("Identificador del préstamo");
+            if (idPrestamo == 0) return;
+
+            Prestamo prestamo = lnSala.GetPrestamo(idPrestamo);
+
+            if (prestamo == null)
+            {
+                MostrarError("No existe ningún préstamo con ese identificador");
+                return;
+            }
+
+            if (prestamo.Estado == EstadoPrestamo.finalizado)
+            {
+                MostrarError("Este préstamo no tiene ejemplares pendientes de devolver");
+                return;
+            }
+
+            FDevolverPrestamo formulario = new FDevolverPrestamo(lnSala, prestamo);
+            formulario.ShowDialog(this);
         }
 
 
