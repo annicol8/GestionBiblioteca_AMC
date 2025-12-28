@@ -12,6 +12,8 @@ namespace Presentacion
         private ILNPSala lnSala;
         private List<int> codigosEjemplaresAñadidos;  // Códigos de ejemplares seleccionados
         private BindingSource bindingSourceEjemplares;
+        private BindingSource bindingSourceUsuarios;
+
 
         public FAltaPrestamo()
         {
@@ -37,8 +39,6 @@ namespace Presentacion
                 bindingSourceEjemplares = new BindingSource();
                 ActualizarListaEjemplares();
 
-                // Configurar controles
-                btCancelar.Click += BtCancelar_Click;
             }
             catch (Exception ex)
             {
@@ -50,11 +50,36 @@ namespace Presentacion
 
         private void CargarUsuarios()
         {
-            List<Usuario> usuariosActivos = lnSala.GetUsuariosActivos();
-            cbUsuarios.DataSource = usuariosActivos;
-            cbUsuarios.DisplayMember = "Dni";  // Mostrar DNI
-            cbUsuarios.ValueMember = "Dni";    // Valor seleccionado es el DNI
+            try
+            {
+                MessageBox.Show("Entrando en CargarUsuarios", "DEBUG");
+
+                var usuarios = lnSala.GetUsuariosActivos();
+                MessageBox.Show($"Usuarios obtenidos: {usuarios?.Count ?? 0}", "DEBUG");
+
+                if (usuarios == null || usuarios.Count == 0)
+                {
+                    MessageBox.Show("No hay usuarios activos en el sistema.",
+                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                bindingSourceUsuarios = new BindingSource();
+                bindingSourceUsuarios.DataSource = usuarios;
+
+                cbUsuarios.DataSource = bindingSourceUsuarios;
+                cbUsuarios.DisplayMember = "Dni";
+                cbUsuarios.ValueMember = "Dni";
+
+                MessageBox.Show($"ComboBox cargado con {cbUsuarios.Items.Count} items", "DEBUG");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar usuarios: {ex.Message} \n {ex.StackTrace}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void CargarFechaActual()
         {
@@ -223,12 +248,11 @@ namespace Presentacion
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void BtCancelar_Click(object sender, EventArgs e)
+        private void btCancelar_Click_1(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
 
     }
 

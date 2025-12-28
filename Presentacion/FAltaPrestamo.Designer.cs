@@ -119,7 +119,7 @@
             this.panelEjemplares.AutoScroll = true;
             this.panelEjemplares.Location = new System.Drawing.Point(51, 52);
             this.panelEjemplares.Name = "panelEjemplares";
-            this.panelEjemplares.Size = new System.Drawing.Size(200, 100);
+            this.panelEjemplares.Size = new System.Drawing.Size(607, 421);
             this.panelEjemplares.TabIndex = 0;
             // 
             // btAceptar
@@ -140,6 +140,7 @@
             this.btCancelar.TabIndex = 9;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click_1);
             // 
             // FAltaPrestamo
             // 
@@ -158,6 +159,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FAltaPrestamo";
             this.Text = "Alta de un prestamo";
+            this.Load += new System.EventHandler(this.FAltaPrestamo_Load);
             this.gbEjemplares.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

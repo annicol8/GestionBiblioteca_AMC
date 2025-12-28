@@ -44,14 +44,12 @@ namespace Presentacion
         private void CargarEjemplaresDisponibles()
         {
 
-            //Obtener todos los ejemplares activos desde LN
             ejemplaresDisponibles = lnSala.GetEjemplaresActivos();
 
             //Filtrar los que ya han sido añadidos al préstamo
             List<Ejemplar> ejemplaresParaMostrar = new List<Ejemplar>();
             foreach (Ejemplar ej in ejemplaresDisponibles)
             {
-                // Si el código no está en los ya añadidos, y está disponible para préstamo
                 if (!codigosEjemplaresAñadidos.Contains(ej.Codigo) &&
                     lnSala.EjemplarDisponibleParaPrestamo(ej.Codigo))
                 {
@@ -62,6 +60,8 @@ namespace Presentacion
             // Asignar al ListBox
             listBox1.DataSource = ejemplaresParaMostrar;
             listBox1.DisplayMember = "Codigo";  // Muestra el código
+
+
 
         }
 
