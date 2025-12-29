@@ -90,6 +90,23 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
+        protected override void menuPrestamosBuscar_Click(object sender, EventArgs e)
+        {
+            int idPrestamo = pedirClave<int>("Identificador del préstamo");
+            if (idPrestamo == 0) return;
+
+            Prestamo prestamo = lnSala.GetPrestamo(idPrestamo);
+
+            if (prestamo == null)
+            {
+                MostrarError("No existe ningún préstamo con ese identificador");
+                return;
+            }
+
+
+            FBuscarPrestamo formulario = new FBuscarPrestamo(lnSala, prestamo);
+            formulario.ShowDialog(this);
+        }
 
     }
 }

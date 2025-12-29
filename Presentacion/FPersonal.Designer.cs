@@ -237,6 +237,7 @@
             this.menuPrestamosBuscar.Name = "menuPrestamosBuscar";
             this.menuPrestamosBuscar.Size = new System.Drawing.Size(276, 34);
             this.menuPrestamosBuscar.Text = "Buscar";
+            this.menuPrestamosBuscar.Click += new System.EventHandler(this.menuPrestamosBuscar_Click);
             // 
             // menuPrestamosDevolver
             // 
@@ -266,7 +267,7 @@
             this.ClientSize = new System.Drawing.Size(600, 360);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FPersonal";
             this.Text = "Gestión de biblioteca";
             this.menuStrip1.ResumeLayout(false);

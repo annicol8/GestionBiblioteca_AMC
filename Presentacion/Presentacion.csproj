@@ -107,6 +107,12 @@
     <Compile Include="FBuscarEjemplar.Designer.cs">
       <DependentUpon>FBuscarEjemplar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FBuscarPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBuscarPrestamo.Designer.cs">
+      <DependentUpon>FBuscarPrestamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FBuscarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FBuscarEjemplar.resx">
       <DependentUpon>FBuscarEjemplar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBuscarPrestamo.resx">
+      <DependentUpon>FBuscarPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FBuscarUsuario.resx">
       <DependentUpon>FBuscarUsuario.cs</DependentUpon>
