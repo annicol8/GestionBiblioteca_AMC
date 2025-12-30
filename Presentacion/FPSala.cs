@@ -69,7 +69,7 @@ namespace Presentacion
 
         protected override void menuPrestamosDevolver_Click(object sender, EventArgs e)
         {
-            int idPrestamo = pedirClave<int>("Identificador del préstamo");
+            int idPrestamo = pedirClave<int>("Identificador ");
             if (idPrestamo == 0) return;
 
             Prestamo prestamo = lnSala.GetPrestamo(idPrestamo);
@@ -92,7 +92,7 @@ namespace Presentacion
 
         protected override void menuPrestamosBuscar_Click(object sender, EventArgs e)
         {
-            int idPrestamo = pedirClave<int>("Identificador del préstamo");
+            int idPrestamo = pedirClave<int>("Identificador ");
             if (idPrestamo == 0) return;
 
             Prestamo prestamo = lnSala.GetPrestamo(idPrestamo);
