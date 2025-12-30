@@ -15,33 +15,45 @@ namespace Presentacion
 {
     public partial class FComun : Form
     {
+        //PRE:
+        //POST: Se inicializa el formulario común.
         public FComun()
         {
             InitializeComponent();
         }
 
-        // Métodos para mostrar mensajes al usuario. Falta añadir los iconoes
+        //Métodos para mostrar mensajes al usuario.
 
+        //PRE: El mensaje no debe ser null.
+        //POST: Se muestra un mensaje informativo al usuario.
         protected void MostrarInformacion(string mensaje, string titulo = "Información")
         {
             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        //PRE: El mensaje no debe ser null.
+        //POST: Se muestra un mensaje de advertencia al usuario.
         protected void MostrarAdvertencia(string mensaje, string titulo = "Advertencia")
         {
             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-
+        //PRE: El mensaje no debe ser null.
+        //POST: Se muestra un mensaje de error al usuario.
         protected void MostrarError(string mensaje, string titulo = "Error")
         {
             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        //PRE: El mensaje y el título no deben ser null.
+        //POST: Se muestra una pregunta al usuario y se devuelve su respuesta.
         protected DialogResult MostrarPregunta(string mensaje, string titulo)
         {
             return MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
+        //PRE: El mensaje no debe ser null.
+        //POST: Devuelve true si el usuario confirma la acción; false en caso contrario.
         protected bool SolicitarConfirmacion(string mensaje, string titulo = "Confirmación")
         {
             DialogResult result = MessageBox.Show(
@@ -53,6 +65,8 @@ namespace Presentacion
             return result == DialogResult.Yes;
         }
 
+        //PRE: El mensaje no debe ser null.
+        //POST: Se muestra un mensaje de éxito al usuario.
         protected void MostrarExito(string mensaje, string titulo = "Operación Exitosa")
         {
             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -61,9 +75,10 @@ namespace Presentacion
 
 
 
+        #region LIMPIARCAMPOS
 
-        // Para limpiar los campos de texto en un formulario
-
+        //PRE: El formulario contiene controles inicializados.
+        //POST: Se limpian todos los campos del formulario.
         protected void LimpiarCampos()
         {
             foreach (Control control in this.Controls)
@@ -72,6 +87,8 @@ namespace Presentacion
             }
         }
 
+        //PRE: El control no debe ser null.
+        //POST: Se limpian los valores del control y de todos sus controles hijos.
         private void LimpiarControlRecursivo(Control control)
         {
             if (control is TextBox textBox)
@@ -110,12 +127,13 @@ namespace Presentacion
             }
         }
 
+        #endregion
 
 
-
-        // Métodos para validaciones
-
-
+        #region VALIDACIONES
+        
+        //PRE: El TextBox debe estar inicializado.
+        //POST: Devuelve true si el campo no está vacío; en caso contrario muestra advertencia.
         protected bool ValidarCampoNoVacio(TextBox textBox, string nombreCampo)
         {
             if (string.IsNullOrWhiteSpace(textBox.Text))
@@ -127,7 +145,8 @@ namespace Presentacion
             return true;
         }
 
-
+        //PRE: Los campos deben estar inicializados.
+        //POST: Devuelve true si todos los campos tienen contenido.
         protected bool ValidarCamposNoVacios(params (TextBox textBox, string nombre)[] campos)
         {
             foreach (var campo in campos)
@@ -138,7 +157,8 @@ namespace Presentacion
             return true;
         }
 
-        
+        //PRE: El nombre no debe ser null.
+        //POST: Devuelve true si el nombre cumple el formato válido.
         protected bool ValidarNombre(string nombre, string nombreCampo = "Nombre")
         {
             if (string.IsNullOrWhiteSpace(nombre))
@@ -200,7 +220,8 @@ namespace Presentacion
             return true;
         }
 
-        
+        //PRE: El nombre puede ser null o vacío.
+        //POST: Devuelve el nombre normalizado (primera letra en mayúscula).
         protected string NormalizarNombre(string nombre)
         {
             if (string.IsNullOrWhiteSpace(nombre))
@@ -216,6 +237,8 @@ namespace Presentacion
             return textInfo.ToTitleCase(nombre);
         }
 
+        //PRE: El DNI no debe ser null.
+        //POST: Devuelve true si el DNI es válido según el algoritmo oficial.
         protected bool ValidarDNI(string dni)
         {
             if (string.IsNullOrWhiteSpace(dni))
@@ -245,6 +268,9 @@ namespace Presentacion
         }
 
         // Acepta cualquier cadena que, quitando guiones y espacios, sea un número de 13 dígitos y tenga un dígito de control ISBN-13 correcto. Ej: 978-0-306-40615-7
+
+        //PRE: El ISBN no debe ser null.
+        //POST: Devuelve true si el ISBN-13 es válido.
         protected bool ValidarISBN(string isbn)
         {
             if (string.IsNullOrWhiteSpace(isbn))
@@ -275,7 +301,8 @@ namespace Presentacion
             return digitoControl == ultimoDigito;
         }
 
-
+        //PRE: El TextBox debe estar inicializado.
+        //POST: Devuelve true si el valor es un entero positivo válido.
         protected bool ValidarNumeroEnteroPositivo(TextBox textBox, string nombreCampo, out int valor)
         {
             valor = 0;
@@ -300,7 +327,8 @@ namespace Presentacion
             return true;
         }
 
-
+        //PRE: El TextBox debe estar inicializado.
+        //POST: Devuelve true si el año es válido.
         protected bool ValidarAnio(TextBox textBox, string nombreCampo, out int anio)
         {
             anio = 0;
@@ -319,6 +347,8 @@ namespace Presentacion
             return true;
         }
 
+        //PRE: El ComboBox debe estar inicializado.
+        //POST: Devuelve true si hay un elemento seleccionado.
         protected bool ValidarSeleccionComboBox(ComboBox comboBox, string nombreCampo)
         {
             if (comboBox.SelectedIndex == -1)
@@ -330,6 +360,8 @@ namespace Presentacion
             return true;
         }
 
+        //PRE: El ListBox debe estar inicializado.
+        //POST: Devuelve true si hay un elemento seleccionado.
         protected bool ValidarSeleccionListBox(ListBox listBox, string nombreCampo)
         {
             if (listBox.SelectedIndex == -1)
@@ -341,6 +373,8 @@ namespace Presentacion
             return true;
         }
 
+        //PRE: La lista no debe ser null.
+        //POST: Devuelve true si la lista contiene elementos.
         protected bool ValidarListaNoVacia<T>(List<T> lista, string nombreLista)
         {
             if (lista == null || lista.Count == 0)
@@ -351,10 +385,14 @@ namespace Presentacion
             return true;
         }
 
+        //PRE: 
+        //POST: Cambia el cursor del formulario a espera o normal.
+
         protected void CambiarCursor(bool espera)
         {
             this.Cursor = espera ? Cursors.WaitCursor : Cursors.Default;
         }
+        #endregion
 
 
         #region Utilidades de Interfaz
@@ -394,7 +432,8 @@ namespace Presentacion
 
         #endregion
 
-
+        //PRE: La excepción no debe ser null.
+        //POST: Se muestra un mensaje de error asociado a la operación.
         protected void ManejarExcepcion(Exception ex, string operacion)
         {
             string mensaje = $"Error al {operacion}: {ex.Message} ";
@@ -406,7 +445,8 @@ namespace Presentacion
             // Logger.Error(ex, operacion);
         }
 
-        
+        //PRE: El mensaje no debe ser null.
+        //POST: Devuelve la clave introducida convertida al tipo T.
         protected T pedirClave<T>(string mensaje)
         {
             while (true)
@@ -434,9 +474,6 @@ namespace Presentacion
             }
         }
         
-
-
-
 
     }
 }

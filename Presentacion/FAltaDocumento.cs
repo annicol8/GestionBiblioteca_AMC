@@ -17,29 +17,35 @@ namespace Presentacion
         private ILNPAdq lnAdq;
         private string isbn;
 
+        //PRE:
+        //POST: Se inicializa el formulario de alta de documentos.
         public FAltaDocumento()
         {
             InitializeComponent();
         }
 
+        //PRE: lnAdq no debe ser null e isbn debe contener un ISBN válido.
+        //POST: Se inicializa el formulario con la lógica de negocio y el ISBN del documento.
         public FAltaDocumento(ILNPAdq lnAdq, string isbn) : this()
         {
             this.lnAdq = lnAdq;
             this.isbn = isbn;
         }
 
+        //PRE: El formulario ha sido creado y el ISBN contiene un valor.
+        //POST: El ISBN se muestra en el textbox en modo solo lectura, se da foco al título
+        //      y se ocultan los campos específicos de audiolibro.
         private void FAltaDocumento_Load(object sender, EventArgs e)
         {
             tbIsbn.Text = isbn;
             tbIsbn.ReadOnly = true;
             tbTitulo.Focus();
 
-
             OcultarCamposAudioLibro();
-
         }
 
-
+        //PRE: El radio button de libro cambia de estado.
+        //POST: Si se selecciona libro en papel, se ocultan los campos de audiolibro.
         private void rbLibro_CheckedChanged(object sender, EventArgs e)
         {
             if (rbLibro.Checked)
@@ -48,6 +54,8 @@ namespace Presentacion
             }
         }
 
+        //PRE: El radio button de audiolibro cambia de estado.
+        //POST: Si se selecciona audiolibro, se muestran los campos específicos.
         private void rbAudioLibro_CheckedChanged(object sender, EventArgs e)
         {
             if (rbAudioLibro.Checked)
@@ -56,6 +64,8 @@ namespace Presentacion
             }
         }
 
+        //PRE: El formulario está inicializado.
+        //POST: Los campos específicos del audiolibro quedan visibles.
         private void MostrarCamposAudioLibro()
         {
             lbFormatoDigital.Visible = true;
@@ -65,7 +75,8 @@ namespace Presentacion
             gbAudioLibro.Visible = true;
         }
 
-
+        //PRE: El formulario está inicializado.
+        //POST: Los campos específicos del audiolibro quedan ocultos.
         private void OcultarCamposAudioLibro()
         {
             lbFormatoDigital.Visible = false;
@@ -75,6 +86,10 @@ namespace Presentacion
             gbAudioLibro.Visible = false;
         }
 
+        //PRE: El usuario ha introducido los datos del documento y pulsa el botón Dar Alta.
+        //POST: Si los datos son válidos, se da de alta el documento correspondiente
+        //      (libro o audiolibro), se muestra un mensaje de éxito y se cierra el formulario.
+        //      En caso de error, se muestra el mensaje correspondiente.
         private void btDarAlta_Click(object sender, EventArgs e)
         {
             if (!ValidarDatos())
@@ -116,6 +131,9 @@ namespace Presentacion
             }
         }
 
+        //PRE: El usuario ha introducido datos en el formulario.
+        //POST: Devuelve true si todos los datos son válidos.
+        //      En caso contrario, muestra un mensaje de error y devuelve false.
         private bool ValidarDatos()
         {
             // Validar título
@@ -207,6 +225,8 @@ namespace Presentacion
             return true;
         }
 
+        //PRE: Los datos del libro en papel han sido validados previamente.
+        //POST: Se crea un objeto LibroPapel y se da de alta en el sistema.
         private void DarAltaLibroPapel()
         {
             string titulo = tbTitulo.Text.Trim();
@@ -219,6 +239,8 @@ namespace Presentacion
             lnAdq.AltaLibroPapel(libro);
         }
 
+        //PRE: Los datos del audiolibro han sido validados previamente.
+        //POST: Se crea un objeto AudioLibro y se da de alta en el sistema.
         private void DarAltaAudioLibro()
         {
             string titulo = tbTitulo.Text.Trim();
@@ -234,12 +256,16 @@ namespace Presentacion
             lnAdq.AltaAudioLibro(audioLibro);
         }
 
+        //PRE: El formulario está abierto y el usuario pulsa Cancelar.
+        //POST: Se cierra el formulario devolviendo DialogResult.Cancel.
         private void btCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
+        //PRE: El formulario se está cerrando.
+        //POST: Si no se ha establecido un DialogResult, se asigna Cancel.
         private void FAltaDocumento_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.DialogResult == DialogResult.None)
@@ -247,58 +273,6 @@ namespace Presentacion
                 this.DialogResult = DialogResult.Cancel;
             }
         }
-
-        /*private void btAñadirEjemplares_Click(object sender, EventArgs e)
-        {
-            if (!ValidarDatos())
-            {
-                return;
-            }
-
-            try
-            {
-                if (rbLibro.Checked)
-                {
-                    DarAltaLibroPapel();
-                }
-                else if (rbAudioLibro.Checked)
-                {
-                    DarAltaAudioLibro();
-                }
-
-                MostrarExito("Documento dado de alta correctamente");
-
-                // Pedir el código del ejemplar
-                int codigo = pedirClave<int>("Introduce el código del ejemplar:");
-                if (codigo == 0) // Cancelado
-                {
-                    this.Close();
-                    return;
-                }
-                Console.WriteLine(isbn);
-                FAltaEjemplar fAltaEjemplar = new FAltaEjemplar(lnAdq, codigo, isbn);
-                fAltaEjemplar.ShowDialog();
-
-                this.Close();
-            }
-            catch (ArgumentNullException ex)
-            {
-                MostrarError(ex.Message);
-            }
-            catch (ArgumentException ex)
-            {
-                MostrarError(ex.Message);
-            }
-            catch (InvalidOperationException ex)
-            {
-                MostrarError(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MostrarError(ex.Message);
-            }
-        }
-        */
 
     }
 }

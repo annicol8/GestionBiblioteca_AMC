@@ -18,23 +18,35 @@ namespace Presentacion
         private ILNPersonal lnp;
         private string dniUsuario;
 
+        //PRE:
+        //POST: Se inicializa el formulario y se establece el botón Aceptar como botón por defecto.
         public FAltaUsuario() : base()
         {
             InitializeComponent();
             this.AcceptButton = btAceptar;
         }
 
+        //PRE: lnp no nulO y dni debe contener un DNI válido.
+        //POST: Se inicializa el formulario con la lógica de negocio y el DNI del usuario.
         public FAltaUsuario(ILNPersonal lnp, string dni) : this()
         {
             this.lnp = lnp;
             this.dniUsuario = dni;
         }
 
+        //PRE: El formulario ya creado y dniUsuario contiene un valor.
+        //POST: El DNI se muestra en el textbox y queda en modo solo lectura.
         private void FAltaUsuario_Load(object sender, EventArgs e)
         {
             tbDni.Text = dniUsuario;
             tbDni.ReadOnly = true;  
         }
+
+        //PRE: El usuario ha introducido datos en el formulario y ha pulsado Aceptar.
+        //POST: Se valida la información y:
+        //      - Se da de alta un nuevo usuario, o
+        //      - Se reactiva un usuario dado de baja, o
+        //      - Se muestra un mensaje de error/advertencia y se cierra el formulario.
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
@@ -113,12 +125,16 @@ namespace Presentacion
 
         }
 
+        //PRE: El formulario está abierto y se ha pulsado el botón cancelar
+        //POST: Se cierra el formulario devolviendo DialogResult.Cancel.
         private void btCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
+        //PRE: El formulario ya es visible para el usuario.
+        //POST: El foco queda situado en el textbox del nombre.
         private void FAltaUsuario_Shown(object sender, EventArgs e)
         {
             tbNombre.Focus();

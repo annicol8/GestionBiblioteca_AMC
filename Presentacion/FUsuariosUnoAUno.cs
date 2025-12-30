@@ -15,6 +15,9 @@ namespace Presentacion
     {
         private ILNPersonal lnp;
         private BindingSource bindingSource;
+
+        //PRE: El objeto lnp no es nulo y proporciona acceso a la lógica de negocio.
+        //POST: El formulario queda creado e inicializado para mostrar usuarios uno a uno.
         public FUsuariosUnoAUno(ILNPersonal lnp)
         {
             this.lnp = lnp;
@@ -22,6 +25,8 @@ namespace Presentacion
             InicializarFormulario();
         }
 
+        //PRE: La lógica de negocio (lnp) está correctamente inicializada.
+        //POST: Se cargan los usuarios activos en el BindingSource y se enlazan a los controles del formulario.
         private void InicializarFormulario()
         {
             try
@@ -40,8 +45,6 @@ namespace Presentacion
             {
                 MostrarError($"Error al inicializar el formulario: {ex.Message}");
             }
-            
-
         }
     }
 }

@@ -14,7 +14,8 @@ namespace Presentacion
         private BindingSource bindingSourceEjemplares;
         private BindingSource bindingSourceUsuarios;
 
-
+        //PRE: 
+        //POST: Se inicializa el formulario, la lista de ejemplares y los BindingSource.
         public FAltaPrestamo()
         {
             InitializeComponent();
@@ -24,11 +25,16 @@ namespace Presentacion
             bindingSourceUsuarios = new BindingSource();
         }
 
+        //PRE: lnSala no debe ser null.
+        //POST: Se inicializa el formulario con la lógica de negocio de préstamos.
         public FAltaPrestamo(ILNPSala lnSala) : this()
         {
             this.lnSala = lnSala;
         }
 
+        //PRE: El formulario ha sido creado y lnSala está inicializado.
+        //POST: Se cargan los usuarios, la fecha actual, el identificador del préstamo
+        //      y se inicializa la lista de ejemplares.
         private void FAltaPrestamo_Load(object sender, EventArgs e)
         {
             try
@@ -48,36 +54,10 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnSala está inicializado.
+        //POST: Se cargan los usuarios activos en el ComboBox.  Si no hay usuarios, se informa al usuario.
         private void CargarUsuarios()
         {
-            /*
-            try
-            {
-
-                var usuarios = lnSala.GetUsuariosActivos();
-
-                if (usuarios == null || usuarios.Count == 0)
-                {
-                    MessageBox.Show("No hay usuarios activos en el sistema.",
-                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                bindingSourceUsuarios = new BindingSource();
-                bindingSourceUsuarios.DataSource = usuarios;
-
-                cbUsuarios.DataSource = bindingSourceUsuarios;
-                cbUsuarios.DisplayMember = "Dni";
-                cbUsuarios.ValueMember = "Dni";
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar usuarios: {ex.Message} \n {ex.StackTrace}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */
-
             try
             {
                 var usuarios = lnSala.GetUsuariosActivos();
@@ -99,12 +79,15 @@ namespace Presentacion
             }
         }
 
-
+        //PRE: El DateTimePicker está inicializado.
+        //POST: Se establece la fecha actual como fecha del préstamo.
         private void CargarFechaActual()
         {
             dtpFecha.Value = DateTime.Now;
         }
 
+        //PRE: El TextBox del ID está inicializado.
+        //POST: Se muestra que el identificador del préstamo es autogenerado.
         private void GenerarIdPrestamo()
         {
             // Si el ID es autogenerado en BD, puedes dejar esto vacío o mostrar "Autogenerado"
@@ -112,34 +95,10 @@ namespace Presentacion
             tbId.ReadOnly = true;
         }
 
+        //PRE: lnSala está inicializado y la lista de códigos puede estar vacía.
+        //POST: Se actualiza la lista visual de ejemplares añadidos al préstamo.
         private void ActualizarListaEjemplares()
         {
-            /*
-            List<EjemplarPrestamoInfo> ejemplaresInfo = new List<EjemplarPrestamoInfo>();
-
-            // Obtener información de cada ejemplar añadido
-            foreach (int codigoEjemplar in codigosEjemplaresAñadidos)
-            {
-                //Ejemplar ej = Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigoEjemplar)); // ESTO ESTÁ MAL. HAY QUE HACER UN MÉTODO EN LOGICA NEGOCIO
-
-                Ejemplar ej = lnSala.GetEjemplar(codigoEjemplar);
-                if (ej != null)
-                {
-                    Documento doc = lnSala.GetDocumento(ej.IsbnDocumento);
-                    ejemplaresInfo.Add(new EjemplarPrestamoInfo
-                    {
-                        Codigo = ej.Codigo,
-                        Titulo = doc?.Titulo ?? "Documento sin título",
-                        Isbn = ej.IsbnDocumento,
-                        Estado = "No devuelto"
-                    });
-                }
-            }
-
-            bindingSourceEjemplares.DataSource = ejemplaresInfo;
-            ActualizarPanelEjemplares(ejemplaresInfo);
-            */
-
             List<EjemplarPrestamoInfo> ejemplaresInfo = new List<EjemplarPrestamoInfo>();
 
             foreach (int codigoEjemplar in codigosEjemplaresAñadidos)
@@ -164,41 +123,11 @@ namespace Presentacion
             ActualizarPanelEjemplares(ejemplaresInfo);
         }
 
+        //PRE: El formulario está activo y lnSala está inicializado.
+        //POST: Si el usuario selecciona un ejemplar válido, se añade al préstamo
+        //      y se actualiza la lista de ejemplares.
         private void btAñadirEjemplar_Click(object sender, EventArgs e)
         {
-            /*
-            try
-            {
-                FAñadirEjemplarPrestamo formularioAñadir =
-                    new FAñadirEjemplarPrestamo(lnSala, codigosEjemplaresAñadidos);
-
-                if (formularioAñadir.ShowDialog(this) == DialogResult.OK)
-                {
-                    // PASO 3.7: Ejemplar fue seleccionado
-                    Ejemplar ejemplarSeleccionado = formularioAñadir.EjemplarSeleccionado;
-                    if (ejemplarSeleccionado != null)
-                    {
-                        // Añadir a la lista si no estaba ya
-                        if (!codigosEjemplaresAñadidos.Contains(ejemplarSeleccionado.Codigo))
-                        {
-                            codigosEjemplaresAñadidos.Add(ejemplarSeleccionado.Codigo);
-                            ActualizarListaEjemplares();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Este ejemplar ya ha sido añadido al préstamo",
-                                "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */
-
             try
             {
                 FAñadirEjemplarPrestamo formularioAñadir =
@@ -237,14 +166,11 @@ namespace Presentacion
 
         }
 
-        // PASO 3.8: Eliminar un ejemplar de la lista
+        //PRE: El código del ejemplar pertenece a la lista de ejemplares añadidos.
+        //POST: Si el usuario confirma, el ejemplar se elimina del préstamo
+        //      y se actualiza la lista visual.
         private void EliminarEjemplar(int codigoEjemplar)
         {
-            /*
-            codigosEjemplaresAñadidos.Remove(codigoEjemplar);
-            ActualizarListaEjemplares();
-            */
-
             if (SolicitarConfirmacion("¿Está seguro de que desea eliminar el ejemplar del préstamo?", "Confirmar eliminación"))
             {
                 codigosEjemplaresAñadidos.Remove(codigoEjemplar);
@@ -252,9 +178,8 @@ namespace Presentacion
             }
         }
 
-
-
-
+        //PRE: La lista de ejemplares no es null.
+        //POST: Se reconstruye el panel visual con los ejemplares actuales del préstamo.
         private void ActualizarPanelEjemplares(List<EjemplarPrestamoInfo> ejemplares)
         {
             panelEjemplares.SuspendLayout();
@@ -297,56 +222,11 @@ namespace Presentacion
             panelEjemplares.ResumeLayout();
         }
 
+        //PRE: El usuario ha seleccionado un usuario válido y ha añadido al menos un ejemplar.
+        //POST: Se crea el préstamo con sus ejemplares asociados,
+        //      se muestra un mensaje de éxito y se cierra el formulario.
         private void btAceptar_Click(object sender, EventArgs e)
         {
-            /*
-            try
-            {
-                // Validaciones
-                if (string.IsNullOrWhiteSpace(cbUsuarios.Text))
-                {
-                    MessageBox.Show("Debe seleccionar un usuario", "Validación",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (codigosEjemplaresAñadidos.Count == 0)
-                {
-                    MessageBox.Show("Debe añadir al menos un ejemplar", "Validación",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Crear objeto Préstamo
-                string dniUsuario = cbUsuarios.SelectedValue.ToString();
-                DateTime fechaPrestamo = dtpFecha.Value;
-                DateTime fechaDevolucion = fechaPrestamo.AddDays(15);  // 15 días por defecto
-
-                Prestamo prestamo = new Prestamo(
-                    0,  // ID será autogenerado
-                    fechaPrestamo,
-                    fechaDevolucion,
-                    EstadoPrestamo.enProceso,
-                    lnSala.Personal.Dni,  // DNI del personal logueado
-                    dniUsuario
-                );
-
-                // PASO 3.10: Llamar a LN para crear préstamo completo
-                int idPrestamoCreado = lnSala.CrearPrestamoCompleto(prestamo, codigosEjemplaresAñadidos);
-
-                MessageBox.Show($"Préstamo creado exitosamente. ID: {idPrestamoCreado}",
-                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al crear el préstamo: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */
-
             try
             {
                 if (!ValidarSeleccionComboBox(cbUsuarios, "Usuario"))
@@ -404,8 +284,10 @@ namespace Presentacion
             {
                 ManejarExcepcion(ex, "crear el préstamo");
             }
-
         }
+
+        //PRE: El formulario está abierto.
+        //POST: Si el usuario confirma, se cancela el alta del préstamo y se cierra el formulario.
         private void btCancelar_Click_1(object sender, EventArgs e)
         {
             if (codigosEjemplaresAñadidos.Count > 0)
@@ -417,7 +299,6 @@ namespace Presentacion
                     return;
                 }
             }
-
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }

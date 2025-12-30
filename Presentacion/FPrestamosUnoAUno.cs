@@ -17,6 +17,9 @@ namespace Presentacion
     {
         private ILNPSala lnps;
         private BindingSource bindingSourcePrest;
+
+        //PRE: El objeto lnps no es nulo y representa la lógica de negocio de la sala.
+        //POST: El formulario queda inicializado y preparado para mostrar los préstamos uno a uno.
         public FPrestamosUnoAUno(ILNPSala lnps)
         {
             InitializeComponent();
@@ -24,6 +27,8 @@ namespace Presentacion
             InicializarFormulario();
         }
 
+        //PRE: lnps inicializada correctamente.
+        //POST: Se cargan los préstamos en el BindingSource y se muestra el primer préstamo si existe.
         private void InicializarFormulario()
         {
             try
@@ -61,11 +66,15 @@ namespace Presentacion
             }
         }
 
+        //PRE: El BindingSource tiene asignada una colección de préstamos.
+        //POST: Se actualiza la información mostrada según el préstamo actualmente seleccionado.
         private void BindingSource_CurrentChanged(object sender, EventArgs e)
         {
             MostrarPrestamoActual();
         }
 
+        //PRE: El BindingSource tiene un préstamo seleccionado como elemento actual.
+        //POST: Se muestran en pantalla los datos completos del préstamo seleccionado.
         private void MostrarPrestamoActual()
         {
             if (bindingSourcePrest.Current != null)
@@ -140,6 +149,8 @@ namespace Presentacion
             }
         }
 
+        //PRE: El identificador del préstamo es válido.
+        //POST: Se muestran en el ListBox los ejemplares asociados al préstamo indicado.
         private void CargarEjemplaresPrestamo(int idPrestamo)
         {
             try
@@ -179,8 +190,5 @@ namespace Presentacion
                 listBox_Doc.Items.Add($"Error: {ex.Message}");
             }
         }
-
-
-
     }
 }

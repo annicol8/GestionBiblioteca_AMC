@@ -17,10 +17,15 @@ namespace Presentacion
     {
         private ILNPersonal lnp;
 
+        //PRE:
+        //POST: Se crea el formulario de login sin inicializar la lógica de negocio.
         public FLogin()
         {
             InitializeComponent();
         }
+
+        //PRE: El objeto lnp no es nulo y permite acceder a la lógica de negocio del personal.
+        //POST: Se crea el formulario de login con la lógica de negocio asignada y los tooltips configurados.
         public FLogin(ILNPersonal lnp)
         {
             InitializeComponent();
@@ -31,9 +36,11 @@ namespace Presentacion
             toolTip1.SetToolTip(radioButton_PSala, "Acceso para personal de sala");
             toolTip1.SetToolTip(radioButton_PAdq, "Acceso para personal de adquisiciones");
             toolTip1.SetToolTip(bt_Entrar, "Acceso a la aplicacion");
-
         }
 
+        //PRE: El usuario ha introducido datos en el formulario e intenta autenticarse.
+        //POST: Si las credenciales son correctas, se abre el formulario correspondiente al tipo de personal;
+        //      si no lo son, se muestra un mensaje de error y se permite reintentar el login.
         private void bt_Entrar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBox_Nombre.Text))
@@ -103,7 +110,5 @@ namespace Presentacion
 
             this.Close();
         }
-
-
     }
 }
