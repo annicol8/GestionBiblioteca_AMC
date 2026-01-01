@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
@@ -24,18 +19,21 @@ namespace Presentacion
         {
             InitializeComponent();
         }
-
+        /* PRE: lnSala != null, prestamo != null
+   POST: Inicializa el formulario con los datos necesarios para mostrar un préstamo */
         public FBuscarPrestamo(ILNPSala lnSala, Prestamo prestamo) : this()
         {
             this.lnSala = lnSala;
             this.prestamo = prestamo;
         }
-
+        /* PRE: prestamo != null, lnSala inicializado
+   POST: Carga y muestra los datos del préstamo */
         private void FBuscarPrestamo_Load(object sender, EventArgs e)
         {
             MostrarDatosPrestamo();
         }
-
+        /* PRE: prestamo != null, lnSala inicializado
+   POST: Muestra la información del préstamo y carga los ejemplares asociados en el listBox */
         private void MostrarDatosPrestamo()
         {
             textBoxCodigo.Text = prestamo.Id.ToString();
@@ -62,7 +60,9 @@ namespace Presentacion
                 listBoxEjemplares.Items.Add(ej);
             }
         }
-
+        /* PRE: ejemplaresNoDevueltos inicializado
+   POST: Dibuja cada ejemplar en el listBox con color naranja si no está devuelto
+         y verde si ya fue devuelto */
         private void listBoxEjemplares_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0)
@@ -82,8 +82,8 @@ namespace Presentacion
             }
 
             Color fondo = noDevuelto
-                ? Color.Orange       
-                : Color.LightGreen;  
+                ? Color.Orange
+                : Color.LightGreen;
 
             e.Graphics.FillRectangle(
                 new SolidBrush(fondo),

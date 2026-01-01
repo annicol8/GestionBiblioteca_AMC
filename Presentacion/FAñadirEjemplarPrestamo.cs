@@ -23,12 +23,14 @@ namespace Presentacion
             InitializeComponent();
             bindingSourceEjemplares = new BindingSource();
         }
-
+        /* PRE: lnSala != null, codigosEjemplaresAñadidos != null (puede estar vacía)
+   POST: Crea el formulario con los datos necesarios para gestionar ejemplares */
         public FAñadirEjemplarPrestamo(ILNPSala lnSala, List<int> codigosEjemplaresAñadidos) : this()
         {
             this.lnSala = lnSala;
             this.codigosEjemplaresAñadidos = codigosEjemplaresAñadidos ?? new List<int>();
         }
+
 
         private void FAñadirEjemplarPrestamo_Load(object sender, EventArgs e)
         {
@@ -43,27 +45,11 @@ namespace Presentacion
             }
         }
 
+        /* PRE: lnSala inicializado correctamente
+POST: Carga y muestra los ejemplares disponibles excluyendo los ya añadidos.
+ Si no hay ejemplares, cierra el formulario con DialogResult.Cancel */
         private void CargarEjemplaresDisponibles()
         {
-            /*
-            ejemplaresDisponibles = lnSala.GetEjemplaresActivos();
-
-            //Filtrar los que ya han sido añadidos al préstamo
-            List<Ejemplar> ejemplaresParaMostrar = new List<Ejemplar>();
-            foreach (Ejemplar ej in ejemplaresDisponibles)
-            {
-                if (!codigosEjemplaresAñadidos.Contains(ej.Codigo) &&
-                    lnSala.EjemplarDisponibleParaPrestamo(ej.Codigo))
-                {
-                    ejemplaresParaMostrar.Add(ej);
-                }
-            }
-
-            // Asignar al ListBox
-            listBox1.DataSource = ejemplaresParaMostrar;
-            listBox1.DisplayMember = "Codigo";  // Muestra el código
-            */
-
             List<Ejemplar> ejemplaresDisponibles = lnSala.GetEjemplaresDisponibles(codigosEjemplaresAñadidos);
 
             // Filtrar solo los que están disponibles para préstamo
@@ -82,47 +68,29 @@ namespace Presentacion
             bindingSourceEjemplares.DataSource = ejemplaresParaMostrar;
             listBox1.DataSource = bindingSourceEjemplares;
 
-            listBox1.DisplayMember = "InfoCompleta" ; 
+            listBox1.DisplayMember = "InfoCompleta";
             listBox1.ValueMember = "Codigo";
 
         }
-
+        /* PRE: -
+   POST: Cierra el formulario con DialogResult.Cancel */
         private void button3_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
+        /* PRE: listBox1 debe tener elementos cargados
+   POST: Si hay un ejemplar seleccionado y está disponible, establece EjemplarSeleccionado
+         y cierra con DialogResult.OK. Si no hay selección o no está disponible, 
+         muestra mensaje de error y no cierra */
         private void button2_Click(object sender, EventArgs e)
         {
-            /*
-            try
-            {
-                if (listBox1.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Debe seleccionar un ejemplar", "Validación",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                ejemplarSeleccionado = (Ejemplar)listBox1.SelectedItem;
-                this.EjemplarSeleccionado = ejemplarSeleccionado;
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */
-
             try
             {
                 if (listBox1.SelectedItem == null)
                 {
                     MostrarAdvertencia("Debe seleccionar un ejemplar", "Validación");
-                    listBox1.Focus(); 
+                    listBox1.Focus();
                     return;
                 }
 
@@ -131,7 +99,7 @@ namespace Presentacion
                 if (!lnSala.EjemplarDisponibleParaPrestamo(EjemplarSeleccionado.Codigo))
                 {
                     MostrarError("El ejemplar seleccionado ya no está disponible.");
-                    CargarEjemplaresDisponibles(); 
+                    CargarEjemplaresDisponibles();
                     return;
                 }
 

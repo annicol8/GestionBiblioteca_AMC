@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
@@ -26,18 +20,23 @@ namespace Presentacion
         {
             InitializeComponent();
         }
-
-        public FBuscarEjemplar(ILNPAdq lnpa) 
+        /* PRE: lnpa != null
+   POST: Inicializa el formulario con la lógica de negocio necesaria para buscar ejemplares */
+        public FBuscarEjemplar(ILNPAdq lnpa)
         {
             this.lnpa = lnpa;
             InitializeComponent();
         }
-
+        /* PRE: lnpa inicializado
+   POST: Inicia el proceso de búsqueda de ejemplar */
         private void FBuscarEjemplar_Load(object sender, EventArgs e)
         {
             BuscarEjemplar();
         }
-
+        /* PRE: lnpa inicializado
+   POST: Solicita un código al usuario y busca el ejemplar correspondiente.
+         Si lo encuentra, muestra sus datos. Si no, pregunta si desea buscar otro.
+         Si hay error o cancelación, cierra con DialogResult.Cancel */
         private void BuscarEjemplar()
         {
             try
@@ -61,7 +60,7 @@ namespace Presentacion
                     // Preguntar si desea buscar otro
                     if (SolicitarConfirmacion("¿Desea buscar otro ejemplar?", "Buscar otro"))
                     {
-                        BuscarEjemplar(); 
+                        BuscarEjemplar();
                     }
                     else
                     {
@@ -80,7 +79,9 @@ namespace Presentacion
                 this.Close();
             }
         }
-
+        /* PRE: ejemplar != null, lnpa inicializado
+   POST: Muestra toda la información del ejemplar en los controles del formulario.
+         Si está inactivo, cambia el color de fondo y muestra advertencia */
         private void MostrarDatosEjemplar(Ejemplar ejemplar)
         {
             tb_Codigo.Text = ejemplar.Codigo.ToString();
@@ -120,7 +121,9 @@ namespace Presentacion
             }
             MostrarInfoDocumento(ejemplar.IsbnDocumento);
         }
-
+        /* PRE: lnpa inicializado
+   POST: Busca y muestra el título del documento asociado al ISBN.
+         Si hay error, lo ignora silenciosamente */
         private void MostrarInfoDocumento(string isbn)
         {
             try
@@ -138,7 +141,7 @@ namespace Presentacion
             catch { }
         }
 
-        
+
     }
 
 }

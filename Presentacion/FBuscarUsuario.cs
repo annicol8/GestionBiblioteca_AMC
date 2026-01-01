@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using ModeloDominio;
 
 namespace Presentacion
@@ -19,12 +12,15 @@ namespace Presentacion
         {
             InitializeComponent();
         }
-
+        /* PRE: usuario puede ser null
+   POST: Inicializa el formulario con el usuario a mostrar */
         public FBuscarUsuario(Usuario usuario) : this()
         {
             this.usuario = usuario;
         }
-
+        /* PRE: usuario != null
+   POST: Muestra la información del usuario en modo solo lectura.
+         Si está dado de baja, cambia el color de fondo y muestra advertencia */
         private void FBuscarUsuario_Load(object sender, EventArgs e)
         {
             tbDni.Text = usuario.Dni;
@@ -37,7 +33,7 @@ namespace Presentacion
             {
                 label_Estado.Text = "Estado: ACTIVO";
                 label_Estado.ForeColor = Color.Green;
-                this.BackColor = SystemColors.Control; 
+                this.BackColor = SystemColors.Control;
             }
             else
             {

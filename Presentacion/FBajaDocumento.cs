@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
@@ -21,13 +14,17 @@ namespace Presentacion
         {
             InitializeComponent();
         }
+        /* PRE: lnAdq != null, documento != null
+   POST: Inicializa el formulario con los datos necesarios para dar de baja un documento */
 
         public FBajaDocumento(ILNPAdq lnAdq, Documento documento) : this()
         {
             this.lnAdq = lnAdq;
             this.documento = documento;
         }
-        
+        /* PRE: documento != null
+   POST: Carga y muestra la información del documento en modo solo lectura.
+         Si documento es null, cierra el formulario con DialogResult.Cancel */
         private void FBajaDocumento_Load(object sender, EventArgs e)
         {
             if (documento == null)
@@ -55,17 +52,17 @@ namespace Presentacion
             else if (documento is AudioLibro)
             {
                 lblTipoDocumento.Text = "Tipo: Audiolibro";
-                AudioLibro audio = (AudioLibro) documento;
+                AudioLibro audio = (AudioLibro)documento;
 
-                
-                    lblFormatoDigital.Visible = true;
-                    lblDuracion.Visible = true;
-                    lblFormatoDigital.Text = $"Formato: {audio.FormatoDigital}";
-                    //lblDuracion.Text = $"Duración: {audio.Duracion} seg";
-                    TimeSpan duracion = TimeSpan.FromSeconds(audio.Duracion);
-                    lblDuracion.Text = $"Duración: {duracion:hh\\:mm\\:ss} ({audio.Duracion} seg)";
-                    // Resultado: "Duración: 01:05:30 (3930 seg)"
-                
+
+                lblFormatoDigital.Visible = true;
+                lblDuracion.Visible = true;
+                lblFormatoDigital.Text = $"Formato: {audio.FormatoDigital}";
+                //lblDuracion.Text = $"Duración: {audio.Duracion} seg";
+                TimeSpan duracion = TimeSpan.FromSeconds(audio.Duracion);
+                lblDuracion.Text = $"Duración: {duracion:hh\\:mm\\:ss} ({audio.Duracion} seg)";
+                // Resultado: "Duración: 01:05:30 (3930 seg)"
+
             }
 
             tbIsbn.ReadOnly = true;
@@ -77,6 +74,9 @@ namespace Presentacion
             this.Text = $"Baja de Documento - {documento.Titulo}";
 
         }
+        /* PRE: lnAdq y documento correctamente inicializados
+   POST: Si el usuario confirma, elimina el documento y sus ejemplares asociados quedan inactivos.
+         Cierra con DialogResult.OK si tiene éxito, muestra error en caso contrario */
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
@@ -116,13 +116,15 @@ namespace Presentacion
                 }
             }
         }
-
+        /* PRE: -
+   POST: Cierra el formulario con DialogResult.Cancel */
         private void btCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
+        /* PRE: -
+   POST: Si no se ha establecido DialogResult, lo pone a Cancel al cerrar */
         private void FBajaDocumento_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.DialogResult == DialogResult.None)

@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
@@ -18,13 +10,17 @@ namespace Presentacion
         private ILNPersonal lnp;
         private BindingSource bindingSourceUsuarios;
 
+        /* PRE: lnp != null
+   POST: Inicializa el formulario y carga los usuarios activos del sistema */
         public FBusquedaUsuarioExtra(ILNPersonal lnp)
         {
             this.lnp = lnp;
             InitializeComponent();
             InicializarFormulario();
         }
-
+        /* PRE: lnp inicializado
+   POST: Carga los usuarios activos en el comboBox y muestra el primero seleccionado.
+         Si no hay usuarios, muestra mensaje informativo */
         private void InicializarFormulario()
         {
             try
@@ -52,15 +48,17 @@ namespace Presentacion
                 MostrarError($"Error al inicializar el formulario: {ex.Message}");
             }
         }
-
+        /* PRE: comboBox_Dnis inicializado con usuarios
+   POST: Actualiza la información mostrada del usuario seleccionado */
         private void ComboBox_Dnis_SelectedIndexChanged(object sender, EventArgs e)
         {
             MostrarUsuarioSeleccionado();
         }
-
+        /* PRE: comboBox_Dnis con elementos cargados
+   POST: Muestra el nombre y la información de préstamos del usuario seleccionado en el comboBox */
         private void MostrarUsuarioSeleccionado()
         {
-            if (comboBox_Dnis.SelectedIndex>= 0 && comboBox_Dnis.SelectedItem != null)
+            if (comboBox_Dnis.SelectedIndex >= 0 && comboBox_Dnis.SelectedItem != null)
             {
                 Usuario usuario = comboBox_Dnis.SelectedItem as Usuario;
                 if (usuario != null)
@@ -70,7 +68,9 @@ namespace Presentacion
                 }
             }
         }
-
+        /* PRE: dni != null && dni corresponde a un usuario existente, lnp inicializado
+   POST: Muestra el número de préstamos activos, ejemplares del último mes y préstamos vencidos.
+         Si hay error, muestra 0 en todos los campos y mensaje de advertencia */
         private void MostrarInfoRestante(string dni)
         {
             try

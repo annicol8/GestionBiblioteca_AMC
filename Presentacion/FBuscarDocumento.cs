@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModeloDominio;
 
@@ -18,12 +11,15 @@ namespace Presentacion
         {
             InitializeComponent();
         }
-
+        /* PRE: d puede ser null
+   POST: Inicializa el formulario con el documento a mostrar */
         public FBuscarDocumento(Documento d) : this()
         {
             this.documento = d;
         }
-
+        /* PRE: -
+   POST: Muestra la información del documento. Si documento es null, muestra error y cierra.
+         Si es AudioLibro muestra duración y formato, si es LibroPapel oculta esos campos */
         private void FBuscarDocumento_Load(object sender, EventArgs e)
         {
             if (documento == null)
@@ -58,12 +54,14 @@ namespace Presentacion
 
 
         }
-
+        /* PRE: -
+   POST: Cierra el formulario */
         private void btCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        /* PRE: -
+   POST: Si no se ha establecido DialogResult, lo pone a OK al cerrar */
         private void FBuscarDocumento_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.DialogResult == DialogResult.None)
