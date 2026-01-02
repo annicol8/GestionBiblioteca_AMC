@@ -143,6 +143,12 @@
     <Compile Include="FDevolverPrestamo.Designer.cs">
       <DependentUpon>FDevolverPrestamo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FDocumentoMasPrestado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FDocumentoMasPrestado.Designer.cs">
+      <DependentUpon>FDocumentoMasPrestado.cs</DependentUpon>
+    </Compile>
     <Compile Include="FDocumentosUnoAUno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FDevolverPrestamo.resx">
       <DependentUpon>FDevolverPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FDocumentoMasPrestado.resx">
+      <DependentUpon>FDocumentoMasPrestado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FDocumentosUnoAUno.resx">
       <DependentUpon>FDocumentosUnoAUno.cs</DependentUpon>

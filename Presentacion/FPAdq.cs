@@ -415,5 +415,22 @@ namespace Presentacion
                 return;
             }
         }
+
+
+        //PRE: lnAdq != null
+        //POST: Se abre FDocumentoMasPrestado mostrando el documento más prestado del último mes
+        //      Si ocurre un error, se muestra mediante ManejarExcepcion
+        protected override void documentoMásPrestadoDelÚltimoMesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FDocumentoMasPrestado formulario = new FDocumentoMasPrestado(lnAdq);
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                ManejarExcepcion(ex, "consultar el documento más prestado");
+            }
+        }
     }
 }

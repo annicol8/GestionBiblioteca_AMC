@@ -367,6 +367,11 @@ namespace Presentacion
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
+
+        protected virtual void documentoMásPrestadoDelÚltimoMesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+        }
     }
 
 }

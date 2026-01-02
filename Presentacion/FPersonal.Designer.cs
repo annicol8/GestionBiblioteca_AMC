@@ -42,6 +42,7 @@
             this.menuDocumentosBuscar = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recorridoUnoAUnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ejemplaresDisponiblesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEjemplaresAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEjemplaresBaja = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,7 @@
             this.menuPrestamosDevolver = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.recorridoUnoAUnoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ejemplaresDisponiblesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.documentoMásPrestadoDelÚltimoMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,7 +137,8 @@
             this.menuDocumentosBuscar,
             this.listadoToolStripMenuItem,
             this.recorridoUnoAUnoToolStripMenuItem,
-            this.ejemplaresDisponiblesToolStripMenuItem});
+            this.ejemplaresDisponiblesToolStripMenuItem,
+            this.documentoMásPrestadoDelÚltimoMesToolStripMenuItem});
             this.documentosToolStripMenuItem.Name = "documentosToolStripMenuItem";
             this.documentosToolStripMenuItem.Size = new System.Drawing.Size(170, 38);
             this.documentosToolStripMenuItem.Text = "Documentos";
@@ -144,37 +146,44 @@
             // menuDocumentosAlta
             // 
             this.menuDocumentosAlta.Name = "menuDocumentosAlta";
-            this.menuDocumentosAlta.Size = new System.Drawing.Size(458, 44);
+            this.menuDocumentosAlta.Size = new System.Drawing.Size(590, 44);
             this.menuDocumentosAlta.Text = "Alta";
             this.menuDocumentosAlta.Click += new System.EventHandler(this.menuDocumentosAlta_Click);
             // 
             // menuDocumentosBaja
             // 
             this.menuDocumentosBaja.Name = "menuDocumentosBaja";
-            this.menuDocumentosBaja.Size = new System.Drawing.Size(458, 44);
+            this.menuDocumentosBaja.Size = new System.Drawing.Size(590, 44);
             this.menuDocumentosBaja.Text = "Baja";
             this.menuDocumentosBaja.Click += new System.EventHandler(this.menuDocumentosBaja_Click);
             // 
             // menuDocumentosBuscar
             // 
             this.menuDocumentosBuscar.Name = "menuDocumentosBuscar";
-            this.menuDocumentosBuscar.Size = new System.Drawing.Size(458, 44);
+            this.menuDocumentosBuscar.Size = new System.Drawing.Size(590, 44);
             this.menuDocumentosBuscar.Text = "Buscar";
             this.menuDocumentosBuscar.Click += new System.EventHandler(this.menuDocumentosBuscar_Click);
             // 
             // listadoToolStripMenuItem
             // 
             this.listadoToolStripMenuItem.Name = "listadoToolStripMenuItem";
-            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(458, 44);
+            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(590, 44);
             this.listadoToolStripMenuItem.Text = "Listado";
             this.listadoToolStripMenuItem.Click += new System.EventHandler(this.menuDocumentosListado_Click);
             // 
             // recorridoUnoAUnoToolStripMenuItem
             // 
             this.recorridoUnoAUnoToolStripMenuItem.Name = "recorridoUnoAUnoToolStripMenuItem";
-            this.recorridoUnoAUnoToolStripMenuItem.Size = new System.Drawing.Size(458, 44);
+            this.recorridoUnoAUnoToolStripMenuItem.Size = new System.Drawing.Size(590, 44);
             this.recorridoUnoAUnoToolStripMenuItem.Text = "Recorrido uno a uno";
             this.recorridoUnoAUnoToolStripMenuItem.Click += new System.EventHandler(this.menuDocumentosRecorrido_Click);
+            // 
+            // ejemplaresDisponiblesToolStripMenuItem
+            // 
+            this.ejemplaresDisponiblesToolStripMenuItem.Name = "ejemplaresDisponiblesToolStripMenuItem";
+            this.ejemplaresDisponiblesToolStripMenuItem.Size = new System.Drawing.Size(590, 44);
+            this.ejemplaresDisponiblesToolStripMenuItem.Text = "Ejemplares disponibles";
+            this.ejemplaresDisponiblesToolStripMenuItem.Click += new System.EventHandler(this.ejemplaresDisponiblesToolStripMenuItem_Click);
             // 
             // ejemplaresToolStripMenuItem
             // 
@@ -262,12 +271,12 @@
             this.recorridoUnoAUnoToolStripMenuItem1.Text = "Recorrido uno a uno";
             this.recorridoUnoAUnoToolStripMenuItem1.Click += new System.EventHandler(this.menuPrestamosRecorrido_Click);
             // 
-            // ejemplaresDisponiblesToolStripMenuItem
+            // documentoMásPrestadoDelÚltimoMesToolStripMenuItem
             // 
-            this.ejemplaresDisponiblesToolStripMenuItem.Name = "ejemplaresDisponiblesToolStripMenuItem";
-            this.ejemplaresDisponiblesToolStripMenuItem.Size = new System.Drawing.Size(390, 44);
-            this.ejemplaresDisponiblesToolStripMenuItem.Text = "Ejemplares disponibles";
-            this.ejemplaresDisponiblesToolStripMenuItem.Click += new System.EventHandler(this.ejemplaresDisponiblesToolStripMenuItem_Click);
+            this.documentoMásPrestadoDelÚltimoMesToolStripMenuItem.Name = "documentoMásPrestadoDelÚltimoMesToolStripMenuItem";
+            this.documentoMásPrestadoDelÚltimoMesToolStripMenuItem.Size = new System.Drawing.Size(590, 44);
+            this.documentoMásPrestadoDelÚltimoMesToolStripMenuItem.Text = "Documento más prestado del último mes";
+            this.documentoMásPrestadoDelÚltimoMesToolStripMenuItem.Click += new System.EventHandler(this.documentoMásPrestadoDelÚltimoMesToolStripMenuItem_Click);
             // 
             // FPersonal
             // 
@@ -313,5 +322,6 @@
         private System.Windows.Forms.ToolStripMenuItem recorridoUnoAUnoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem menuEjemplarListado;
         private System.Windows.Forms.ToolStripMenuItem ejemplaresDisponiblesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem documentoMásPrestadoDelÚltimoMesToolStripMenuItem;
     }
 }
