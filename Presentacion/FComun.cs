@@ -145,17 +145,6 @@ namespace Presentacion
             return true;
         }
 
-        //PRE: Los campos deben estar inicializados.
-        //POST: Devuelve true si todos los campos tienen contenido.
-        protected bool ValidarCamposNoVacios(params (TextBox textBox, string nombre)[] campos)
-        {
-            foreach (var campo in campos)
-            {
-                if (!ValidarCampoNoVacio(campo.textBox, campo.nombre))
-                    return false;
-            }
-            return true;
-        }
 
         //PRE: El nombre no debe ser null.
         //POST: Devuelve true si el nombre cumple el formato válido.
@@ -327,25 +316,6 @@ namespace Presentacion
             return true;
         }
 
-        //PRE: El TextBox debe estar inicializado.
-        //POST: Devuelve true si el año es válido.
-        protected bool ValidarAnio(TextBox textBox, string nombreCampo, out int anio)
-        {
-            anio = 0;
-
-            if (!ValidarNumeroEnteroPositivo(textBox, nombreCampo, out anio))
-                return false;
-
-            int anioActual = DateTime.Now.Year;
-            if (anio < 1900 || anio > anioActual + 1)
-            {
-                MostrarAdvertencia($"El año debe estar entre 1900 y {anioActual + 1}.");
-                textBox.Focus();
-                return false;
-            }
-
-            return true;
-        }
 
         //PRE: El ComboBox debe estar inicializado.
         //POST: Devuelve true si hay un elemento seleccionado.
@@ -358,39 +328,6 @@ namespace Presentacion
                 return false;
             }
             return true;
-        }
-
-        //PRE: El ListBox debe estar inicializado.
-        //POST: Devuelve true si hay un elemento seleccionado.
-        protected bool ValidarSeleccionListBox(ListBox listBox, string nombreCampo)
-        {
-            if (listBox.SelectedIndex == -1)
-            {
-                MostrarAdvertencia($"Debe seleccionar un elemento en '{nombreCampo}'.");
-                listBox.Focus();
-                return false;
-            }
-            return true;
-        }
-
-        //PRE: La lista no debe ser null.
-        //POST: Devuelve true si la lista contiene elementos.
-        protected bool ValidarListaNoVacia<T>(List<T> lista, string nombreLista)
-        {
-            if (lista == null || lista.Count == 0)
-            {
-                MostrarAdvertencia($"Debe añadir al menos un elemento a '{nombreLista}'.");
-                return false;
-            }
-            return true;
-        }
-
-        //PRE: 
-        //POST: Cambia el cursor del formulario a espera o normal.
-
-        protected void CambiarCursor(bool espera)
-        {
-            this.Cursor = espera ? Cursors.WaitCursor : Cursors.Default;
         }
         #endregion
 
@@ -406,28 +343,6 @@ namespace Presentacion
             {
                 control.Enabled = habilitado;
             }
-        }
-
-        /// <summary>
-        /// Muestra u oculta un conjunto de controles
-        /// </summary>
-        protected void EstablecerVisibilidadControles(bool visible, params Control[] controles)
-        {
-            foreach (var control in controles)
-            {
-                control.Visible = visible;
-            }
-        }
-
-        /// <summary>
-        /// Aplica estilo visual a un botón (opcional)
-        /// </summary>
-        protected void EstilizarBoton(Button boton, Color colorFondo, Color colorTexto)
-        {
-            boton.BackColor = colorFondo;
-            boton.ForeColor = colorTexto;
-            boton.FlatStyle = FlatStyle.Flat;
-            boton.FlatAppearance.BorderSize = 0;
         }
 
         #endregion

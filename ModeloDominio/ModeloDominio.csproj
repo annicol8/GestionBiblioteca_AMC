@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioLibro.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Documento.cs" />
     <Compile Include="Ejemplar.cs" />
     <Compile Include="EstadoPrestamo.cs" />

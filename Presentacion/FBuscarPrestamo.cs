@@ -27,7 +27,7 @@ namespace Presentacion
             this.prestamo = prestamo;
         }
         /* PRE: prestamo != null, lnSala inicializado
-   POST: Carga y muestra los datos del préstamo */
+    POST: Carga y muestra los datos del préstamo */
         private void FBuscarPrestamo_Load(object sender, EventArgs e)
         {
             MostrarDatosPrestamo();

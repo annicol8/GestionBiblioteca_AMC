@@ -11,7 +11,7 @@ namespace Presentacion
         private BindingSource bindingSourceUsuarios;
 
         /* PRE: lnp != null
-   POST: Inicializa el formulario y carga los usuarios activos del sistema */
+        POST: Inicializa el formulario y carga los usuarios activos del sistema */
         public FBusquedaUsuarioExtra(ILNPersonal lnp)
         {
             this.lnp = lnp;
@@ -19,7 +19,7 @@ namespace Presentacion
             InicializarFormulario();
         }
         /* PRE: lnp inicializado
-   POST: Carga los usuarios activos en el comboBox y muestra el primero seleccionado.
+        POST: Carga los usuarios activos en el comboBox y muestra el primero seleccionado.
          Si no hay usuarios, muestra mensaje informativo */
         private void InicializarFormulario()
         {

@@ -8,26 +8,34 @@ namespace Presentacion
     {
         private ILNPSala lnSala;
 
-        public FPSala()
+        //POST: El formulario queda inicializado
+        //POST: Se actualiza el título del formulario con los datos del personal
+        public FPSala(): base()
         {
-            InitializeComponent();
             ActualizarTituloFormulario();
         }
+
+        //PRE: lnSala != null
+        //POST: El formulario queda inicializado. Se asigna la referencia lnSala
+        //      Se actualiza el título del formulario con los datos del personal y se configuran los permisos, ocultando menús de documentos y ejemplares
         public FPSala(ILNPSala lnSala) : base(lnSala)
         {
             this.lnSala = lnSala;
-            InitializeComponent();
             ActualizarTituloFormulario();
             ConfigurarPermisos();
         }
 
+        //PRE:
+        //POST: Se ocultan los menús de documentos y ejemplares
         private void ConfigurarPermisos()
         {
-
             OcultarDocumentos();
             OcultarEjemplares();
         }
 
+        //PRE: lnSala != null
+        //POST: Se abre el formulario FPrestamosUnoAUno mostrando los préstamos uno a uno
+        //      Si ocurre un error, se muestra un mensaje mediante MostrarError
         protected override void menuPrestamosRecorrido_Click(object sender, EventArgs e)
         {
             try
@@ -41,6 +49,9 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnSala != null
+        //POST: Se abre el formulario FListaPrestamos mostrando el listado de préstamos
+        //      Si ocurre un error, se muestra un mensaje mediante MostrarError
         protected override void menuPrestamosListado_Click(object sender, EventArgs e)
         {
             try
@@ -54,6 +65,9 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnSala != null
+        //POST: Se abre el formulario FAltaPrestamo para dar de alta un nuevo préstamo
+        //      Si ocurre un error, se muestra un mensaje mediante MostrarError
         protected override void menuPrestamosNuevo_Click(object sender, EventArgs e)
         {
             try
@@ -67,6 +81,10 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnSala != null. Se solicita un identificador de préstamo válido mediante pedirClave<int>
+        //POST: Si el préstamo no existe, se muestra un error y no se hace nada
+        //      Si el préstamo ya está finalizado, se muestra un error y no se hace nada
+        //      Si el préstamo es válido, se abre FDevolverPrestamo para procesar la devolución
         protected override void menuPrestamosDevolver_Click(object sender, EventArgs e)
         {
             int idPrestamo = pedirClave<int>("Identificador ");
@@ -90,6 +108,9 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
+        //PRE: lnSala != null. Se solicita un identificador de préstamo válido mediante pedirClave<int>
+        //POST: Si el préstamo no existe, se muestra un error y no se hace nada
+        //      Si el préstamo existe, se abre FBuscarPrestamo para mostrar sus datos
         protected override void menuPrestamosBuscar_Click(object sender, EventArgs e)
         {
             int idPrestamo = pedirClave<int>("Identificador ");

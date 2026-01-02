@@ -149,12 +149,6 @@
     <Compile Include="FDocumentosUnoAUno.Designer.cs">
       <DependentUpon>FDocumentosUnoAUno.cs</DependentUpon>
     </Compile>
-    <Compile Include="FIntroducirDNI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FIntroducirDNI.Designer.cs">
-      <DependentUpon>FIntroducirDNI.cs</DependentUpon>
-    </Compile>
     <Compile Include="FListaDocumentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,9 +258,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FDocumentosUnoAUno.resx">
       <DependentUpon>FDocumentosUnoAUno.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FIntroducirDNI.resx">
-      <DependentUpon>FIntroducirDNI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FListaDocumentos.resx">
       <DependentUpon>FListaDocumentos.cs</DependentUpon>

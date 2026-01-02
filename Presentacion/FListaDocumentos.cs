@@ -17,7 +17,10 @@ namespace Presentacion
         private ILNPAdq lnpa;
         private BindingSource bindingSourceDoc; //Docuemntos
         private BindingSource bindinSourceEjem; //Ejemplares
-        
+
+        //PRE: lnpa != null
+        //POST: El formulario queda inicializado
+        //      El DataGridView de documentos queda preparado para mostrar datos. Se asocia el evento CellFormatting al grid de ejemplares
         public FListaDocumentos(ILNPAdq lnpa)
         {
             this.lnpa = lnpa;
@@ -27,6 +30,9 @@ namespace Presentacion
             dataGridView_Ejemplares.CellFormatting += dataGridView_Ejemplares_CellFormatting;
         }
 
+        //PRE: lnpa ha sido inicializado correctamente
+        //POST: bindingSourceDoc queda asociado a la colección de documentos
+        //      dataGridView_Doc muestra la lista de documentos
         private void InicializarFormulario()
         {
             try
@@ -42,6 +48,9 @@ namespace Presentacion
             }
         }
 
+        //PRE: bindingSourceDoc ha sido inicializado
+        //POST: Si hay un documento seleccionado, se cargan sus ejemplares
+        //      dataGridView_Ejemplares muestra los ejemplares del documento seleccionado
         private void dataGridView_Doc_SelectionChanged(object sender, EventArgs e)
         {
             try
@@ -62,9 +71,11 @@ namespace Presentacion
             {
                 MostrarError($"Error al cargar ejemplares: {ex.Message}");
             }
-           
         }
 
+        //PRE: lnpa ha sido inicializado correctamente. El evento corresponde a una celda válida del DataGridView de ejemplares
+        //POST: Si la columna es DniPAdq, el valor se formatea como "DNI, Nombre"
+        //      Si el personal no existe, se muestra "DNI, (Desconocido)"
         private void dataGridView_Ejemplares_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             // Solo aplicar formato a la columna DniPAdq

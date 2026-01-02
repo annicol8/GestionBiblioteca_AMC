@@ -9,16 +9,22 @@ namespace Presentacion
     {
         protected ILNPersonal lnp;
 
+        //POST: El formulario queda inicializado
+        //POST: Controles y componentes cargados
         public FPersonal()
         {
             InitializeComponent();
         }
 
+        //PRE: lnp != null
+        //POST: El formulario queda inicializado. Se asigna la referencia a lnp
         public FPersonal(ILNPersonal lnp) : this()
         {
             this.lnp = lnp;
         }
 
+        //PRE: 
+        //POST: Si lnp.Personal != null, el título del formulario se actualiza con el nombre y tipo del personal
         protected void ActualizarTituloFormulario()
         {
             if (lnp?.Personal != null)
@@ -36,22 +42,31 @@ namespace Presentacion
             }
         }
 
+        //PRE: Los ToolStripMenuItems existen en el formulario
+        //POST: El elemento correspondiente queda invisible
         protected void OcultarDocumentos()
         {
             documentosToolStripMenuItem.Visible = false;
         }
 
+        //PRE: Los ToolStripMenuItems existen en el formulario
+        //POST: El elemento correspondiente queda invisible
         protected void OcultarEjemplares()
         {
             ejemplaresToolStripMenuItem.Visible = false;
         }
 
+        //PRE: Los ToolStripMenuItems existen en el formulario
+        //POST: El elemento correspondiente queda invisible
         protected void OcultarPrestamos()
         {
             prestamosToolStripMenuItem.Visible = false;
         }
 
-
+        //PRE: lnp != null
+        //POST: Se solicita un DNI válido mediante diálogo
+        //      Si se introduce un DNI válido y no existe usuario activo, se abre FAltaUsuario
+        //      Si se cancela o no se puede crear, no se realiza ninguna acción
         private void menuUsuariosAlta_Click(object sender, EventArgs e)
         {
             string dni;
@@ -95,7 +110,9 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
-
+        //PRE: 
+        //POST: Se muestra un diálogo para introducir el DNI
+        //      Devuelve un DNI válido en mayúsculas o null si se cancela
         private string pedirDNI()
         {
             FClave fClave = new FClave("DNI");
@@ -109,6 +126,9 @@ namespace Presentacion
             return null;
         }
 
+        //PRE: lnp != null
+        //POST: Se solicita un DNI mediante diálogo. Si el usuario existe, se abre FBuscarUsuario
+        //      Si no existe o está dado de baja y el usuario decide no continuar, no se realiza ninguna acción
         private void menuUsuariosBuscar_Click(object sender, EventArgs e)
         {
             string dni;
@@ -158,6 +178,9 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnp != null
+        //POST: Se solicita un DNI mediante diálogo. Si el usuario existe y está activo, se abre FBajaUsuario
+        //      Si se cancela o no se puede dar de baja, no se realiza ninguna acción
         private void menuUsuariosBaja_Click(object sender, EventArgs e)
         {
             string dni;
@@ -194,15 +217,22 @@ namespace Presentacion
 
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuDocumentosAlta_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
+
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuEjemplaresAlta_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: lnp != null
+        //POST: Se abre el formulario FListaUsuarios mostrando todos los usuarios
         private void menuListado_Click(object sender, EventArgs e)
         {
             try
@@ -216,6 +246,8 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnp != null
+        //POST: Se abre el formulario FUsuariosUnoAUno mostrando el recorrido de usuarios
         private void menuRecorrerUnoAUno_Click(object sender, EventArgs e)
         {
             try
@@ -229,6 +261,8 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnp != null
+        //POST: Se abre el formulario FBusquedaUsuarioExtra para buscar usuarios por DNI
         private void busquedaPorDniToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -242,62 +276,87 @@ namespace Presentacion
             }
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuDocumentosBaja_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
 
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuEjemplaresBaja_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
+
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuEjemplaresBuscar_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuDocumentosListado_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuDocumentosRecorrido_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuPrestamosRecorrido_Click(object sender, EventArgs e) //falla al entrar
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuPrestamosListado_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuDocumentosBuscar_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
 
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuEjemplarListado_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuPrestamosNuevo_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuPrestamosDevolver_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuPrestamosBuscar_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,9 @@ namespace Presentacion
     {
         private ILNPAdq lnpa;
         private BindingSource bindingSourceDoc;
+
+        //PRE: lnpa != null
+        //POST: El formulario queda inicializado y enlazado a la fuente de documentos
         public FDocumentosUnoAUno(ILNPAdq lnpa)
         {
             this.lnpa = lnpa;
@@ -23,6 +27,9 @@ namespace Presentacion
             InicializarFormulario();
         }
 
+        //PRE: lnpa ha sido inicializado correctamente
+        //POST: bindingSourceDoc queda asociado a los documentos
+        //      Los controles del formulario quedan enlazados a los campos del documento Se muestra el documento actual
         private void InicializarFormulario()
         {
             try
@@ -50,11 +57,16 @@ namespace Presentacion
             }
         }
 
+        //PRE: bindingSourceDoc != null
+        //POST: Se actualiza la visualización del documento actual
         private void BindingSource_CurrentChanged(object sender, EventArgs e)
         {
             MostrarDocumentoActual();
         }
-            
+
+        //PRE: bindingSourceDoc != null
+        //POST: Si el documento actual es AudioLibro, se muestran sus campos específicos
+        //      Si no es AudioLibro, se ocultan los campos específicos
         private void MostrarDocumentoActual()
         {
             if (bindingSourceDoc.Current != null)
@@ -72,6 +84,9 @@ namespace Presentacion
             }
         }
 
+        //PRE: al != null
+        //POST: Los campos específicos de AudioLibro quedan visibles
+        //      Los valores de formato, duración y tipo se muestran correctamente
         private void MostrarCamposAudioLibro(AudioLibro al)
         {
             // Mostrar controles
@@ -87,6 +102,9 @@ namespace Presentacion
             textBox_Tipo.Text = "Audio Libro";
         }
 
+        //PRE: 
+        //POST: Los campos específicos de AudioLibro quedan ocultos. Los valores de formato y duración se limpian
+        //      El tipo de documento se establece como "Libro Papel"
         private void OcultarCamposAudioLibro()
         {
             // Ocultar controles

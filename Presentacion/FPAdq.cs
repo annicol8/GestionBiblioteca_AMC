@@ -16,24 +16,37 @@ namespace Presentacion
     public partial class FPAdq : FPersonal
     {
         private ILNPAdq lnAdq;
-        public FPAdq()
+
+        //PRE:
+        //POST: El formulario queda inicializado y con el título actualizado
+        public FPAdq() : base()
         {
-            InitializeComponent();
             ActualizarTituloFormulario();
         }
 
+        //PRE: lnpa != null. El formulario queda inicializado
+        //POST: Se asigna la referencia lnAdq
+        //      Se configuran los permisos, ocultando el menú de préstamos
+        //      El título del formulario se actualiza con los datos del personal
         public FPAdq(ILNPAdq lnpa): base(lnpa)
         {
             this.lnAdq = lnpa;
-            InitializeComponent();
             ConfigurarPermisos();
             ActualizarTituloFormulario();
         }
+
+        //PRE: 
+        //POST: El menú de préstamos queda oculto
         private void ConfigurarPermisos()
         {
             OcultarPrestamos();
         }
 
+        //PRE: lnAdq != null
+        //POST: Se solicita un ISBN válido mediante pedirClave<string>
+        //      Si el ISBN ya existe y el usuario no desea introducir otro, no se realiza ninguna acción
+        //      Si el ISBN es válido y no existe, se abre FAltaDocumento para dar de alta el documento
+        //      Si ocurre un error durante la apertura del formulario, se muestra un mensaje mediante MostrarError
         protected override void menuDocumentosAlta_Click(object sender, EventArgs e)
         {
             string isbn;
@@ -81,6 +94,10 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnAdq != null.Se solicita un código de ejemplar válido mediante pedirClave<int>
+        //POST: Si el código ya existe y el usuario no desea introducir otro, no se realiza ninguna acción
+        //       Si el código es válido y no existe, se abre FAltaEjemplar para dar de alta el ejemplar
+        //       Si ocurre un error durante la apertura del formulario, se muestra un mensaje mediante ManejarExcepcion
         protected override void menuEjemplaresAlta_Click(object sender, EventArgs e)
         {
             int codigo;
@@ -140,7 +157,10 @@ namespace Presentacion
             }
         }
 
-
+        //PRE: lnAdq != null. Se solicita un ISBN mediante pedirClave<string>
+        //POST: Si el documento no existe y el usuario no desea introducir otro, no se realiza ninguna acción
+        //       Si el documento existe, se abre FBajaDocumento para procesar la baja
+        //       Si ocurre un error durante la apertura del formulario, se muestra un mensaje mediante MostrarError
         protected override void menuDocumentosBaja_Click(object sender, EventArgs e)
         {
             string isbn;
@@ -172,6 +192,11 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnAdq != null
+        //POST: Se solicita un ISBN mediante pedirClave<string>
+        //       Si el documento no existe y el usuario no desea introducir otro, no se realiza ninguna acción
+        //       Si el documento existe, se abre FBuscarDocumento para mostrar sus datos
+        //       Si ocurre un error durante la apertura del formulario, se muestra un mensaje mediante MostrarError
         protected override void menuDocumentosBuscar_Click(object sender, EventArgs e)
         {
 
@@ -213,7 +238,10 @@ namespace Presentacion
 
         }
 
-
+        //PRE: lnAdq != null. Se solicita un código de ejemplar mediante pedirClave<int>
+        //POST: Si el ejemplar no existe o está dado de baja y el usuario no desea introducir otro, no se realiza ninguna acción
+        //      Si el ejemplar existe y está activo, se abre FBajaEjemplar para procesar la baja
+        //      Si ocurre un error durante la apertura del formulario, se muestra un mensaje mediante ManejarExcepcion
         protected override void menuEjemplaresBaja_Click(object sender, EventArgs e)
         {
             int codigo;
@@ -270,6 +298,10 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnAdq != null
+        //POST: Se abre FBuscarEjemplar para buscar un ejemplar
+        //       Si se encuentra un ejemplar, se muestra su información mediante MostrarInformacion
+        //       Si ocurre un error durante la búsqueda, se muestra un mensaje mediante MostrarError
         protected override void menuEjemplaresBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -299,6 +331,9 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnAdq != null
+        //POST: Se abre FListaEjemplar para mostrar todos los ejemplares
+        //       Si ocurre un error durante la apertura del formulario, se maneja mediante ManejarExcepcion
         protected override void menuEjemplarListado_Click(object sender, EventArgs e)
         {
             try
@@ -312,6 +347,9 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnAdq != null
+        //POST: Se abre FListaDocumentos para mostrar todos los documentos
+        //      Si ocurre un error durante la apertura del formulario, se muestra un mensaje mediante MostrarError
         protected override void menuDocumentosListado_Click(object sender, EventArgs e)
         {
             try
@@ -325,6 +363,9 @@ namespace Presentacion
             }
         }
 
+        //PRE: lnAdq != null
+        //POST: Se abre FDocumentosUnoAUno para recorrer los documentos uno a uno
+        //      Si ocurre un error durante la apertura del formulario, se muestra un mensaje mediante MostrarError
         protected override void menuDocumentosRecorrido_Click(object sender, EventArgs e)
         {
             try

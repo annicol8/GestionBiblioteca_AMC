@@ -16,18 +16,27 @@ namespace Presentacion
     public partial class FListaEjemplar : FComun
     {
         private ILNPAdq lnpa;
+
+        //PRE:
+        //POST: El formulario queda inicializado sin cargar datos
         public FListaEjemplar()
         {
             InitializeComponent();
         }
 
-        public FListaEjemplar(ILNPAdq lnpa)
-        {
+        //PRE: lnpa != null
+        //POST: El formulario queda inicializado. Se cargan los documentos y sus ejemplares en el TreeView
+        public FListaEjemplar(ILNPAdq lnpa) : this() 
+        {  
             this.lnpa = lnpa;
-            InitializeComponent();
             CargarEjemplares();
         }
 
+        //PRE: lnpa ha sido inicializado correctamente
+        //POST: El TreeView queda limpio antes de cargar datos
+        //      Si no hay documentos, se muestra una advertencia y no se cargan nodo.
+        //      Para cada documento se añade un nodo con sus ejemplares. Cada ejemplar se muestra con su estado y personal asociado
+        //      Los ejemplares activos se muestran en verde y los inactivos en rojo. El TreeView queda completamente expandido
         private void CargarEjemplares()
         {
             try
@@ -82,6 +91,8 @@ namespace Presentacion
             }
         }
 
+        //PRE: El nodo pulsado pertenece al TreeView de ejemplares
+        //PRE: Si el nodo representa un Ejemplar, se muestran sus detalles en un mensaje
         private void treeView_Ejemplares_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Node.Tag is Ejemplar ejemplar)

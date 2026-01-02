@@ -21,20 +21,20 @@ namespace Presentacion
             InitializeComponent();
         }
         /* PRE: lnpa != null
-   POST: Inicializa el formulario con la lógica de negocio necesaria para buscar ejemplares */
+        POST: Inicializa el formulario con la lógica de negocio necesaria para buscar ejemplares */
         public FBuscarEjemplar(ILNPAdq lnpa)
         {
             this.lnpa = lnpa;
             InitializeComponent();
         }
         /* PRE: lnpa inicializado
-   POST: Inicia el proceso de búsqueda de ejemplar */
+        POST: Inicia el proceso de búsqueda de ejemplar */
         private void FBuscarEjemplar_Load(object sender, EventArgs e)
         {
             BuscarEjemplar();
         }
         /* PRE: lnpa inicializado
-   POST: Solicita un código al usuario y busca el ejemplar correspondiente.
+        POST: Solicita un código al usuario y busca el ejemplar correspondiente.
          Si lo encuentra, muestra sus datos. Si no, pregunta si desea buscar otro.
          Si hay error o cancelación, cierra con DialogResult.Cancel */
         private void BuscarEjemplar()
@@ -80,7 +80,7 @@ namespace Presentacion
             }
         }
         /* PRE: ejemplar != null, lnpa inicializado
-   POST: Muestra toda la información del ejemplar en los controles del formulario.
+         POST: Muestra toda la información del ejemplar en los controles del formulario.
          Si está inactivo, cambia el color de fondo y muestra advertencia */
         private void MostrarDatosEjemplar(Ejemplar ejemplar)
         {
@@ -122,7 +122,7 @@ namespace Presentacion
             MostrarInfoDocumento(ejemplar.IsbnDocumento);
         }
         /* PRE: lnpa inicializado
-   POST: Busca y muestra el título del documento asociado al ISBN.
+         POST: Busca y muestra el título del documento asociado al ISBN.
          Si hay error, lo ignora silenciosamente */
         private void MostrarInfoDocumento(string isbn)
         {

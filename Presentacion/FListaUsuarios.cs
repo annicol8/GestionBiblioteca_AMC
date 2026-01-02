@@ -18,6 +18,10 @@ namespace Presentacion
         private List<Usuario> usuarios;
         private BindingSource bindingSourceDni;
         private BindingSource bindingSourceNombre;
+
+        //PRE: ln != null
+        //POST: El formulario queda inicializado. Se cargan los usuarios activos
+        //      Las listas de DNI y Nombre quedan enlazadas y sincronizadas
         public FListaUsuarios(ILNPersonal ln)
         {
             this.ln = ln;
@@ -25,6 +29,9 @@ namespace Presentacion
             CargarUsuarios();
         }
 
+        //PRE: ln ha sido inicializado correctamente
+        //POST: Se obtiene la lista de usuarios activos. Los bindingSource quedan asociados a la misma lista
+        //      listBox_Dni muestra los DNI de los usuarios y listBox_Nombre muestra los nombres de los usuarios
         private void CargarUsuarios()
         {
             usuarios = ln.GetUsuariosActivos(); //obtener los usuarios dados de alta
@@ -46,6 +53,9 @@ namespace Presentacion
             listBox_Nombre.ValueMember = "Nombre";
         }
 
+        //PRE: usuarios ha sido cargada correctamente
+        //POST: La lista de usuarios queda ordenada por DNI ascendente
+        //      Ambas listas se refrescan. El botón de orden por DNI indica el criterio activo
         private void bt_OrdenDni_Click(object sender, EventArgs e)
         {
             usuarios.Sort((u1, u2) => string.Compare(u1.Dni, u2.Dni, StringComparison.Ordinal));
@@ -57,6 +67,9 @@ namespace Presentacion
             bt_OrdenNombre.Text = "Nombre ";
         }
 
+        //PRE: usuarios ha sido cargada correctamente
+        //POST: La lista de usuarios queda ordenada por Nombre ascendente
+        //      Ambas listas se refrescan manteniendo la sincronización. El botón de orden por Nombre indica el criterio activo
         private void bt_OrdenNombre_Click(object sender, EventArgs e)
         {
             usuarios.Sort((u1, u2) => string.Compare(u1.Nombre, u2.Nombre, StringComparison.OrdinalIgnoreCase));
@@ -68,6 +81,8 @@ namespace Presentacion
             bt_OrdenNombre.Text = "Nombre ▲";
         }
 
+        //PRE: El formulario está abierto
+        //POST: El formulario se cierra
         private void bt_Cerrar_Click(object sender, EventArgs e)
         {
             this.Close();
