@@ -149,6 +149,12 @@
     <Compile Include="FDocumentosUnoAUno.Designer.cs">
       <DependentUpon>FDocumentosUnoAUno.cs</DependentUpon>
     </Compile>
+    <Compile Include="FEjemplaresDisponibles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEjemplaresDisponibles.Designer.cs">
+      <DependentUpon>FEjemplaresDisponibles.cs</DependentUpon>
+    </Compile>
     <Compile Include="FListaDocumentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FDocumentosUnoAUno.resx">
       <DependentUpon>FDocumentosUnoAUno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEjemplaresDisponibles.resx">
+      <DependentUpon>FEjemplaresDisponibles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FListaDocumentos.resx">
       <DependentUpon>FListaDocumentos.cs</DependentUpon>

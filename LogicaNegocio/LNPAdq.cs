@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using ModeloDominio;
-using Persistencia;
 
 namespace LogicaNegocio
 {
@@ -17,7 +11,7 @@ namespace LogicaNegocio
         //POST: Se inicializa la clase llamando al constructor base. Si es null, se lanza excepción desde la clase base
         public LNPAdq(PersonalAdquisiciones personal) : base(personal)
         {
-            
+
         }
 
         //PRE: libro no null y libro.Isbn no null ni vacío. El ISBN no debe existir previamente en el sistema y el personal que ejecuta debe ser PersonalAdquisiciones 
@@ -159,9 +153,9 @@ namespace LogicaNegocio
         //PRE: El ejemplar con ese código debe existir en el sistema y debe estar activo. El personal que ejecuta debe ser PersonalAdquisiciones
         //POST: El ejemplar queda marcado como inactivo: Activo = false. Se actualiza en la BD. Retorna true si la operación fue exitosa
         public bool BajaEjemplar(int codigo) //Parámetro objeto ejemplar?
-            //PRE:
-            //POST: El ejemplar con ese código se actualiza en la base de datos (NO se borra)
-                  //y se pone su atributo "Activo" a false. Si no existe el ejemplar, excepción
+                                             //PRE:
+                                             //POST: El ejemplar con ese código se actualiza en la base de datos (NO se borra)
+                                             //y se pone su atributo "Activo" a false. Si no existe el ejemplar, excepción
         {
             Ejemplar ej = Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigo));
             if (ej == null)
@@ -179,14 +173,14 @@ namespace LogicaNegocio
 
         //PRE:
         //POST: Si existe un ejemplar con ese código: retorna el objeto Ejemplar. Si no existe: retorna null
-        public Ejemplar GetEjemplar(int codigo) 
+        public Ejemplar GetEjemplar(int codigo)
         {
             return Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigo));
         }
 
         //PRE:
         //POST: Retorna true si el ejemplar está asociado a algún préstamo en estado enProceso, false si el ejemplar no está prestado o no existe
-        public bool EstaPrestadoEjemplar(int codigo)    
+        public bool EstaPrestadoEjemplar(int codigo)
         {
             List<Prestamo> prestamos = Persistencia.Persistencia.GetPrestamosPorEjemplar(codigo);
             return prestamos.Any(p => p.Estado == EstadoPrestamo.enProceso);
@@ -194,7 +188,8 @@ namespace LogicaNegocio
 
         //PRE: ibsn no null y el documento debe tener al menos un ejemplar registrado sino excepcion
         //POST: Retorna true si existe al menos un ejemplar del documento que NO está prestado, false si todos los ejemplares están prestados
-        public bool HayEjemplaresDisponibles(string isbn) {
+        public bool HayEjemplaresDisponibles(string isbn)
+        {
             List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
             if (ejemplares.Count == 0)
                 throw new Exception("El documento no tiene ejemplares registrados.");
@@ -232,7 +227,7 @@ namespace LogicaNegocio
             }
 
             if (contador.Count == 0)
-                return null; 
+                return null;
 
             return contador
                 .OrderByDescending(x => x.Value)
@@ -254,7 +249,53 @@ namespace LogicaNegocio
         {
             return Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
         }
-        
+        //PRE: isbn no null y no vacío
+        //POST: Si hay ejemplares activos disponibles, devuelve null
+        //      Si todos los ejemplares activos están prestados, devuelve la fecha más próxima de devolución
+        //      Si el documento no existe, no tiene ejemplares activos, devuelve null
+        public DateTime? GetFechaProximaDisponibilidad(string isbn)
+        {
+            if (string.IsNullOrWhiteSpace(isbn))
+                throw new ArgumentException("El ISBN no puede estar vacío");
+
+            Documento doc = Persistencia.Persistencia.GetDocumento(isbn);
+            if (doc == null)
+                return null;
+
+            List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
+            if (ejemplares.Count == 0)
+                return null;
+
+            bool hayDisponible = false;
+            foreach (Ejemplar e in ejemplares)
+            {
+                if (e.Activo && !EstaPrestadoEjemplar(e.Codigo))
+                {
+                    hayDisponible = true;
+                    break;
+                }
+            }
+
+            if (hayDisponible)
+                return null;
+
+            DateTime? fechaMasProxima = null;
+            List<Prestamo> prestamosDocumento = GetPrestamosPorDocumento(isbn);
+
+            foreach (Prestamo prestamo in prestamosDocumento)
+            {
+                if (prestamo.Estado != EstadoPrestamo.enProceso)
+                    continue;
+
+                if (!fechaMasProxima.HasValue || prestamo.FechaDevolucion < fechaMasProxima.Value)
+                {
+                    fechaMasProxima = prestamo.FechaDevolucion;
+                }
+            }
+
+            return fechaMasProxima;
+        }
+
     }
-        //ME FALTA: lo de que si están todos prestados, fecha en la que estará disponible alguno (debería ser devuelto el ejemplar)
+
 }

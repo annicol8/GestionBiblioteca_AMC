@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ModeloDominio;
 
 namespace LogicaNegocio
 {
-    public interface ILNPAdq: ILNPersonal
+    public interface ILNPAdq : ILNPersonal
     {
-        
+
         bool AltaLibroPapel(LibroPapel libro);
 
         bool AltaAudioLibro(AudioLibro audioLibro);
@@ -34,6 +31,7 @@ namespace LogicaNegocio
 
         List<Ejemplar> ejemplaresPorDocumento(string isbn);
 
+        DateTime? GetFechaProximaDisponibilidad(string isbn);
 
     }
 }

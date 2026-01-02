@@ -361,6 +361,12 @@ namespace Presentacion
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
+        protected virtual void ejemplaresDisponiblesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+        }
     }
 
 }

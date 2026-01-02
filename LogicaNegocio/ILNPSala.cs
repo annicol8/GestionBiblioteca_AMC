@@ -12,7 +12,6 @@ namespace LogicaNegocio
         List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo);
         Prestamo GetPrestamo(int idPrestamo);
 
-        List<Prestamo> GetPrestamosPorDocumento(string isbn);
 
         void DevolverEjemplar(int idPrestamo, int codigoEjemplar);
         List<Prestamo> GetPrestamosFueraDePlazo();
@@ -33,7 +32,6 @@ namespace LogicaNegocio
         List<Ejemplar> GetEjemplaresDisponibles(List<int> codigosExcluidos);
         int CrearPrestamoCompleto(Prestamo prestamo, List<int> codigosEjemplares);
         bool PuedeRealizarPrestamo(string dni);
-        bool EjemplarDisponibleParaPrestamo(int codigoEjemplar);
         Ejemplar GetEjemplar(int codigo);
     }
 }

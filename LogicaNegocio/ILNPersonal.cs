@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ModeloDominio;
 
 namespace LogicaNegocio
@@ -28,5 +24,8 @@ namespace LogicaNegocio
 
         int GetNumPrestamosVencidos(string dni);
         Personal GetPersonal(string dni);
+
+        List<Prestamo> GetPrestamosPorDocumento(string isbn);
+        bool EjemplarDisponibleParaPrestamo(int codigoEjemplar);
     }
 }

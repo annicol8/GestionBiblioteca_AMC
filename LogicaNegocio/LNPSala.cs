@@ -69,7 +69,7 @@ namespace LogicaNegocio
             return null;
         }*/
 
-        
+
         //PRE: idPrestamo > 0
         //POST: devuelve lista con los ejemplares del préstamo que aún no han sido devueltos (puede estar vacía)
         public List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo)
@@ -131,32 +131,6 @@ namespace LogicaNegocio
             return prestamosFueraDePlazo;
         }
 
-        // PRE: isbn != null y no vacío.
-        // POST: Devuelve una lista con todos los préstamos asociados a ejemplares del documento indicado.
-        //       No se repiten préstamos. La lista puede estar vacía si el documento no tiene préstamos.
-        public List<Prestamo> GetPrestamosPorDocumento(string isbn)
-        {
-            List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
-
-            List<Prestamo> prestamos = new List<Prestamo>();
-            HashSet<int> idsPrestamosAgregados = new HashSet<int>();
-
-            foreach (Ejemplar ejemplar in ejemplares)
-            {
-                List<Prestamo> prestamosDelEjemplar =
-                    Persistencia.Persistencia.GetPrestamosPorEjemplar(ejemplar.Codigo);
-
-                foreach (Prestamo p in prestamosDelEjemplar)
-                {
-                    if (!prestamos.Contains(p))
-                    {
-                        prestamos.Add(p);
-                    }
-                }
-            }
-            return prestamos;
-        }
-
         // PRE: idPrestamo > 0.
         // POST: Devuelve el usuario asociado al préstamo. Si el préstamo no existe, devuelve null.
         public Usuario GetUsuarioPrestamo(int idPrestamo)
@@ -183,7 +157,7 @@ namespace LogicaNegocio
         public List<Ejemplar> GetEjemplaresDePrestamo(int id)
         {
             return Persistencia.Persistencia.GetEjemplaresDePrestamo(id);
-        } 
+        }
 
         //PRE:
         //POST: Si no existe, null; si existe, devuelve el objeto AudLibro o LiPapel
@@ -202,7 +176,7 @@ namespace LogicaNegocio
                 .ToList();
         }
 
-        
+
         //PRE: codigosExcluidos puede ser null
         //POST: devuelve lista con ejemplares activos excluyendo los códigos especificados (puede estar vacía)
         public List<Ejemplar> GetEjemplaresDisponibles(List<int> codigosExcluidos)
@@ -215,7 +189,7 @@ namespace LogicaNegocio
             return todosActivos.Where(e => !codigosExcluidos.Contains(e.Codigo)).ToList();
         }
 
-        
+
         //PRE: prestamo != null && ejemplares != null && ejemplares.Count > 0
         //POST: crea el préstamo en la BD, añade todos los ejemplares con estado no devuelto,
         //      devuelve el ID del préstamo creado. Si falla, lanza excepción
@@ -279,37 +253,6 @@ namespace LogicaNegocio
             // Opcional: puedes añadir más restricciones
             // Por ejemplo, si tiene documentos vencidos
             return !TieneDocumentosFueraPlazo(dni);
-        }
-
-        /*
-        PRE: codigoEjemplar > 0
-        POST: devuelve true si el ejemplar está disponible para préstamo (existe, está activo
-              y no está actualmente prestado), false en caso contrario
-        */
-        public bool EjemplarDisponibleParaPrestamo(int codigoEjemplar)
-        {
-            Ejemplar ejemplar = Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigoEjemplar));
-
-            if (ejemplar == null || !ejemplar.Activo)
-                return false;
-
-            // Verificar si está en un préstamo activo
-            List<Prestamo> prestamosDelEjemplar = Persistencia.Persistencia.GetPrestamosPorEjemplar(codigoEjemplar);
-
-            foreach (Prestamo p in prestamosDelEjemplar)
-            {
-                if (p.Estado == EstadoPrestamo.enProceso)
-                {
-                    // Verificar si este ejemplar específicamente no ha sido devuelto
-                    var prestamoEjemplar = Persistencia.Persistencia.GetPrestamoEjemplar(p.Id, codigoEjemplar);
-                    if (prestamoEjemplar != null && prestamoEjemplar.FechaDevolucion == DateTime.MinValue)
-                    {
-                        return false; // Está prestado y no devuelto
-                    }
-                }
-            }
-
-            return true;
         }
 
         // En ILNPSala/LNPSala

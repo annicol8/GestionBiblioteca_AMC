@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using LogicaNegocio;
 using ModeloDominio;
 
@@ -28,7 +20,7 @@ namespace Presentacion
         //POST: Se asigna la referencia lnAdq
         //      Se configuran los permisos, ocultando el menú de préstamos
         //      El título del formulario se actualiza con los datos del personal
-        public FPAdq(ILNPAdq lnpa): base(lnpa)
+        public FPAdq(ILNPAdq lnpa) : base(lnpa)
         {
             this.lnAdq = lnpa;
             ConfigurarPermisos();
@@ -107,16 +99,16 @@ namespace Presentacion
                 codigo = pedirClave<int>("Código ");
 
                 if (codigo == 0)
-                    return; 
+                    return;
 
                 if (codigo < 0)
                 {
                     MostrarAdvertencia(
-                        "El código debe ser un número entero mayor que 0.\n\n" ,
+                        "El código debe ser un número entero mayor que 0.\n\n",
                         "Código inválido");
-                     continue;
+                    continue;
                 }
-               
+
                 Ejemplar ejemplarExistente = lnAdq.GetEjemplar(codigo);
 
                 if (ejemplarExistente != null)
@@ -124,14 +116,14 @@ namespace Presentacion
                     if (ejemplarExistente.Activo)
                     {
                         MostrarAdvertencia(
-                            $"Ya existe un ejemplar ACTIVO con el código {codigo}.\n\n" ,
+                            $"Ya existe un ejemplar ACTIVO con el código {codigo}.\n\n",
                             "Código duplicado");
                     }
                     else
                     {
                         MostrarAdvertencia(
-                            $"Ya existe un ejemplar DADO DE BAJA con el código {codigo}.\n\n" 
-                            ,"Código duplicado");
+                            $"Ya existe un ejemplar DADO DE BAJA con el código {codigo}.\n\n"
+                            , "Código duplicado");
                     }
 
                     DialogResult dr = MostrarPregunta(
@@ -234,7 +226,7 @@ namespace Presentacion
                 }
 
             }
-            
+
 
         }
 
@@ -271,7 +263,7 @@ namespace Presentacion
                 if (!ejemplarExistente.Activo)
                 {
                     MostrarAdvertencia(
-                        $"El ejemplar con código {codigo} ya está dado de baja.\n\n" ,
+                        $"El ejemplar con código {codigo} ya está dado de baja.\n\n",
                         "Ejemplar inactivo");
 
                     DialogResult dr = MostrarPregunta(
@@ -341,7 +333,7 @@ namespace Presentacion
                 FListaEjemplar formulario = new FListaEjemplar(lnAdq);
                 formulario.Show();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 ManejarExcepcion(ex, "abrir listado de ejemplares");
             }
@@ -376,6 +368,51 @@ namespace Presentacion
             catch (Exception ex)
             {
                 MostrarError($"Error al abrir el recorrido de documentos: {ex.Message}");
+            }
+        }
+
+        //PRE: lnAdq != null
+        //POST: Se solicita un ISBN mediante pedirClave<string>
+        //      Si el ISBN es válido y el documento existe, se abre FEjemplaresDisponibles
+        //      Si el documento no existe, se pregunta si desea introducir otro ISBN
+        //      Si ocurre un error, se muestra mediante ManejarExcepcion
+        protected override void ejemplaresDisponiblesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string isbn;
+
+            while (true)
+            {
+                isbn = pedirClave<string>("ISBN");
+
+                if (isbn == null)
+                    return;
+
+                Documento documento = lnAdq.getDocumento(isbn);
+
+                if (documento == null)
+                {
+                    DialogResult dr = MostrarPregunta(
+                        $"No existe ningún documento con el ISBN {isbn}.\n\n" +
+                        "¿Desea introducir otro ISBN?",
+                        "Documento no encontrado");
+
+                    if (dr == DialogResult.Yes)
+                        continue;
+                    else
+                        return;
+                }
+
+                try
+                {
+                    FEjemplaresDisponibles formulario = new FEjemplaresDisponibles(isbn, lnAdq);
+                    formulario.ShowDialog(this);
+                }
+                catch (Exception ex)
+                {
+                    ManejarExcepcion(ex, "consultar la disponibilidad de ejemplares");
+                }
+
+                return;
             }
         }
     }
