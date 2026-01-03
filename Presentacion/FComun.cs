@@ -388,7 +388,40 @@ namespace Presentacion
                 }
             }
         }
-        
+
+        // PRE: El TextBox debe estar inicializado
+        // POST: Devuelve true si la contraseña cumple los requisitos mínimos
+        protected bool ValidarContraseña(TextBox textBox, string nombreCampo = "Contraseña")
+        {
+            if (textBox == null)
+                throw new ArgumentNullException(nameof(textBox));
+
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                MostrarAdvertencia($"El campo '{nombreCampo}' no puede estar vacío.");
+                textBox.Focus();
+                return false;
+            }
+
+            string contraseña = textBox.Text.Trim();
+
+            if (contraseña.Length < 5)
+            {
+                MostrarAdvertencia($"El campo '{nombreCampo}' debe tener al menos 5 caracteres.");
+                textBox.Focus();
+                return false;
+            }
+
+            if (contraseña.Contains(" "))
+            {
+                MostrarAdvertencia($"El campo '{nombreCampo}' no puede contener espacios.");
+                textBox.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
 
     }
 }

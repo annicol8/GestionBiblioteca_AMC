@@ -27,5 +27,14 @@ namespace LogicaNegocio
 
         List<Prestamo> GetPrestamosPorDocumento(string isbn);
         bool EjemplarDisponibleParaPrestamo(int codigoEjemplar);
+
+        Ejemplar GetEjemplar(int codigo);
+        Documento GetDocumento(string isbn);
+        List<Prestamo> GetPrestamosActivosUsuario(string dni);
+
+        void AltaPersonal(Personal personal);
+
+
+
     }
 }

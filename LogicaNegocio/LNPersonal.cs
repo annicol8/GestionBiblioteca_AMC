@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ModeloDominio;
+using Persistencia;
 
 namespace LogicaNegocio
 {
@@ -208,19 +210,37 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.GetPersonal(dni);
         }
 
+        //PRE: codigo > 0
+        //POST: Devuelve el ejemplar con ese código o null si no existe
+        public Ejemplar GetEjemplar(int codigo)
+        {
+            return Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigo));
+        }
 
+        //PRE: isbn != null y no vacío
+        //POST: Devuelve el documento con ese ISBN o null si no existe
+        public Documento GetDocumento(string isbn)
+        {
+            return Persistencia.Persistencia.GetDocumento(isbn);
+        }
 
+        //PRE: dni != null y no vacío
+        //POST: Devuelve la lista de préstamos activos (no devueltos) del usuario
+        //      Si el usuario no tiene préstamos activos, devuelve una lista vacía
+        public List<Prestamo> GetPrestamosActivosUsuario(string dni)
+        {
+            List<Prestamo> todosPrestamos = GetPrestamosPorUsuario(dni);
+            List<Prestamo> prestamosActivos = new List<Prestamo>();
 
-
-
-
-
-
-
-
-
-
-
+            foreach (Prestamo prestamo in todosPrestamos)
+            {
+                if (prestamo.Estado != EstadoPrestamo.finalizado) 
+                {
+                    prestamosActivos.Add(prestamo);
+                }
+            }
+            return prestamosActivos;
+        }
 
 
         /*
@@ -279,6 +299,27 @@ namespace LogicaNegocio
                 }
             }
             return prestamos;
+        }
+
+        //ORE: P distinto de null y P.Dni no null ni vacío.
+        //POST: si P no existe se crea un nuevo personal en la BD; 
+        //      si p existe se lanza excepcion de que ya existe uno dado de alta con el mismo dni
+
+        public void AltaPersonal(Personal p)
+        {
+            if (p == null)
+                throw new ArgumentNullException("El personal no puede ser null");
+
+            if (string.IsNullOrWhiteSpace(p.Dni))
+                throw new ArgumentException("El DNI no puede estar vacío");
+
+            Personal existente = Persistencia.Persistencia.GetPersonal(p.Dni);
+
+            if (existente != null)
+                throw new InvalidOperationException($"Ya existe un personal con DNI {p.Dni}");
+
+            Persistencia.Persistencia.AltaPersonal(p);
+
         }
 
     }

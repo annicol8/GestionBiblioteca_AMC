@@ -530,5 +530,8 @@ POST: devuelve lista con todos los préstamos en los que aparece ese ejemplar (p
             }
             return prestamos;
         }
+
+
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
@@ -276,6 +277,42 @@ namespace Presentacion
             }
         }
 
+        private void ejempToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string dni;
+            while (true)
+            {
+                dni = pedirClave<string>("DNI");
+                if (dni == null)
+                    return;
+
+                Usuario usuario = lnp.GetUsuario(dni);
+
+                if (usuario == null)
+                {
+                    DialogResult dr = MostrarPregunta(
+                        $"No existe ningún usuario con el DNI {dni}.\n\n" +
+                        "¿Desea introducir otro DNI?",
+                        "Usuario no encontrado");
+                    if (dr == DialogResult.Yes)
+                        continue;
+                    else
+                        return;
+                }
+
+                try
+                {
+                    FEjemplaresPrestados formulario = new FEjemplaresPrestados(dni, lnp);
+                    formulario.ShowDialog(this);
+                }
+                catch (Exception ex)
+                {
+                    ManejarExcepcion(ex, "consultar los ejemplares prestados del usuario");
+                }
+                return;
+            }
+        }
+
         //PRE: 
         //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void menuDocumentosBaja_Click(object sender, EventArgs e)
@@ -361,6 +398,7 @@ namespace Presentacion
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
+
         //PRE: 
         //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void ejemplaresDisponiblesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -368,10 +406,56 @@ namespace Presentacion
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
         protected virtual void documentoMásPrestadoDelÚltimoMesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
-    }
 
+        //PRE:
+        //POST: se cierra la sesión y se vuelve al formulario login de inicio en caso de confirmación, si no se cierra el aviso y se continua donde estaba 
+        private void volverALoguinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!SolicitarConfirmacion("¿Desea cerrar la sesión y volver al login?"))
+                return;
+
+            this.Hide();
+
+            using (FLogin login = new FLogin())
+            {
+                login.ShowDialog();
+            }
+            this.Close();
+        }
+
+        //PRE: lnp != null
+        //POST: Se solicita un DNI válido mediante diálogo
+        //      Si se introduce un DNI válido y no existe personal activo, se abre FAltaPersonal
+        //      Si se cancela o no se puede crear, no se realiza ninguna acción
+        private void altaPersonalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string dni = pedirClave<string>("DNI");
+
+            if (string.IsNullOrWhiteSpace(dni))
+                return;
+
+            if (!ValidarDNI(dni))
+            {
+                MostrarAdvertencia("El DNI introducido no es válido");
+                return;
+            }
+
+            using (FAltaPersonal fAlta = new FAltaPersonal(lnp, dni))
+            {
+                if (fAlta.ShowDialog() == DialogResult.OK)
+                {
+                    MostrarExito("Personal dado de alta correctamente");
+                }
+            }
+        }
+
+        
+    }
 }
+

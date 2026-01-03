@@ -15,18 +15,18 @@ namespace Presentacion
         {
             InitializeComponent();
         }
+
         //PRE: isbn != null y no vacío, lnAdq != null
         //POST: El formulario queda inicializado con las referencias a isbn y lnAdq asignadas
-
         public FEjemplaresDisponibles(string isbn, ILNPAdq lnAdq) : this()
         {
             this.isbn = isbn;
             this.lnAdq = lnAdq;
         }
+
         //PRE: isbn != null y no vacío, lnAdq != null, el documento con ese ISBN debe existir
         //POST: Se cargan los datos del documento y su disponibilidad en el formulario
         //      Si hay un error, se muestra mediante MostrarError y se cierra el formulario
-
         private void FEjemplaresDisponibles_Load(object sender, System.EventArgs e)
         {
             try
@@ -41,6 +41,7 @@ namespace Presentacion
                 this.Close();
             }
         }
+
         //PRE: isbn != null y no vacío, lnAdq != null, el documento debe existir
         //POST: Se calculan y muestran las estadísticas de disponibilidad
         private void CargarDisponibilidad()
@@ -77,6 +78,7 @@ namespace Presentacion
                 MostrarNoDisponible();
             }
         }
+
         //PRE: lnAdq != null, isbn != null y no vacío
         //POST: Se actualiza la interfaz para mostrar estado "NO DISPONIBLE":
         private void MostrarNoDisponible()
@@ -128,6 +130,7 @@ namespace Presentacion
 
             lblFechaDisponibilidad.Visible = true;
         }
+
         //PRE: ejemplaresDisponibles > 0
         //POST: Se actualiza la interfaz para mostrar estado "DISPONIBLE"
         private void MostrarDisponible(int ejemplaresDisponibles)

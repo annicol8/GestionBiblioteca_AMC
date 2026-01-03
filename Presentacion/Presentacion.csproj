@@ -59,6 +59,12 @@
     <Compile Include="FAltaEjemplar.Designer.cs">
       <DependentUpon>FAltaEjemplar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FAltaPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAltaPersonal.Designer.cs">
+      <DependentUpon>FAltaPersonal.cs</DependentUpon>
+    </Compile>
     <Compile Include="FAltaPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,12 @@
     <Compile Include="FEjemplaresDisponibles.Designer.cs">
       <DependentUpon>FEjemplaresDisponibles.cs</DependentUpon>
     </Compile>
+    <Compile Include="FEjemplaresPrestados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEjemplaresPrestados.Designer.cs">
+      <DependentUpon>FEjemplaresPrestados.cs</DependentUpon>
+    </Compile>
     <Compile Include="FListaDocumentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +241,9 @@
     <EmbeddedResource Include="FAltaEjemplar.resx">
       <DependentUpon>FAltaEjemplar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FAltaPersonal.resx">
+      <DependentUpon>FAltaPersonal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FAltaPrestamo.resx">
       <DependentUpon>FAltaPrestamo.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FEjemplaresDisponibles.resx">
       <DependentUpon>FEjemplaresDisponibles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEjemplaresPrestados.resx">
+      <DependentUpon>FEjemplaresPrestados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FListaDocumentos.resx">
       <DependentUpon>FListaDocumentos.cs</DependentUpon>

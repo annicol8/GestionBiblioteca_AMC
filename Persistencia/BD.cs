@@ -117,6 +117,7 @@ namespace Persistencia
             TablaUsuarios.Add(new UsuarioDato("78901234K", "Sofía ", true));
             TablaUsuarios.Add(new UsuarioDato("89012345T", "Javier ", false)); // Usuario dado de baja
 
+            
             // ===== PRÉSTAMO 1 (En Proceso) =====
             int idPrestamo1 = GenerarIdPrestamo();
 
@@ -125,7 +126,7 @@ namespace Persistencia
                 DateTime.Now.AddDays(-5),           // Hace 5 días
                 DateTime.Now.AddDays(10),           // Vence en 10 días
                 EstadoPrestamo.enProceso,
-                "45678901R",   // DNI Usuario: Pedro González
+                "78901234K",   // DNI Usuario: Sofía
                 "12345678Z"    // DNI Personal: Juan
             ));
 
@@ -133,7 +134,7 @@ namespace Persistencia
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
                 idPrestamo1,
                 1,              // Ejemplar de "Clean Code"
-                DateTime.MinValue // aún no devuelto
+                DateTime.MinValue
             ));
 
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
@@ -150,7 +151,7 @@ namespace Persistencia
                 DateTime.Now.AddDays(-20),          // Hace 20 días
                 DateTime.Now.AddDays(-5),           // Venció hace 5 días
                 EstadoPrestamo.finalizado,
-                "56789012E",   // DNI Usuario: Eva Martínez
+                "56789012E",   // DNI Usuario: Eva
                 "12345678Z"    // DNI Personal: Juan
             ));
 
@@ -158,13 +159,13 @@ namespace Persistencia
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
                 idPrestamo2,
                 3,              // Ejemplar de "Clean Architecture"
-                DateTime.Now.AddDays(-7) // Devuelto hace 7 días
+                DateTime.Now.AddDays(-7)
             ));
 
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
                 idPrestamo2,
                 4,              // Ejemplar de "Refactoring"
-                DateTime.Now.AddDays(-7) // Devuelto hace 7 días
+                DateTime.Now.AddDays(-7)
             ));
 
             // ===== PRÉSTAMO 3 (En Proceso - con varios libros) =====
@@ -214,7 +215,7 @@ namespace Persistencia
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
                 idPrestamo4,
                 9,              // Ejemplar de "Cien Años de Soledad"
-                DateTime.MinValue // NO devuelto
+                DateTime.MinValue
             ));
 
             // ===== PRÉSTAMO 5 (Finalizado - ejemplo de audiolibro) =====
@@ -233,9 +234,10 @@ namespace Persistencia
             TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
                 idPrestamo5,
                 8,              // AudioLibro "Rebelión en la granja"
-                DateTime.Now.AddDays(-21) // Devuelto hace 21 días
+                DateTime.Now.AddDays(-21)
             ));
         }
+            
 
 
         public static Tabla<string, AudioLibroDato> TablaAudioLibros
