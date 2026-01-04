@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
 
@@ -79,7 +80,8 @@ namespace Presentacion
             {
                 MostrarError($"Error al abrir el alta de préstamos: {ex.Message}");
             }
-        }
+        } 
+
 
         //PRE: lnSala != null. Se solicita un identificador de préstamo válido mediante pedirClave<int>
         //POST: Si el préstamo no existe, se muestra un error y no se hace nada

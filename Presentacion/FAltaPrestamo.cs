@@ -269,6 +269,7 @@ namespace Presentacion
                     int idPrestamoCreado = lnSala.CrearPrestamoCompleto(prestamo, codigosEjemplaresAñadidos);
 
                     MostrarExito(  $"Préstamo creado con éxito.\n");
+                    RefrescarFormularioEjemplaresPrestados(dniUsuario);
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -283,6 +284,30 @@ namespace Presentacion
             catch (Exception ex)
             {
                 ManejarExcepcion(ex, "crear el préstamo");
+            }
+        }
+
+        //PRE: dniUsuario no es null ni vacío
+        //POST: Si el formulario FEjemplaresPrestados está abierto para este usuario,
+        //      se refresca para mostrar los cambios
+        private void RefrescarFormularioEjemplaresPrestados(string dniUsuario)
+        {
+            try
+            {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form is FEjemplaresPrestados formEjemplares)
+                    {
+                        // Refrescar el formulario
+                        formEjemplares.Refrescar();
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // No mostrar error al usuario, solo registrar si es necesario
+                System.Diagnostics.Debug.WriteLine($"Error al refrescar formulario: {ex.Message}");
             }
         }
 

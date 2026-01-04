@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
 
-namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON LN MIRAR LO DE LOS FORMATOS 
+namespace Presentacion 
 {
     public partial class FListaPrestamos : FComun
     {
@@ -60,52 +60,6 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
                 ManejarExcepcion(ex, "cargar los préstamos");
             }
         }
-
-        /*
-        private void ConfigurarColumnas()
-        {
-            dataGridView_Prest.AutoGenerateColumns = true;
-
-            dataGridView_Prest.Refresh();
-            foreach (DataGridViewColumn col in dataGridView_Prest.Columns)
-            {
-                switch (col.Name)
-                {
-                    case "Id":
-                        col.HeaderText = "ID";
-                        col.Width = 50;
-                        col.DisplayIndex = 0;
-                        break;
-                    case "FechaPrestamo":
-                        col.HeaderText = "Fecha Préstamo";
-                        col.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-                        col.Width = 150;
-                        col.DisplayIndex = 1;
-                        break;
-                    case "FechaDevolucion":
-                        col.HeaderText = "Fecha Devolución";
-                        col.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-                        col.Width = 150;
-                        col.DisplayIndex = 2;
-                        break;
-                    case "Estado":
-                        col.HeaderText = "Estado";
-                        col.Width = 100;
-                        col.DisplayIndex = 3;
-                        break;
-                    case "DniUsuario":
-                        col.HeaderText = "DNI Usuario";
-                        col.Width = 100;
-                        col.DisplayIndex = 4;
-                        break;
-                    case "DniPersonal":
-                        col.HeaderText = "DNI Personal";
-                        col.Width = 100;
-                        col.DisplayIndex = 5;
-                        break;
-                }
-            }
-        }*/
 
         private void DgvPrestamos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -162,53 +116,6 @@ namespace Presentacion //CAMBIAR LOS MET. PERSISTENCIA.PERSITENCIA Y HACERLO CON
 
         private void MostrarDocumentosPrestamo()
         {
-            /*
-            try
-            {
-                listBox_Doc.Items.Clear();
-                if (dataGridView_Prest.CurrentRow == null || dataGridView_Prest.CurrentRow.DataBoundItem == null)
-                {
-                    listBox_Doc.Items.Add("(Selecciona un préstamo)");
-                    return;
-                }
-
-                Prestamo prestamo = dataGridView_Prest.CurrentRow.DataBoundItem as Prestamo;
-                if (prestamo == null)
-                {
-                    listBox_Doc.Items.Add("(Error al obtener el préstamo)");
-                    return;
-                }
-
-                var ejemplares = lnps.GetEjemplaresDePrestamo(prestamo.Id);
-
-                if (ejemplares == null || ejemplares.Count == 0)
-                {
-                    listBox_Doc.Items.Add("(Sin ejemplares asociados)");
-                    return;
-                }
-
-                int contador = 1;
-                foreach (var ejemplar in ejemplares)
-                {
-                    var documento = lnps.GetDocumento(ejemplar.IsbnDocumento);
-                    if (documento != null)
-                    {
-                        listBox_Doc.Items.Add($"{contador}. \"{documento.Titulo}\" (Código: {ejemplar.Codigo})");
-                    }
-                    else
-                    {
-                        listBox_Doc.Items.Add($"{contador}. Ejemplar código: {ejemplar.Codigo}");
-                    }
-                    contador++;
-                }
-            }
-            catch (Exception ex)
-            {
-                listBox_Doc.Items.Clear();
-                listBox_Doc.Items.Add($"Error al cargar documentos: {ex.Message}");
-            }*/
-
-
             try
             {
                 listBox_Doc.Items.Clear();

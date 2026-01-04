@@ -117,5 +117,12 @@ namespace Presentacion
             }
         }
 
+        //PRE: dni y lnp fueron inicializados correctamente
+        //POST: Se recargan los ejemplares prestados del usuario
+        public void Refrescar()
+        {
+            CargarEjemplaresPrestados();
+        }
+
     }
 }
