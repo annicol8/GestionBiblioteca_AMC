@@ -144,5 +144,20 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
+        protected override void préstamosFueraDePlazoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FPrestamosFueraDdePlazo formulario =
+                    new FPrestamosFueraDdePlazo(lnSala);
+
+                formulario.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MostrarError($"Error al mostrar los préstamos fuera de plazo:\n{ex.Message}");
+            }
+        }
+
     }
 }

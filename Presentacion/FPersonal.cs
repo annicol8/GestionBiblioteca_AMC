@@ -420,6 +420,13 @@ namespace Presentacion
             MostrarInformacion("Funcionalidad no implementada aún", "Atención");
         }
 
+        //PRE: 
+        //POST: Se muestra mensaje de "Funcionalidad no implementada aún"
+        protected virtual void préstamosFueraDePlazoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MostrarInformacion("Funcionalidad no implementada aún", "Atención");
+        }
+
         //PRE:
         //POST: se cierra la sesión y se vuelve al formulario login de inicio en caso de confirmación, si no se cierra el aviso y se continua donde estaba 
         private void volverALoguinToolStripMenuItem_Click(object sender, EventArgs e)

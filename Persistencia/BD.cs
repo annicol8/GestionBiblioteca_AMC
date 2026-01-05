@@ -109,6 +109,10 @@ namespace Persistencia
             TablaEjemplares.Add(new EjemplarDato(8, "978-0-14-311984-7", true, "22334455J"));
             TablaEjemplares.Add(new EjemplarDato(9, "978-84-376-0494-7", true, "22334455J"));
             TablaEjemplares.Add(new EjemplarDato(10, "978-0-13-235088-4", true, "22334455J"));
+            TablaEjemplares.Add(new EjemplarDato(11, "978-84-667-0234-5", true, "22334455J")); 
+            TablaEjemplares.Add(new EjemplarDato(12, "978-0-14-312774-3", true, "22334455J"));
+            TablaEjemplares.Add(new EjemplarDato(13, "978-84-376-0494-7", true, "22334455J"));
+
 
             // USUARIOS - DNIs válidos
             TablaUsuarios.Add(new UsuarioDato("45678901R", "Pedro ", true));
@@ -236,8 +240,61 @@ namespace Persistencia
                 8,              // AudioLibro "Rebelión en la granja"
                 DateTime.Now.AddDays(-21)
             ));
+
+            // ===== PRÉSTAMO 6 (Vencido - varios ejemplares sin devolver) =====
+            int idPrestamo6 = GenerarIdPrestamo();
+
+            TablaPrestamos.Add(new PrestamoDato(
+                idPrestamo6,
+                DateTime.Now.AddDays(-40),          // Hace 40 días
+                DateTime.Now.AddDays(-15),          // Venció hace 15 días
+                EstadoPrestamo.enProceso,           // VENCIDO
+                "56789012E",   // DNI Usuario: Eva
+                "87654321X"    // DNI Personal: María
+            ));
+
+            // Ejemplares del préstamo 6
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo6,
+                10,             // Ejemplar de "La sombra del viento"
+                DateTime.MinValue
+            ));
+
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo6,
+                11,             // Ejemplar de "El nombre de la rosa"
+                DateTime.MinValue
+            ));
+
+
+            // ===== PRÉSTAMO 7 (Vencido - uno devuelto y uno pendiente) =====
+            int idPrestamo7 = GenerarIdPrestamo();
+
+            TablaPrestamos.Add(new PrestamoDato(
+                idPrestamo7,
+                DateTime.Now.AddDays(-18),          // Hace 18 días
+                DateTime.Now.AddDays(-3),           // Venció hace 3 días
+                EstadoPrestamo.enProceso,           // VENCIDO
+                "67890123D",   // DNI Usuario: Carlos López
+                "12345678Z"    // DNI Personal: Juan
+            ));
+
+            // Ejemplar ya devuelto
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo7,
+                12,             // Ejemplar de "El Principito"
+                DateTime.Now.AddDays(-2)
+            ));
+
+            // Ejemplar NO devuelto
+            TablaPrestamoEjemplar.Add(new PrestamoEjemplarDato(
+                idPrestamo7,
+                13,             // Ejemplar de "Rayuela"
+                DateTime.MinValue
+            ));
+
         }
-            
+
 
 
         public static Tabla<string, AudioLibroDato> TablaAudioLibros
