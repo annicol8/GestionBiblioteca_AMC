@@ -59,6 +59,7 @@
             this.Configuración = new System.Windows.Forms.ToolStripMenuItem();
             this.volverALoguinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaPersonalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prestamosPorDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -219,28 +220,28 @@
             // menuEjemplaresAlta
             // 
             this.menuEjemplaresAlta.Name = "menuEjemplaresAlta";
-            this.menuEjemplaresAlta.Size = new System.Drawing.Size(171, 34);
+            this.menuEjemplaresAlta.Size = new System.Drawing.Size(270, 34);
             this.menuEjemplaresAlta.Text = "Alta";
             this.menuEjemplaresAlta.Click += new System.EventHandler(this.menuEjemplaresAlta_Click);
             // 
             // menuEjemplaresBaja
             // 
             this.menuEjemplaresBaja.Name = "menuEjemplaresBaja";
-            this.menuEjemplaresBaja.Size = new System.Drawing.Size(171, 34);
+            this.menuEjemplaresBaja.Size = new System.Drawing.Size(270, 34);
             this.menuEjemplaresBaja.Text = "Baja";
             this.menuEjemplaresBaja.Click += new System.EventHandler(this.menuEjemplaresBaja_Click);
             // 
             // menuEjemplaresBuscar
             // 
             this.menuEjemplaresBuscar.Name = "menuEjemplaresBuscar";
-            this.menuEjemplaresBuscar.Size = new System.Drawing.Size(171, 34);
+            this.menuEjemplaresBuscar.Size = new System.Drawing.Size(270, 34);
             this.menuEjemplaresBuscar.Text = "Buscar";
             this.menuEjemplaresBuscar.Click += new System.EventHandler(this.menuEjemplaresBuscar_Click);
             // 
             // menuEjemplarListado
             // 
             this.menuEjemplarListado.Name = "menuEjemplarListado";
-            this.menuEjemplarListado.Size = new System.Drawing.Size(171, 34);
+            this.menuEjemplarListado.Size = new System.Drawing.Size(270, 34);
             this.menuEjemplarListado.Text = "Listado";
             this.menuEjemplarListado.Click += new System.EventHandler(this.menuEjemplarListado_Click);
             // 
@@ -251,7 +252,8 @@
             this.menuPrestamosBuscar,
             this.menuPrestamosDevolver,
             this.listadoToolStripMenuItem1,
-            this.recorridoUnoAUnoToolStripMenuItem1});
+            this.recorridoUnoAUnoToolStripMenuItem1,
+            this.prestamosPorDocumentoToolStripMenuItem});
             this.prestamosToolStripMenuItem.Name = "prestamosToolStripMenuItem";
             this.prestamosToolStripMenuItem.Size = new System.Drawing.Size(111, 29);
             this.prestamosToolStripMenuItem.Text = "Préstamos";
@@ -259,35 +261,35 @@
             // menuPrestamosNuevo
             // 
             this.menuPrestamosNuevo.Name = "menuPrestamosNuevo";
-            this.menuPrestamosNuevo.Size = new System.Drawing.Size(276, 34);
+            this.menuPrestamosNuevo.Size = new System.Drawing.Size(327, 34);
             this.menuPrestamosNuevo.Text = "Nuevo";
             this.menuPrestamosNuevo.Click += new System.EventHandler(this.menuPrestamosNuevo_Click);
             // 
             // menuPrestamosBuscar
             // 
             this.menuPrestamosBuscar.Name = "menuPrestamosBuscar";
-            this.menuPrestamosBuscar.Size = new System.Drawing.Size(276, 34);
+            this.menuPrestamosBuscar.Size = new System.Drawing.Size(327, 34);
             this.menuPrestamosBuscar.Text = "Buscar";
             this.menuPrestamosBuscar.Click += new System.EventHandler(this.menuPrestamosBuscar_Click);
             // 
             // menuPrestamosDevolver
             // 
             this.menuPrestamosDevolver.Name = "menuPrestamosDevolver";
-            this.menuPrestamosDevolver.Size = new System.Drawing.Size(276, 34);
+            this.menuPrestamosDevolver.Size = new System.Drawing.Size(327, 34);
             this.menuPrestamosDevolver.Text = "Devolver";
             this.menuPrestamosDevolver.Click += new System.EventHandler(this.menuPrestamosDevolver_Click);
             // 
             // listadoToolStripMenuItem1
             // 
             this.listadoToolStripMenuItem1.Name = "listadoToolStripMenuItem1";
-            this.listadoToolStripMenuItem1.Size = new System.Drawing.Size(276, 34);
+            this.listadoToolStripMenuItem1.Size = new System.Drawing.Size(327, 34);
             this.listadoToolStripMenuItem1.Text = "Listado";
             this.listadoToolStripMenuItem1.Click += new System.EventHandler(this.menuPrestamosListado_Click);
             // 
             // recorridoUnoAUnoToolStripMenuItem1
             // 
             this.recorridoUnoAUnoToolStripMenuItem1.Name = "recorridoUnoAUnoToolStripMenuItem1";
-            this.recorridoUnoAUnoToolStripMenuItem1.Size = new System.Drawing.Size(276, 34);
+            this.recorridoUnoAUnoToolStripMenuItem1.Size = new System.Drawing.Size(327, 34);
             this.recorridoUnoAUnoToolStripMenuItem1.Text = "Recorrido uno a uno";
             this.recorridoUnoAUnoToolStripMenuItem1.Click += new System.EventHandler(this.menuPrestamosRecorrido_Click);
             // 
@@ -313,6 +315,13 @@
             this.altaPersonalToolStripMenuItem.Size = new System.Drawing.Size(259, 34);
             this.altaPersonalToolStripMenuItem.Text = "Alta personal";
             this.altaPersonalToolStripMenuItem.Click += new System.EventHandler(this.altaPersonalToolStripMenuItem_Click);
+            // 
+            // prestamosPorDocumentoToolStripMenuItem
+            // 
+            this.prestamosPorDocumentoToolStripMenuItem.Name = "prestamosPorDocumentoToolStripMenuItem";
+            this.prestamosPorDocumentoToolStripMenuItem.Size = new System.Drawing.Size(327, 34);
+            this.prestamosPorDocumentoToolStripMenuItem.Text = "Préstamos por documento";
+            this.prestamosPorDocumentoToolStripMenuItem.Click += new System.EventHandler(this.prestamosPorDocumentoToolStripMenuItem_Click);
             // 
             // FPersonal
             // 
@@ -363,5 +372,6 @@
         private System.Windows.Forms.ToolStripMenuItem volverALoguinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaPersonalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ejempToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prestamosPorDocumentoToolStripMenuItem;
     }
 }

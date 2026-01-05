@@ -215,6 +215,12 @@
     <Compile Include="FPersonal.Designer.cs">
       <DependentUpon>FPersonal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FPrestamosPorDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FPrestamosPorDocumento.Designer.cs">
+      <DependentUpon>FPrestamosPorDocumento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FPrestamosUnoAUno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FPersonal.resx">
       <DependentUpon>FPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FPrestamosPorDocumento.resx">
+      <DependentUpon>FPrestamosPorDocumento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FPrestamosUnoAUno.resx">
       <DependentUpon>FPrestamosUnoAUno.cs</DependentUpon>

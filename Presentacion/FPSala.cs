@@ -131,5 +131,18 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
+        protected override void prestamosPorDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string isbn = pedirClave<string>("ISBN del documento");
+
+            if (isbn == null)
+                return;
+
+            FPrestamosPorDocumento formulario =
+                new FPrestamosPorDocumento(lnSala, isbn);
+
+            formulario.ShowDialog(this);
+        }
+
     }
 }
