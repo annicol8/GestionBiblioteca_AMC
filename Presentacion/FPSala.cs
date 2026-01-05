@@ -131,9 +131,13 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
+        //PRE: lnSala != null. Se solicita un ISBN mediante pedirClave<string>
+        //POST: Si el ISBN es null, no se realiza ninguna acción
+        // - Si el ISBN es válido, se abre el formulario FPrestamosPorDocumento
+        //   mostrando los préstamos asociados a dicho documento
         protected override void prestamosPorDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string isbn = pedirClave<string>("ISBN del documento");
+            string isbn = pedirClave<string>("ISBN");
 
             if (isbn == null)
                 return;
@@ -144,6 +148,9 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
+        //PRE: lnSala != null
+        //POST:Se abre el formulario FPrestamosFueraDdePlazo mostrando los préstamos vencidos
+        // - Si ocurre una excepción, se muestra un mensaje de error mediante MostrarError
         protected override void préstamosFueraDePlazoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try

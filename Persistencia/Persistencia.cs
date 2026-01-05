@@ -14,18 +14,15 @@ namespace Persistencia
         }
 
         #region USUARIO
-        /*
-PRE: u != null
-POST: devuelve true si se insertó correctamente, false si ya existía un usuario con ese DNI
-*/
+        //PRE: u != null
+        //POST: devuelve true si se insertó correctamente, false si ya existía un usuario con ese DNI
         public static bool AltaUsuario(Usuario u)
         {
             return BD.INSERT(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
         }
-        /*
-PRE: u != null
-POST: devuelve el Usuario si existe en BD, null en caso contrario
-*/
+
+        //PRE: u != null
+        //POST: devuelve el Usuario si existe en BD, null en caso contrario
         public static Usuario GetUsuario(Usuario u)
         {
             UsuarioDato ud = BD.READ(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
@@ -35,10 +32,9 @@ POST: devuelve el Usuario si existe en BD, null en caso contrario
             }
             else return null;
         }
-        /*
-PRE: dni != null && dni != ""
-POST: devuelve el Usuario con ese DNI si existe, null en caso contrario
-*/
+
+        //PRE: dni != null && dni != ""
+        //POST: devuelve el Usuario con ese DNI si existe, null en caso contrario
         public static Usuario GetUsuario(string dni)
         {
             UsuarioDato ud = BD.READ_ALL(BD.TablaUsuarios)
@@ -50,26 +46,24 @@ POST: devuelve el Usuario con ese DNI si existe, null en caso contrario
             }
             return null;
         }
-        /*
-PRE: u != null && existe un usuario con el DNI de u en la BD
-POST: devuelve true si se eliminó correctamente, false si no existía
-*/
-        public static bool BajaUsuario(Usuario u)
-        {
+        
+        //PRE: u != null && existe un usuario con el DNI de u en la BD
+        //POST: devuelve true si se eliminó correctamente, false si no existía
+       public static bool BajaUsuario(Usuario u)
+       {
             return BD.DELETE(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
-        }
-        /*
-PRE: u != null && existe un usuario con el DNI de u en la BD
-POST: devuelve true si se actualizó correctamente, false si no existía
-*/
+       }
+
+
+        //PRE: u != null && existe un usuario con el DNI de u en la BD
+        //POST: devuelve true si se actualizó correctamente, false si no existía
         public static bool UpdateUsuario(Usuario u)
         {
             return BD.UPDATE(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
         }
-        /*
-PRE: ninguna
-POST: devuelve lista con todos los usuarios de la BD (puede estar vacía)
-*/
+
+        //PRE: ninguna
+        //POST: devuelve lista con todos los usuarios de la BD (puede estar vacía)
         public static List<Usuario> GetUsuarios()
         {
             return BD.READ_ALL(BD.TablaUsuarios)
@@ -77,9 +71,6 @@ POST: devuelve lista con todos los usuarios de la BD (puede estar vacía)
                      .ToList();
         }
         #endregion
-
-
-
 
         #region AUDIOLIBRO
         /*
@@ -370,10 +361,9 @@ POST: devuelve lista con todos los ejemplares del documento con ese ISBN (puede 
         #endregion
 
         #region PRESTAMO
-        /*
-        PRE: p != null
-        POST: devuelve el ID generado para el nuevo préstamo, el préstamo se inserta en BD
-        */
+        
+        //PRE: p != null
+        //POST: devuelve el ID generado para el nuevo préstamo, el préstamo se inserta en BD
         public static int AltaPrestamo(Prestamo p)
         {
             int nuevoID = BD.GenerarIdPrestamo();
@@ -381,18 +371,17 @@ POST: devuelve lista con todos los ejemplares del documento con ese ISBN (puede 
             BD.INSERT(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(prestamoNuevo));
             return nuevoID;
         }
-        /*
-PRE: p != null && existe en la BD
-POST: devuelve true si se eliminó correctamente, false si no existía
-*/
+        
+        //PRE: p != null && existe en la BD
+        //POST: devuelve true si se eliminó correctamente, false si no existía
         public static bool BajaPrestamo(Prestamo p)
         {
             return BD.DELETE(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(p));
         }
-        /*
-PRE: p != null
-POST: devuelve el Prestamo si existe en BD, null en caso contrario
-*/
+
+                
+        //PRE: p != null
+        //POST: devuelve el Prestamo si existe en BD, null en caso contrario
         public static Prestamo GetPrestamo(Prestamo p)
         {
             PrestamoDato pd = BD.READ(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(p));
@@ -402,18 +391,18 @@ POST: devuelve el Prestamo si existe en BD, null en caso contrario
             }
             else return null;
         }
-        /*
-PRE: p != null && existe en la BD
-POST: devuelve true si se actualizó correctamente, false si no existía
-*/
+
+        
+        //PRE: p != null && existe en la BD
+        //POST: devuelve true si se actualizó correctamente, false si no existía
         public static bool UpdatePrestamo(Prestamo p)
         {
             return BD.UPDATE(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(p));
         }
-        /*
-PRE: ninguna
-POST: devuelve lista con todos los préstamos (puede estar vacía)
-*/
+
+          
+        //PRE: 
+        //POST: devuelve lista con todos los préstamos (puede estar vacía)
         public static List<Prestamo> GetPrestamos()
         {
             return BD.READ_ALL(BD.TablaPrestamos)
@@ -421,10 +410,10 @@ POST: devuelve lista con todos los préstamos (puede estar vacía)
                      .ToList();
         }
 
-        /*
-PRE: dniUsuario != null && dniUsuario != ""
-POST: devuelve lista con los préstamos del usuario ordenados por fecha descendente (puede estar vacía)
-*/
+        
+        //PRE: dniUsuario != null && dniUsuario != ""
+        //POST: devuelve lista con los préstamos del usuario ordenados por fecha descendente (puede estar vacía)
+
         public static List<Prestamo> GetPrestamosPorUsuario(string dniUsuario)
         {
             return BD.READ_ALL(BD.TablaPrestamos)
@@ -432,16 +421,16 @@ POST: devuelve lista con los préstamos del usuario ordenados por fecha descende
                      .Select(Transformers.PrestamoDatoAPrestamo)
                      .OrderByDescending(p => p.FechaPrestamo).ToList();
         }
-        /*
-PRE: id > 0
-POST: devuelve el Prestamo con ese ID si existe, null en caso contrario
-*/
+
+                
+        //PRE: id > 0
+        //POST: devuelve el Prestamo con ese ID si existe, null en caso contrario
+
         public static Prestamo GetPrestamoPorId(int id)
         {
             var dato = BD.TablaPrestamos.FirstOrDefault(p => p.Clave.Equals(id));
             return dato != null ? Transformers.PrestamoDatoAPrestamo(dato) : null;
         }
-        #endregion
         /*
 PRE: idPrestamo > 0 && codigoEjemplar > 0
 POST: devuelve true si se insertó la relación correctamente, false si ya existía
@@ -530,7 +519,7 @@ POST: devuelve lista con todos los préstamos en los que aparece ese ejemplar (p
             }
             return prestamos;
         }
-
+        #endregion
 
 
     }

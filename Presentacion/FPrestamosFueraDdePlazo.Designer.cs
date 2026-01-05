@@ -45,7 +45,7 @@
             this.dataGridViewPrestamos.RowHeadersWidth = 62;
             this.dataGridViewPrestamos.RowTemplate.Height = 28;
             this.dataGridViewPrestamos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPrestamos.Size = new System.Drawing.Size(800, 223);
+            this.dataGridViewPrestamos.Size = new System.Drawing.Size(1000, 223);
             this.dataGridViewPrestamos.TabIndex = 0;
             // 
             // listBoxEjemplares
@@ -55,18 +55,19 @@
             this.listBoxEjemplares.ItemHeight = 20;
             this.listBoxEjemplares.Location = new System.Drawing.Point(0, 223);
             this.listBoxEjemplares.Name = "listBoxEjemplares";
-            this.listBoxEjemplares.Size = new System.Drawing.Size(800, 227);
+            this.listBoxEjemplares.Size = new System.Drawing.Size(1000, 189);
             this.listBoxEjemplares.TabIndex = 1;
             // 
             // FPrestamosFueraDdePlazo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1000, 412);
             this.Controls.Add(this.listBoxEjemplares);
             this.Controls.Add(this.dataGridViewPrestamos);
             this.Name = "FPrestamosFueraDdePlazo";
-            this.Text = "FPrestamosFueraDdePlazo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Listado de préstamos fuera de plazo";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrestamos)).EndInit();
             this.ResumeLayout(false);
 

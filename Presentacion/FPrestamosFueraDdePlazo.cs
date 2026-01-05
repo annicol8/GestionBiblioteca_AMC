@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Presentacion
 {
@@ -16,16 +17,26 @@ namespace Presentacion
     {
         private ILNPSala lnSala;
         private BindingSource bindingSourcePrestamos;
+
+        //PRE: 
+        //POST: Se inicializan los componentes visuales del formulario.
         public FPrestamosFueraDdePlazo()
         {
             InitializeComponent();
         }
+
+        //PRE: lnSala no debe ser null.
+        //POST: El formulario queda inicializado y cargado con los préstamos fuera de plazo.
         public FPrestamosFueraDdePlazo(ILNPSala lnSala) : this()
         {
             this.lnSala = lnSala;
             InicializarFormulario();
         }
 
+        //PRE: lnSala debe estar correctamente inicializado.
+        //POST: Se cargan los préstamos fuera de plazo en el DataGridView.
+        // - Se configuran los eventos del DataGridView.
+        // - Se muestran los ejemplares no devueltos del préstamo seleccionado.
         private void InicializarFormulario()
         {
             try
@@ -57,11 +68,17 @@ namespace Presentacion
             }
         }
 
+
+        //PRE: El DataGridView debe estar inicializado.
+        //POST: Se actualiza la lista de ejemplares no devueltos según el préstamo seleccionado.
         private void DataGridView_Prestamos_SelectionChanged(object sender, EventArgs e)
         {
             MostrarEjemplaresNoDevueltos();
         }
 
+        //PRE:lnSala debe estar inicializado.El DataGridView puede o no tener una fila seleccionada.
+        //POST:Se muestran en el ListBox los ejemplares no devueltos del préstamo seleccionado.
+        // - Si no hay selección o ejemplares, se muestra un mensaje informativo.
         private void MostrarEjemplaresNoDevueltos()
         {
             try
@@ -119,6 +136,9 @@ namespace Presentacion
             }
         }
 
+        //PRE:El DataGridView debe tener filas asociadas a objetos Prestamo. El evento se dispara para una celda válida.
+        //POST:La columna "Estado" se muestra como "Vencido".
+        // - La celda se colorea para indicar visualmente el vencimiento.
         private void DataGridView_Prestamos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0)

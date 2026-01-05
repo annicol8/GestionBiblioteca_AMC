@@ -19,22 +19,31 @@ namespace Presentacion
         private string isbn;
         private List<Prestamo> prestamos;
 
+        //PRE: 
+        //POST: Se inicializan los componentes visuales del formulario.
         public FPrestamosPorDocumento()
         {
             InitializeComponent();
         }
 
+        //PRE:lnSala no debe ser null.isbn debe ser un identificador válido de documento.
+        //POST: Se almacenan las dependencias necesarias para cargar los préstamos.
         public FPrestamosPorDocumento(ILNPSala lnSala, string isbn) : this()
         {
             this.lnSala = lnSala;
             this.isbn = isbn;
         }
 
+        //PRE: El formulario ha sido correctamente construido.
+        //POST: Se cargan y muestran los préstamos asociados al documento
         private void FPrestamosPorDocumento_Load(object sender, EventArgs e)
         {
             CargarPrestamos();
         }
 
+        //PRE: lnSala debe estar inicializado.isbn debe corresponder a un documento existente.
+        //POST:Se cargan los préstamos asociados al documento. Se muestran en el ListBox.
+        // - Si no existen préstamos, se muestra un error y se cierra el formulario.
         private void CargarPrestamos()
         {
             prestamos = lnSala.GetPrestamosPorDocumento(isbn);
@@ -48,14 +57,15 @@ namespace Presentacion
                 return;
             }
 
-            //listBoxPrestamos.DisplayMember = "InfoResumen";
-
             foreach (Prestamo p in prestamos)
             {
                 listBoxPrestamos.Items.Add(p);
             }
         }
 
+        //PRE: El ListBox debe contener préstamos cargados.
+        //POST: Si hay un préstamo seleccionado, se abre el formulario de detalle.
+        // - Si no hay selección, se muestra un mensaje de error
         private void buttonVer_Click(object sender, EventArgs e)
         {
             if (listBoxPrestamos.SelectedItem == null)
@@ -73,11 +83,15 @@ namespace Presentacion
             formulario.ShowDialog(this);
         }
 
+        //PRE: 
+        //POST: Se cierra el formulario actual.
         private void buttonCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //PRE:El ListBox contiene objetos de tipo Prestamo.
+        //POST:Se muestra un texto descriptivo para cada préstamo en la lista.
         private void listBoxPrestamos_Format(object sender, ListControlConvertEventArgs e)
         {
             if (e.ListItem is Prestamo p)
