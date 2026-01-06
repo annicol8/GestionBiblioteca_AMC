@@ -1,6 +1,6 @@
 # Sistema de Gestión de Biblioteca
 
-## Diagrama de Clases - Modelo de Dominio
+## Diagrama
 ```mermaid
 classDiagram
     %% Enumeraciones
