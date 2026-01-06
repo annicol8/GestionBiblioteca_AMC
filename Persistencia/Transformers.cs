@@ -113,7 +113,7 @@ POST: devuelve un objeto Prestamo creado a partir de los datos de pDato
 */
         public static Prestamo PrestamoDatoAPrestamo(PrestamoDato pDato)
         {
-            return new Prestamo(pDato.Clave, pDato.FechaPrestamo, pDato.FechaDevolucion, pDato.Estado, pDato.DniUsuario, pDato.DniPersonal);
+            return new Prestamo(pDato.Clave, pDato.FechaPrestamo, pDato.FechaDevolucion, pDato.Estado, pDato.DniPersonal, pDato.DniUsuario);
         }
         /*
 PRE: p != null

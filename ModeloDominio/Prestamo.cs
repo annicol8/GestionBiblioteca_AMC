@@ -1,14 +1,9 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Prestamo: IEquatable<Prestamo>
+    public class Prestamo : IEquatable<Prestamo>
     {
         //Atributos
         private int id;
@@ -19,23 +14,35 @@ namespace ModeloDominio
         private string dniPersonal;
 
         //Propiedades
-        public int Id { 
-            get { return id; } set { id = value; }
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
         }
-        public DateTime FechaPrestamo { 
-            get { return fechaPrestamo; } set { fechaPrestamo = value; }
+        public DateTime FechaPrestamo
+        {
+            get { return fechaPrestamo; }
+            set { fechaPrestamo = value; }
         }
-        public DateTime FechaDevolucion { 
-            get { return fechaDevolucion; } set {fechaDevolucion = value; }
+        public DateTime FechaDevolucion
+        {
+            get { return fechaDevolucion; }
+            set { fechaDevolucion = value; }
         }
-        public EstadoPrestamo Estado { 
-            get { return estado; } set { estado = value; }
+        public EstadoPrestamo Estado
+        {
+            get { return estado; }
+            set { estado = value; }
         } //ver si lo ponemos aqui o se obtiene directamente en la tabla Prestamo_Ejemplar
-        public string DniUsuario { 
-            get { return dniUsuario; } set { dniUsuario = value; }
+        public string DniUsuario
+        {
+            get { return dniUsuario; }
+            set { dniUsuario = value; }
         }
-        public string DniPersonal { 
-            get { return dniPersonal; } set {dniPersonal = value; }
+        public string DniPersonal
+        {
+            get { return dniPersonal; }
+            set { dniPersonal = value; }
         }
 
         //PRE: parámetros de entrada no nulos, el id debe ser un entero positivo, fechaPrestamo una fehca válida al igual que fechaDevolucion pero además fechaDevolucion >= fechaPrestamo,
@@ -54,7 +61,7 @@ namespace ModeloDominio
         //  Constructor para préstamo nuevo 
         //PRE: los dnis deben ser no nulos y válidos al igual que la fechaDevolucion, además fechaDevolucion > DateTime.Now
         //POST: se crea una instancia a Prestamo pero con la fecha de prestamo la fecha actual y el estado como enProceso
-        public Prestamo(int id, string dniUsuario, string dniPersonal, DateTime fechaDevolucion): this(id)
+        public Prestamo(int id, string dniUsuario, string dniPersonal, DateTime fechaDevolucion) : this(id)
         {
             this.fechaPrestamo = DateTime.Now;
             this.fechaDevolucion = fechaDevolucion;
