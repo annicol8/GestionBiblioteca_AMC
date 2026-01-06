@@ -153,9 +153,6 @@
         private System.Windows.Forms.RadioButton radioButton_PAdq;
         private System.Windows.Forms.RadioButton radioButton_PSala;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ToolTip toolTip2;
-        private System.Windows.Forms.ToolTip toolTip3;
-        private System.Windows.Forms.ToolTip toolTip4;
-        private System.Windows.Forms.ToolTip toolTip5;
+
     }
 }
