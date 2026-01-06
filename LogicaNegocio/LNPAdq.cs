@@ -121,12 +121,7 @@ namespace LogicaNegocio
             return false;
         }
 
-        //PRE: isbn no null
-        //POST: Si existe un documento con ese ISBN: retorna el objeto Documento (LibroPapel o AudioLibro). Si no existe: retorna null
-        public Documento getDocumento(string isbn)
-        {
-            return Persistencia.Persistencia.GetDocumento(isbn);
-        }
+
 
         //PRE: isbnDocumneto no null ni vacio, el docuemnto debe existir en el sistema.
         //     El codigo debe ser un entero positivo y no existir previamente. El personal debe ser de adquisiciones
@@ -171,12 +166,7 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.UpdateEjemplar(ej);
         }
 
-        //PRE:
-        //POST: Si existe un ejemplar con ese código: retorna el objeto Ejemplar. Si no existe: retorna null
-        public Ejemplar GetEjemplar(int codigo)
-        {
-            return Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigo));
-        }
+
 
         //PRE:
         //POST: Retorna true si el ejemplar está asociado a algún préstamo en estado enProceso, false si el ejemplar no está prestado o no existe

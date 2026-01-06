@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
@@ -34,7 +29,7 @@ namespace Presentacion
             try
             {
                 bindingSourcePrest = new BindingSource();
-                
+
                 var prestamos = lnps.GetTodosPrestamos() ?? new List<Prestamo>();
 
                 if (prestamos.Count == 0)

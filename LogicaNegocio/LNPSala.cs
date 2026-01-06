@@ -159,13 +159,6 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.GetEjemplaresDePrestamo(id);
         }
 
-        //PRE:
-        //POST: Si no existe, null; si existe, devuelve el objeto AudLibro o LiPapel
-
-        public Documento GetDocumento(string isbn)
-        {
-            return Persistencia.Persistencia.GetDocumento(isbn);
-        }
 
         //PRE: ninguna
         //POST: devuelve lista con todos los ejemplares activos del sistema (puede estar vacía)
@@ -253,12 +246,6 @@ namespace LogicaNegocio
             // Opcional: puedes añadir más restricciones
             // Por ejemplo, si tiene documentos vencidos
             return !TieneDocumentosFueraPlazo(dni);
-        }
-
-        // En ILNPSala/LNPSala
-        public Ejemplar GetEjemplar(int codigo)
-        {
-            return Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigo));
         }
 
     }

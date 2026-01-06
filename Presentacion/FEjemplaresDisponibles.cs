@@ -148,7 +148,7 @@ namespace Presentacion
         //POST: Se cargan y muestran los datos del documento
         private void CargarDatosDocumento()
         {
-            Documento documento = lnAdq.getDocumento(isbn);
+            Documento documento = lnAdq.GetDocumento(isbn);
 
             lblTitulo.Text = documento.Titulo;
             lblIsbn.Text = documento.Isbn;

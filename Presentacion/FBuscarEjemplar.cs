@@ -131,7 +131,7 @@ namespace Presentacion
                 if (string.IsNullOrEmpty(isbn))
                     return;
 
-                Documento documento = lnpa.getDocumento(isbn);
+                Documento documento = lnpa.GetDocumento(isbn);
 
                 if (documento != null && lb_Titulo != null)
                 {

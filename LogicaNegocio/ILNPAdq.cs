@@ -13,13 +13,9 @@ namespace LogicaNegocio
 
         bool BajaDocumento(string isbn);
 
-        Documento getDocumento(string isbn);
-
         bool AltaEjemplar(int codigo, string isbnDocumento);
 
         bool BajaEjemplar(int codigo);
-
-        Ejemplar GetEjemplar(int codigo);
 
         bool EstaPrestadoEjemplar(int codigo);
 

@@ -59,7 +59,7 @@ namespace Presentacion
                     continue; //Volver a pedir
                 }
 
-                Documento documentoExistente = lnAdq.getDocumento(isbn);
+                Documento documentoExistente = lnAdq.GetDocumento(isbn);
 
                 if (documentoExistente != null)
                 {
@@ -163,7 +163,7 @@ namespace Presentacion
                 if (isbn == null)
                     return;
 
-                Documento documentoExistente = lnAdq.getDocumento(isbn);
+                Documento documentoExistente = lnAdq.GetDocumento(isbn);
 
                 if (documentoExistente == null)
                 {
@@ -199,7 +199,7 @@ namespace Presentacion
                 if (isbnBuscado != null)
                 {
 
-                    Documento documento = lnAdq.getDocumento(isbnBuscado);
+                    Documento documento = lnAdq.GetDocumento(isbnBuscado);
 
                     if (documento == null)
                     {
@@ -387,7 +387,7 @@ namespace Presentacion
                 if (isbn == null)
                     return;
 
-                Documento documento = lnAdq.getDocumento(isbn);
+                Documento documento = lnAdq.GetDocumento(isbn);
 
                 if (documento == null)
                 {

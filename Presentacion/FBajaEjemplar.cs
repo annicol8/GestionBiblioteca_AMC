@@ -42,7 +42,7 @@ namespace Presentacion
                 tbCodigo.Text = ejemplar.Codigo.ToString();
                 tbIsbn.Text = ejemplar.IsbnDocumento ?? "N/A";
 
-                Documento documento = lnAdq.getDocumento(ejemplar.IsbnDocumento);
+                Documento documento = lnAdq.GetDocumento(ejemplar.IsbnDocumento);
                 tbTitulo.Text = documento != null ? documento.Titulo : "Documento no encontrado";
 
                 tbEstado.Text = ejemplar.Activo ? "Activo" : "Inactivo";

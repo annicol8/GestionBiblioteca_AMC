@@ -55,7 +55,7 @@ namespace Presentacion
                 return;
             }
 
-            Documento documento = lnAdq.getDocumento(isbnMasPrestado);
+            Documento documento = lnAdq.GetDocumento(isbnMasPrestado);
 
             if (documento == null)
             {
