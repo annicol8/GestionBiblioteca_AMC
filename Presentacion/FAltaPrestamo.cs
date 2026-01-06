@@ -248,7 +248,22 @@ namespace Presentacion
                 }
 
                 DateTime fechaPrestamo = dtpFecha.Value;
-                DateTime fechaDevolucion = fechaPrestamo.AddDays(15);  // 15 días por defecto
+
+                int diasPrestamo = 15;
+
+                foreach (int codigo in codigosEjemplaresAñadidos)
+                {
+                    Ejemplar ej = lnSala.GetEjemplar(codigo);
+                    Documento doc = lnSala.GetDocumento(ej.IsbnDocumento);
+
+                    if (doc is AudioLibro)
+                    {
+                        diasPrestamo = 10;
+                        break;
+                    }
+                }
+
+                DateTime fechaDevolucion = fechaPrestamo.AddDays(diasPrestamo);
                 Prestamo prestamo = new Prestamo(
                     0,
                     fechaPrestamo,
