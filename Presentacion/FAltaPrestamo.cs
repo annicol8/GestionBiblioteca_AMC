@@ -250,7 +250,7 @@ namespace Presentacion
                         "Usuario no válido");
                     return;
                 }
-                
+
                 DateTime fechaPrestamo = dtpFecha.Value;
                 DateTime fechaDevolucion = fechaPrestamo.AddDays(15);  // 15 días por defecto
                 Prestamo prestamo = new Prestamo(
@@ -268,8 +268,7 @@ namespace Presentacion
                 {
                     int idPrestamoCreado = lnSala.CrearPrestamoCompleto(prestamo, codigosEjemplaresAñadidos);
 
-                    MostrarExito(  $"Préstamo creado con éxito.\n");
-                    RefrescarFormularioEjemplaresPrestados(dniUsuario);
+                    MostrarExito($"Préstamo creado con éxito.\n");
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -287,29 +286,7 @@ namespace Presentacion
             }
         }
 
-        //PRE: dniUsuario no es null ni vacío
-        //POST: Si el formulario FEjemplaresPrestados está abierto para este usuario,
-        //      se refresca para mostrar los cambios
-        private void RefrescarFormularioEjemplaresPrestados(string dniUsuario)
-        {
-            try
-            {
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form is FEjemplaresPrestados formEjemplares)
-                    {
-                        // Refrescar el formulario
-                        formEjemplares.Refrescar();
-                        break;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // No mostrar error al usuario, solo registrar si es necesario
-                System.Diagnostics.Debug.WriteLine($"Error al refrescar formulario: {ex.Message}");
-            }
-        }
+
 
         //PRE: El formulario está abierto.
         //POST: Si el usuario confirma, se cancela el alta del préstamo y se cierra el formulario.

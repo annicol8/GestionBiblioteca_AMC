@@ -46,13 +46,13 @@ namespace Persistencia
             }
             return null;
         }
-        
+
         //PRE: u != null && existe un usuario con el DNI de u en la BD
         //POST: devuelve true si se eliminó correctamente, false si no existía
-       public static bool BajaUsuario(Usuario u)
-       {
+        public static bool BajaUsuario(Usuario u)
+        {
             return BD.DELETE(BD.TablaUsuarios, Transformers.UsuarioAUsuarioDato(u));
-       }
+        }
 
 
         //PRE: u != null && existe un usuario con el DNI de u en la BD
@@ -361,17 +361,21 @@ POST: devuelve lista con todos los ejemplares del documento con ese ISBN (puede 
         #endregion
 
         #region PRESTAMO
-        
+
         //PRE: p != null
         //POST: devuelve el ID generado para el nuevo préstamo, el préstamo se inserta en BD
         public static int AltaPrestamo(Prestamo p)
         {
             int nuevoID = BD.GenerarIdPrestamo();
-            Prestamo prestamoNuevo = new Prestamo(nuevoID, p.FechaPrestamo, p.FechaDevolucion, p.Estado, p.DniUsuario, p.DniPersonal);
+
+
+            Prestamo prestamoNuevo = new Prestamo(nuevoID, p.FechaPrestamo, p.FechaDevolucion, p.Estado, p.DniPersonal, p.DniUsuario);
+
+
             BD.INSERT(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(prestamoNuevo));
             return nuevoID;
         }
-        
+
         //PRE: p != null && existe en la BD
         //POST: devuelve true si se eliminó correctamente, false si no existía
         public static bool BajaPrestamo(Prestamo p)
@@ -379,7 +383,7 @@ POST: devuelve lista con todos los ejemplares del documento con ese ISBN (puede 
             return BD.DELETE(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(p));
         }
 
-                
+
         //PRE: p != null
         //POST: devuelve el Prestamo si existe en BD, null en caso contrario
         public static Prestamo GetPrestamo(Prestamo p)
@@ -392,7 +396,7 @@ POST: devuelve lista con todos los ejemplares del documento con ese ISBN (puede 
             else return null;
         }
 
-        
+
         //PRE: p != null && existe en la BD
         //POST: devuelve true si se actualizó correctamente, false si no existía
         public static bool UpdatePrestamo(Prestamo p)
@@ -400,7 +404,7 @@ POST: devuelve lista con todos los ejemplares del documento con ese ISBN (puede 
             return BD.UPDATE(BD.TablaPrestamos, Transformers.PrestamoAPrestamoDato(p));
         }
 
-          
+
         //PRE: 
         //POST: devuelve lista con todos los préstamos (puede estar vacía)
         public static List<Prestamo> GetPrestamos()
@@ -410,19 +414,26 @@ POST: devuelve lista con todos los ejemplares del documento con ese ISBN (puede 
                      .ToList();
         }
 
-        
+
         //PRE: dniUsuario != null && dniUsuario != ""
         //POST: devuelve lista con los préstamos del usuario ordenados por fecha descendente (puede estar vacía)
 
         public static List<Prestamo> GetPrestamosPorUsuario(string dniUsuario)
         {
-            return BD.READ_ALL(BD.TablaPrestamos)
+
+            var todosPrestamos = BD.READ_ALL(BD.TablaPrestamos);
+
+
+            var resultado = todosPrestamos
                      .Where(p => p.DniUsuario == dniUsuario)
                      .Select(Transformers.PrestamoDatoAPrestamo)
                      .OrderByDescending(p => p.FechaPrestamo).ToList();
+
+
+            return resultado;
         }
 
-                
+
         //PRE: id > 0
         //POST: devuelve el Prestamo con ese ID si existe, null en caso contrario
 
@@ -488,7 +499,7 @@ POST: devuelve lista con los ejemplares asociados al préstamo (puede estar vac�
                      .ToList();
         }
 
-        public static List<Ejemplar> GetEjemplaresPrestamo (int idPrestamo)
+        public static List<Ejemplar> GetEjemplaresPrestamo(int idPrestamo)
         {
             return BD.TablaPrestamoEjemplar
                  .Where(pe => pe.IdPrestamo == idPrestamo)

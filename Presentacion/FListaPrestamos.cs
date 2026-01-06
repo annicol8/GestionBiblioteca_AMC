@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
 
-namespace Presentacion 
+namespace Presentacion
 {
     public partial class FListaPrestamos : FComun
     {
@@ -135,13 +130,9 @@ namespace Presentacion
                     return;
                 }
 
-                // DEBUG: Añadir para ver qué está pasando
-                System.Diagnostics.Debug.WriteLine($"Buscando ejemplares para préstamo ID: {prestamo.Id}");
 
                 var ejemplares = lnps.GetEjemplaresDePrestamo(prestamo.Id);
 
-                // DEBUG: Verificar qué devuelve
-                System.Diagnostics.Debug.WriteLine($"Ejemplares encontrados: {ejemplares?.Count ?? 0}");
 
                 if (ejemplares == null || ejemplares.Count == 0)
                 {
@@ -154,7 +145,6 @@ namespace Presentacion
                 {
                     if (ejemplar == null)
                     {
-                        System.Diagnostics.Debug.WriteLine($"Ejemplar {contador} es null");
                         continue;
                     }
 

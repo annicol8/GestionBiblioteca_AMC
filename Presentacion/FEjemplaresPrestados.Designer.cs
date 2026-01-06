@@ -32,7 +32,6 @@
             this.lb_infoUsuario = new System.Windows.Forms.Label();
             this.dgv_Ejemplares = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Ejemplares)).BeginInit();
-            this.Activated += new System.EventHandler(this.FEjemplaresPrestados_Activated);
             this.SuspendLayout();
             // 
             // label1

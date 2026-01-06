@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ModeloDominio;
-using Persistencia;
 
 namespace LogicaNegocio
 {
@@ -131,7 +129,7 @@ namespace LogicaNegocio
         }
 
         //PRE: dni no null y el usuario con ese dni debe existir
-        //POST: Retorna una lista con todos los ejemplares actualmente prestados al usuario (préstamos en estado enProceso). Si el usuario no tiene préstamos activos, retorna lista vacía
+        //POST: Retorna una lista con todos los ejemplares actualmente prestados al usuario (préstamos en estado enProceso y no devueltos). Si el usuario no tiene préstamos activos, retorna lista vacía
         public List<Ejemplar> GetEjemplaresPrestadosPorUsuario(string dni)
         {
             List<Ejemplar> ejemplaresPrestados = new List<Ejemplar>();
@@ -142,9 +140,19 @@ namespace LogicaNegocio
                 if (p.Estado == EstadoPrestamo.enProceso)
                 {
                     List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(p.Id);
-                    ejemplaresPrestados.AddRange(ejemplares);
+
+                    foreach (Ejemplar ej in ejemplares)
+                    {
+                        var prestamoEjemplar = Persistencia.Persistencia.GetPrestamoEjemplar(p.Id, ej.Codigo);
+
+                        if (prestamoEjemplar != null && prestamoEjemplar.FechaDevolucion == DateTime.MinValue)
+                        {
+                            ejemplaresPrestados.Add(ej);
+                        }
+                    }
                 }
             }
+
             return ejemplaresPrestados;
         }
 
@@ -234,7 +242,7 @@ namespace LogicaNegocio
 
             foreach (Prestamo prestamo in todosPrestamos)
             {
-                if (prestamo.Estado != EstadoPrestamo.finalizado) 
+                if (prestamo.Estado != EstadoPrestamo.finalizado)
                 {
                     prestamosActivos.Add(prestamo);
                 }

@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicaNegocio;
 using ModeloDominio;
@@ -62,12 +56,7 @@ namespace Presentacion
             Text = $"Ejemplares en préstamos activos - {usuario.Nombre}";
         }
 
-        //PRE:
-        //POST: Recargar los datos cada vez que el formulario vuelve a estar activO
-        private void FEjemplaresPrestados_Activated(object sender, EventArgs e)
-        {
-            CargarEjemplaresPrestados();
-        }
+
 
         //PRE: dni != null y no vacío, lnp != null
         //POST: Se cargan los ejemplares prestados al usuario en el DataGridView
@@ -117,12 +106,7 @@ namespace Presentacion
             }
         }
 
-        //PRE: dni y lnp fueron inicializados correctamente
-        //POST: Se recargan los ejemplares prestados del usuario
-        public void Refrescar()
-        {
-            CargarEjemplaresPrestados();
-        }
+
 
     }
 }
