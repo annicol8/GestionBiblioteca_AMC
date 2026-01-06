@@ -39,7 +39,6 @@ namespace Presentacion
 
                 bindingNavigator1.BindingSource = bindingSourceDoc;
 
-                //Campos comunes a ambos tipos de documentos
                 textBox_Isbn.DataBindings.Add("Text", bindingSourceDoc, "Isbn");
                 textBox_Titulo.DataBindings.Add("Text", bindingSourceDoc, "Titulo");
                 textBox_Autor.DataBindings.Add("Text", bindingSourceDoc, "Autor");
@@ -89,13 +88,11 @@ namespace Presentacion
         //      Los valores de formato, duración y tipo se muestran correctamente
         private void MostrarCamposAudioLibro(AudioLibro al)
         {
-            // Mostrar controles
             lb_Formato.Visible = true;
             textBox_Formato.Visible = true;
             lb_Duracion.Visible = true;
             textBox_Duracion.Visible = true;
 
-            // Asignar valores
             textBox_Formato.Text = al.FormatoDigital ?? "N/A";
             textBox_Duracion.Text = al.Duracion.ToString() + " min";
 
@@ -107,13 +104,11 @@ namespace Presentacion
         //      El tipo de documento se establece como "Libro Papel"
         private void OcultarCamposAudioLibro()
         {
-            // Ocultar controles
             lb_Formato.Visible = false;
             textBox_Formato.Visible = false;
             lb_Duracion.Visible = false;
             textBox_Duracion.Visible = false;
 
-            // Limpiar valores
             textBox_Formato.Text = "";
             textBox_Duracion.Text = "";
 

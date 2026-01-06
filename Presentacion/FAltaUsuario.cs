@@ -95,7 +95,7 @@ namespace Presentacion
                     {
                         // Reactivar usuario existente
                         usuarioExistente.DadoAlta = true;
-                        usuarioExistente.Nombre = tbNombre.Text.Trim(); // Actualizar nombre si cambió
+                        usuarioExistente.Nombre = tbNombre.Text.Trim(); 
                         lnp.ModificarUsuario(usuarioExistente);
                         MostrarExito("Usuario reactivado correctamente");
                         this.DialogResult = DialogResult.OK;

@@ -48,29 +48,6 @@ namespace LogicaNegocio
             return Persistencia.Persistencia.AltaAudioLibro(audioLibro);
         }
 
-        /* public bool BajaDocumento(string isbn)
-             //Hacer un método que dé de baja a todos los ejemplares de un libro???
-         {
-             if (string.IsNullOrWhiteSpace(isbn))
-                 throw new ArgumentException("El ISBN no puede estar vacío");
-
-             Documento doc = Persistencia.Persistencia.GetDocumento(isbn);
-             if (doc == null)
-                 throw new InvalidOperationException("El documento no existe");
-
-             List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
-             foreach (Ejemplar ej in ejemplares)
-             {
-                 if (ej.Activo)
-                     throw new InvalidOperationException("No se puede eliminar el documento porque tiene ejemplares activos");
-             }
-             if (doc is LibroPapel)
-                 return Persistencia.Persistencia.BajaLibroPapel((LibroPapel)doc);
-             else
-                 return Persistencia.Persistencia.BajaAudioLibro((AudioLibro)doc);
-         }
-        */
-
         //PRE: isbn no null ni vacio, el documento con dicho isbn debe existir en el sistema. Ninguno de los ejemplares activos del documento puede estar actualmente prestado (estado enProceso)
         //      El personal que ejecuta debe ser PersonalAdquisiciones
         //POST: Todos los ejemplares del documento quedan marcados como inactivos (Activo = false). El documento se elimina de la BD
@@ -84,10 +61,8 @@ namespace LogicaNegocio
             if (doc == null)
                 throw new InvalidOperationException("El documento no existe");
 
-            // Obtener todos los ejemplares del documento
             List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
 
-            // Verificar si hay ejemplares activos prestados
             foreach (Ejemplar ej in ejemplares)
             {
                 if (ej.Activo && EstaPrestadoEjemplar(ej.Codigo))
@@ -147,10 +122,7 @@ namespace LogicaNegocio
 
         //PRE: El ejemplar con ese código debe existir en el sistema y debe estar activo. El personal que ejecuta debe ser PersonalAdquisiciones
         //POST: El ejemplar queda marcado como inactivo: Activo = false. Se actualiza en la BD. Retorna true si la operación fue exitosa
-        public bool BajaEjemplar(int codigo) //Parámetro objeto ejemplar?
-                                             //PRE:
-                                             //POST: El ejemplar con ese código se actualiza en la base de datos (NO se borra)
-                                             //y se pone su atributo "Activo" a false. Si no existe el ejemplar, excepción
+        public bool BajaEjemplar(int codigo)
         {
             Ejemplar ej = Persistencia.Persistencia.GetEjemplar(new Ejemplar(codigo));
             if (ej == null)
@@ -239,6 +211,7 @@ namespace LogicaNegocio
         {
             return Persistencia.Persistencia.GetEjemplaresPorDocumento(isbn);
         }
+
         //PRE: isbn no null y no vacío
         //POST: Si hay ejemplares activos disponibles, devuelve null
         //      Si todos los ejemplares activos están prestados, devuelve la fecha más próxima de devolución

@@ -83,7 +83,6 @@ namespace Presentacion
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
-                // Limpiar contraseña por seguridad
                 textBox_Contraseña.Clear();
                 textBox_Nombre.Focus();
                 return;

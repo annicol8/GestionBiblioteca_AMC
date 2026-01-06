@@ -36,12 +36,10 @@ namespace Presentacion
             lbAutor.Text = $"Autor: {documento.Autor}";
             lbEditorial.Text = $"Editorial: {documento.Editorial}";
             lbAno.Text = $"Año de edición: {documento.AnoEdicion}";
-            //lbPersonalRegistro.Text = $"Registrado por: {documento.Personal}";
 
             if (documento is AudioLibro audioLibro)
             {
                 rbAudioLibro.Checked = true;
-                //lbDuracion.Text = $"Duración: {audioLibro.Duracion}";
                 TimeSpan duracion = TimeSpan.FromSeconds(audioLibro.Duracion);
                 lbDuracion.Text = $"Duración: {duracion:hh\\:mm\\:ss} ({audioLibro.Duracion} seg)";
                 lbFormatoDigital.Text = $"Formato: {audioLibro.FormatoDigital}";

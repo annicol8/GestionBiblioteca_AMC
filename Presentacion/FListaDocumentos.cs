@@ -78,25 +78,21 @@ namespace Presentacion
         //      Si el personal no existe, se muestra "DNI, (Desconocido)"
         private void dataGridView_Ejemplares_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Solo aplicar formato a la columna DniPAdq
             if (dataGridView_Ejemplares.Columns[e.ColumnIndex].Name == "DniPAdq")
             {
                 if (e.Value != null && e.RowIndex >= 0)
                 {
                     string dni = e.Value.ToString();
 
-                    // Obtener el personal por DNI
                     Personal personal = lnpa.GetPersonal(dni);
 
                     if (personal != null)
                     {
-                        // Formatear como "DNI, Nombre"
                         e.Value = $"{dni}, {personal.Nombre}";
                         e.FormattingApplied = true;
                     }
                     else
                     {
-                        // Si no se encuentra el personal, mostrar solo el DNI
                         e.Value = $"{dni}, (Desconocido)";
                         e.FormattingApplied = true;
                     }

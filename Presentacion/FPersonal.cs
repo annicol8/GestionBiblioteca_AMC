@@ -77,7 +77,7 @@ namespace Presentacion
                 dni = pedirDNI();
 
                 if (dni == null)
-                    return; // cancelado
+                    return; 
 
                 if (!ValidarDNI(dni))
                 {
@@ -85,7 +85,7 @@ namespace Presentacion
                         "El DNI introducido no tiene un formato válido.\n\n" +
                         "Formato correcto: 8 dígitos seguidos de una letra (ej: 12345678Z)",
                         "DNI inválido");
-                    continue; // Pedir de nuevo
+                    continue; 
                 }
 
                 Usuario usuarioExistente = lnp.GetUsuario(dni);
@@ -137,7 +137,7 @@ namespace Presentacion
             {
                 dni = pedirDNI();
                 if (dni == null)
-                    return; // cancelado
+                    return; 
 
                 Usuario usuario = lnp.GetUsuario(dni);
 
@@ -190,7 +190,7 @@ namespace Presentacion
             {
                 dni = pedirDNI();
                 if (dni == null)
-                    return; // cancelado
+                    return; 
 
                 Usuario usuario = lnp.GetUsuario(dni);
                 if (usuario == null || !usuario.DadoAlta)

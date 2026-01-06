@@ -36,7 +36,6 @@ namespace Presentacion
                 }
 
                 dataGridView_Prest.DataSource = bindingSourcePrest;
-                //ConfigurarColumnas();
 
                 dataGridView_Prest.CellFormatting += DgvPrestamos_CellFormatting;
                 dataGridView_Prest.SelectionChanged += DgvPrestamos_SelectionChanged;
@@ -67,7 +66,6 @@ namespace Presentacion
             if (prestamo == null)
                 return;
 
-            // columna de Fecha Devolución
             if (dataGridView_Prest.Columns[e.ColumnIndex].Name == "FechaDevolucion")
             {
                 if (prestamo != null && prestamo.Estado != EstadoPrestamo.finalizado)
@@ -77,7 +75,6 @@ namespace Presentacion
                 }
             }
 
-            // columna de Estado
             if (dataGridView_Prest.Columns[e.ColumnIndex].Name == "Estado")
             {
                 if (prestamo.Caducado())

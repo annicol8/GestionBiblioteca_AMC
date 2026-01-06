@@ -27,7 +27,6 @@ namespace LogicaNegocio
         //       Si el ejemplar no pertenece al préstamo, se lanza una excepción.
         //       Si todos los ejemplares del préstamo fueron devueltos,
         //       el estado del préstamo pasa a "finalizado".
-
         public void DevolverEjemplar(int idPrestamo, int codigoEjemplar)
         {
             if (Persistencia.Persistencia.GetPrestamoEjemplar(idPrestamo, codigoEjemplar) == null)
@@ -48,42 +47,17 @@ namespace LogicaNegocio
             }
         }
 
-
-        /*
-        public List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo)
-        {
-            /*
-             *  no se como sacarlo sin que sea un metodo de persistencia
-             * 
-             * List<PrestamoEjemplar> ejemplaresDePrestamo = Persistencia.Persistencia.GetEjemplaresDePrestamo(idPrestamo);
-            List<Ejemplar> ejemplaresNoDevueltos = new List<Ejemplar>();
-
-            foreach (Ejemplar e in ejemplaresDePrestamo)
-            {
-                if (e.)
-            }
-
-            return Persistencia.Persistencia.GetEjemplaresNoDevueltosDePrestamo(idPrestamo); // Si el idPrestamo no existe, qué devuelve? Lista vacia o null?
-            
-
-            return null;
-        }*/
-
-
         //PRE: idPrestamo > 0
         //POST: devuelve lista con los ejemplares del préstamo que aún no han sido devueltos (puede estar vacía)
         public List<Ejemplar> GetEjemplaresNoDevueltos(int idPrestamo)
         {
-            // Obtener todos los ejemplares del préstamo
             List<Ejemplar> todosEjemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(idPrestamo);
             List<Ejemplar> ejemplaresNoDevueltos = new List<Ejemplar>();
 
             foreach (Ejemplar ej in todosEjemplares)
             {
-                // Obtener la información del préstamo-ejemplar
                 var prestamoEjemplar = Persistencia.Persistencia.GetPrestamoEjemplar(idPrestamo, ej.Codigo);
 
-                // Si no se ha devuelto (FechaDevolucion == DateTime.MinValue)
                 if (prestamoEjemplar != null && prestamoEjemplar.FechaDevolucion == DateTime.MinValue)
                 {
                     ejemplaresNoDevueltos.Add(ej);
@@ -100,8 +74,7 @@ namespace LogicaNegocio
             Prestamo prestamo = Persistencia.Persistencia.GetPrestamoPorId(idPrestamo);
             if (prestamo == null)
             {
-                return null; // esto o lanzamos excepciones?
-                //throw new Exception("El préstamo no existe");
+                return null;
             }
             return prestamo.Estado;
         }
@@ -194,7 +167,6 @@ namespace LogicaNegocio
             if (codigosEjemplares == null || codigosEjemplares.Count == 0)
                 throw new ArgumentException("Debe incluir al menos un ejemplar en el préstamo");
 
-            // Validar que el usuario existe y está activo
             Usuario usuario = GetUsuario(prestamo.DniUsuario);
             if (usuario == null)
                 throw new InvalidOperationException($"No existe un usuario con DNI {prestamo.DniUsuario}");
@@ -202,10 +174,8 @@ namespace LogicaNegocio
             if (!usuario.DadoAlta)
                 throw new InvalidOperationException("El usuario está dado de baja");
 
-            // Crear el préstamo
             int idPrestamo = AltaPrestamo(prestamo);
 
-            // Añadir cada ejemplar al préstamo
             try
             {
                 foreach (int codigoEjemplar in codigosEjemplares)
@@ -219,7 +189,6 @@ namespace LogicaNegocio
             }
             catch (Exception ex)
             {
-                // Si falla al añadir ejemplares, eliminar el préstamo creado
                 Prestamo prestamoCreado = GetPrestamo(idPrestamo);
                 if (prestamoCreado != null)
                 {
@@ -243,8 +212,6 @@ namespace LogicaNegocio
             if (usuario == null || !usuario.DadoAlta)
                 return false;
 
-            // Opcional: puedes añadir más restricciones
-            // Por ejemplo, si tiene documentos vencidos
             return !TieneDocumentosFueraPlazo(dni);
         }
 

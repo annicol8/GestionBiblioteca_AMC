@@ -120,7 +120,6 @@ namespace Presentacion
                 dateTimePicker.Value = DateTime.Now;
             }
 
-            // Recursividad para controles contenedores (Panel, GroupBox, etc.)
             foreach (Control hijo in control.Controls)
             {
                 LimpiarControlRecursivo(hijo);
@@ -158,22 +157,18 @@ namespace Presentacion
 
             nombre = nombre.Trim();
 
-            // longitud mínima
             if (nombre.Length < 2)
             {
                 MostrarAdvertencia($"El campo '{nombreCampo}' debe tener al menos 2 caracteres.");
                 return false;
             }
 
-            // longitud máxima
             if (nombre.Length > 20)
             {
                 MostrarAdvertencia($"El campo '{nombreCampo}' no puede superar los 20 caracteres.");
                 return false;
             }
 
-            // Validar que solo contenga letras, espacios, guiones, apóstrofes y tildes
-            // Permite nombres como: "María", "José Luis", "O'Brien", "García-Pérez"
             foreach (char c in nombre)
             {
                 if (!char.IsLetter(c) && c != ' ' && c != '-' && c != '\'' && c != 'ñ' && c != 'Ñ')
@@ -186,7 +181,6 @@ namespace Presentacion
                 }
             }
 
-            // Validar que no tenga múltiples espacios consecutivos
             if (nombre.Contains("  "))
             {
                 MostrarAdvertencia(
@@ -195,7 +189,6 @@ namespace Presentacion
                 return false;
             }
 
-            // Validar que no empiece ni termine con espacio, guion o apóstrofe
             if (nombre.StartsWith(" ") || nombre.EndsWith(" ") ||
                 nombre.StartsWith("-") || nombre.EndsWith("-") ||
                 nombre.StartsWith("'") || nombre.EndsWith("'"))
@@ -239,12 +232,12 @@ namespace Presentacion
             if (dni.Length != 9)
                 return false;
 
-            // Comprobar que los primeros 8 caracteres son dígitos
+            //  primeros 8 caracteres son dígitos
             string numeros = dni.Substring(0, 8);
             if (!int.TryParse(numeros, out int dniNumero))
                 return false;
 
-            // Validar que el último carácter es una letra
+            //  último carácter es una letra
             char letra = dni[8];
             if (!char.IsLetter(letra))
                 return false;
@@ -265,14 +258,12 @@ namespace Presentacion
             if (string.IsNullOrWhiteSpace(isbn))
                 return false;
 
-            // Eliminar guiones
             isbn = isbn.Replace("-", "").Replace(" ", "");
 
             // Debe tener 13 dígitos
             if (isbn.Length != 13)
                 return false;
 
-            // Todos deben ser dígitos
             if (!long.TryParse(isbn, out _))
                 return false;
 

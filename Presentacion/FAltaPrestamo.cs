@@ -39,7 +39,6 @@ namespace Presentacion
         {
             try
             {
-                // Cargar datos iniciales
                 CargarUsuarios();
                 CargarFechaActual();
                 GenerarIdPrestamo();
@@ -90,7 +89,6 @@ namespace Presentacion
         //POST: Se muestra que el identificador del préstamo es autogenerado.
         private void GenerarIdPrestamo()
         {
-            // Si el ID es autogenerado en BD, puedes dejar esto vacío o mostrar "Autogenerado"
             tbId.Text = "Autogenerado";
             tbId.ReadOnly = true;
         }
@@ -139,7 +137,6 @@ namespace Presentacion
 
                     if (ejemplarSeleccionado != null)
                     {
-                        // Validar que no está duplicado y que esta disponible antes de añadirlo al prestamo
                         if (codigosEjemplaresAñadidos.Contains(ejemplarSeleccionado.Codigo))
                         {
                             MostrarInformacion("Este ejemplar ya ha sido añadido al préstamo.");
@@ -189,14 +186,14 @@ namespace Presentacion
 
             foreach (EjemplarPrestamoInfo ej in ejemplares)
             {
-                // Crear panel para cada ejemplar
+                // panel para cada ejemplar
                 Panel pnlEjemplar = new Panel();
                 pnlEjemplar.BorderStyle = BorderStyle.FixedSingle;
                 pnlEjemplar.Height = 60;
                 pnlEjemplar.Width = panelEjemplares.Width - 20;
                 pnlEjemplar.Location = new System.Drawing.Point(5, posicionY);
 
-                // Label con información del ejemplar
+                // información del ejemplar
                 Label lblInfo = new Label();
                 lblInfo.Text = $"Código: {ej.Codigo} - {ej.Titulo}";
                 lblInfo.AutoSize = false;
@@ -205,12 +202,11 @@ namespace Presentacion
                 lblInfo.Location = new System.Drawing.Point(5, 5);
                 lblInfo.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
 
-                // Botón eliminar
                 Button btnEliminar = new Button();
                 btnEliminar.Text = "Eliminar";
                 btnEliminar.Width = 100;
                 btnEliminar.Location = new System.Drawing.Point(pnlEjemplar.Width - 105, 15);
-                btnEliminar.Tag = ej.Codigo;  // Guardar código para identificar qué eliminar
+                btnEliminar.Tag = ej.Codigo; 
                 btnEliminar.Click += (s, e) => EliminarEjemplar(ej.Codigo);
 
                 pnlEjemplar.Controls.Add(lblInfo);

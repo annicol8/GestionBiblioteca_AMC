@@ -56,7 +56,7 @@ namespace Presentacion
                         "El ISBN introducido no es válido.\n\n" +
                         "Formato: 13 dígitos (ej: 9788420412146 o 978-84-204-1214-6)",
                         "ISBN inválido");
-                    continue; //Volver a pedir
+                    continue;
                 }
 
                 Documento documentoExistente = lnAdq.GetDocumento(isbn);
@@ -177,7 +177,6 @@ namespace Presentacion
                     else
                         return;
                 }
-                // Documento encontrado, abrir formulario de baja
                 FBajaDocumento formulario = new FBajaDocumento(lnAdq, documentoExistente);
                 formulario.ShowDialog(this);
                 return;
@@ -278,7 +277,6 @@ namespace Presentacion
 
                 try
                 {
-                    // Ejemplar encontrado, abrir formulario de baja
                     FBajaEjemplar formulario = new FBajaEjemplar(lnAdq, ejemplarExistente);
                     formulario.ShowDialog(this);
                 }
@@ -306,7 +304,6 @@ namespace Presentacion
 
                     if (ejemplar != null)
                     {
-                        // Opcional: Mostrar un mensaje de confirmación con los datos
                         string mensaje = $"Ejemplar encontrado:\n\n" +
                                         $"Código: {ejemplar.Codigo}\n" +
                                         $"ISBN: {ejemplar.IsbnDocumento}\n" +

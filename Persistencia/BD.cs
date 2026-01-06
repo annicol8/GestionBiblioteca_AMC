@@ -20,7 +20,7 @@ namespace Persistencia
 
         public static void CargarDatosPrueba()
         {
-            // PERSONALES - DNIs válidos con letras correctas
+            // PERSONALES 
             TablaPersonales.Add(new PersonalDato("12345678Z", "Juan", "admin", TipoPersonal.personalSala));
             TablaPersonales.Add(new PersonalDato("87654321X", "María", "admin", TipoPersonal.personalAdquisiciones));
             TablaPersonales.Add(new PersonalDato("11223344Q", "Carlos", "admin", TipoPersonal.personalSala));
@@ -32,9 +32,9 @@ namespace Persistencia
             TablaPersonales.Add(new PersonalDato("77889900P", "Elena", "admin", TipoPersonal.personalSala));
             TablaPersonales.Add(new PersonalDato("23456789H", "David", "admin", TipoPersonal.personalAdquisiciones));
 
-            // LIBROS EN PAPEL - ISBNs válidos con dígitos de control correctos
+            // LIBROS EN PAPEL 
             TablaLibrosPapel.Add(new LibroPapelDato(
-                "978-84-667-0234-5",  // ISBN válido
+                "978-84-667-0234-5", 
                 "Don Quijote",
                 "Miguel De Cervantes",
                 "Aladelta",
@@ -42,7 +42,7 @@ namespace Persistencia
             ));
 
             TablaLibrosPapel.Add(new LibroPapelDato(
-                "978-0-13-235088-4",  // ISBN válido
+                "978-0-13-235088-4",  
                 "Clean Architecture",
                 "Robert C. Martin",
                 "Prentice Hall",
@@ -50,7 +50,7 @@ namespace Persistencia
             ));
 
             TablaLibrosPapel.Add(new LibroPapelDato(
-                "978-0-13-468599-1",  // ISBN válido
+                "978-0-13-468599-1",  
                 "Clean Code",
                 "Robert C. Martin",
                 "Prentice Hall",
@@ -58,7 +58,7 @@ namespace Persistencia
             ));
 
             TablaLibrosPapel.Add(new LibroPapelDato(
-                "978-0-20-161622-4",  // ISBN válido
+                "978-0-20-161622-4",  
                 "Refactoring",
                 "Martin Fowler",
                 "Addison-Wesley",
@@ -66,16 +66,16 @@ namespace Persistencia
             ));
 
             TablaLibrosPapel.Add(new LibroPapelDato(
-                "978-84-376-0494-7",  // ISBN válido
+                "978-84-376-0494-7",  
                 "Cien Años De Soledad",
                 "Gabriel García Márquez",
                 "Sudamericana",
                 1967
             ));
 
-            // AUDIOLIBROS - ISBNs válidos
+            // AUDIOLIBROS 
             TablaAudioLibros.Add(new AudioLibroDato(
-                "978-84-204-8368-8",  // ISBN válido
+                "978-84-204-8368-8",  
                 "El Quijote",
                 "Miguel De Cervantes",
                 "Santillana",
@@ -83,7 +83,7 @@ namespace Persistencia
             ));
 
             TablaAudioLibros.Add(new AudioLibroDato(
-                "978-0-14-312774-3",  // ISBN válido
+                "978-0-14-312774-3",  
                 "1984",
                 "George Orwell",
                 "Audible",
@@ -91,14 +91,14 @@ namespace Persistencia
             ));
 
             TablaAudioLibros.Add(new AudioLibroDato(
-                "978-0-14-311984-7",  // ISBN válido
+                "978-0-14-311984-7", 
                 "Rebelión En La Granja",
                 "George Orwell",
                 "Audible",
                 2018, "MP3", 180
             ));
 
-            // EJEMPLARES - Con ISBNs correctos que existen en los documentos
+            // EJEMPLARES 
             TablaEjemplares.Add(new EjemplarDato(1, "978-0-13-468599-1", true, "23456789H"));
             TablaEjemplares.Add(new EjemplarDato(2, "978-0-13-468599-1", true, "23456789H"));
             TablaEjemplares.Add(new EjemplarDato(3, "978-0-13-235088-4", true, "23456789H"));
@@ -114,7 +114,7 @@ namespace Persistencia
             TablaEjemplares.Add(new EjemplarDato(13, "978-84-376-0494-7", true, "22334455J"));
 
 
-            // USUARIOS - DNIs válidos
+            // USUARIOS 
             TablaUsuarios.Add(new UsuarioDato("45678901R", "Pedro ", true));
             TablaUsuarios.Add(new UsuarioDato("56789012E", "Eva ", true));
             TablaUsuarios.Add(new UsuarioDato("67890123D", "Carlos ", true));
@@ -294,8 +294,6 @@ namespace Persistencia
             ));
 
         }
-
-
 
         public static Tabla<string, AudioLibroDato> TablaAudioLibros
         {

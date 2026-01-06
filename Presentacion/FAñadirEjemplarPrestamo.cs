@@ -11,8 +11,6 @@ namespace Presentacion
     {
         private ILNPSala lnSala;
         private List<int> codigosEjemplaresAñadidos;
-        //private Ejemplar ejemplarSeleccionado;
-        //private List<Ejemplar> ejemplaresDisponibles;
         private BindingSource bindingSourceEjemplares;
 
 
@@ -23,6 +21,7 @@ namespace Presentacion
             InitializeComponent();
             bindingSourceEjemplares = new BindingSource();
         }
+
         /* PRE: lnSala != null, codigosEjemplaresAñadidos != null (puede estar vacía)
    POST: Crea el formulario con los datos necesarios para gestionar ejemplares */
         public FAñadirEjemplarPrestamo(ILNPSala lnSala, List<int> codigosEjemplaresAñadidos) : this()
@@ -72,6 +71,7 @@ POST: Carga y muestra los ejemplares disponibles excluyendo los ya añadidos.
             listBox1.ValueMember = "Codigo";
 
         }
+
         /* PRE: -
    POST: Cierra el formulario con DialogResult.Cancel */
         private void button3_Click(object sender, EventArgs e)
@@ -79,6 +79,7 @@ POST: Carga y muestra los ejemplares disponibles excluyendo los ya añadidos.
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
         /* PRE: listBox1 debe tener elementos cargados
    POST: Si hay un ejemplar seleccionado y está disponible, establece EjemplarSeleccionado
          y cierra con DialogResult.OK. Si no hay selección o no está disponible, 

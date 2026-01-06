@@ -14,6 +14,7 @@ namespace Presentacion
         {
             InitializeComponent();
         }
+
         /* PRE: lnAdq != null, documento != null
    POST: Inicializa el formulario con los datos necesarios para dar de baja un documento */
 
@@ -22,6 +23,7 @@ namespace Presentacion
             this.lnAdq = lnAdq;
             this.documento = documento;
         }
+
         /* PRE: documento != null
    POST: Carga y muestra la información del documento en modo solo lectura.
          Si documento es null, cierra el formulario con DialogResult.Cancel */
@@ -41,7 +43,6 @@ namespace Presentacion
             tbEditorial.Text = documento.Editorial;
             tbAnoEdicion.Text = documento.AnoEdicion.ToString();
 
-            // Mostrar tipo de documento
             if (documento is LibroPapel)
             {
                 lblTipoDocumento.Text = "Tipo: Libro en papel";
@@ -58,10 +59,8 @@ namespace Presentacion
                 lblFormatoDigital.Visible = true;
                 lblDuracion.Visible = true;
                 lblFormatoDigital.Text = $"Formato: {audio.FormatoDigital}";
-                //lblDuracion.Text = $"Duración: {audio.Duracion} seg";
                 TimeSpan duracion = TimeSpan.FromSeconds(audio.Duracion);
                 lblDuracion.Text = $"Duración: {duracion:hh\\:mm\\:ss} ({audio.Duracion} seg)";
-                // Resultado: "Duración: 01:05:30 (3930 seg)"
 
             }
 

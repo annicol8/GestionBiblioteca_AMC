@@ -57,12 +57,10 @@ namespace LogicaNegocio
             if (string.IsNullOrWhiteSpace(u.Dni))
                 throw new ArgumentException("El DNI no puede estar vacío");
 
-            // Verificar si ya existe
             Usuario existente = Persistencia.Persistencia.GetUsuario(new Usuario(u.Dni));
             if (existente != null && existente.DadoAlta)
                 throw new InvalidOperationException($"Ya existe un usuario activo con DNI {u.Dni}");
 
-            // Si existe pero está inactivo
             if (existente != null && !existente.DadoAlta)
             {
                 existente.Nombre = u.Nombre;
@@ -270,11 +268,10 @@ namespace LogicaNegocio
             {
                 if (p.Estado == EstadoPrestamo.enProceso)
                 {
-                    // Verificar si este ejemplar específicamente no ha sido devuelto
                     var prestamoEjemplar = Persistencia.Persistencia.GetPrestamoEjemplar(p.Id, codigoEjemplar);
                     if (prestamoEjemplar != null && prestamoEjemplar.FechaDevolucion == DateTime.MinValue)
                     {
-                        return false; // Está prestado y no devuelto
+                        return false; 
                     }
                 }
             }

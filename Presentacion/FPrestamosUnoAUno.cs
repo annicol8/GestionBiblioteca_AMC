@@ -80,7 +80,6 @@ namespace Presentacion
                     textBox_Id.Text = prestamo.Id.ToString();
                     textBox_FechaPrest.Text = prestamo.FechaPrestamo.ToString("dddd, d 'de' MMMM 'de' yyyy 'a las' HH:mm");
 
-                    //verificamos si esta devuelto o no 
                     if (prestamo.Estado == EstadoPrestamo.finalizado)
                     {
                         textBox_FechaDevolucion.Text = prestamo.FechaDevolucion.ToString("dddd, d 'de' MMMM 'de' yyyy 'a las' HH:mm");
@@ -91,7 +90,6 @@ namespace Presentacion
                     }
 
 
-                    //Usuario del prestamo
                     Usuario usuario = lnps.GetUsuario(prestamo.DniUsuario);
                     if (usuario != null)
                     {
@@ -102,7 +100,6 @@ namespace Presentacion
                         textBox_Usuario.Text = prestamo.DniUsuario + " (Usuario no encontrado)";
                     }
 
-                    //Estado del prestamo
                     if (prestamo.Caducado())
                     {
                         textBox_Estado.Text = "Vencido";
@@ -127,7 +124,6 @@ namespace Presentacion
                         }
                     }
 
-                    // Prestador (Personal) con nombre
                     Personal personal = lnps.GetPersonal(prestamo.DniPersonal);
                     if (personal != null)
                     {
@@ -137,8 +133,7 @@ namespace Presentacion
                     {
                         textBox_Personal.Text = prestamo.DniPersonal + " (Personal no encontrado)";
                     }
-
-                    // Cargar documentos/ejemplares en el ListBox
+                    
                     CargarEjemplaresPrestamo(prestamo.Id);
                 }
             }
@@ -152,7 +147,6 @@ namespace Presentacion
             {
                 listBox_Doc.Items.Clear();
 
-                // Obtener ejemplares del préstamo
                 List<Ejemplar> ejemplares = Persistencia.Persistencia.GetEjemplaresDePrestamo(idPrestamo);
 
                 if (ejemplares == null || ejemplares.Count == 0)
@@ -164,7 +158,6 @@ namespace Presentacion
                 int contador = 1;
                 foreach (Ejemplar ejemplar in ejemplares)
                 {
-                    // Obtener el documento asociado al ejemplar
                     Documento doc = Persistencia.Persistencia.GetDocumento(ejemplar.IsbnDocumento);
 
                     if (doc != null)

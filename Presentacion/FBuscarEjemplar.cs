@@ -57,7 +57,6 @@ namespace Presentacion
                         $"No se encontró ningún ejemplar con el código {codigo}.",
                         "Ejemplar no encontrado");
 
-                    // Preguntar si desea buscar otro
                     if (SolicitarConfirmacion("¿Desea buscar otro ejemplar?", "Buscar otro"))
                     {
                         BuscarEjemplar();
@@ -104,10 +103,8 @@ namespace Presentacion
                 tb_DniPersonal.Text = "N/A";
             }
 
-            // Marcar o desmarcar el checkbox según el estado activo
             check_Activo.Checked = ejemplar.Activo;
 
-            //Cambio de color del checkbox si no está activo
             if (!ejemplar.Activo)
             {
                 this.BackColor = Color.LightCoral;

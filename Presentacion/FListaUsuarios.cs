@@ -34,7 +34,7 @@ namespace Presentacion
         //      listBox_Dni muestra los DNI de los usuarios y listBox_Nombre muestra los nombres de los usuarios
         private void CargarUsuarios()
         {
-            usuarios = ln.GetUsuariosActivos(); //obtener los usuarios dados de alta
+            usuarios = ln.GetUsuariosActivos(); 
             
             bindingSourceDni = new BindingSource();
             bindingSourceDni.DataSource = usuarios;
@@ -42,7 +42,6 @@ namespace Presentacion
             bindingSourceNombre = new BindingSource();
             bindingSourceNombre.DataSource = usuarios;
 
-            //Sincronizamos ambas listas, si se cambia el orden de una de la otra también
             listBox_Dni.DataSource = bindingSourceDni;
             listBox_Dni.DisplayMember = "Dni";
             listBox_Dni.ValueMember = "Dni";

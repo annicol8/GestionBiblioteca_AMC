@@ -70,13 +70,5 @@ namespace ModeloDominio
             return codigo.GetHashCode();
         }
 
-        /*
-        // Métodos 
-        public bool EstaPrestado()
-        {
-            return Prestamos?.Any(p => p.Estado == EstadoPrestamo.EnProceso) ?? false;
-        }*/
-
-
     }
 }
